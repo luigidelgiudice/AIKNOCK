@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="AIKNOCK — Note legali, indipendenza editoriale, marchi e disclaimer." />
+<meta name="color-scheme" content="light" />
+<title>AIKNOCK — Note legali</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+
+<style>
+  :root {
+    --ink: #111111; --ink-2: #2a2a2a; --body: #333333;
+    --muted: #6a6a6a; --muted-2: #9a9a9a;
+    --rule: #d8d8d8; --paper: #ffffff;
+    --accent: #8a1a1a;
+    --serif: "Source Serif 4", Georgia, "Times New Roman", Times, serif;
+    --sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    --col: 680px; --col-wide: 880px; --gutter: 32px;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { background: var(--paper); color: var(--body); }
+  body { margin: 0; font-family: var(--sans); font-size: 16px; line-height: 1.65; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+  a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--rule); }
+  a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .col       { max-width: var(--col);      margin: 0 auto; padding: 0 var(--gutter); }
+  .col--wide { max-width: var(--col-wide); margin: 0 auto; padding: 0 var(--gutter); }
+
+  .banner { border-bottom: 1px solid var(--rule); font-family: var(--mono); font-size: 11px; letter-spacing: 0.04em; color: var(--muted); }
+  .banner__inner { display: flex; justify-content: space-between; align-items: center; padding: 12px var(--gutter); max-width: 1100px; margin: 0 auto; gap: 24px; }
+  .banner__left { display: flex; gap: 22px; flex-wrap: wrap; }
+  .banner__left span::before { content: ""; display: inline-block; width: 6px; height: 6px; background: var(--accent); margin-right: 8px; transform: translateY(-1px); }
+  .lang { display: inline-flex; gap: 10px; align-items: baseline; font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; flex-shrink: 0; }
+  .lang__opt { border: 0; color: var(--muted-2); padding: 2px 0; cursor: pointer; transition: color 100ms linear; }
+  .lang__opt:hover { color: var(--ink); border: 0; }
+  .lang__opt.is-active { color: var(--accent); border-bottom: 1px solid var(--accent); }
+  .lang__sep { color: var(--rule); user-select: none; }
+
+  header.mast { border-bottom: 1px solid var(--rule); }
+  .mast__inner { display: flex; align-items: baseline; justify-content: space-between; padding: 22px var(--gutter); max-width: 1100px; margin: 0 auto; gap: 24px; }
+  .brand { display: flex; align-items: baseline; gap: 14px; border: 0; }
+  .brand__mark { font-family: var(--serif); font-weight: 600; font-size: 20px; letter-spacing: -0.01em; color: var(--ink); white-space: nowrap; flex-shrink: 0; }
+  .brand__mark::before { content: ""; display: inline-block; width: 9px; height: 9px; background: var(--accent); margin-right: 10px; transform: translateY(-2px); }
+  .brand__sub { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.04em; white-space: nowrap; }
+  .mast__nav { display: inline-flex; align-items: baseline; gap: 10px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; flex-wrap: wrap; }
+  .mast__nav a { color: var(--muted); border: 0; padding: 2px 0; }
+  .mast__nav a:hover { color: var(--ink); }
+  .mast__nav a[aria-current="page"] { color: var(--accent); border-bottom: 1px solid var(--accent); }
+  .mast__sep { color: var(--rule); user-select: none; }
+
+  section.cover { padding: 120px 0 96px; border-bottom: 1px solid var(--rule); }
+  .cover__eyebrow { font-family: var(--mono); font-size: 11.5px; color: var(--accent); letter-spacing: 0.08em; text-transform: uppercase; margin: 0 0 24px; }
+  .cover__eyebrow::before { content: "§ 00 ·"; color: var(--muted); margin-right: 8px; letter-spacing: 0.04em; }
+  .cover h1 { font-family: var(--serif); font-weight: 500; font-size: 44px; line-height: 1.12; letter-spacing: -0.015em; margin: 0 0 22px; color: var(--ink); text-wrap: balance; }
+  .cover h1 em { font-style: italic; color: var(--ink-2); font-weight: 400; }
+  .cover__sub { font-family: var(--serif); font-size: 19px; line-height: 1.55; color: var(--ink-2); margin: 0; max-width: 60ch; }
+  .cover__rule { margin: 44px 0 0; height: 1px; background: var(--rule); width: 96px; }
+
+  section.sec { padding: 88px 0; border-bottom: 1px solid var(--rule); }
+  section.sec:last-of-type { border-bottom: 0; }
+  .sec__num { font-family: var(--mono); font-size: 11.5px; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; margin: 0 0 16px; }
+  .sec__num .accent { color: var(--accent); }
+  .sec h2 { font-family: var(--serif); font-weight: 500; font-size: 28px; line-height: 1.2; letter-spacing: -0.012em; margin: 0 0 22px; color: var(--ink); text-wrap: balance; max-width: 32ch; }
+  .sec p { margin: 0 0 18px; color: var(--body); font-size: 16px; line-height: 1.7; max-width: 62ch; }
+  .sec p:last-child { margin-bottom: 0; }
+  .sec b, .sec strong { color: var(--ink); font-weight: 600; }
+  .sec i, .sec em { font-style: italic; }
+
+  .clauses { list-style: none; margin: 12px 0 0; padding: 0; counter-reset: clause; border-top: 1px solid var(--ink); }
+  .clauses > li { counter-increment: clause; padding: 22px 0; border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: 88px 1fr; gap: 24px; align-items: baseline; }
+  .clauses > li:last-child { border-bottom: 1px solid var(--ink); }
+  .clauses > li::before { content: "§ " counter(clause, decimal-leading-zero); font-family: var(--mono); font-size: 11px; color: var(--accent); letter-spacing: 0.04em; padding-top: 3px; }
+  .clauses h3 { font-family: var(--serif); font-weight: 500; font-size: 18px; line-height: 1.35; margin: 0 0 6px; color: var(--ink); }
+  .clauses p { margin: 0; color: var(--body); font-size: 15.5px; line-height: 1.65; max-width: 62ch; }
+
+  footer.colophon { padding: 56px 0; border-top: 1px solid var(--rule); }
+  .colophon__row { max-width: 1100px; margin: 0 auto; padding: 0 var(--gutter); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; font-family: var(--mono); font-size: 11px; color: var(--muted-2); letter-spacing: 0.04em; }
+
+  @media (max-width: 720px) {
+    .cover { padding: 76px 0 60px; } .cover h1 { font-size: 30px; }
+    .sec { padding: 60px 0; } .sec h2 { font-size: 22px; }
+    .clauses > li { grid-template-columns: 1fr; gap: 6px; }
+    .mast__inner { flex-wrap: wrap; gap: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="banner">
+  <div class="banner__inner">
+    <div class="banner__left">
+      <span data-i18n="banner.l1">Specifica aperta</span>
+      <span data-i18n="banner.l2">Bozza di lavoro pubblica</span>
+      <span data-i18n="banner.l3">A cura del gruppo editoriale AIKNOCK</span>
+    </div>
+    <nav class="lang" aria-label="Language">
+      <a class="lang__opt" data-lang="it" href="?lang=it" hreflang="it" aria-current="true">IT</a>
+      <span class="lang__sep" aria-hidden="true">·</span>
+      <a class="lang__opt" data-lang="en" href="?lang=en" hreflang="en">EN</a>
+      <span class="lang__sep" aria-hidden="true">·</span>
+      <a class="lang__opt" data-lang="fr" href="?lang=fr" hreflang="fr">FR</a>
+      <span class="lang__sep" aria-hidden="true">·</span>
+      <a class="lang__opt" data-lang="es" href="?lang=es" hreflang="es">ES</a>
+    </nav>
+  </div>
+</div>
+
+<header class="mast">
+  <div class="mast__inner">
+    <a class="brand" href="index.html">
+      <span class="brand__mark">AIKNOCK</span>
+      <span class="brand__sub" data-i18n="mast.sub">Specifica aperta · v0.4</span>
+    </a>
+    <nav class="mast__nav" aria-label="Sezioni">
+      <a href="index.html" data-i18n="nav.spec">Specifica</a>
+      <span class="mast__sep" aria-hidden="true">·</span>
+      <a href="perche.html" data-i18n="nav.why">Perché AIKNOCK</a>
+      <span class="mast__sep" aria-hidden="true">·</span>
+      <a href="one-diagram.html" data-i18n="nav.one">One Diagram</a>
+      <span class="mast__sep" aria-hidden="true">·</span>
+      <a href="norme.html" data-i18n="nav.norms">Norme</a>
+      <span class="mast__sep" aria-hidden="true">·</span>
+      <a href="design-principles.html" data-i18n="nav.dp">Design Principles</a>
+      <span class="mast__sep" aria-hidden="true">·</span>
+      <a href="note-legali.html" aria-current="page" data-i18n="nav.legal">Note legali</a>
+    </nav>
+  </div>
+</header>
+
+<section class="cover">
+  <div class="col--wide">
+    <p class="cover__eyebrow" data-i18n="cover.eyebrow">Note legali</p>
+    <h1 data-i18n="cover.h1">Note legali, indipendenza e marchi<em>.</em></h1>
+    <p class="cover__sub" data-i18n="cover.sub">
+      Indicazioni essenziali sulla natura del progetto, l'indipendenza
+      editoriale, l'uso dei marchi e dei riferimenti normativi, e i limiti
+      di responsabilità della pubblicazione.
+    </p>
+    <div class="cover__rule" aria-hidden="true"></div>
+  </div>
+</section>
+
+<section class="sec" id="clausole">
+  <p class="sec__num col"><span class="accent">§ 01</span> · <span data-i18n="s1.tag">Clausole</span></p>
+  <div class="col">
+    <h2 data-i18n="s1.h2">Clausole.</h2>
+
+    <ol class="clauses">
+      <li><div>
+        <h3 data-i18n="s1.c1.h">Indipendenza del progetto.</h3>
+        <p data-i18n="s1.c1.p">Il progetto è indipendente e non è affiliato, sponsorizzato né approvato da alcuna organizzazione, ente di normazione o autorità pubblica. Il sistema non implementa né rappresenta requisiti normativi o di standard.</p>
+      </div></li>
+      <li><div>
+        <h3 data-i18n="s1.c2.h">Natura del documento.</h3>
+        <p data-i18n="s1.c2.p">Il presente sito pubblica una specifica tecnica aperta. Non costituisce un prodotto, un servizio, un parere legale o una consulenza professionale. I contenuti hanno finalità informativa e di consultazione.</p>
+      </div></li>
+      <li><div>
+        <h3 data-i18n="s1.c3.h">Rapporto con norme e standard.</h3>
+        <p data-i18n="s1.c3.p">Il sistema opera in modo indipendente da quadri normativi o di standard esterni. L'adozione del progetto può risultare tecnicamente coerente con i requisiti posti da norme e standard, ma <b>non garantisce, di per sé, alcuna esenzione</b> da responsabilità legali, sanzioni o controlli da parte delle autorità competenti.</p>
+      </div></li>
+      <li><div>
+        <h3 data-i18n="s1.c4.h">Marchi e diritti dei terzi.</h3>
+        <p data-i18n="s1.c4.p">Tutti i nomi di standard, normative, programmi e organizzazioni citati — fra cui ISO, IEC, NIST, AI Act, NIS2 — appartengono ai rispettivi enti, organismi o titolari. La citazione è effettuata a fini informativi e di riferimento; non implica affiliazione, endorsement o utilizzo commerciale dei marchi.</p>
+      </div></li>
+      <li><div>
+        <h3 data-i18n="s1.c5.h">Standard protetti da copyright.</h3>
+        <p data-i18n="s1.c5.p">Gli standard internazionali citati (a titolo esemplificativo: ISO/IEC 42001, ISO/IEC 27001, ISO/IEC 23894) sono opere protette dai rispettivi titolari. Il presente documento non riproduce, non distribuisce e non include il testo di tali standard, che restano disponibili tramite gli enti di pubblicazione competenti.</p>
+      </div></li>
+      <li><div>
+        <h3 data-i18n="s1.c6.h">Responsabilità degli utilizzatori.</h3>
+        <p data-i18n="s1.c6.p">L'osservanza delle norme applicabili resta una responsabilità degli operatori, degli implementatori, dei <i>deployer</i> e delle autorità competenti. L'adozione del protocollo non sposta tale responsabilità.</p>
+      </div></li>
+      <li><div>
+        <h3 data-i18n="s1.c7.h">Limitazione di responsabilità.</h3>
+        <p data-i18n="s1.c7.p">Il documento è pubblicato "così com'è", senza garanzie esplicite o implicite. Gli autori e i curatori non assumono responsabilità per decisioni assunte sulla base dei contenuti pubblicati, né per implementazioni, configurazioni o usi del protocollo realizzati da terzi.</p>
+      </div></li>
+      <li><div>
+        <h3 data-i18n="s1.c8.h">Licenza.</h3>
+        <p data-i18n="s1.c8.p">La specifica è pubblicata sotto licenza <i>Creative Commons Attribution 4.0 International</i> (CC BY 4.0), salvo diversa indicazione per singoli elementi. Tale licenza non si estende ai marchi né alle opere protette di terzi citati nel testo.</p>
+      </div></li>
+    </ol>
+  </div>
+</section>
+
+<section class="sec" id="contatto">
+  <p class="sec__num col"><span class="accent">§ 02</span> · <span data-i18n="s2.tag">Segnalazioni</span></p>
+  <div class="col">
+    <h2 data-i18n="s2.h2">Segnalazioni editoriali.</h2>
+    <p data-i18n="s2.p1">
+      Le richieste relative a marchi, riferimenti normativi o accuratezza
+      dei contenuti possono essere inoltrate alla lista pubblica del
+      gruppo editoriale, indicata nel colofone della specifica.
+    </p>
+    <p data-i18n="s2.p2">
+      Il gruppo editoriale considera con priorità le segnalazioni di
+      titolari di marchi, di enti di standardizzazione e di autorità
+      competenti, e provvede a integrare i necessari aggiornamenti nelle
+      revisioni successive.
+    </p>
+  </div>
+</section>
+
+<footer class="colophon">
+  <div class="colophon__row">
+    <span data-i18n="col.bot1">© 2026 Gruppo editoriale AIKNOCK — Specifica aperta · CC BY 4.0</span>
+    <span data-i18n="col.bot2">AIKNOCK / WD-0004 · NOTE LEGALI · 18 maggio 2026</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+  var LANGS = ["it","en","fr","es"];
+  var dict = {
+    en: {
+      "banner.l1":"Open specification","banner.l2":"Public working draft","banner.l3":"Maintained by the AIKNOCK editorial group",
+      "mast.sub":"Open specification · v0.4",
+      "nav.spec":"Specification","nav.why":"Why AIKNOCK","nav.one":"One Diagram","nav.norms":"Norms","nav.dp":"Design Principles","nav.legal":"Legal Notice",
+      "cover.eyebrow":"Legal notice",
+      "cover.h1":"Legal notice, independence and trademarks<em>.</em>",
+      "cover.sub":"Essential statements on the nature of the project, its editorial independence, the use of trademarks and normative references, and the liability limits of this publication.",
+      "s1.tag":"Clauses","s1.h2":"Clauses.",
+      "s1.c1.h":"Independence of the project.",
+      "s1.c1.p":"The project is independent and not affiliated with, sponsored by or endorsed by any organization, standardization body or public authority. The system does not implement or represent regulatory or standard requirements.",
+      "s1.c2.h":"Nature of the document.",
+      "s1.c2.p":"This site publishes an open technical specification. It does not constitute a product, a service, a legal opinion or professional advice. The contents are provided for information and reference purposes only.",
+      "s1.c3.h":"Relation to norms and standards.",
+      "s1.c3.p":"The system operates independently of external regulatory or standard frameworks. The project's adoption may be technically consistent with the requirements set by norms and standards, but <b>does not, in itself, guarantee any exemption</b> from legal liabilities, penalties or controls by competent authorities.",
+      "s1.c4.h":"Trademarks and third-party rights.",
+      "s1.c4.p":"All names of standards, regulations, programmes and organisations cited — including ISO, IEC, NIST, AI Act, NIS2 — belong to their respective bodies, organisations or holders. Citations are made for information and reference purposes; they do not imply affiliation, endorsement or commercial use of the trademarks.",
+      "s1.c5.h":"Copyrighted standards.",
+      "s1.c5.p":"The international standards cited (for example: ISO/IEC 42001, ISO/IEC 27001, ISO/IEC 23894) are works protected by their respective holders. This document does not reproduce, distribute or include the text of such standards, which remain available through the competent publishing bodies.",
+      "s1.c6.h":"Responsibility of users.",
+      "s1.c6.p":"Compliance with applicable norms remains a responsibility of operators, implementers, <i>deployers</i> and competent authorities. Adoption of the protocol does not shift such responsibility.",
+      "s1.c7.h":"Limitation of liability.",
+      "s1.c7.p":"The document is published \"as is\", without explicit or implicit warranties. The authors and editors assume no responsibility for decisions taken on the basis of the published contents, nor for implementations, configurations or uses of the protocol carried out by third parties.",
+      "s1.c8.h":"Licence.",
+      "s1.c8.p":"The specification is published under the <i>Creative Commons Attribution 4.0 International</i> licence (CC BY 4.0), unless otherwise indicated for individual elements. This licence does not extend to trademarks or to protected works of third parties cited in the text.",
+      "s2.tag":"Notices","s2.h2":"Editorial notices.",
+      "s2.p1":"Requests concerning trademarks, normative references or the accuracy of the contents may be sent to the public mailing list of the editorial group, indicated in the colophon of the specification.",
+      "s2.p2":"The editorial group gives priority consideration to notices from trademark holders, standardisation bodies and competent authorities, and integrates the necessary updates in subsequent revisions.",
+      "col.bot1":"© 2026 AIKNOCK editorial group — Open specification · CC BY 4.0",
+      "col.bot2":"AIKNOCK / WD-0004 · LEGAL NOTICE · 18 May 2026"
+    },
+    fr: {
+      "banner.l1":"Spécification ouverte","banner.l2":"Brouillon de travail public","banner.l3":"Maintenu par le groupe éditorial AIKNOCK",
+      "mast.sub":"Spécification ouverte · v0.4",
+      "nav.spec":"Spécification","nav.why":"Pourquoi AIKNOCK","nav.one":"One Diagram","nav.norms":"Normes","nav.dp":"Design Principles","nav.legal":"Mentions légales",
+      "cover.eyebrow":"Mentions légales",
+      "cover.h1":"Mentions légales, indépendance et marques<em>.</em>",
+      "cover.sub":"Indications essentielles sur la nature du projet, son indépendance éditoriale, l'usage des marques et des références normatives, ainsi que les limites de responsabilité de la publication.",
+      "s1.tag":"Clauses","s1.h2":"Clauses.",
+      "s1.c1.h":"Indépendance du projet.",
+      "s1.c1.p":"Le projet est indépendant et n'est ni affilié, ni sponsorisé, ni approuvé par une organisation, un organisme de normalisation ou une autorité publique. Le système n'implémente ni ne représente d'exigences normatives ou standardisées.",
+      "s1.c2.h":"Nature du document.",
+      "s1.c2.p":"Ce site publie une spécification technique ouverte. Il ne constitue ni un produit, ni un service, ni un avis juridique, ni un conseil professionnel. Les contenus ont une finalité d'information et de consultation.",
+      "s1.c3.h":"Rapport avec les normes et standards.",
+      "s1.c3.p":"Le système opère de manière indépendante des cadres normatifs ou standardisés externes. L'adoption du projet peut être techniquement cohérente avec les exigences posées par les normes et les standards, mais <b>ne garantit pas, en elle-même, l'exemption</b> de responsabilité légale, de sanctions ou de contrôles de la part des autorités compétentes.",
+      "s1.c4.h":"Marques et droits des tiers.",
+      "s1.c4.p":"Tous les noms de standards, normes, programmes et organisations cités — notamment ISO, IEC, NIST, AI Act, NIS2 — appartiennent à leurs organismes, organisations ou titulaires respectifs. Les citations sont effectuées à des fins d'information et de référence ; elles n'impliquent ni affiliation, ni endossement, ni usage commercial des marques.",
+      "s1.c5.h":"Standards protégés par le droit d'auteur.",
+      "s1.c5.p":"Les standards internationaux cités (à titre d'exemple : ISO/IEC 42001, ISO/IEC 27001, ISO/IEC 23894) sont des œuvres protégées par leurs titulaires respectifs. Le présent document ne reproduit pas, ne distribue pas et n'inclut pas le texte de ces standards, lesquels demeurent disponibles auprès des organismes de publication compétents.",
+      "s1.c6.h":"Responsabilité des utilisateurs.",
+      "s1.c6.p":"L'observance des normes applicables demeure une responsabilité des opérateurs, des implémenteurs, des <i>deployers</i> et des autorités compétentes. L'adoption du protocole ne déplace pas cette responsabilité.",
+      "s1.c7.h":"Limitation de responsabilité.",
+      "s1.c7.p":"Le document est publié « tel quel », sans garanties explicites ou implicites. Les auteurs et les éditeurs n'assument aucune responsabilité pour les décisions prises sur la base des contenus publiés, ni pour les implémentations, configurations ou usages du protocole réalisés par des tiers.",
+      "s1.c8.h":"Licence.",
+      "s1.c8.p":"La spécification est publiée sous licence <i>Creative Commons Attribution 4.0 International</i> (CC BY 4.0), sauf indication contraire pour certains éléments. Cette licence ne s'étend ni aux marques ni aux œuvres protégées de tiers citées dans le texte.",
+      "s2.tag":"Signalements","s2.h2":"Signalements éditoriaux.",
+      "s2.p1":"Les demandes relatives aux marques, aux références normatives ou à l'exactitude des contenus peuvent être adressées à la liste publique du groupe éditorial, indiquée dans le colophon de la spécification.",
+      "s2.p2":"Le groupe éditorial examine en priorité les signalements émanant de titulaires de marques, d'organismes de normalisation et d'autorités compétentes, et intègre les mises à jour nécessaires lors des révisions ultérieures.",
+      "col.bot1":"© 2026 Groupe éditorial AIKNOCK — Spécification ouverte · CC BY 4.0",
+      "col.bot2":"AIKNOCK / WD-0004 · MENTIONS LÉGALES · 18 mai 2026"
+    },
+    es: {
+      "banner.l1":"Especificación abierta","banner.l2":"Borrador público de trabajo","banner.l3":"Mantenido por el grupo editorial AIKNOCK",
+      "mast.sub":"Especificación abierta · v0.4",
+      "nav.spec":"Especificación","nav.why":"Por qué AIKNOCK","nav.one":"One Diagram","nav.norms":"Normas","nav.dp":"Design Principles","nav.legal":"Aviso legal",
+      "cover.eyebrow":"Aviso legal",
+      "cover.h1":"Aviso legal, independencia y marcas<em>.</em>",
+      "cover.sub":"Indicaciones esenciales sobre la naturaleza del proyecto, su independencia editorial, el uso de las marcas y de las referencias normativas, y los límites de responsabilidad de esta publicación.",
+      "s1.tag":"Cláusulas","s1.h2":"Cláusulas.",
+      "s1.c1.h":"Independencia del proyecto.",
+      "s1.c1.p":"El proyecto es independiente y no está afiliado, patrocinado ni aprobado por ninguna organización, organismo de normalización o autoridad pública. El sistema no implementa ni representa requisitos normativos o de estándar.",
+      "s1.c2.h":"Naturaleza del documento.",
+      "s1.c2.p":"Este sitio publica una especificación técnica abierta. No constituye un producto, un servicio, un dictamen jurídico ni un asesoramiento profesional. Los contenidos tienen una finalidad informativa y de consulta.",
+      "s1.c3.h":"Relación con normas y estándares.",
+      "s1.c3.p":"El sistema opera de manera independiente de los marcos normativos o de estándar externos. La adopción del proyecto puede ser técnicamente coherente con los requisitos planteados por las normas y los estándares, pero <b>no garantiza, por sí misma, exención alguna</b> de responsabilidades legales, sanciones o controles por parte de las autoridades competentes.",
+      "s1.c4.h":"Marcas y derechos de terceros.",
+      "s1.c4.p":"Todos los nombres de estándares, normativas, programas y organizaciones citados — entre ellos ISO, IEC, NIST, AI Act, NIS2 — pertenecen a sus respectivos organismos, organizaciones o titulares. Las citas se realizan con fines informativos y de referencia; no implican afiliación, respaldo ni uso comercial de las marcas.",
+      "s1.c5.h":"Estándares protegidos por derechos de autor.",
+      "s1.c5.p":"Los estándares internacionales citados (a título de ejemplo: ISO/IEC 42001, ISO/IEC 27001, ISO/IEC 23894) son obras protegidas por sus respectivos titulares. El presente documento no reproduce, no distribuye y no incluye el texto de dichos estándares, que permanecen disponibles a través de los organismos de publicación competentes.",
+      "s1.c6.h":"Responsabilidad de los usuarios.",
+      "s1.c6.p":"La observancia de las normas aplicables sigue siendo responsabilidad de los operadores, de los implementadores, de los <i>deployers</i> y de las autoridades competentes. La adopción del protocolo no traslada dicha responsabilidad.",
+      "s1.c7.h":"Limitación de responsabilidad.",
+      "s1.c7.p":"El documento se publica «tal cual», sin garantías explícitas ni implícitas. Los autores y los editores no asumen responsabilidad por decisiones adoptadas sobre la base de los contenidos publicados, ni por implementaciones, configuraciones o usos del protocolo realizados por terceros.",
+      "s1.c8.h":"Licencia.",
+      "s1.c8.p":"La especificación se publica bajo licencia <i>Creative Commons Attribution 4.0 International</i> (CC BY 4.0), salvo indicación en contrario para elementos individuales. Dicha licencia no se extiende a las marcas ni a las obras protegidas de terceros citadas en el texto.",
+      "s2.tag":"Avisos","s2.h2":"Avisos editoriales.",
+      "s2.p1":"Las solicitudes relativas a marcas, referencias normativas o exactitud de los contenidos pueden dirigirse a la lista pública del grupo editorial, indicada en el colofón de la especificación.",
+      "s2.p2":"El grupo editorial atiende con prioridad los avisos de titulares de marcas, organismos de normalización y autoridades competentes, e integra las actualizaciones necesarias en las revisiones sucesivas.",
+      "col.bot1":"© 2026 Grupo editorial AIKNOCK — Especificación abierta · CC BY 4.0",
+      "col.bot2":"AIKNOCK / WD-0004 · AVISO LEGAL · 18 de mayo de 2026"
+    }
+  };
+  var titles = {
+    it: "AIKNOCK — Note legali", en: "AIKNOCK — Legal notice",
+    fr: "AIKNOCK — Mentions légales", es: "AIKNOCK — Aviso legal"
+  };
+  var original = {};
+  function snapshot() {
+    var nodes = document.querySelectorAll("[data-i18n]");
+    for (var i = 0; i < nodes.length; i++) {
+      var k = nodes[i].getAttribute("data-i18n");
+      if (!(k in original)) original[k] = nodes[i].innerHTML;
+    }
+  }
+  function apply(lang) {
+    if (LANGS.indexOf(lang) === -1) lang = "it";
+    document.documentElement.lang = lang;
+    var src = lang === "it" ? null : dict[lang];
+    var nodes = document.querySelectorAll("[data-i18n]");
+    for (var i = 0; i < nodes.length; i++) {
+      var el = nodes[i], k = el.getAttribute("data-i18n");
+      var v = src && src[k] != null ? src[k] : original[k];
+      if (v != null && el.innerHTML !== v) el.innerHTML = v;
+    }
+    document.title = titles[lang] || titles.it;
+    var pageLinks = document.querySelectorAll('a[href$=".html"], a[href*=".html?"]');
+    for (var k2 = 0; k2 < pageLinks.length; k2++) {
+      var h = pageLinks[k2].getAttribute('href').split('?')[0];
+      pageLinks[k2].setAttribute('href', h + '?lang=' + lang);
+    }
+    var opts = document.querySelectorAll(".lang__opt");
+    for (var j = 0; j < opts.length; j++) {
+      var on = opts[j].getAttribute("data-lang") === lang;
+      opts[j].classList.toggle("is-active", on);
+      if (on) opts[j].setAttribute("aria-current", "true");
+      else opts[j].removeAttribute("aria-current");
+    }
+  }
+  function init() {
+    snapshot();
+    var p = new URLSearchParams(window.location.search);
+    var fromUrl = p.get("lang"), fromStore = null;
+    try { fromStore = localStorage.getItem("aigp_lang"); } catch (e) {}
+    var nav = (navigator.language || "it").slice(0, 2).toLowerCase();
+    var pick = fromUrl || fromStore || (LANGS.indexOf(nav) !== -1 ? nav : "it");
+    if (LANGS.indexOf(pick) === -1) pick = "it";
+    apply(pick);
+    var opts = document.querySelectorAll(".lang__opt");
+    for (var i = 0; i < opts.length; i++) {
+      opts[i].addEventListener("click", function (e) {
+        e.preventDefault();
+        var l = this.getAttribute("data-lang");
+        try { localStorage.setItem("aigp_lang", l); } catch (e2) {}
+        var u = new URL(window.location.href);
+        u.searchParams.set("lang", l);
+        window.history.replaceState({}, "", u);
+        apply(l);
+      });
+    }
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+  else init();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,679 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="AIKNOCK — One Diagram. Pagina tecnica: dove si colloca e quando decide AIKNOCK." />
+<meta name="color-scheme" content="light" />
+<title>AIKNOCK — One Diagram</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+
+<style>
+  :root {
+    --ink: #111111;
+    --ink-2: #2a2a2a;
+    --body: #333333;
+    --muted: #6a6a6a;
+    --muted-2: #9a9a9a;
+    --rule: #d8d8d8;
+    --paper: #ffffff;
+    --accent: #8a1a1a;
+    --serif: "Source Serif 4", Georgia, "Times New Roman", Times, serif;
+    --sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    --col: 720px;
+    --col-wide: 980px;
+    --gutter: 32px;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { background: var(--paper); color: var(--body); }
+  body {
+    margin: 0;
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--rule); }
+  a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  .col       { max-width: var(--col);      margin: 0 auto; padding: 0 var(--gutter); }
+  .col--wide { max-width: var(--col-wide); margin: 0 auto; padding: 0 var(--gutter); }
+
+  /* Banner */
+  .banner {
+    border-bottom: 1px solid var(--rule);
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+  }
+  .banner__inner {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 12px var(--gutter); max-width: 1100px; margin: 0 auto; gap: 24px;
+  }
+  .banner__left { display: flex; gap: 22px; flex-wrap: wrap; }
+  .banner__left span::before {
+    content: ""; display: inline-block; width: 6px; height: 6px;
+    background: var(--accent); margin-right: 8px; transform: translateY(-1px);
+  }
+  .ref { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.04em; white-space: nowrap; }
+
+  /* Masthead */
+  header.mast { border-bottom: 1px solid var(--rule); }
+  .mast__inner {
+    display: flex; align-items: baseline; justify-content: space-between;
+    padding: 22px var(--gutter); max-width: 1100px; margin: 0 auto; gap: 24px;
+  }
+  .brand { display: flex; align-items: baseline; gap: 14px; border: 0; }
+  .brand__mark {
+    font-family: var(--serif); font-weight: 600; font-size: 20px;
+    letter-spacing: -0.01em; color: var(--ink); white-space: nowrap; flex-shrink: 0;
+  }
+  .brand__mark::before {
+    content: ""; display: inline-block; width: 9px; height: 9px;
+    background: var(--accent); margin-right: 10px; transform: translateY(-2px);
+  }
+  .brand__sub { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.04em; white-space: nowrap; }
+  .mast__nav {
+    display: inline-flex; align-items: baseline; gap: 10px;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase;
+  }
+  .mast__nav a { color: var(--muted); border: 0; padding: 2px 0; transition: color 100ms linear; }
+  .mast__nav a:hover { color: var(--ink); }
+  .mast__nav a[aria-current="page"] { color: var(--accent); border-bottom: 1px solid var(--accent); }
+  .mast__sep { color: var(--rule); user-select: none; }
+
+  /* Cover */
+  section.cover {
+    padding: 112px 0 96px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .cover__eyebrow {
+    font-family: var(--mono); font-size: 11.5px; color: var(--accent);
+    letter-spacing: 0.08em; text-transform: uppercase; margin: 0 0 24px;
+  }
+  .cover__eyebrow::before {
+    content: "§ 00 ·"; color: var(--muted); margin-right: 8px; letter-spacing: 0.04em;
+  }
+  .cover h1 {
+    font-family: var(--serif); font-weight: 500; font-size: 48px;
+    line-height: 1.1; letter-spacing: -0.015em; margin: 0 0 24px;
+    color: var(--ink); text-wrap: balance;
+  }
+  .cover h1 em { font-style: italic; color: var(--ink-2); font-weight: 400; }
+  .cover__sub {
+    font-family: var(--serif); font-size: 20px; line-height: 1.55;
+    color: var(--ink-2); margin: 0; max-width: 60ch; text-wrap: pretty;
+  }
+  .cover__rule { margin: 48px 0 0; height: 1px; background: var(--rule); width: 96px; }
+
+  /* Sections */
+  section.sec { padding: 88px 0; border-bottom: 1px solid var(--rule); }
+  section.sec:last-of-type { border-bottom: 0; }
+  .sec__num {
+    font-family: var(--mono); font-size: 11.5px; color: var(--muted);
+    letter-spacing: 0.06em; text-transform: uppercase; margin: 0 0 16px;
+  }
+  .sec__num .accent { color: var(--accent); }
+  .sec h2 {
+    font-family: var(--serif); font-weight: 500; font-size: 30px;
+    line-height: 1.2; letter-spacing: -0.012em; margin: 0 0 24px;
+    color: var(--ink); text-wrap: balance; max-width: 28ch;
+  }
+  .sec p {
+    margin: 0 0 18px; color: var(--body);
+    font-size: 16.5px; line-height: 1.7; max-width: 62ch; text-wrap: pretty;
+  }
+  .sec p:last-child { margin-bottom: 0; }
+  .sec b, .sec strong { color: var(--ink); font-weight: 600; }
+
+  /* Aphorism — principle block */
+  .principle {
+    margin: 12px 0 0;
+    padding: 28px 0;
+    border-top: 1px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+    font-family: var(--serif);
+    font-size: 22px;
+    line-height: 1.45;
+    color: var(--ink);
+    max-width: 58ch;
+    text-wrap: balance;
+  }
+  .principle em { font-style: italic; color: var(--ink-2); }
+  .principle::before {
+    content: "—"; display: block;
+    font-family: var(--mono); color: var(--accent);
+    font-size: 13px; margin-bottom: 14px; letter-spacing: 0.04em;
+  }
+
+  /* Figure */
+  figure.fig {
+    margin: 24px auto 0;
+    max-width: var(--col-wide);
+    padding: 0 var(--gutter);
+  }
+  figure.fig svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+  }
+  figure.fig figcaption {
+    margin-top: 20px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    text-align: left;
+    line-height: 1.6;
+  }
+  .box-content {
+    font-family: var(--sans);
+    color: var(--ink);
+    line-height: 1.35;
+    display: flex; flex-direction: column;
+    height: 100%;
+  }
+  .box-tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 10px;
+  }
+  .box-tag--accent { color: var(--accent); }
+  .box-title {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 17px;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+    display: block;
+    margin-bottom: 8px;
+  }
+  .box-desc {
+    font-size: 12.5px;
+    color: var(--ink-2);
+    line-height: 1.5;
+    display: block;
+  }
+  .box-foot {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    display: block;
+    margin-top: auto;
+    padding-top: 10px;
+  }
+  .box-foot::before {
+    content: "—";
+    margin-right: 6px;
+  }
+
+  /* Timeline */
+  .timeline {
+    margin: 16px 0 0;
+    padding: 36px 0 28px;
+    border-top: 1px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+  }
+  .timeline__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0;
+    align-items: stretch;
+  }
+  .timeline__tick {
+    position: relative;
+    padding: 0 16px 0 0;
+  }
+  .timeline__tick + .timeline__tick {
+    border-left: 1px solid var(--rule);
+    padding-left: 22px;
+  }
+  .timeline__k {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    margin: 0 0 8px;
+  }
+  .timeline__k.accent { color: var(--accent); }
+  .timeline__v {
+    font-family: var(--serif);
+    font-size: 18px;
+    color: var(--ink);
+    line-height: 1.4;
+    margin: 0 0 6px;
+  }
+  .timeline__cond {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    color: var(--muted-2);
+    letter-spacing: 0.04em;
+    margin: 0;
+  }
+  .timeline__axis {
+    margin-top: 24px;
+    height: 1px;
+    background: var(--rule);
+    position: relative;
+  }
+
+  /* Implies / Excludes — two column block */
+  .grid-two {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    margin-top: 8px;
+    border-top: 1px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+  }
+  .grid-two > div { padding: 28px 28px 28px 0; }
+  .grid-two > div + div {
+    border-left: 1px solid var(--rule);
+    padding-left: 32px;
+  }
+  .grid-two h3 {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin: 0 0 18px;
+    font-weight: 500;
+  }
+  .grid-two h3.accent { color: var(--accent); }
+  .grid-two h3.neg { color: var(--ink); }
+  .grid-two h3.neg::before {
+    content: "¬";
+    color: var(--accent);
+    font-family: var(--serif);
+    font-size: 14px;
+    margin-right: 8px;
+  }
+  ul.bullets {
+    margin: 0; padding: 0; list-style: none;
+  }
+  ul.bullets > li {
+    padding: 12px 0 12px 30px;
+    border-top: 1px solid var(--rule);
+    position: relative;
+    font-family: var(--serif);
+    font-size: 16.5px;
+    color: var(--ink);
+    line-height: 1.45;
+  }
+  ul.bullets > li:first-child { border-top: 0; padding-top: 4px; }
+  ul.bullets > li::before {
+    content: "—";
+    position: absolute;
+    left: 0;
+    top: 12px;
+    font-family: var(--mono);
+    color: var(--muted-2);
+    font-size: 12px;
+    line-height: 1.45;
+  }
+  ul.bullets > li:first-child::before { top: 4px; }
+  ul.bullets.neg > li::before {
+    content: "×";
+    color: var(--accent);
+    font-family: var(--mono);
+    font-size: 13px;
+  }
+  .grid-two__after {
+    margin-top: 22px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+  }
+
+  /* Synthesis */
+  .synthesis {
+    padding: 96px 0 88px;
+  }
+  .synthesis__inner {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+  }
+  .synthesis__line {
+    font-family: var(--serif);
+    font-size: 30px;
+    line-height: 1.3;
+    color: var(--ink);
+    margin: 0;
+    text-wrap: balance;
+    max-width: 22ch;
+  }
+  .synthesis__line .strike { color: var(--muted-2); text-decoration: line-through; text-decoration-thickness: 1px; }
+  .synthesis__line .accent { color: var(--accent); }
+  .synthesis__rule {
+    margin: 24px 0 28px;
+    width: 96px;
+    height: 1px;
+    background: var(--ink);
+  }
+  .synthesis__meta {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  /* Colophon */
+  footer.colophon {
+    padding: 56px 0 56px;
+    border-top: 1px solid var(--rule);
+  }
+  .colophon__row {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted-2);
+    letter-spacing: 0.04em;
+  }
+
+  /* Responsive */
+  @media (max-width: 720px) {
+    .cover { padding: 72px 0 56px; }
+    .cover h1 { font-size: 34px; }
+    .cover__sub { font-size: 17px; }
+    .sec { padding: 64px 0; }
+    .sec h2 { font-size: 24px; }
+    .principle { font-size: 19px; }
+    .timeline__row { grid-template-columns: 1fr; }
+    .timeline__tick + .timeline__tick { border-left: 0; border-top: 1px solid var(--rule); padding-left: 0; padding-top: 22px; margin-top: 22px; }
+    .grid-two { grid-template-columns: 1fr; }
+    .grid-two > div + div { border-left: 0; border-top: 1px solid var(--rule); padding-left: 0; padding-top: 28px; }
+    .synthesis__line { font-size: 24px; }
+    .mast__inner { flex-wrap: wrap; gap: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Banner -->
+<div class="banner">
+  <div class="banner__inner">
+    <div class="banner__left">
+      <span>Specifica aperta</span>
+      <span>Bozza di lavoro pubblica</span>
+      <span>A cura del gruppo editoriale AIKNOCK</span>
+    </div>
+    <span class="ref">Rif. AIKNOCK / WD-0004 · ONE-DIAGRAM</span>
+  </div>
+</div>
+
+<!-- Masthead -->
+<header class="mast">
+  <div class="mast__inner">
+    <a class="brand" href="index.html">
+      <span class="brand__mark">AIKNOCK</span>
+      <span class="brand__sub">Specifica aperta · v0.4</span>
+    </a>
+    <nav class="mast__nav" aria-label="Sezioni">
+      <a href="index.html">Specifica</a>
+      <span class="mast__sep" aria-hidden="true">·</span>
+      <a href="perche.html">Perché AIKNOCK</a>
+      <span class="mast__sep" aria-hidden="true">·</span>
+      <a href="one-diagram.html" aria-current="page">One Diagram</a>
+      <span class="mast__sep" aria-hidden="true">·</span>
+      <a href="norme.html">Norme</a>
+      <span class="mast__sep" aria-hidden="true">·</span>
+      <a href="design-principles.html">Design Principles</a>
+      <span class="mast__sep" aria-hidden="true">·</span>
+      <a href="note-legali.html">Note legali</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Cover -->
+<section class="cover">
+  <div class="col">
+    <p class="cover__eyebrow">AIKNOCK · One Diagram</p>
+    <h1>AIKNOCK in un solo diagramma<em>.</em></h1>
+    <p class="cover__sub">
+      AIKNOCK può essere compreso sapendo <b>dove</b> si colloca e
+      <b>quando</b> decide. Questa pagina presenta entrambe le coordinate
+      in un'unica figura, senza ulteriore narrativa.
+    </p>
+    <div class="cover__rule" aria-hidden="true"></div>
+  </div>
+</section>
+
+<!-- §01 — Il principio -->
+<section class="sec" id="principio">
+  <p class="sec__num col"><span class="accent">§ 01</span> · Il principio</p>
+  <div class="col">
+    <h2>Il principio.</h2>
+    <p class="principle">
+      L'uso dell'AI non deve dipendere dalle applicazioni.
+      <em>Deve dipendere dal sistema.</em>
+    </p>
+  </div>
+</section>
+
+<!-- §02 — Diagramma concettuale -->
+<section class="sec" id="diagramma">
+  <p class="sec__num col--wide"><span class="accent">§ 02</span> · Diagramma concettuale</p>
+  <div class="col--wide">
+    <h2>Diagramma concettuale.</h2>
+    <p>
+      Tre strati: <b>Application Layer</b>, <b>AIKNOCK</b> come
+      <i>Execution Control Unit</i> a livello di sistema operativo, e
+      <b>AI Execution Layer</b>. La richiesta proveniente dalle applicazioni
+      attraversa AIKNOCK, che decide ex-ante; solo se autorizzata, l'esecuzione
+      del modello ha luogo.
+    </p>
+  </div>
+
+  <figure class="fig">
+    <svg viewBox="0 0 1100 460" role="img" aria-labelledby="figT figD" xmlns="http://www.w3.org/2000/svg">
+      <title id="figT">AIKNOCK — Posizione e flusso decisionale</title>
+      <desc id="figD">Application Layer richiede uso AI; AIKNOCK decide ex-ante a livello OS; AI Execution Layer esegue solo se autorizzato.</desc>
+
+      <!-- Layer labels (vertical) -->
+      <text x="22" y="160" font-family="JetBrains Mono, monospace" font-size="9.5" fill="#9a9a9a" letter-spacing="1" transform="rotate(-90 22,160)">USER-SPACE</text>
+      <text x="22" y="270" font-family="JetBrains Mono, monospace" font-size="9.5" fill="#8a1a1a" letter-spacing="1" transform="rotate(-90 22,270)">OS-LEVEL</text>
+      <text x="22" y="380" font-family="JetBrains Mono, monospace" font-size="9.5" fill="#9a9a9a" letter-spacing="1" transform="rotate(-90 22,380)">EXECUTION</text>
+
+      <!-- BLOCK 1 — Application Layer (left) -->
+      <rect x="60" y="100" width="260" height="200" fill="none" stroke="#111111" stroke-width="1"></rect>
+      <foreignObject x="80" y="120" width="220" height="160">
+        <div xmlns="http://www.w3.org/1999/xhtml" class="box-content">
+          <span class="box-tag">01 · LIVELLO</span>
+          <span class="box-title">Application Layer</span>
+          <span class="box-desc">Software, servizi e flussi che richiedono l'uso dell'AI.</span>
+        </div>
+      </foreignObject>
+
+      <!-- BLOCK 2 — AIKNOCK (center, taller, accent) -->
+      <rect x="420" y="60" width="260" height="280" fill="none" stroke="#8a1a1a" stroke-width="1.5"></rect>
+      <line x1="420" y1="148" x2="680" y2="148" stroke="#8a1a1a" stroke-width="1" stroke-dasharray="3 3"></line>
+      <foreignObject x="440" y="78" width="220" height="62">
+        <div xmlns="http://www.w3.org/1999/xhtml" class="box-content">
+          <span class="box-tag box-tag--accent">02 · EXECUTION CONTROL UNIT</span>
+          <span class="box-title">AIKNOCK</span>
+        </div>
+      </foreignObject>
+      <foreignObject x="440" y="160" width="220" height="170">
+        <div xmlns="http://www.w3.org/1999/xhtml" class="box-content">
+          <span class="box-desc">Punto decisionale ex-ante: valuta contesto e intento, autorizza o rifiuta l'invocazione dell'AI.</span>
+          <span class="box-foot">non aggirabile · livello OS</span>
+        </div>
+      </foreignObject>
+
+      <!-- BLOCK 3 — AI Execution Layer (right) -->
+      <rect x="780" y="100" width="260" height="200" fill="none" stroke="#111111" stroke-width="1"></rect>
+      <foreignObject x="800" y="120" width="220" height="160">
+        <div xmlns="http://www.w3.org/1999/xhtml" class="box-content">
+          <span class="box-tag">03 · LIVELLO</span>
+          <span class="box-title">AI Execution Layer</span>
+          <span class="box-desc">Invocazione del modello, inferenza e risposta — eseguite solo se autorizzate.</span>
+        </div>
+      </foreignObject>
+
+      <!-- Arrow 1 — request (App → AIKNOCK) -->
+      <line x1="320" y1="200" x2="412" y2="200" stroke="#111111" stroke-width="1"></line>
+      <polygon points="420,200 410,195 410,205" fill="#111111"></polygon>
+      <text x="366" y="192" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#6a6a6a" letter-spacing="0.6">richiesta uso AI</text>
+
+      <!-- Arrow 2 — authorisation (AIKNOCK → Execution) -->
+      <line x1="680" y1="200" x2="772" y2="200" stroke="#8a1a1a" stroke-width="1.5"></line>
+      <polygon points="780,200 770,195 770,205" fill="#8a1a1a"></polygon>
+      <text x="726" y="192" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#8a1a1a" letter-spacing="0.6">autorizzazione</text>
+
+      <!-- Caption row inside SVG: ex-ante decision -->
+      <line x1="60" y1="380" x2="1040" y2="380" stroke="#d8d8d8" stroke-width="1" stroke-dasharray="2 4"></line>
+      <text x="60" y="408" font-family="JetBrains Mono, monospace" font-size="10.5" fill="#6a6a6a" letter-spacing="0.6">FLUSSO</text>
+      <text x="60" y="428" font-family="Source Serif 4, serif" font-style="italic" font-size="14" fill="#2a2a2a">richiesta → decisione ex-ante → autorizzazione → esecuzione</text>
+      <text x="1040" y="408" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="10.5" fill="#8a1a1a" letter-spacing="0.6">FIG. 1</text>
+    </svg>
+    <figcaption>
+      Figura 1 — Posizione di AIKNOCK nella catena di invocazione dell'AI.
+      La <i>execution control unit</i> valuta e vincola l'uso dell'AI
+      prima dell'esecuzione del modello.
+    </figcaption>
+  </figure>
+</section>
+
+<!-- §03 — Il tempo conta più del livello -->
+<section class="sec" id="tempo">
+  <p class="sec__num col"><span class="accent">§ 03</span> · Il tempo</p>
+  <div class="col">
+    <h2>Il tempo conta più del livello.</h2>
+    <p>
+      Il livello a cui si colloca AIKNOCK è significativo solo in funzione
+      del momento in cui agisce. La proprietà rilevante non è
+      <i>dove</i> avviene il controllo, ma <i>quando</i>: prima
+      dell'invocazione del modello, non dopo.
+    </p>
+
+    <div class="timeline" aria-label="Asse temporale">
+      <div class="timeline__row">
+        <div class="timeline__tick">
+          <p class="timeline__k">t₀ · INTENTO</p>
+          <p class="timeline__v">L'applicazione formula la richiesta di usare l'AI.</p>
+          <p class="timeline__cond">livello: user-space</p>
+        </div>
+        <div class="timeline__tick">
+          <p class="timeline__k accent">t₁ · DECISIONE</p>
+          <p class="timeline__v">Il sistema valuta e autorizza, condiziona o rifiuta.</p>
+          <p class="timeline__cond">livello: OS · non aggirabile</p>
+        </div>
+        <div class="timeline__tick">
+          <p class="timeline__k">t₂ · ESECUZIONE</p>
+          <p class="timeline__v">Il modello viene invocato solo se autorizzato a t₁.</p>
+          <p class="timeline__cond">livello: execution layer</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- §04 — Cosa implica -->
+<!-- §05 — Cosa esclude -->
+<section class="sec" id="implicazioni">
+  <p class="sec__num col--wide"><span class="accent">§ 04</span> · Implicazioni</p>
+  <div class="col--wide">
+    <h2>Cosa il diagramma implica — e cosa esclude.</h2>
+    <p>
+      La figura, letta secondo l'asse temporale di §03, determina
+      proprietà tecniche precise e ne esclude altre. Le due liste qui sotto
+      sono le sole conseguenze ammesse dal diagramma.
+    </p>
+
+    <div class="grid-two">
+      <div>
+        <h3 class="accent">Implica</h3>
+        <ul class="bullets">
+          <li>AI come <i>capability</i> mediata dal sistema.</li>
+          <li>Accesso autorizzato, non semplicemente disponibile.</li>
+          <li>Controllo tecnico, non documentale.</li>
+          <li>Audit <i>by construction</i> delle decisioni.</li>
+        </ul>
+        <p class="grid-two__after">conseguenza di t₁ &lt; t₂</p>
+      </div>
+      <div>
+        <h3 class="neg">Esclude</h3>
+        <ul class="bullets neg">
+          <li>Controlli solo applicativi.</li>
+          <li>Controlli post-hoc.</li>
+          <li>Analisi solo di output o di log.</li>
+          <li>Cooperazione volontaria delle applicazioni.</li>
+        </ul>
+        <p class="grid-two__after">non sono AIKNOCK</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- §05 — Sintesi finale -->
+<section class="synthesis" id="sintesi" aria-label="Sintesi">
+  <div class="synthesis__inner">
+    <p class="sec__num"><span class="accent">§ 05</span> · Sintesi</p>
+    <div class="synthesis__rule" aria-hidden="true"></div>
+    <p class="synthesis__line">
+      AIKNOCK non governa <span class="strike">l'AI</span>.<br />
+      Governa la <span class="accent">possibilità di usarla</span>.
+    </p>
+    <p class="synthesis__meta" style="margin-top: 28px;">FINE DOCUMENTO · ONE-DIAGRAM</p>
+  </div>
+</section>
+
+<!-- Colophon (minimal) -->
+<footer class="colophon">
+  <div class="colophon__row">
+    <span>© 2026 Gruppo editoriale AIKNOCK — Specifica aperta · CC BY 4.0</span>
+    <a href="note-legali.html" style="border:0;color:var(--accent);font-family:var(--mono);font-size:11px;letter-spacing:0.04em;">Progetto indipendente · Note legali →</a>
+    <span>AIKNOCK / WD-0004 · ONE-DIAGRAM · 12 maggio 2026</span>
+  </div>
+</footer>
+
+<script>
+/* Propagate the user's language choice to internal links.
+   This page is monolingual but must not lose ?lang when navigating. */
+(function () {
+  var LANGS = ["it","en","fr","es"];
+  var p = new URLSearchParams(location.search);
+  var fromUrl = p.get("lang");
+  var fromStore = null;
+  try { fromStore = localStorage.getItem("aigp_lang"); } catch (e) {}
+  var lang = fromUrl || fromStore || "it";
+  if (LANGS.indexOf(lang) === -1) lang = "it";
+  if (fromUrl && fromUrl !== fromStore) {
+    try { localStorage.setItem("aigp_lang", lang); } catch (e2) {}
+  }
+  var links = document.querySelectorAll('a[href$=".html"], a[href*=".html?"]');
+  for (var i = 0; i < links.length; i++) {
+    var h = links[i].getAttribute("href").split("?")[0];
+    links[i].setAttribute("href", h + "?lang=" + lang);
+  }
+})();
+</script>
+
+</body>
+</html>
