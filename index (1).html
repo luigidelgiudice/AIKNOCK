@@ -1,0 +1,633 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="AIKNOCK — Design Principles & Boundaries. Invarianti architetturali e confini non negoziabili del protocollo." />
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+<meta name="color-scheme" content="light" />
+<title>AIKNOCK — Design Principles &amp; Boundaries</title>
+<link rel="canonical" href="https://aiknock.org/design-principles.html" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+
+<style>
+  :root {
+    --ink: #111111; --ink-2: #2a2a2a; --body: #333333;
+    --muted: #6a6a6a; --muted-2: #9a9a9a;
+    --rule: #d8d8d8; --rule-2: #ececec; --paper: #ffffff;
+    --accent: #8a1a1a;
+    --serif: "Source Serif 4", Georgia, "Times New Roman", Times, serif;
+    --sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    --col: 680px; --col-wide: 880px; --gutter: 32px;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { background: var(--paper); color: var(--body); }
+  body {
+    margin: 0; font-family: var(--sans);
+    font-size: 16px; line-height: 1.65;
+    -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+  }
+  a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--rule); }
+  a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .col       { max-width: var(--col);      margin: 0 auto; padding: 0 var(--gutter); }
+  .col--wide { max-width: var(--col-wide); margin: 0 auto; padding: 0 var(--gutter); }
+
+  /* Banner */
+  .banner { border-bottom: 1px solid var(--rule); font-family: var(--mono); font-size: 11px; letter-spacing: 0.04em; color: var(--muted); }
+  .banner__inner { display: flex; justify-content: space-between; align-items: center; padding: 12px var(--gutter); max-width: 1100px; margin: 0 auto; gap: 24px; }
+  .banner__left { display: flex; gap: 22px; flex-wrap: wrap; }
+  .banner__left span::before { content: ""; display: inline-block; width: 6px; height: 6px; background: var(--accent); margin-right: 8px; transform: translateY(-1px); }
+  .lang { display: inline-flex; gap: 10px; align-items: baseline; font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; flex-shrink: 0; }
+  .lang__opt { border: 0; color: var(--muted-2); padding: 2px 0; cursor: pointer; transition: color 100ms linear; }
+  .lang__opt:hover { color: var(--ink); border: 0; }
+  .lang__opt.is-active { color: var(--accent); border-bottom: 1px solid var(--accent); }
+  .lang__sep { color: var(--rule); user-select: none; }
+
+  /* Masthead */
+  header.mast { border-bottom: 1px solid var(--rule); }
+  .mast__inner { display: flex; align-items: baseline; justify-content: space-between; padding: 22px var(--gutter); max-width: 1100px; margin: 0 auto; gap: 24px; }
+  .brand { display: flex; align-items: baseline; gap: 14px; border: 0; }
+  .brand__mark { font-family: var(--serif); font-weight: 600; font-size: 20px; letter-spacing: -0.01em; color: var(--ink); white-space: nowrap; flex-shrink: 0; }
+  .brand__mark::before { content: ""; display: inline-block; width: 9px; height: 9px; background: var(--accent); margin-right: 10px; transform: translateY(-2px); }
+  .brand__sub { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.04em; white-space: nowrap; }
+  .mast__nav { display: inline-flex; align-items: baseline; gap: 10px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; flex-wrap: wrap; }
+  .mast__nav a { color: var(--muted); border: 0; padding: 2px 0; transition: color 100ms linear; }
+  .mast__nav a:hover { color: var(--ink); }
+  .mast__nav a[aria-current="page"] { color: var(--accent); border-bottom: 1px solid var(--accent); }
+  .mast__sep { color: var(--rule); user-select: none; }
+
+  /* Cover */
+  section.cover { padding: 120px 0 104px; border-bottom: 1px solid var(--rule); }
+  .cover__eyebrow { font-family: var(--mono); font-size: 11.5px; color: var(--accent); letter-spacing: 0.08em; text-transform: uppercase; margin: 0 0 24px; }
+  .cover__eyebrow::before { content: "§ 00 ·"; color: var(--muted); margin-right: 8px; letter-spacing: 0.04em; }
+  .cover h1 { font-family: var(--serif); font-weight: 500; font-size: 46px; line-height: 1.12; letter-spacing: -0.015em; margin: 0 0 24px; color: var(--ink); text-wrap: balance; max-width: 22ch; }
+  .cover h1 em { font-style: italic; color: var(--ink-2); font-weight: 400; }
+  .cover__sub { font-family: var(--serif); font-size: 20px; line-height: 1.55; color: var(--ink-2); margin: 0; max-width: 60ch; text-wrap: pretty; }
+  .cover__rule { margin: 48px 0 0; height: 1px; background: var(--rule); width: 96px; }
+
+  /* Sections */
+  section.sec { padding: 96px 0; border-bottom: 1px solid var(--rule); }
+  section.sec:last-of-type { border-bottom: 0; }
+  .sec__num { font-family: var(--mono); font-size: 11.5px; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; margin: 0 0 16px; }
+  .sec__num .accent { color: var(--accent); }
+  .sec h2 { font-family: var(--serif); font-weight: 500; font-size: 30px; line-height: 1.2; letter-spacing: -0.012em; margin: 0 0 24px; color: var(--ink); text-wrap: balance; max-width: 28ch; }
+  .sec p { margin: 0 0 18px; color: var(--body); font-size: 16.5px; line-height: 1.7; max-width: 62ch; text-wrap: pretty; }
+  .sec p.lede { font-family: var(--serif); font-size: 19px; line-height: 1.55; color: var(--ink-2); margin-bottom: 24px; max-width: 58ch; }
+  .sec p:last-child { margin-bottom: 0; }
+  .sec b, .sec strong { color: var(--ink); font-weight: 600; }
+  .sec i, .sec em { font-style: italic; }
+
+  /* Principles list — numbered invariants */
+  ol.principles {
+    list-style: none; margin: 8px 0 0; padding: 0;
+    border-top: 1px solid var(--ink);
+    counter-reset: principle;
+  }
+  ol.principles > li {
+    counter-increment: principle;
+    padding: 28px 0;
+    border-bottom: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: 88px 1fr;
+    gap: 28px;
+    align-items: baseline;
+  }
+  ol.principles > li:last-child { border-bottom: 1px solid var(--ink); }
+  ol.principles > li::before {
+    content: "P." counter(principle, decimal-leading-zero);
+    font-family: var(--mono);
+    font-size: 11.5px;
+    color: var(--accent);
+    letter-spacing: 0.06em;
+    padding-top: 4px;
+  }
+  ol.principles h3 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1.3;
+    margin: 0 0 8px;
+    color: var(--ink);
+    text-wrap: balance;
+  }
+  ol.principles p {
+    margin: 0;
+    color: var(--body);
+    font-size: 15.5px;
+    line-height: 1.65;
+    max-width: 60ch;
+  }
+
+  /* Boundaries — negative list with NON tag */
+  ul.boundaries {
+    list-style: none; margin: 8px 0 0; padding: 0;
+    border-top: 1px solid var(--ink);
+  }
+  ul.boundaries > li {
+    padding: 24px 0;
+    border-bottom: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 28px;
+    align-items: baseline;
+  }
+  ul.boundaries > li:last-child { border-bottom: 1px solid var(--ink); }
+  .boundary__tag {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    color: var(--accent);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .boundary__tag::before {
+    content: "¬";
+    font-family: var(--serif);
+    color: var(--accent);
+    margin-right: 8px;
+    font-style: italic;
+  }
+  .boundary__body h3 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.35;
+    margin: 0 0 6px;
+    color: var(--ink);
+  }
+  .boundary__body p {
+    margin: 0;
+    color: var(--body);
+    font-size: 15px;
+    line-height: 1.6;
+    max-width: 60ch;
+  }
+
+  /* Statement — used to assert that boundaries are deliberate */
+  .statement {
+    margin: 28px 0 0;
+    padding: 28px 0;
+    border-top: 1px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+    font-family: var(--serif);
+    font-size: 20px;
+    line-height: 1.55;
+    color: var(--ink);
+    max-width: 62ch;
+    text-wrap: pretty;
+  }
+  .statement::before {
+    content: "—"; display: block;
+    font-family: var(--mono); color: var(--accent);
+    font-size: 13px; margin-bottom: 14px; letter-spacing: 0.04em;
+  }
+
+  /* Synthesis */
+  .closing {
+    margin: 8px 0 0;
+    padding: 36px 0 0;
+    border-top: 1px solid var(--ink);
+  }
+  .closing p {
+    font-family: var(--serif);
+    font-size: 21px;
+    line-height: 1.5;
+    color: var(--ink);
+    max-width: 60ch;
+    margin: 0 0 14px;
+    text-wrap: pretty;
+  }
+  .closing p.muted { color: var(--ink-2); }
+
+  /* Colophon */
+  footer.colophon { padding: 56px 0; border-top: 1px solid var(--rule); }
+  .colophon__row { max-width: 1100px; margin: 0 auto; padding: 0 var(--gutter); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; font-family: var(--mono); font-size: 11px; color: var(--muted-2); letter-spacing: 0.04em; }
+
+  /* Responsive */
+  @media (max-width: 720px) {
+    .cover { padding: 80px 0 64px; } .cover h1 { font-size: 32px; } .cover__sub { font-size: 17px; }
+    .sec { padding: 64px 0; } .sec h2 { font-size: 24px; }
+    ol.principles > li { grid-template-columns: 1fr; gap: 8px; }
+    ol.principles > li::before { padding-top: 0; }
+    ul.boundaries > li { grid-template-columns: 1fr; gap: 6px; }
+    .mast__inner { flex-wrap: wrap; gap: 12px; } .statement { font-size: 17px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Banner -->
+<div class="banner">
+  <div class="banner__inner">
+    <div class="banner__left">
+      <span data-i18n="banner.l1">Specifica aperta</span>
+      <span data-i18n="banner.l2">Bozza di lavoro pubblica</span>
+      <span data-i18n="banner.l3">A cura del gruppo editoriale AIKNOCK</span>
+    </div>
+    <nav class="lang" aria-label="Language">
+      <a class="lang__opt" data-lang="it" href="?lang=it" hreflang="it" aria-current="true">IT</a>
+      <span class="lang__sep" aria-hidden="true">·</span>
+      <a class="lang__opt" data-lang="en" href="?lang=en" hreflang="en">EN</a>
+      <span class="lang__sep" aria-hidden="true">·</span>
+      <a class="lang__opt" data-lang="fr" href="?lang=fr" hreflang="fr">FR</a>
+      <span class="lang__sep" aria-hidden="true">·</span>
+      <a class="lang__opt" data-lang="es" href="?lang=es" hreflang="es">ES</a>
+    </nav>
+  </div>
+</div>
+
+<!-- Masthead -->
+<header class="mast">
+  <div class="mast__inner">
+    <a class="brand" href="index.html">
+      <span class="brand__mark">AIKNOCK</span>
+      <span class="brand__sub" data-i18n="mast.sub">Specifica aperta · v0.4</span>
+    </a>
+    <nav class="mast__nav" aria-label="Sezioni">
+      <a href="index.html" data-i18n="nav.spec">Specifica</a>
+      <span class="mast__sep" aria-hidden="true">·</span>
+      <a href="perche.html" data-i18n="nav.why">Perché AIKNOCK</a>
+      <span class="mast__sep" aria-hidden="true">·</span>
+      <a href="one-diagram.html" data-i18n="nav.one">One Diagram</a>
+      <span class="mast__sep" aria-hidden="true">·</span>
+      <a href="norme.html" data-i18n="nav.norms">Norme</a>
+      <span class="mast__sep" aria-hidden="true">·</span>
+      <a href="design-principles.html" aria-current="page" data-i18n="nav.dp">Design Principles</a>
+      <span class="mast__sep" aria-hidden="true">·</span>
+      <a href="note-legali.html" data-i18n="nav.legal">Note legali</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Cover -->
+<section class="cover">
+  <div class="col--wide">
+    <p class="cover__eyebrow" data-i18n="cover.eyebrow">Design Principles &amp; Boundaries</p>
+    <h1 data-i18n="cover.h1">AIKNOCK — Design Principles &amp; Boundaries<em>.</em></h1>
+    <p class="cover__sub" data-i18n="cover.sub">
+      Scopo del documento è dichiarare i <b>principi architetturali</b> e i
+      <b>confini non negoziabili</b> del protocollo, come invarianti
+      infrastrutturali: proprietà che il sistema deve preservare attraverso
+      ogni implementazione e ogni revisione futura.
+    </p>
+    <div class="cover__rule" aria-hidden="true"></div>
+  </div>
+</section>
+
+<!-- §01 Introduzione -->
+<section class="sec" id="introduzione">
+  <p class="sec__num col"><span class="accent">§ 01</span> · <span data-i18n="s1.tag">Introduzione</span></p>
+  <div class="col">
+    <h2 data-i18n="s1.h2">Invarianti infrastrutturali.</h2>
+    <p class="lede" data-i18n="s1.lede">
+      I principi che seguono e i confini che li accompagnano costituiscono
+      le invarianti del protocollo. Sono enunciati esplicitamente perché
+      ogni implementazione e ogni revisione possa esservi confrontata.
+    </p>
+    <p data-i18n="s1.p1">
+      Le invarianti non sono raccomandazioni: sono proprietà strutturali.
+      Un'implementazione che le violi non realizza AIKNOCK, anche qualora
+      ne adotti il nome o la terminologia.
+    </p>
+  </div>
+</section>
+
+<!-- §02 Design Principles -->
+<section class="sec" id="principi">
+  <p class="sec__num col--wide"><span class="accent">§ 02</span> · <span data-i18n="s2.tag">Design Principles</span></p>
+  <div class="col--wide">
+    <h2 data-i18n="s2.h2">Design Principles.</h2>
+    <p data-i18n="s2.intro">
+      I principi che seguono definiscono il comportamento tecnico del
+      sistema durante l'esecuzione di operazioni di intelligenza
+      artificiale. Gli otto principi definiscono le proprietà
+      architetturali che il protocollo deve preservare. Sono numerati per
+      riferimento e letti come un insieme: nessun principio è dispensabile
+      senza modificare la natura del protocollo.
+    </p>
+
+    <ol class="principles">
+      <li><div>
+        <h3 data-i18n="s2.p1.h">AI come capability critica di sistema.</h3>
+        <p data-i18n="s2.p1.p">L'AI è trattata come una <i>capability</i> critica del sistema, non come una libreria o una funzionalità applicativa. Il suo uso è soggetto alle proprietà che il sistema riserva alle risorse critiche.</p>
+      </div></li>
+      <li><div>
+        <h3 data-i18n="s2.p2.h">Interposizione obbligatoria.</h3>
+        <p data-i18n="s2.p2.p">Ogni invocazione dell'AI attraversa il protocollo. L'interposizione non è opzionale e non dipende dalla cooperazione del codice chiamante.</p>
+      </div></li>
+      <li><div>
+        <h3 data-i18n="s2.p3.h">Decisione prima dell'azione.</h3>
+        <p data-i18n="s2.p3.p">La valutazione di contesto e intento è <i>ex-ante</i>: precede l'invocazione del modello. Non è un controllo successivo né una verifica a campione.</p>
+      </div></li>
+      <li><div>
+        <h3 data-i18n="s2.p4.h">Enforcement tecnico, non dichiarativo.</h3>
+        <p data-i18n="s2.p4.p">La decisione è applicata da un meccanismo tecnico al livello del sistema. Le dichiarazioni di intento e le regole organizzative non sostituiscono l'<i>enforcement</i>.</p>
+      </div></li>
+      <li><div>
+        <h3 data-i18n="s2.p5.h">Audit by construction.</h3>
+        <p data-i18n="s2.p5.p">Le evidenze sono un effetto del funzionamento del protocollo, non una funzionalità aggiuntiva. La verificabilità delle decisioni è strutturale.</p>
+      </div></li>
+      <li><div>
+        <h3 data-i18n="s2.p6.h">Separazione tra disponibilità e autorizzazione.</h3>
+        <p data-i18n="s2.p6.p">La presenza tecnica di un modello non implica l'autorizzazione al suo uso. I due piani — disponibilità e autorizzazione — restano distinti per costruzione.</p>
+      </div></li>
+      <li><div>
+        <h3 data-i18n="s2.p7.h">Human-in-the-Loop come vincolo tecnico.</h3>
+        <p data-i18n="s2.p7.p">Quando previsto, l'intervento umano non è una procedura operativa ma un requisito imposto dal sistema. Il protocollo non procede in sua assenza.</p>
+      </div></li>
+      <li><div>
+        <h3 data-i18n="s2.p8.h">Neutralità rispetto a modelli e vendor.</h3>
+        <p data-i18n="s2.p8.p">Il protocollo non dipende da un particolare modello, runtime o fornitore commerciale. Definisce un'interfaccia di controllo dell'esecuzione a cui ogni implementazione si conforma.</p>
+      </div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- §03 Boundaries -->
+<section class="sec" id="boundaries">
+  <p class="sec__num col--wide"><span class="accent">§ 03</span> · <span data-i18n="s3.tag">Boundaries</span></p>
+  <div class="col--wide">
+    <h2 data-i18n="s3.h2">Boundaries — confini non negoziabili.</h2>
+    <p data-i18n="s3.intro">
+      Ai principi corrispondono confini espliciti. Tali confini delimitano
+      ciò che il protocollo, per costruzione, non occupa: sono altrettanto
+      vincolanti dei principi e contribuiscono a definirne l'identità.
+    </p>
+
+    <ul class="boundaries">
+      <li>
+        <span class="boundary__tag" data-i18n="s3.b1.tag">NON GOVERNA</span>
+        <div class="boundary__body">
+          <h3 data-i18n="s3.b1.h">Contenuti — prompt e output.</h3>
+          <p data-i18n="s3.b1.p">Il protocollo non ispeziona, non filtra e non valuta i contenuti scambiati con i modelli. Il suo dominio è il diritto di uso, non il merito del risultato.</p>
+        </div>
+      </li>
+      <li>
+        <span class="boundary__tag" data-i18n="s3.b2.tag">NON SOSTITUISCE</span>
+        <div class="boundary__body">
+          <h3 data-i18n="s3.b2.h">La legge.</h3>
+          <p data-i18n="s3.b2.p">Le obbligazioni giuridiche restano tali. AIKNOCK non interpreta norme, non garantisce conformità, non si sovrappone alla giurisdizione competente.</p>
+        </div>
+      </li>
+      <li>
+        <span class="boundary__tag" data-i18n="s3.b3.tag">NON È</span>
+        <div class="boundary__body">
+          <h3 data-i18n="s3.b3.h">Un framework di compliance.</h3>
+          <p data-i18n="s3.b3.p">Il protocollo descrive proprietà tecniche del sistema. Non definisce processi di certificazione, non rilascia attestati, non sostituisce gli organismi preposti.</p>
+        </div>
+      </li>
+      <li>
+        <span class="boundary__tag" data-i18n="s3.b4.tag">NON GOVERNA</span>
+        <div class="boundary__body">
+          <h3 data-i18n="s3.b4.h">Il training dei modelli.</h3>
+          <p data-i18n="s3.b4.p">La costruzione, l'addestramento, la selezione e la valutazione dei modelli sono fuori ambito. Il protocollo agisce al momento dell'uso, non a monte.</p>
+        </div>
+      </li>
+      <li>
+        <span class="boundary__tag" data-i18n="s3.b5.tag">NON FORNISCE</span>
+        <div class="boundary__body">
+          <h3 data-i18n="s3.b5.h">Interfacce utente.</h3>
+          <p data-i18n="s3.b5.p">AIKNOCK non comprende cruscotti, console o esperienze d'uso. È un piano infrastrutturale: le interfacce restano responsabilità delle implementazioni.</p>
+        </div>
+      </li>
+    </ul>
+
+    <p class="statement" data-i18n="s3.stmt">
+      I confini sopra elencati non sono lacune del protocollo: sono
+      <b>scelte architetturali intenzionali</b>. Restringere l'ambito è
+      condizione necessaria perché ciò che il protocollo dichiara di fare
+      possa essere garantito con precisione.
+    </p>
+  </div>
+</section>
+
+<!-- §04 Sintesi -->
+<section class="sec" id="sintesi">
+  <p class="sec__num col"><span class="accent">§ 04</span> · <span data-i18n="s4.tag">Sintesi</span></p>
+  <div class="col">
+    <h2 data-i18n="s4.h2">Perché principi e confini garantiscono durabilità.</h2>
+    <div class="closing">
+      <p data-i18n="s4.p1">
+        I principi definiscono ciò che il protocollo è. I confini definiscono ciò che il protocollo non è.
+      </p>
+      <p data-i18n="s4.p2">
+        <b>Insieme costituiscono le invarianti: la condizione perché AIKNOCK resti riconoscibile attraverso ogni implementazione, ogni revisione e ogni adozione.</b>
+      </p>
+      <p class="muted" data-i18n="s4.p3">
+        Una specifica che cambia identità ad ogni revisione non è uno
+        standard. Le invarianti sono il modo in cui un protocollo aperto
+        si rende durabile.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Colophon -->
+<footer class="colophon">
+  <div class="colophon__row">
+    <span data-i18n="col.bot1">© 2026 Gruppo editoriale AIKNOCK — Specifica aperta · CC BY 4.0</span>
+    <a href="note-legali.html" data-i18n="col.legal" style="border:0;color:var(--accent);font-family:var(--mono);font-size:11px;letter-spacing:0.04em;">Progetto indipendente · Note legali →</a>
+    <span data-i18n="col.bot2">AIKNOCK / WD-0004 · DESIGN-PRINCIPLES · 12 maggio 2026</span>
+  </div>
+</footer>
+
+<script>
+/* Language switch — Italian canonical, EN/FR/ES inlined.
+   Stesso protocollo delle altre pagine: ?lang= + localStorage + navigator.language. */
+(function () {
+  "use strict";
+  var LANGS = ["it","en","fr","es"];
+
+  var dict = {
+    en: {
+      "banner.l1":"Open specification","banner.l2":"Public working draft","banner.l3":"Maintained by the AIKNOCK editorial group",
+      "mast.sub":"Open specification · v0.4",
+      "nav.spec":"Specification","nav.why":"Why AIKNOCK","nav.one":"One Diagram","nav.norms":"Norms","nav.dp":"Design Principles",
+      "cover.eyebrow":"Design Principles & Boundaries",
+      "cover.h1":"AIKNOCK — Design Principles &amp; Boundaries<em>.</em>",
+      "cover.sub":"This document declares the <b>architectural principles</b> and the <b>non-negotiable boundaries</b> of the protocol, as infrastructural invariants: properties that the system must preserve across every implementation and every future revision.",
+      "s1.tag":"Introduction","s1.h2":"Infrastructural invariants.",
+      "s1.lede":"The principles that follow and the boundaries that accompany them constitute the invariants of the protocol. They are stated explicitly so that every implementation and every revision can be measured against them.",
+      "s1.p1":"The invariants are not recommendations: they are structural properties. An implementation that violates them does not realise AIKNOCK, even if it adopts its name or terminology.",
+      "s2.tag":"Design Principles","s2.h2":"Design Principles.",
+      "s2.intro":"The following principles define the technical behaviour of the system during the execution of artificial intelligence operations. The eight principles define the architectural properties the protocol must preserve. They are numbered for reference and read as a whole: no principle is dispensable without altering the nature of the protocol.",
+      "s2.p1.h":"AI as a critical system capability.","s2.p1.p":"AI is treated as a critical <i>capability</i> of the system, not as a library or an application feature. Its use is subject to the properties the system reserves for critical resources.",
+      "s2.p2.h":"Mandatory interposition.","s2.p2.p":"Every invocation of AI traverses the protocol. Interposition is not optional and does not depend on the cooperation of the calling code.",
+      "s2.p3.h":"Decision before action.","s2.p3.p":"The evaluation of context and intent is <i>ex-ante</i>: it precedes the invocation of the model. It is not a subsequent control nor a sample-based verification.",
+      "s2.p4.h":"Technical enforcement, not declarative.","s2.p4.p":"The decision is applied by a technical mechanism at the system level. Statements of intent and organisational rules do not replace <i>enforcement</i>.",
+      "s2.p5.h":"Audit by construction.","s2.p5.p":"Evidence is an effect of the protocol's operation, not an additional feature. The verifiability of decisions is structural.",
+      "s2.p6.h":"Separation of availability and authorisation.","s2.p6.p":"The technical presence of a model does not imply authorisation of its use. The two layers — availability and authorisation — remain distinct by construction.",
+      "s2.p7.h":"Human-in-the-Loop as a technical constraint.","s2.p7.p":"Where required, human intervention is not an operational procedure but a requirement imposed by the system. The protocol does not proceed in its absence.",
+      "s2.p8.h":"Neutrality across models and vendors.","s2.p8.p":"The protocol does not depend on a particular model, runtime or commercial provider. It defines an execution-control interface to which every implementation conforms.",
+      "s3.tag":"Boundaries","s3.h2":"Boundaries — non-negotiable limits.",
+      "s3.intro":"To the principles correspond explicit boundaries. These boundaries delimit what the protocol, by construction, does not occupy: they are as binding as the principles and contribute to defining its identity.",
+      "s3.b1.tag":"DOES NOT GOVERN","s3.b1.h":"Contents — prompts and outputs.",
+      "s3.b1.p":"The protocol does not inspect, filter or evaluate the contents exchanged with the models. Its domain is the right of use, not the merit of the result.",
+      "s3.b2.tag":"DOES NOT REPLACE","s3.b2.h":"The law.",
+      "s3.b2.p":"Legal obligations remain such. AIKNOCK does not interpret norms, does not guarantee compliance, does not overlap with the competent jurisdiction.",
+      "s3.b3.tag":"IS NOT","s3.b3.h":"A compliance framework.",
+      "s3.b3.p":"The protocol describes technical properties of the system. It does not define certification processes, does not issue attestations, does not replace the relevant bodies.",
+      "s3.b4.tag":"DOES NOT GOVERN","s3.b4.h":"Model training.",
+      "s3.b4.p":"Construction, training, selection and evaluation of models are out of scope. The protocol acts at the moment of use, not upstream.",
+      "s3.b5.tag":"DOES NOT PROVIDE","s3.b5.h":"User interfaces.",
+      "s3.b5.p":"AIKNOCK does not include dashboards, consoles or end-user experiences. It is an infrastructural layer: interfaces remain the responsibility of implementations.",
+      "s3.stmt":"The boundaries listed above are not gaps in the protocol: they are <b>deliberate architectural choices</b>. Restricting scope is a necessary condition for what the protocol declares it does to be guaranteed with precision.",
+      "s4.tag":"Synthesis","s4.h2":"Why principles and boundaries guarantee durability.",
+      "s4.p1":"The principles define what the protocol is. The boundaries define what the protocol is not.",
+      "s4.p2":"<b>Together they constitute the invariants: the condition for AIKNOCK to remain recognisable across every implementation, every revision and every adoption.</b>",
+      "s4.p3":"A specification that changes identity at every revision is not a standard. Invariants are the way an open protocol makes itself durable.",
+      "col.bot1":"© 2026 AIKNOCK editorial group — Open specification · CC BY 4.0",
+      "col.legal":"Independent project · Legal notice →",
+      "col.bot2":"AIKNOCK / WD-0004 · DESIGN-PRINCIPLES · 12 May 2026"
+    },
+
+    fr: {
+      "banner.l1":"Spécification ouverte","banner.l2":"Brouillon de travail public","banner.l3":"Maintenu par le groupe éditorial AIKNOCK",
+      "mast.sub":"Spécification ouverte · v0.4",
+      "nav.spec":"Spécification","nav.why":"Pourquoi AIKNOCK","nav.one":"One Diagram","nav.norms":"Normes","nav.dp":"Design Principles",
+      "cover.eyebrow":"Design Principles & Boundaries",
+      "cover.h1":"AIKNOCK — Design Principles &amp; Boundaries<em>.</em>",
+      "cover.sub":"Ce document déclare les <b>principes architecturaux</b> et les <b>limites non négociables</b> du protocole, en tant qu'invariants infrastructurels : propriétés que le système doit préserver à travers chaque implémentation et chaque révision future.",
+      "s1.tag":"Introduction","s1.h2":"Invariants infrastructurels.",
+      "s1.lede":"Les principes qui suivent et les limites qui les accompagnent constituent les invariants du protocole. Ils sont énoncés explicitement pour que toute implémentation et toute révision puissent y être confrontées.",
+      "s1.p1":"Les invariants ne sont pas des recommandations : ce sont des propriétés structurelles. Une implémentation qui les viole ne réalise pas AIKNOCK, même si elle en adopte le nom ou la terminologie.",
+      "s2.tag":"Design Principles","s2.h2":"Design Principles.",
+      "s2.intro":"Les principes qui suivent définissent le comportement technique du système pendant l'exécution d'opérations d'intelligence artificielle. Les huit principes définissent les propriétés architecturales que le protocole doit préserver. Ils sont numérotés pour référence et se lisent comme un ensemble : aucun principe n'est dispensable sans modifier la nature du protocole.",
+      "s2.p1.h":"L'IA comme capacité critique de système.","s2.p1.p":"L'IA est traitée comme une <i>capability</i> critique du système, et non comme une bibliothèque ou une fonctionnalité applicative. Son usage est soumis aux propriétés que le système réserve aux ressources critiques.",
+      "s2.p2.h":"Interposition obligatoire.","s2.p2.p":"Toute invocation de l'IA traverse le protocole. L'interposition n'est pas optionnelle et ne dépend pas de la coopération du code appelant.",
+      "s2.p3.h":"Décision avant l'action.","s2.p3.p":"L'évaluation du contexte et de l'intention est <i>ex-ante</i> : elle précède l'invocation du modèle. Ce n'est ni un contrôle ultérieur ni une vérification par échantillonnage.",
+      "s2.p4.h":"Application technique, non déclarative.","s2.p4.p":"La décision est appliquée par un mécanisme technique au niveau du système. Les déclarations d'intention et les règles organisationnelles ne remplacent pas l'<i>enforcement</i>.",
+      "s2.p5.h":"Audit par construction.","s2.p5.p":"Les preuves sont un effet du fonctionnement du protocole, et non une fonctionnalité supplémentaire. La vérifiabilité des décisions est structurelle.",
+      "s2.p6.h":"Séparation entre disponibilité et autorisation.","s2.p6.p":"La présence technique d'un modèle n'implique pas l'autorisation de son usage. Les deux plans — disponibilité et autorisation — restent distincts par construction.",
+      "s2.p7.h":"Human-in-the-Loop comme contrainte technique.","s2.p7.p":"Lorsque cela est requis, l'intervention humaine n'est pas une procédure opérationnelle mais une exigence imposée par le système. Le protocole ne progresse pas en son absence.",
+      "s2.p8.h":"Neutralité à l'égard des modèles et fournisseurs.","s2.p8.p":"Le protocole ne dépend ni d'un modèle, ni d'un runtime, ni d'un fournisseur commercial en particulier. Il définit une interface de contrôle d'exécution à laquelle toute implémentation se conforme.",
+      "s3.tag":"Boundaries","s3.h2":"Boundaries — limites non négociables.",
+      "s3.intro":"Aux principes correspondent des limites explicites. Ces limites délimitent ce que le protocole, par construction, n'occupe pas : elles sont aussi contraignantes que les principes et contribuent à définir son identité.",
+      "s3.b1.tag":"NE GOUVERNE PAS","s3.b1.h":"Contenus — prompts et sorties.",
+      "s3.b1.p":"Le protocole n'inspecte pas, ne filtre pas et n'évalue pas les contenus échangés avec les modèles. Son domaine est le droit d'usage, et non le mérite du résultat.",
+      "s3.b2.tag":"NE REMPLACE PAS","s3.b2.h":"La loi.",
+      "s3.b2.p":"Les obligations juridiques demeurent telles. AIKNOCK n'interprète pas les normes, ne garantit pas la conformité, ne se superpose pas à la juridiction compétente.",
+      "s3.b3.tag":"N'EST PAS","s3.b3.h":"Un cadre de conformité.",
+      "s3.b3.p":"Le protocole décrit des propriétés techniques du système. Il ne définit pas de processus de certification, n'émet pas d'attestations, ne se substitue pas aux organismes compétents.",
+      "s3.b4.tag":"NE GOUVERNE PAS","s3.b4.h":"L'entraînement des modèles.",
+      "s3.b4.p":"La construction, l'entraînement, la sélection et l'évaluation des modèles sont hors périmètre. Le protocole agit au moment de l'usage, et non en amont.",
+      "s3.b5.tag":"NE FOURNIT PAS","s3.b5.h":"D'interfaces utilisateur.",
+      "s3.b5.p":"AIKNOCK ne comprend ni tableaux de bord, ni consoles, ni expériences d'usage. C'est un plan infrastructurel : les interfaces demeurent de la responsabilité des implémentations.",
+      "s3.stmt":"Les limites énoncées ci-dessus ne sont pas des lacunes du protocole : ce sont des <b>choix architecturaux délibérés</b>. Restreindre le périmètre est une condition nécessaire pour que ce que le protocole déclare faire puisse être garanti avec précision.",
+      "s4.tag":"Synthèse","s4.h2":"Pourquoi principes et limites assurent la durabilité.",
+      "s4.p1":"Les principes définissent ce que le protocole est. Les limites définissent ce que le protocole n'est pas.",
+      "s4.p2":"<b>Ensemble, ils constituent les invariants : la condition pour qu'AIKNOCK reste reconnaissable à travers chaque implémentation, chaque révision et chaque adoption.</b>",
+      "s4.p3":"Une spécification qui change d'identité à chaque révision n'est pas un standard. Les invariants sont la manière dont un protocole ouvert se rend durable.",
+      "col.bot1":"© 2026 Groupe éditorial AIKNOCK — Spécification ouverte · CC BY 4.0",
+      "col.legal":"Projet indépendant · Mentions légales →",
+      "col.bot2":"AIKNOCK / WD-0004 · DESIGN-PRINCIPLES · 12 mai 2026"
+    },
+
+    es: {
+      "banner.l1":"Especificación abierta","banner.l2":"Borrador público de trabajo","banner.l3":"Mantenido por el grupo editorial AIKNOCK",
+      "mast.sub":"Especificación abierta · v0.4",
+      "nav.spec":"Especificación","nav.why":"Por qué AIKNOCK","nav.one":"One Diagram","nav.norms":"Normas","nav.dp":"Design Principles",
+      "cover.eyebrow":"Design Principles & Boundaries",
+      "cover.h1":"AIKNOCK — Design Principles &amp; Boundaries<em>.</em>",
+      "cover.sub":"Este documento declara los <b>principios arquitectónicos</b> y los <b>límites no negociables</b> del protocolo, como invariantes infraestructurales: propiedades que el sistema debe preservar a través de cada implementación y de cada revisión futura.",
+      "s1.tag":"Introducción","s1.h2":"Invariantes infraestructurales.",
+      "s1.lede":"Los principios que siguen y los límites que los acompañan constituyen las invariantes del protocolo. Se enuncian explícitamente para que toda implementación y toda revisión puedan medirse con ellos.",
+      "s1.p1":"Las invariantes no son recomendaciones: son propiedades estructurales. Una implementación que las viole no realiza AIKNOCK, aun cuando adopte su nombre o su terminología.",
+      "s2.tag":"Design Principles","s2.h2":"Design Principles.",
+      "s2.intro":"Los principios que siguen definen el comportamiento técnico del sistema durante la ejecución de operaciones de inteligencia artificial. Los ocho principios definen las propiedades arquitectónicas que el protocolo debe preservar. Están numerados a efectos de referencia y se leen como un conjunto: ningún principio es prescindible sin alterar la naturaleza del protocolo.",
+      "s2.p1.h":"La IA como capacidad crítica del sistema.","s2.p1.p":"La IA se trata como una <i>capability</i> crítica del sistema, no como una biblioteca o una funcionalidad aplicativa. Su uso queda sujeto a las propiedades que el sistema reserva a los recursos críticos.",
+      "s2.p2.h":"Interposición obligatoria.","s2.p2.p":"Toda invocación de la IA atraviesa el protocolo. La interposición no es opcional y no depende de la cooperación del código que la solicita.",
+      "s2.p3.h":"Decisión antes de la acción.","s2.p3.p":"La evaluación del contexto y la intención es <i>ex-ante</i>: precede a la invocación del modelo. No es un control posterior ni una verificación por muestreo.",
+      "s2.p4.h":"Aplicación técnica, no declarativa.","s2.p4.p":"La decisión es aplicada por un mecanismo técnico a nivel del sistema. Las declaraciones de intención y las reglas organizativas no sustituyen el <i>enforcement</i>.",
+      "s2.p5.h":"Auditoría por construcción.","s2.p5.p":"Las evidencias son un efecto del funcionamiento del protocolo, no una funcionalidad adicional. La verificabilidad de las decisiones es estructural.",
+      "s2.p6.h":"Separación entre disponibilidad y autorización.","s2.p6.p":"La presencia técnica de un modelo no implica la autorización de su uso. Los dos planos — disponibilidad y autorización — permanecen distintos por construcción.",
+      "s2.p7.h":"Human-in-the-Loop como restricción técnica.","s2.p7.p":"Cuando se requiere, la intervención humana no es un procedimiento operativo sino un requisito impuesto por el sistema. El protocolo no avanza en su ausencia.",
+      "s2.p8.h":"Neutralidad frente a modelos y proveedores.","s2.p8.p":"El protocolo no depende de un modelo, runtime o proveedor comercial concretos. Define una interfaz de control de ejecución a la que toda implementación se ajusta.",
+      "s3.tag":"Boundaries","s3.h2":"Boundaries — límites no negociables.",
+      "s3.intro":"A los principios corresponden límites explícitos. Estos límites delimitan lo que el protocolo, por construcción, no ocupa: son tan vinculantes como los principios y contribuyen a definir su identidad.",
+      "s3.b1.tag":"NO GOBIERNA","s3.b1.h":"Contenidos — prompts y salidas.",
+      "s3.b1.p":"El protocolo no inspecciona, no filtra ni evalúa los contenidos intercambiados con los modelos. Su dominio es el derecho de uso, no el mérito del resultado.",
+      "s3.b2.tag":"NO SUSTITUYE","s3.b2.h":"La ley.",
+      "s3.b2.p":"Las obligaciones jurídicas siguen siendo tales. AIKNOCK no interpreta normas, no garantiza cumplimiento, no se superpone a la jurisdicción competente.",
+      "s3.b3.tag":"NO ES","s3.b3.h":"Un marco de cumplimiento.",
+      "s3.b3.p":"El protocolo describe propiedades técnicas del sistema. No define procesos de certificación, no emite atestaciones, no sustituye a los organismos competentes.",
+      "s3.b4.tag":"NO GOBIERNA","s3.b4.h":"El entrenamiento de los modelos.",
+      "s3.b4.p":"La construcción, el entrenamiento, la selección y la evaluación de los modelos quedan fuera de ámbito. El protocolo actúa en el momento del uso, no aguas arriba.",
+      "s3.b5.tag":"NO PROPORCIONA","s3.b5.h":"Interfaces de usuario.",
+      "s3.b5.p":"AIKNOCK no incluye paneles, consolas ni experiencias de uso. Es un plano infraestructural: las interfaces siguen siendo responsabilidad de las implementaciones.",
+      "s3.stmt":"Los límites enumerados arriba no son lagunas del protocolo: son <b>elecciones arquitectónicas deliberadas</b>. Restringir el ámbito es condición necesaria para que aquello que el protocolo declara hacer pueda garantizarse con precisión.",
+      "s4.tag":"Síntesis","s4.h2":"Por qué principios y límites garantizan durabilidad.",
+      "s4.p1":"Los principios definen lo que el protocolo es. Los límites definen lo que el protocolo no es.",
+      "s4.p2":"<b>Juntos constituyen las invariantes: la condición para que AIKNOCK siga siendo reconocible a través de cada implementación, cada revisión y cada adopción.</b>",
+      "s4.p3":"Una especificación que cambia de identidad en cada revisión no es un estándar. Las invariantes son el modo en que un protocolo abierto se hace durable.",
+      "col.bot1":"© 2026 Grupo editorial AIKNOCK — Especificación abierta · CC BY 4.0",
+      "col.legal":"Proyecto independiente · Aviso legal →",
+      "col.bot2":"AIKNOCK / WD-0004 · DESIGN-PRINCIPLES · 12 de mayo de 2026"
+    }
+  };
+
+  var titles = {
+    it: "AIKNOCK — Design Principles & Boundaries",
+    en: "AIKNOCK — Design Principles & Boundaries",
+    fr: "AIKNOCK — Design Principles & Boundaries",
+    es: "AIKNOCK — Design Principles & Boundaries"
+  };
+
+  var original = {};
+  function snapshot() {
+    var nodes = document.querySelectorAll("[data-i18n]");
+    for (var i = 0; i < nodes.length; i++) {
+      var k = nodes[i].getAttribute("data-i18n");
+      if (!(k in original)) original[k] = nodes[i].innerHTML;
+    }
+  }
+  function apply(lang) {
+    if (LANGS.indexOf(lang) === -1) lang = "it";
+    document.documentElement.lang = lang;
+    var src = lang === "it" ? null : dict[lang];
+    var nodes = document.querySelectorAll("[data-i18n]");
+    for (var i = 0; i < nodes.length; i++) {
+      var el = nodes[i], k = el.getAttribute("data-i18n");
+      var v = src && src[k] != null ? src[k] : original[k];
+      if (v != null && el.innerHTML !== v) el.innerHTML = v;
+    }
+    document.title = titles[lang] || titles.it;
+    /* SEO: link rewriting disabled — internal links stay parameter-free */
+    var opts = document.querySelectorAll(".lang__opt");
+    for (var j = 0; j < opts.length; j++) {
+      var on = opts[j].getAttribute("data-lang") === lang;
+      opts[j].classList.toggle("is-active", on);
+      if (on) opts[j].setAttribute("aria-current", "true");
+      else opts[j].removeAttribute("aria-current");
+    }
+  }
+  function init() {
+    snapshot();
+    var p = new URLSearchParams(window.location.search);
+    var fromUrl = null, fromStore = null; /* SEO: do not read ?lang= */
+    try { fromStore = localStorage.getItem("aigp_lang"); } catch (e) {}
+    var nav = (navigator.language || "it").slice(0, 2).toLowerCase();
+    var pick = fromStore || "it"; /* SEO: default to IT, ignore navigator */
+    if (LANGS.indexOf(pick) === -1) pick = "it";
+    apply(pick);
+    var opts = document.querySelectorAll(".lang__opt");
+    for (var i = 0; i < opts.length; i++) {
+      opts[i].addEventListener("click", function (e) {
+        e.preventDefault();
+        var l = this.getAttribute("data-lang");
+        try { localStorage.setItem("aigp_lang", l); } catch (e2) {}
+        /* SEO: do not write ?lang= into the URL */
+        apply(l);
+      });
+    }
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+  else init();
+})();
+</script>
+</body>
+</html>
