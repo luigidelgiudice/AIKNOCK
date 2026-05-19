@@ -1,0 +1,430 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="AI Governance e controllo tecnico dell'esecuzione dei sistemi di Intelligenza Artificiale. Lettura architetturale del problema della governance e del ruolo del livello di execution control nei sistemi operativi. Specifica AIKNOCK." />
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+<meta name="author" content="Gruppo editoriale AIKNOCK" />
+<meta name="color-scheme" content="light" />
+<title>AI Governance — Execution Control &amp; AI Security Architecture | AIKNOCK</title>
+
+<link rel="canonical" href="https://aiknock.org/ai-governance.html" />
+<link rel="alternate" hreflang="it" href="https://aiknock.org/ai-governance.html" />
+<link rel="alternate" hreflang="x-default" href="https://aiknock.org/ai-governance.html" />
+
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="AIKNOCK" />
+<meta property="og:title" content="AI Governance — Execution Control &amp; AI Security Architecture | AIKNOCK" />
+<meta property="og:description" content="Lettura architetturale del problema dell'AI governance e del ruolo del livello di execution control nei sistemi operativi." />
+<meta property="og:url" content="https://aiknock.org/ai-governance.html" />
+<meta property="og:locale" content="it_IT" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "AI Governance — Execution Control & AI Security Architecture",
+  "description": "Lettura tecnica del problema dell'AI governance e del controllo dell'esecuzione a livello di sistema operativo nella specifica AIKNOCK.",
+  "inLanguage": "it",
+  "author": { "@type": "Organization", "name": "Gruppo editoriale AIKNOCK" },
+  "publisher": { "@type": "Organization", "name": "Gruppo editoriale AIKNOCK" },
+  "dateModified": "2026-05-19",
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "mainEntityOfPage": "https://aiknock.org/ai-governance.html"
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+
+<style>
+  :root {
+    --ink: #111111; --ink-2: #2a2a2a; --body: #333333;
+    --muted: #6a6a6a; --muted-2: #9a9a9a;
+    --rule: #d8d8d8; --rule-2: #ececec; --paper: #ffffff;
+    --accent: #8a1a1a;
+    --serif: "Source Serif 4", Georgia, "Times New Roman", Times, serif;
+    --sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    --col: 680px; --col-wide: 880px; --gutter: 32px;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { background: var(--paper); color: var(--body); }
+  body { margin: 0; font-family: var(--sans); font-size: 16px; line-height: 1.65; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+  a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--rule); }
+  a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .col       { max-width: var(--col);      margin: 0 auto; padding: 0 var(--gutter); }
+  .col--wide { max-width: var(--col-wide); margin: 0 auto; padding: 0 var(--gutter); }
+
+  .banner { border-bottom: 1px solid var(--rule); font-family: var(--mono); font-size: 11px; letter-spacing: 0.04em; color: var(--muted); }
+  .banner__inner { display: flex; justify-content: space-between; align-items: center; padding: 12px var(--gutter); max-width: 1100px; margin: 0 auto; gap: 24px; }
+  .banner__left { display: flex; gap: 22px; flex-wrap: wrap; }
+  .banner__left span::before { content: ""; display: inline-block; width: 6px; height: 6px; background: var(--accent); margin-right: 8px; transform: translateY(-1px); }
+  .ref { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.04em; white-space: nowrap; }
+
+  header.mast { border-bottom: 1px solid var(--rule); }
+  .mast__inner { display: flex; align-items: baseline; justify-content: space-between; padding: 22px var(--gutter); max-width: 1100px; margin: 0 auto; gap: 24px; }
+  .brand { display: flex; align-items: baseline; gap: 14px; border: 0; }
+  .brand__mark { font-family: var(--serif); font-weight: 600; font-size: 20px; letter-spacing: -0.01em; color: var(--ink); white-space: nowrap; flex-shrink: 0; }
+  .brand__mark::before { content: ""; display: inline-block; width: 9px; height: 9px; background: var(--accent); margin-right: 10px; transform: translateY(-2px); }
+  .brand__sub { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.04em; white-space: nowrap; }
+  .mast__nav { display: inline-flex; align-items: baseline; gap: 10px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; flex-wrap: wrap; }
+  .mast__nav a { color: var(--muted); border: 0; padding: 2px 0; transition: color 100ms linear; }
+  .mast__nav a:hover { color: var(--ink); }
+  .mast__nav a[aria-current="page"] { color: var(--accent); border-bottom: 1px solid var(--accent); }
+  .mast__sep { color: var(--rule); user-select: none; }
+
+  section.cover { padding: 120px 0 104px; border-bottom: 1px solid var(--rule); }
+  .cover__eyebrow { font-family: var(--mono); font-size: 11.5px; color: var(--accent); letter-spacing: 0.08em; text-transform: uppercase; margin: 0 0 24px; }
+  .cover__eyebrow::before { content: "\00a7 00 \00b7"; color: var(--muted); margin-right: 8px; letter-spacing: 0.04em; }
+  .cover h1 { font-family: var(--serif); font-weight: 500; font-size: 44px; line-height: 1.12; letter-spacing: -0.015em; margin: 0 0 22px; color: var(--ink); text-wrap: balance; max-width: 22ch; }
+  .cover h1 em { font-style: italic; color: var(--ink-2); font-weight: 400; }
+  .cover__sub { font-family: var(--serif); font-size: 20px; line-height: 1.55; color: var(--ink-2); margin: 0; max-width: 60ch; text-wrap: pretty; }
+  .cover__rule { margin: 48px 0 0; height: 1px; background: var(--rule); width: 96px; }
+
+  section.sec { padding: 96px 0; border-bottom: 1px solid var(--rule); }
+  section.sec.sub { padding: 56px 0; }
+  section.sec:last-of-type { border-bottom: 0; }
+  .sec__num { font-family: var(--mono); font-size: 11.5px; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; margin: 0 0 16px; }
+  .sec__num .accent { color: var(--accent); }
+  .sec h2 { font-family: var(--serif); font-weight: 500; font-size: 30px; line-height: 1.2; letter-spacing: -0.012em; margin: 0 0 24px; color: var(--ink); text-wrap: balance; max-width: 30ch; }
+  .sec.sub h2 { font-size: 24px; max-width: 34ch; }
+  .sec h3 { font-family: var(--serif); font-weight: 500; font-size: 19px; line-height: 1.3; margin: 28px 0 10px; color: var(--ink); text-wrap: balance; }
+  .sec p { margin: 0 0 18px; color: var(--body); font-size: 16.5px; line-height: 1.7; max-width: 62ch; text-wrap: pretty; }
+  .sec p.lede { font-family: var(--serif); font-size: 19px; line-height: 1.55; color: var(--ink-2); margin-bottom: 24px; max-width: 58ch; }
+  .sec p:last-child { margin-bottom: 0; }
+  .sec b, .sec strong { color: var(--ink); font-weight: 600; }
+  .sec i, .sec em { font-style: italic; }
+
+  ul.terms {
+    list-style: none; padding: 0; margin: 12px 0 0;
+    border-top: 1px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+  }
+  ul.terms > li {
+    padding: 20px 0;
+    border-bottom: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 28px;
+    align-items: baseline;
+  }
+  ul.terms > li:last-child { border-bottom: 0; }
+  .terms__k {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    color: var(--accent);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .terms__v {
+    font-family: var(--serif);
+    font-size: 16.5px;
+    color: var(--ink);
+    line-height: 1.55;
+  }
+
+  .statement {
+    margin: 12px 0 0; padding: 28px 0;
+    border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink);
+    font-family: var(--serif); font-size: 20px; line-height: 1.55;
+    color: var(--ink); max-width: 62ch; text-wrap: pretty;
+  }
+  .statement::before { content: "\2014"; display: block; font-family: var(--mono); color: var(--accent); font-size: 13px; margin-bottom: 14px; letter-spacing: 0.04em; }
+
+  .related {
+    margin: 12px 0 0; padding: 24px 0 0;
+    border-top: 1px solid var(--rule);
+    font-family: var(--mono); font-size: 11.5px; color: var(--muted);
+    letter-spacing: 0.04em; line-height: 1.8;
+  }
+  .related a { color: var(--ink-2); border-bottom: 1px solid var(--rule); }
+  .related a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+  .closing { margin: 8px 0 0; padding: 36px 0 0; border-top: 1px solid var(--ink); }
+  .closing p { font-family: var(--serif); font-size: 21px; line-height: 1.5; color: var(--ink); max-width: 60ch; margin: 0 0 14px; text-wrap: pretty; }
+  .closing p.muted { color: var(--ink-2); }
+
+  footer.colophon { padding: 56px 0; border-top: 1px solid var(--rule); }
+  .colophon__row { max-width: 1100px; margin: 0 auto; padding: 0 var(--gutter); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; font-family: var(--mono); font-size: 11px; color: var(--muted-2); letter-spacing: 0.04em; }
+
+  @media (max-width: 720px) {
+    .cover { padding: 76px 0 60px; } .cover h1 { font-size: 30px; }
+    .sec { padding: 60px 0; } .sec.sub { padding: 40px 0; } .sec h2 { font-size: 22px; }
+    .statement { font-size: 17px; }
+    ul.terms > li { grid-template-columns: 1fr; gap: 6px; }
+    .mast__inner { flex-wrap: wrap; gap: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="banner">
+  <div class="banner__inner">
+    <div class="banner__left">
+      <span>Specifica aperta</span>
+      <span>Bozza di lavoro pubblica</span>
+      <span>A cura del gruppo editoriale AIKNOCK</span>
+    </div>
+    <span class="ref">Rif. AIKNOCK / WD-0004 &middot; AI GOVERNANCE</span>
+  </div>
+</div>
+
+<header class="mast">
+  <div class="mast__inner">
+    <a class="brand" href="index.html">
+      <span class="brand__mark">AIKNOCK</span>
+      <span class="brand__sub">Specifica aperta &middot; v0.4</span>
+    </a>
+    <nav class="mast__nav" aria-label="Sezioni">
+      <a href="index.html">Specifica</a>
+      <span class="mast__sep" aria-hidden="true">&middot;</span>
+      <a href="perche.html">Perch&eacute; AIKNOCK</a>
+      <span class="mast__sep" aria-hidden="true">&middot;</span>
+      <a href="one-diagram.html">One Diagram</a>
+      <span class="mast__sep" aria-hidden="true">&middot;</span>
+      <a href="norme.html">Norme</a>
+      <span class="mast__sep" aria-hidden="true">&middot;</span>
+      <a href="design-principles.html">Design Principles</a>
+      <span class="mast__sep" aria-hidden="true">&middot;</span>
+      <a href="ai-governance.html" aria-current="page">AI Governance</a>
+    </nav>
+  </div>
+</header>
+
+<section class="cover">
+  <div class="col--wide">
+    <p class="cover__eyebrow">AI Governance &middot; Lettura tecnica</p>
+    <h1>AI Governance e controllo tecnico dell'esecuzione<em>.</em></h1>
+    <p class="cover__sub">
+      Una lettura architetturale del problema dell'<b>AI governance</b> e del
+      ruolo del livello di <i>execution control</i> nei sistemi che incorporano
+      l'Intelligenza Artificiale: un piano tecnico distinto dai quadri
+      normativi e dagli standard, ma con essi coerente.
+    </p>
+    <div class="cover__rule" aria-hidden="true"></div>
+  </div>
+</section>
+
+<section class="sec" id="definizione">
+  <p class="sec__num col"><span class="accent">&sect; 01</span> &middot; Definizione e contesto</p>
+  <div class="col">
+    <h2>Definizione e contesto.</h2>
+    <p class="lede">
+      Per <b>AI governance</b> si intende l'insieme delle propriet&agrave;
+      tecniche, organizzative e giuridiche attraverso cui un sistema
+      informativo che incorpora componenti di Intelligenza Artificiale
+      viene reso descrivibile, verificabile e attribuibile a soggetti
+      identificabili.
+    </p>
+    <p>
+      Il termine &egrave; oggi associato sia a obblighi normativi &mdash;
+      fra cui il Regolamento UE 2024/1689 sull'Intelligenza Artificiale,
+      la direttiva NIS2 sulla sicurezza delle reti, gli standard
+      ISO/IEC 42001 e ISO/IEC 27001 e il NIST AI Risk Management Framework
+      &mdash; sia a pratiche operative interne alle organizzazioni che
+      adottano l'AI in contesti decisionali e di servizio. Sul piano
+      architetturale, tuttavia, l'AI governance pone un problema
+      specifico: come rendere il comportamento di esecuzione del sistema
+      osservabile e vincolato in modo indipendente dalle applicazioni che
+      invocano i modelli.
+    </p>
+  </div>
+</section>
+
+<section class="sec sub" id="en-overview">
+  <p class="sec__num col"><span class="accent">&sect; 01.1</span> &middot; AI governance and execution control</p>
+  <div class="col">
+    <h2>AI governance and execution control.</h2>
+    <p lang="en">
+      <b>AI governance</b> describes the set of technical, organisational
+      and legal properties by which a computing system that incorporates
+      Artificial Intelligence is made describable, verifiable and
+      attributable. From an architectural point of view, AI governance
+      raises a specific question: how to make the execution behaviour of
+      the system observable and constrained independently of the
+      applications that invoke the models.
+    </p>
+    <p lang="en">
+      The technical answer to that question is <b>AI execution control</b>:
+      a layer that interposes between the calling applications and the
+      models being invoked, and that constrains the use of AI before
+      execution. Such a layer belongs to the discipline of <b>AI security
+      architecture</b> and, when placed at the level of the operating
+      system, takes the form of <b>operating system AI control</b>. It
+      complements <b>AI compliance</b> regimes without replacing or
+      reinterpreting them.
+    </p>
+  </div>
+</section>
+
+<section class="sec" id="problema">
+  <p class="sec__num col"><span class="accent">&sect; 02</span> &middot; Il problema</p>
+  <div class="col">
+    <h2>Il problema della governance dichiarativa.</h2>
+    <p>
+      Nei sistemi attuali, la governance dell'AI &egrave; in larga misura
+      <b>dichiarativa</b>: si esprime attraverso policy, documenti di
+      riferimento, registri tenuti dalle applicazioni e revisioni
+      successive. L'esecuzione dell'AI rimane invece interamente nelle
+      mani del codice applicativo, che decide quando, come e con quali
+      condizioni invocare i modelli.
+    </p>
+    <p>
+      Questa configurazione presuppone la <i>cooperazione</i> delle
+      applicazioni con la governance dichiarata. Quando l'AI diventa una
+      <i>capability</i> critica del sistema informativo &mdash; pervasiva,
+      decisionale, distribuita su pi&ugrave; team e fornitori &mdash; la
+      fiducia nell'applicazione che invoca cessa di essere una strategia
+      tecnica sufficiente. La governance si frammenta nei livelli
+      applicativi e la sua verificabilit&agrave; dipende dalla
+      qualit&agrave; eterogenea dei singoli sviluppi.
+    </p>
+  </div>
+</section>
+
+<section class="sec" id="limiti">
+  <p class="sec__num col"><span class="accent">&sect; 03</span> &middot; Limiti degli approcci attuali</p>
+  <div class="col">
+    <h2>Limiti degli approcci attuali.</h2>
+    <p>
+      Gli strumenti pi&ugrave; diffusi per la governance dei sistemi di AI
+      condividono caratteristiche ricorrenti, ognuna delle quali pone
+      limiti strutturali al controllo tecnico dell'esecuzione:
+    </p>
+    <ul class="terms" aria-label="Limiti degli approcci attuali">
+      <li>
+        <span class="terms__k">Policy organizzative</span>
+        <span class="terms__v">Testi vincolanti per le persone, non per il codice; non producono di per s&eacute; alcun effetto di esecuzione.</span>
+      </li>
+      <li>
+        <span class="terms__k">Monitoring applicativo</span>
+        <span class="terms__v">Registrazioni interne all'applicazione, soggette alla cooperazione del codice che le emette.</span>
+      </li>
+      <li>
+        <span class="terms__k">Audit ex-post</span>
+        <span class="terms__v">Verifiche posteriori all'evento, utili a ricostruire ma non a impedire un comportamento non desiderato.</span>
+      </li>
+      <li>
+        <span class="terms__k">Compliance dichiarativa</span>
+        <span class="terms__v">Auto-attestazioni di conformit&agrave;, prive di un meccanismo tecnico che le renda osservabili dall'esterno.</span>
+      </li>
+    </ul>
+    <p style="margin-top: 28px;">
+      Tali strumenti non sono inutili: descrivono <i>cosa</i> deve essere
+      garantito. Il loro limite &egrave; che non costituiscono, da soli,
+      un punto di applicazione tecnica del controllo. Ne consegue che, nei
+      contesti regolati e critici, manca un livello architetturale dedicato
+      a tradurre i requisiti di <b>AI compliance</b> in vincoli osservabili
+      sul comportamento di esecuzione del sistema.
+    </p>
+  </div>
+</section>
+
+<section class="sec" id="approccio">
+  <p class="sec__num col--wide"><span class="accent">&sect; 04</span> &middot; Approccio architetturale</p>
+  <div class="col--wide">
+    <h2>Un livello tecnico per il controllo dell'esecuzione.</h2>
+    <p style="max-width: 62ch;">
+      L'approccio architetturale all'AI governance consiste nello spostare
+      il controllo dell'invocazione al di sotto del livello applicativo,
+      in un livello tecnico interposto che opera al livello del sistema
+      operativo o, pi&ugrave; in generale, della piattaforma di
+      esecuzione. In questa prospettiva la governance smette di essere una
+      propriet&agrave; dichiarata sopra le applicazioni e diventa una
+      propriet&agrave; del sistema.
+    </p>
+
+    <p class="statement">
+      Il controllo dell'esecuzione dell'AI non &egrave; una questione di
+      cooperazione applicativa: &egrave; una propriet&agrave; del sistema
+      sottostante. Solo a quel livello pu&ograve; essere vincolato in
+      modo verificabile e indipendente dal codice chiamante.
+    </p>
+
+    <p style="max-width: 62ch; margin-top: 28px;">
+      Su questo piano si situano i lavori pi&ugrave; recenti in materia di
+      <b>AI security architecture</b> e di <b>operating system AI control</b>,
+      che riconducono il problema dell'AI governance a una questione di
+      interposizione tecnica, di registrazione strutturale degli eventi e
+      di separazione fra disponibilit&agrave; di un modello e
+      autorizzazione al suo uso. Le condizioni di esercizio della
+      governance diventano cos&igrave; condizioni di funzionamento del
+      sistema informatico stesso.
+    </p>
+  </div>
+</section>
+
+<section class="sec" id="aiknock">
+  <p class="sec__num col"><span class="accent">&sect; 05</span> &middot; Relazione con AIKNOCK</p>
+  <div class="col">
+    <h2>Relazione con AIKNOCK.</h2>
+    <p>
+      <b>AIKNOCK</b> &egrave; una specifica tecnica aperta che descrive un
+      sistema di <i>execution control</i> dell'AI operante a livello di
+      sistema operativo. Si colloca sul piano dei meccanismi tecnici,
+      definendo un punto decisionale <i>ex-ante</i>, non aggirabile,
+      attraversato da ogni invocazione di modelli prima dell'esecuzione.
+    </p>
+    <p>
+      La relazione con il discorso pi&ugrave; ampio sull'AI governance
+      &egrave; di <b>complementarit&agrave;</b>: i quadri normativi e gli
+      standard internazionali definiscono <i>cosa</i> deve essere
+      garantito; una specifica come AIKNOCK descrive un <i>come</i>
+      tecnico per rendere una parte di tali propriet&agrave; osservabili e
+      verificabili al livello dell'esecuzione. La specifica non interpreta
+      la legge, non garantisce conformit&agrave; e non si sostituisce ai
+      processi organizzativi: opera su un piano distinto, quello del
+      comportamento del sistema durante l'esecuzione di operazioni di
+      Intelligenza Artificiale.
+    </p>
+
+    <div class="related" aria-label="Documenti correlati">
+      Documenti correlati &middot;
+      <a href="index.html">specifica</a> &middot;
+      <a href="perche.html">razionale del progetto</a> &middot;
+      <a href="one-diagram.html">posizione architetturale in un diagramma</a> &middot;
+      <a href="design-principles.html">principi di design e confini del sistema</a> &middot;
+      <a href="norme.html">relazione tecnica con i quadri normativi</a>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="conclusione" style="border-bottom: 0;">
+  <p class="sec__num col"><span class="accent">&sect; 06</span> &middot; Conclusione</p>
+  <div class="col">
+    <h2>Conclusione.</h2>
+    <div class="closing">
+      <p>
+        L'AI governance, vista da una prospettiva infrastrutturale,
+        &egrave; un problema di <b>livello architetturale</b>: dove
+        collocare il controllo del comportamento di esecuzione dei sistemi
+        che incorporano l'Intelligenza Artificiale.
+      </p>
+      <p>
+        <b>Spostare il controllo al di sotto del livello applicativo
+        &egrave; la condizione tecnica perch&eacute; la governance diventi
+        una propriet&agrave; del sistema, non una sua dichiarazione.</b>
+      </p>
+      <p class="muted">
+        AIKNOCK descrive un punto di applicazione tecnica di tale
+        controllo, coerente con i requisiti posti dai principali quadri di
+        riferimento, senza implementarli n&eacute; rappresentarli.
+      </p>
+    </div>
+  </div>
+</section>
+
+<footer class="colophon">
+  <div class="colophon__row">
+    <span>&copy; 2026 Gruppo editoriale AIKNOCK &mdash; Specifica aperta &middot; CC BY 4.0</span>
+    <a href="note-legali.html" style="border:0;color:var(--accent);font-family:var(--mono);font-size:11px;letter-spacing:0.04em;">Progetto indipendente &middot; Note legali &rarr;</a>
+    <span>AIKNOCK / WD-0004 &middot; AI GOVERNANCE &middot; 19 maggio 2026</span>
+  </div>
+</footer>
+
+</body>
+</html>
