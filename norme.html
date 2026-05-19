@@ -3,626 +3,151 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="description" content="AIKNOCK — sistema di controllo dell'esecuzione dell'Intelligenza Artificiale a livello di Sistema Operativo. Specifica tecnica aperta per il controllo ex-ante, non aggirabile, dell'invocazione dei modelli di AI." />
-<meta name="keywords" content="AIKNOCK, controllo esecuzione AI, sistema operativo AI, ex-ante, AI invocation control, execution control system, AI governance technical layer, specifica tecnica AI" />
+<meta name="description" content="AIKNOCK — Norme e controllo dell'esecuzione dell'AI: una prospettiva infrastrutturale. Specifica aperta, bozza di lavoro pubblica." />
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
-<meta name="author" content="Gruppo editoriale AIKNOCK" />
 <meta name="color-scheme" content="light" />
-<title data-i18n="doc.title">AIKNOCK — Controllo dell'esecuzione dell'Intelligenza Artificiale a livello di Sistema Operativo</title>
+<title>AIKNOCK — Norme e controllo dell'esecuzione dell'AI: una prospettiva infrastrutturale</title>
+<link rel="canonical" href="https://aiknock.org/norme.html" />
 
-<link rel="canonical" href="https://aiknock.org/" />
-<link rel="alternate" hreflang="it" href="https://aiknock.org/" />
-<link rel="alternate" hreflang="en" href="https://aiknock.org/en/" />
-<link rel="alternate" hreflang="fr" href="https://aiknock.org/fr/" />
-<link rel="alternate" hreflang="es" href="https://aiknock.org/es/" />
-<link rel="alternate" hreflang="x-default" href="https://aiknock.org/" />
-
-<!-- Open Graph -->
-<meta property="og:type" content="article" />
-<meta property="og:site_name" content="AIKNOCK" />
-<meta property="og:title" content="AIKNOCK — Controllo dell'esecuzione dell'Intelligenza Artificiale a livello di Sistema Operativo" />
-<meta property="og:description" content="Specifica tecnica aperta per il controllo ex-ante, non aggirabile, dell'invocazione dei modelli di AI a livello di sistema operativo." />
-<meta property="og:locale" content="it_IT" />
-<meta property="og:locale:alternate" content="en_US" />
-<meta property="og:locale:alternate" content="fr_FR" />
-<meta property="og:locale:alternate" content="es_ES" />
-<meta property="og:url" content="https://aiknock.org/" />
-
-<!-- Twitter / X -->
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="AIKNOCK — Controllo dell'esecuzione dell'AI a livello di Sistema Operativo" />
-<meta name="twitter:description" content="Specifica tecnica aperta: punto decisionale ex-ante, non aggirabile, per l'invocazione dei modelli di AI." />
-
-<!-- Structured data — Schema.org TechArticle -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "TechArticle",
-  "headline": "AIKNOCK — Controllo dell'esecuzione dell'Intelligenza Artificiale a livello di Sistema Operativo",
-  "description": "Specifica tecnica aperta che definisce un sistema di controllo dell'esecuzione dell'AI, applicato a livello di sistema operativo, con un punto decisionale ex-ante e non aggirabile.",
-  "inLanguage": "it",
-  "author": { "@type": "Organization", "name": "Gruppo editoriale AIKNOCK" },
-  "publisher": { "@type": "Organization", "name": "Gruppo editoriale AIKNOCK" },
-  "dateModified": "2026-05-19",
-  "license": "https://creativecommons.org/licenses/by/4.0/",
-  "mainEntityOfPage": "https://aiknock.org/",
-  "keywords": "AIKNOCK, execution control, OS-level AI, ex-ante decision, AI invocation, technical specification"
-}
-</script>
-
-<!-- Web fonts (optional — robust system fallbacks declared below).
-     If offline, the page renders with Georgia / system-ui / Menlo. -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" />
 
 <style>
-  /* ===========================================================
-     AIKNOCK — Landing Page
-     Single-file static build, no external runtime dependencies.
-     Italian = canonical; EN / FR / ES translations are inlined
-     and toggled by ~70 lines of vanilla JS at the bottom.
-     =========================================================== */
-
   :root {
-    --ink: #111111;
-    --ink-2: #2a2a2a;
-    --body: #333333;
-    --muted: #6a6a6a;
-    --muted-2: #9a9a9a;
-    --rule: #d8d8d8;
-    --rule-2: #ececec;
-    --paper: #ffffff;
+    --ink: #111111; --ink-2: #2a2a2a; --body: #333333;
+    --muted: #6a6a6a; --muted-2: #9a9a9a;
+    --rule: #d8d8d8; --rule-2: #ececec; --paper: #ffffff;
     --accent: #8a1a1a;
     --serif: "Source Serif 4", Georgia, "Times New Roman", Times, serif;
     --sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
-
-    --col: 680px;
-    --col-wide: 760px;
-    --gutter: 32px;
+    --col: 680px; --col-wide: 880px; --gutter: 32px;
   }
-
   *, *::before, *::after { box-sizing: border-box; }
   html, body { background: var(--paper); color: var(--body); }
-  html { -webkit-text-size-adjust: 100%; }
   body {
-    margin: 0;
-    font-family: var(--sans);
-    font-size: 16px;
-    line-height: 1.65;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
+    margin: 0; font-family: var(--sans);
+    font-size: 16px; line-height: 1.65;
+    -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
   }
   a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--rule); }
   a:hover { color: var(--accent); border-bottom-color: var(--accent); }
   :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-
   .col       { max-width: var(--col);      margin: 0 auto; padding: 0 var(--gutter); }
   .col--wide { max-width: var(--col-wide); margin: 0 auto; padding: 0 var(--gutter); }
 
-  /* ───────────────── Banner ───────────────── */
-  .banner {
-    border-bottom: 1px solid var(--rule);
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.04em;
-    color: var(--muted);
-  }
-  .banner__inner {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px var(--gutter);
-    max-width: 1100px;
-    margin: 0 auto;
-    gap: 24px;
-  }
+  /* Banner */
+  .banner { border-bottom: 1px solid var(--rule); font-family: var(--mono); font-size: 11px; letter-spacing: 0.04em; color: var(--muted); }
+  .banner__inner { display: flex; justify-content: space-between; align-items: center; padding: 12px var(--gutter); max-width: 1100px; margin: 0 auto; gap: 24px; }
   .banner__left { display: flex; gap: 22px; flex-wrap: wrap; }
-  .banner__left span::before {
-    content: "";
-    display: inline-block;
-    width: 6px; height: 6px;
-    background: var(--accent);
-    margin-right: 8px;
-    transform: translateY(-1px);
-  }
-
-  /* Language switch — discreet, textual, no animation */
-  .lang {
-    display: inline-flex;
-    gap: 10px;
-    align-items: baseline;
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.06em;
-    flex-shrink: 0;
-  }
-  .lang__opt {
-    border: 0;
-    color: var(--muted-2);
-    padding: 2px 0;
-    cursor: pointer;
-    transition: color 100ms linear;
-  }
+  .banner__left span::before { content: ""; display: inline-block; width: 6px; height: 6px; background: var(--accent); margin-right: 8px; transform: translateY(-1px); }
+  .lang { display: inline-flex; gap: 10px; align-items: baseline; font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; flex-shrink: 0; }
+  .lang__opt { border: 0; color: var(--muted-2); padding: 2px 0; cursor: pointer; transition: color 100ms linear; }
   .lang__opt:hover { color: var(--ink); border: 0; }
-  .lang__opt.is-active {
-    color: var(--accent);
-    border-bottom: 1px solid var(--accent);
-  }
+  .lang__opt.is-active { color: var(--accent); border-bottom: 1px solid var(--accent); }
   .lang__sep { color: var(--rule); user-select: none; }
 
-  /* ───────────────── Masthead ───────────────── */
+  /* Masthead */
   header.mast { border-bottom: 1px solid var(--rule); }
-  .mast__inner {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    padding: 22px var(--gutter);
-    max-width: 1100px;
-    margin: 0 auto;
-    gap: 24px;
-  }
-  .brand {
-    display: flex;
-    align-items: baseline;
-    gap: 14px;
-    border: 0;
-  }
-  .brand__mark {
-    font-family: var(--serif);
-    font-weight: 600;
-    font-size: 20px;
-    letter-spacing: -0.01em;
-    color: var(--ink);
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
-  .brand__mark::before {
-    content: "";
-    display: inline-block;
-    width: 9px; height: 9px;
-    background: var(--accent);
-    margin-right: 10px;
-    transform: translateY(-2px);
-  }
-  .brand__sub {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 0.04em;
-    white-space: nowrap;
-  }
-  .mast__ref {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 0.04em;
-    white-space: nowrap;
-  }
-  .mast__nav {
-    display: inline-flex;
-    align-items: baseline;
-    gap: 10px;
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-  }
-  .mast__nav a {
-    color: var(--muted);
-    border: 0;
-    padding: 2px 0;
-    transition: color 100ms linear;
-  }
+  .mast__inner { display: flex; align-items: baseline; justify-content: space-between; padding: 22px var(--gutter); max-width: 1100px; margin: 0 auto; gap: 24px; }
+  .brand { display: flex; align-items: baseline; gap: 14px; border: 0; }
+  .brand__mark { font-family: var(--serif); font-weight: 600; font-size: 20px; letter-spacing: -0.01em; color: var(--ink); white-space: nowrap; flex-shrink: 0; }
+  .brand__mark::before { content: ""; display: inline-block; width: 9px; height: 9px; background: var(--accent); margin-right: 10px; transform: translateY(-2px); }
+  .brand__sub { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.04em; white-space: nowrap; }
+  .mast__nav { display: inline-flex; align-items: baseline; gap: 10px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; flex-wrap: wrap; }
+  .mast__nav a { color: var(--muted); border: 0; padding: 2px 0; transition: color 100ms linear; }
   .mast__nav a:hover { color: var(--ink); }
-  .mast__nav a[aria-current="page"] {
-    color: var(--accent);
-    border-bottom: 1px solid var(--accent);
-  }
+  .mast__nav a[aria-current="page"] { color: var(--accent); border-bottom: 1px solid var(--accent); }
   .mast__sep { color: var(--rule); user-select: none; }
-  @media (max-width: 720px) {
-    .mast__inner { flex-wrap: wrap; gap: 12px; }
-    .mast__ref { width: 100%; }
-  }
 
-  /* ───────────────── Cover ───────────────── */
-  section.cover {
-    padding: 128px 0 120px;
-    border-bottom: 1px solid var(--rule);
-  }
-  .cover__eyebrow {
-    font-family: var(--mono);
-    font-size: 11.5px;
-    color: var(--accent);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    margin: 0 0 28px;
-  }
-  .cover__eyebrow::before {
-    content: "§ 00 ·";
-    color: var(--muted);
-    margin-right: 8px;
-    letter-spacing: 0.04em;
-  }
-  .cover h1 {
-    font-family: var(--serif);
-    font-weight: 500;
-    font-size: 52px;
-    line-height: 1.08;
-    letter-spacing: -0.015em;
-    margin: 0 0 28px;
-    color: var(--ink);
-    text-wrap: balance;
-  }
+  /* Cover */
+  section.cover { padding: 120px 0 104px; border-bottom: 1px solid var(--rule); }
+  .cover__eyebrow { font-family: var(--mono); font-size: 11.5px; color: var(--accent); letter-spacing: 0.08em; text-transform: uppercase; margin: 0 0 24px; }
+  .cover__eyebrow::before { content: "§ 00 ·"; color: var(--muted); margin-right: 8px; letter-spacing: 0.04em; }
+  .cover h1 { font-family: var(--serif); font-weight: 500; font-size: 46px; line-height: 1.12; letter-spacing: -0.015em; margin: 0 0 24px; color: var(--ink); text-wrap: balance; max-width: 22ch; }
   .cover h1 em { font-style: italic; color: var(--ink-2); font-weight: 400; }
-  .cover__sub {
-    font-family: var(--serif);
-    font-size: 21px;
-    line-height: 1.55;
-    color: var(--ink-2);
-    margin: 0;
-    max-width: 58ch;
-    text-wrap: pretty;
-  }
-  .cover__rule {
-    margin: 56px 0 0;
-    height: 1px;
-    background: var(--rule);
-    width: 96px;
-  }
+  .cover__sub { font-family: var(--serif); font-size: 20px; line-height: 1.55; color: var(--ink-2); margin: 0; max-width: 60ch; text-wrap: pretty; }
+  .cover__rule { margin: 48px 0 0; height: 1px; background: var(--rule); width: 96px; }
 
-  /* ───────────────── Sections ───────────────── */
-  section.sec {
-    padding: 104px 0;
-    border-bottom: 1px solid var(--rule);
-  }
-  .sec__num {
-    font-family: var(--mono);
-    font-size: 11.5px;
-    color: var(--muted);
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    margin: 0 0 18px;
-  }
+  /* Sections */
+  section.sec { padding: 96px 0; border-bottom: 1px solid var(--rule); }
+  section.sec:last-of-type { border-bottom: 0; }
+  .sec__num { font-family: var(--mono); font-size: 11.5px; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; margin: 0 0 16px; }
   .sec__num .accent { color: var(--accent); }
-  .sec h2 {
-    font-family: var(--serif);
-    font-weight: 500;
-    font-size: 34px;
-    line-height: 1.18;
-    letter-spacing: -0.012em;
-    margin: 0 0 28px;
-    color: var(--ink);
-    text-wrap: balance;
-    max-width: 24ch;
-  }
-  .sec p {
-    margin: 0 0 20px;
-    color: var(--body);
-    font-size: 16.5px;
-    line-height: 1.7;
-    max-width: 62ch;
-    text-wrap: pretty;
-  }
-  .sec p.lede {
-    font-family: var(--serif);
-    font-size: 20px;
-    line-height: 1.55;
-    color: var(--ink-2);
-    margin-bottom: 28px;
-    max-width: 58ch;
-  }
+  .sec h2 { font-family: var(--serif); font-weight: 500; font-size: 30px; line-height: 1.2; letter-spacing: -0.012em; margin: 0 0 24px; color: var(--ink); text-wrap: balance; max-width: 28ch; }
+  .sec p { margin: 0 0 18px; color: var(--body); font-size: 16.5px; line-height: 1.7; max-width: 62ch; text-wrap: pretty; }
+  .sec p.lede { font-family: var(--serif); font-size: 19px; line-height: 1.55; color: var(--ink-2); margin-bottom: 24px; max-width: 58ch; }
   .sec p:last-child { margin-bottom: 0; }
   .sec b, .sec strong { color: var(--ink); font-weight: 600; }
+  .sec i, .sec em { font-style: italic; }
 
-  /* Compact constraints list */
-  ul.list-items {
-    list-style: none;
-    padding: 0;
-    margin: 8px 0 24px;
-    border-top: 1px solid var(--rule);
-  }
-  ul.list-items > li {
-    padding: 14px 0;
-    border-bottom: 1px solid var(--rule);
-    display: grid;
-    grid-template-columns: 36px 1fr;
-    gap: 18px;
-    align-items: baseline;
-    font-size: 16px;
-    color: var(--ink-2);
-    line-height: 1.5;
-  }
-  ul.list-items > li::before {
-    content: "—";
-    font-family: var(--mono);
-    color: var(--muted-2);
-    font-size: 13px;
-  }
+  /* Frameworks table */
+  table.frameworks { width: 100%; border-collapse: collapse; font-size: 15px; margin-top: 8px; }
+  table.frameworks th, table.frameworks td { text-align: left; padding: 18px 18px 18px 0; vertical-align: top; border-top: 1px solid var(--rule); }
+  table.frameworks thead th { font-family: var(--mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); font-weight: 500; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); padding: 12px 18px 12px 0; }
+  table.frameworks tbody tr:last-child td { border-bottom: 1px solid var(--rule); }
+  table.frameworks .col-ref { font-family: var(--mono); font-size: 12px; color: var(--accent); width: 30%; white-space: nowrap; }
+  table.frameworks .col-ref em { display: block; font-family: var(--serif); font-style: italic; color: var(--ink-2); font-size: 14px; margin-top: 4px; white-space: normal; }
+  table.frameworks .col-scope { width: 22%; font-family: var(--mono); font-size: 10.5px; color: var(--muted); letter-spacing: 0.04em; text-transform: uppercase; }
+  table.frameworks .col-req { color: var(--body); font-size: 15px; line-height: 1.6; }
 
-  /* ───────────────── Principles ───────────────── */
-  ol.principles {
-    list-style: none;
-    margin: 8px 0 0;
-    padding: 0;
-    counter-reset: principle;
-  }
-  ol.principles > li {
-    counter-increment: principle;
-    padding: 32px 0;
-    border-top: 1px solid var(--rule);
-    display: grid;
-    grid-template-columns: 72px 1fr;
-    gap: 24px;
-    align-items: baseline;
-  }
-  ol.principles > li:last-child { border-bottom: 1px solid var(--rule); }
-  ol.principles > li::before {
-    content: "P." counter(principle, decimal-leading-zero);
-    font-family: var(--mono);
-    font-size: 11.5px;
-    color: var(--accent);
-    letter-spacing: 0.04em;
-    padding-top: 4px;
-  }
-  ol.principles h3 {
-    font-family: var(--serif);
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 1.3;
-    margin: 0 0 8px;
-    color: var(--ink);
-    text-wrap: balance;
-  }
-  ol.principles p {
-    margin: 0;
-    color: var(--body);
-    font-size: 15.5px;
-    line-height: 1.65;
-    max-width: 58ch;
-  }
+  /* Shared requirements */
+  .shared { margin: 32px 0 0; padding: 28px 0 8px; border-top: 1px solid var(--ink); }
+  .shared__head { font-family: var(--mono); font-size: 10.5px; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; margin: 0 0 14px; }
+  .shared__list { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; counter-reset: s; }
+  .shared__list > li { padding: 14px 18px 14px 0; border-right: 1px solid var(--rule); font-family: var(--serif); font-size: 16px; line-height: 1.4; color: var(--ink); }
+  .shared__list > li:last-child { border-right: 0; padding-right: 0; }
+  .shared__list > li::before { content: counter(s, decimal-leading-zero) " ·"; counter-increment: s; font-family: var(--mono); font-size: 10.5px; color: var(--accent); letter-spacing: 0.04em; display: block; margin-bottom: 6px; }
 
-  .pullquote {
-    margin: 40px 0 0;
-    padding: 24px 0 0;
-    border-top: 1px solid var(--rule);
-    font-family: var(--serif);
-    font-style: italic;
-    font-size: 19px;
-    line-height: 1.55;
-    color: var(--ink-2);
-    max-width: 58ch;
-  }
-  .pullquote strong { font-style: normal; font-weight: 500; color: var(--ink); }
+  /* Missing */
+  .missing { margin: 12px 0 0; padding: 0; list-style: none; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); }
+  .missing > li { padding: 18px 0; border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: 110px 1fr; gap: 24px; align-items: baseline; }
+  .missing > li:last-child { border-bottom: 0; }
+  .missing__k { font-family: var(--mono); font-size: 10.5px; color: var(--accent); letter-spacing: 0.06em; text-transform: uppercase; }
+  .missing__v { font-family: var(--serif); font-size: 17px; color: var(--ink); line-height: 1.5; }
 
-  /* ───────────────── Normative table ───────────────── */
-  table.norm {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 15px;
-    margin-top: 12px;
-  }
-  table.norm th, table.norm td {
-    text-align: left;
-    padding: 20px 18px 20px 0;
-    border-top: 1px solid var(--rule);
-    vertical-align: top;
-  }
-  table.norm thead th {
-    font-family: var(--mono);
-    font-size: 10.5px;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: var(--muted);
-    font-weight: 500;
-    border-top: 1px solid var(--ink);
-    border-bottom: 1px solid var(--ink);
-    padding: 12px 18px 12px 0;
-  }
-  table.norm tbody tr:last-child td { border-bottom: 1px solid var(--rule); }
-  table.norm .col-ref {
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--accent);
-    width: 32%;
-    white-space: nowrap;
-  }
-  table.norm .col-ref em {
-    display: block;
-    font-family: var(--serif);
-    font-style: italic;
-    color: var(--ink-2);
-    font-size: 14px;
-    margin-top: 4px;
-    white-space: normal;
-  }
-  table.norm .col-rel { color: var(--body); font-size: 15px; line-height: 1.6; }
+  /* Statement */
+  .statement { margin: 12px 0 0; padding: 28px 0; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); font-family: var(--serif); font-size: 20px; line-height: 1.55; color: var(--ink); max-width: 62ch; text-wrap: pretty; }
+  .statement::before { content: "—"; display: block; font-family: var(--mono); color: var(--accent); font-size: 13px; margin-bottom: 14px; letter-spacing: 0.04em; }
 
-  /* ───────────────── Status ───────────────── */
-  .status {
-    margin-top: 8px;
-    border-top: 1px solid var(--ink);
-    border-bottom: 1px solid var(--ink);
-  }
-  .status__row {
-    display: grid;
-    grid-template-columns: 180px 1fr 140px;
-    gap: 24px;
-    padding: 20px 0;
-    border-bottom: 1px solid var(--rule);
-    align-items: baseline;
-  }
-  .status__row:last-child { border-bottom: 0; }
-  .status__label {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-  }
-  .status__value {
-    font-family: var(--serif);
-    font-size: 17px;
-    color: var(--ink);
-    line-height: 1.5;
-  }
-  .status__meta {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--muted-2);
-    letter-spacing: 0.04em;
-    text-align: right;
-    white-space: nowrap;
-  }
-  .status__meta .dot {
-    display: inline-block;
-    width: 6px; height: 6px;
-    background: var(--accent);
-    margin-right: 8px;
-    transform: translateY(-1px);
-  }
-  .status__meta.idle .dot { background: var(--muted-2); }
+  /* Negative list */
+  .negative { margin: 8px 0 0; padding: 0; list-style: none; border-top: 1px solid var(--rule); }
+  .negative > li { padding: 16px 0; border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: 100px 1fr; gap: 20px; align-items: baseline; }
+  .negative__tag { font-family: var(--mono); font-size: 10.5px; color: var(--accent); letter-spacing: 0.06em; }
+  .negative__text { font-family: var(--serif); font-size: 17px; color: var(--ink); line-height: 1.45; }
 
-  /* ───────────────── Colophon ───────────────── */
-  footer.colophon { padding: 64px 0 56px; }
-  .colophon__grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 32px 56px;
-    padding-top: 4px;
-  }
-  .colophon dt {
-    font-family: var(--mono);
-    font-size: 10.5px;
-    color: var(--muted);
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    margin-bottom: 6px;
-  }
-  .colophon dd {
-    margin: 0 0 18px;
-    font-family: var(--serif);
-    font-size: 15.5px;
-    color: var(--ink-2);
-    line-height: 1.55;
-  }
-  .colophon__bottom {
-    margin-top: 28px;
-    padding-top: 22px;
-    border-top: 1px solid var(--rule);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--muted-2);
-    letter-spacing: 0.04em;
-    flex-wrap: wrap;
-    gap: 12px;
-  }
+  /* Closing */
+  .closing { margin: 8px 0 0; padding: 36px 0 0; border-top: 1px solid var(--ink); }
+  .closing p { font-family: var(--serif); font-size: 21px; line-height: 1.5; color: var(--ink); max-width: 60ch; margin: 0 0 14px; text-wrap: pretty; }
+  .closing p.muted { color: var(--ink-2); }
 
-  /* ───────────────── Architecture diagram ───────────────── */
-  figure.fig.col--fig { max-width: 980px; margin: 32px auto 56px; padding: 0 var(--gutter); }
-  figure.fig svg {
-    display: block;
-    width: 100%;
-    height: auto;
-    max-width: 100%;
-    overflow: visible;
-  }
-  figure.fig .box-content {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    font-family: var(--sans);
-    color: var(--body);
-    overflow: hidden;
-  }
-  figure.fig .box-tag {
-    font-family: var(--mono);
-    font-size: 10.5px;
-    color: var(--muted);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    display: block;
-  }
-  figure.fig .box-tag--accent { color: var(--accent); }
-  figure.fig .box-title {
-    font-family: var(--serif);
-    font-size: 22px;
-    font-weight: 500;
-    color: var(--ink);
-    margin-top: 12px;
-    line-height: 1.15;
-    letter-spacing: -0.01em;
-    display: block;
-  }
-  figure.fig .box-desc {
-    font-size: 13.5px;
-    line-height: 1.55;
-    color: var(--body);
-    margin-top: 12px;
-    display: block;
-  }
-  figure.fig .box-foot {
-    margin-top: auto;
-    padding-top: 12px;
-    font-family: var(--mono);
-    font-size: 10.5px;
-    color: var(--accent);
-    letter-spacing: 0.06em;
-    display: block;
-  }
-  figure.fig .box-foot::before {
-    content: "";
-    display: inline-block;
-    width: 10px; height: 1px;
-    background: var(--accent);
-    vertical-align: middle;
-    margin-right: 8px;
-    transform: translateY(-2px);
-  }
-  figure.fig figcaption {
-    margin-top: 22px;
-    font-family: var(--mono);
-    font-size: 11.5px;
-    color: var(--muted);
-    letter-spacing: 0.04em;
-    line-height: 1.7;
-    max-width: 64ch;
-  }
+  /* Colophon */
+  footer.colophon { padding: 56px 0; border-top: 1px solid var(--rule); }
+  .colophon__row { max-width: 1100px; margin: 0 auto; padding: 0 var(--gutter); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; font-family: var(--mono); font-size: 11px; color: var(--muted-2); letter-spacing: 0.04em; }
 
-  /* ───────────────── Responsive ───────────────── */
+  /* Responsive */
+  @media (max-width: 880px) {
+    .shared__list { grid-template-columns: 1fr 1fr; }
+    .shared__list > li:nth-child(2n) { border-right: 0; padding-right: 0; }
+    .shared__list > li { border-bottom: 1px solid var(--rule); }
+    .shared__list > li:nth-last-child(-n+2) { border-bottom: 0; }
+  }
   @media (max-width: 720px) {
-    .cover { padding: 80px 0 72px; }
-    .cover h1 { font-size: 36px; }
-    .cover__sub { font-size: 18px; }
-    .sec { padding: 72px 0; }
-    .sec h2 { font-size: 26px; }
-    .status__row { grid-template-columns: 1fr; gap: 6px; }
-    .status__meta { text-align: left; }
-    table.norm .col-ref { width: auto; }
-    .colophon__grid { grid-template-columns: 1fr; }
-    ol.principles > li { grid-template-columns: 1fr; gap: 8px; }
-    ol.principles > li::before { padding-top: 0; }
-    .banner__inner { gap: 12px; }
-    .banner__left { font-size: 10.5px; gap: 14px; }
-  }
-
-  /* Print */
-  @media print {
-    .banner, .lang { display: none; }
-    section.cover { padding: 32px 0 24px; }
-    section.sec { padding: 32px 0; break-inside: avoid; }
-    a { color: var(--ink); border: 0; }
+    .cover { padding: 80px 0 64px; } .cover h1 { font-size: 32px; } .cover__sub { font-size: 17px; }
+    .sec { padding: 64px 0; } .sec h2 { font-size: 24px; }
+    .missing > li, .negative > li { grid-template-columns: 1fr; gap: 6px; }
+    .shared__list { grid-template-columns: 1fr; }
+    .shared__list > li { border-right: 0; border-bottom: 1px solid var(--rule); padding-right: 0; }
+    .shared__list > li:last-child { border-bottom: 0; }
+    table.frameworks .col-ref { width: auto; } table.frameworks .col-scope { display: none; }
+    .mast__inner { flex-wrap: wrap; gap: 12px; } .statement { font-size: 17px; }
   }
 </style>
 </head>
 <body>
 
-<!-- Document banner — language switch top-right -->
+<!-- Banner -->
 <div class="banner">
   <div class="banner__inner">
     <div class="banner__left">
@@ -650,481 +175,440 @@
       <span class="brand__sub" data-i18n="mast.sub">Specifica aperta · v0.4</span>
     </a>
     <nav class="mast__nav" aria-label="Sezioni">
-      <a href="index.html" aria-current="page" data-i18n="nav.spec">Specifica</a>
+      <a href="index.html" data-i18n="nav.spec">Specifica</a>
       <span class="mast__sep" aria-hidden="true">·</span>
       <a href="perche.html" data-i18n="nav.why">Perché AIKNOCK</a>
       <span class="mast__sep" aria-hidden="true">·</span>
       <a href="one-diagram.html" data-i18n="nav.one">One Diagram</a>
       <span class="mast__sep" aria-hidden="true">·</span>
-      <a href="norme.html" data-i18n="nav.norms">Norme</a>
+      <a href="norme.html" aria-current="page" data-i18n="nav.norms">Norme</a>
       <span class="mast__sep" aria-hidden="true">·</span>
       <a href="design-principles.html" data-i18n="nav.dp">Design Principles</a>
       <span class="mast__sep" aria-hidden="true">·</span>
       <a href="note-legali.html" data-i18n="nav.legal">Note legali</a>
     </nav>
-    <span class="mast__ref" data-i18n="mast.ref">Rif. AIKNOCK / WD-0004 · 11 maggio 2026</span>
   </div>
 </header>
 
 <!-- Cover -->
 <section class="cover">
-  <div class="col">
-    <p class="cover__eyebrow" data-i18n="cover.eyebrow">AIKNOCK · Controllo dell'esecuzione dell'AI</p>
-    <h1 data-i18n="cover.h1">Controllo dell'esecuzione dell'Intelligenza Artificiale a livello di Sistema Operativo<em>.</em></h1>
+  <div class="col--wide">
+    <p class="cover__eyebrow" data-i18n="cover.eyebrow">Norme e controllo dell'esecuzione dell'AI</p>
+    <h1 data-i18n="cover.h1">Norme e controllo dell'esecuzione dell'AI: una prospettiva infrastrutturale<em>.</em></h1>
     <p class="cover__sub" data-i18n="cover.sub">
-      AIKNOCK è un sistema di controllo dell'esecuzione, applicato
-      a livello di sistema operativo, che vincola l'invocazione e
-      l'esecuzione dei sistemi di Intelligenza Artificiale. Tratta l'AI
-      come una <i>capability</i> critica di sistema, non come una libreria
-      o funzionalità applicativa.
+      Una lettura tecnica delle relazioni fra <b>AI Act</b>, <b>NIS2</b>,
+      <b>ISO/IEC 27001</b>, <b>ISO/IEC 42001</b> e <b>NIST AI RMF</b>,
+      e del ruolo che un sistema di controllo dell'esecuzione a
+      livello di sistema può assumere rispetto ai requisiti che essi
+      pongono.
     </p>
     <div class="cover__rule" aria-hidden="true"></div>
   </div>
 </section>
 
-<!-- §00.5 — SEO content panel (machine-readable, editorial tone) -->
-<section class="sec" id="introduzione" aria-labelledby="seo-h2">
-  <p class="sec__num col"><span class="accent">§ 00</span> · <span data-i18n="seo.tag">Introduzione</span></p>
+<!-- §01 Premessa -->
+<section class="sec" id="premessa">
+  <p class="sec__num col"><span class="accent">§ 01</span> · <span data-i18n="s1.tag">Premessa</span></p>
   <div class="col">
-    <h2 id="seo-h2" data-i18n="seo.h2">Cos'è AIKNOCK.</h2>
-    <p class="lede" data-i18n="seo.lede">
-      AIKNOCK è una specifica tecnica aperta che descrive un sistema di
-      controllo dell'esecuzione dell'Intelligenza Artificiale operante al
-      livello del sistema operativo. Definisce un punto decisionale
-      <i>ex-ante</i>, non aggirabile, attraversato da ogni invocazione di
-      modelli di AI prima della loro esecuzione.
-    </p>
-
-    <h3 data-i18n="seo.h3a">Perché un sistema di controllo a livello di sistema.</h3>
-    <p data-i18n="seo.p1">
-      Nei sistemi attuali, l'invocazione dei modelli di Intelligenza
-      Artificiale avviene all'interno delle applicazioni, senza un
-      punto di controllo tecnico interposto e indipendente. AIKNOCK
-      sposta il controllo al di sotto del livello applicativo, dove il
-      comportamento di esecuzione del sistema può essere vincolato in
-      modo verificabile e indipendente dal codice chiamante.
-    </p>
-
-    <h3 data-i18n="seo.h3b">Caratteristiche distintive.</h3>
-    <p data-i18n="seo.p2">
-      Il sistema valuta e vincola l'uso dell'AI prima dell'esecuzione.
-      Le decisioni assunte producono, come effetto del funzionamento del
-      sistema, registrazioni verificabili. Il controllo è indipendente
-      dal modello, dal fornitore e dall'applicazione che richiede l'uso
-      dell'AI.
-    </p>
-
-    <h3 data-i18n="seo.h3c">Ambiti di applicazione.</h3>
-    <p data-i18n="seo.p3">
-      AIKNOCK si colloca al livello dell'infrastruttura informatica. È
-      pensato per contesti operativi critici in cui esistono requisiti
-      esterni — quali quelli posti dall'<b>AI Act</b>, dalla direttiva
-      <b>NIS2</b>, dagli standard <b>ISO/IEC 42001</b> e <b>ISO/IEC 27001</b>
-      e dal <b>NIST AI Risk Management Framework</b> — senza tuttavia
-      implementare né rappresentare tali requisiti.
-    </p>
-
-    <h3 data-i18n="seo.h3d">Documenti della specifica.</h3>
-    <p data-i18n="seo.p4">
-      La specifica è articolata in più documenti complementari, che
-      è possibile consultare separatamente:
-      <a href="perche.html" data-i18n="seo.lnk1">razionale del progetto e contesto di adozione</a>,
-      <a href="one-diagram.html" data-i18n="seo.lnk2">posizione architetturale in un solo diagramma</a>,
-      <a href="design-principles.html" data-i18n="seo.lnk3">principi di design e confini del sistema</a>,
-      <a href="norme.html" data-i18n="seo.lnk4">relazione tecnica con i quadri normativi esterni</a>,
-      <a href="note-legali.html" data-i18n="seo.lnk5">note legali, indipendenza editoriale e marchi</a>.
-    </p>
-  </div>
-</section>
-
-<!-- §01 — Obiettivo + diagramma -->
-<section class="sec" id="cos-e">
-  <p class="sec__num col"><span class="accent">§ 01</span> · <span data-i18n="s1.tag">Obiettivo</span></p>
-  <div class="col">
-    <h2 data-i18n="s1.h2">Un punto decisionale prima dell'esecuzione.</h2>
+    <h2 data-i18n="s1.h2">Livelli diversi, stesso problema.</h2>
     <p class="lede" data-i18n="s1.lede">
-      L'obiettivo di AIKNOCK è introdurre un punto decisionale ex-ante,
-      non aggirabile, che stabilisca se e quando l'AI può essere invocata,
-      prima dell'esecuzione.
+      AI Act, NIS2 e gli standard ISO e NIST operano su piani differenti:
+      giuridico, organizzativo, di gestione del rischio. Pur essendo
+      strumenti eterogenei, convergono su un insieme ristretto di
+      requisiti chiave.
     </p>
-  </div>
-
-  <figure class="fig col--fig">
-    <svg viewBox="0 0 1100 400" role="img" aria-labelledby="figT figD" xmlns="http://www.w3.org/2000/svg">
-      <title id="figT">AIKNOCK — Posizione del punto decisionale</title>
-      <desc id="figD" data-i18n="s1.fig.desc">Application Layer → AIKNOCK (Execution Control Unit) → AI Execution Layer. AIKNOCK decide ex-ante, prima dell'esecuzione.</desc>
-
-      <line x1="60" y1="50" x2="1040" y2="50" stroke="#d8d8d8" stroke-width="1"></line>
-      <line x1="180" y1="44" x2="180" y2="56" stroke="#9a9a9a" stroke-width="1"></line>
-      <line x1="550" y1="42" x2="550" y2="58" stroke="#8a1a1a" stroke-width="1.5"></line>
-      <line x1="920" y1="44" x2="920" y2="56" stroke="#9a9a9a" stroke-width="1"></line>
-      <text x="180" y="32" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10.5" fill="#6a6a6a" letter-spacing="1" data-i18n="s1.fig.t0">t₀ · intento</text>
-      <text x="550" y="32" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10.5" fill="#8a1a1a" letter-spacing="1" data-i18n="s1.fig.t1">t₁ · decisione</text>
-      <text x="920" y="32" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10.5" fill="#6a6a6a" letter-spacing="1" data-i18n="s1.fig.t2">t₂ · esecuzione</text>
-
-      <rect x="40" y="130" width="280" height="200" fill="none" stroke="#111111" stroke-width="1"></rect>
-      <foreignObject x="60" y="148" width="240" height="166">
-        <div xmlns="http://www.w3.org/1999/xhtml" class="box-content">
-          <span class="box-tag" data-i18n="s1.fig.b1.tag">01 · LIVELLO</span>
-          <span class="box-title" data-i18n="s1.fig.b1.title">Application Layer</span>
-          <span class="box-desc" data-i18n="s1.fig.b1.desc">Software, servizi e flussi che richiedono l'uso dell'AI.</span>
-        </div>
-      </foreignObject>
-
-      <rect x="410" y="100" width="280" height="260" fill="none" stroke="#8a1a1a" stroke-width="1.5"></rect>
-      <line x1="410" y1="188" x2="690" y2="188" stroke="#8a1a1a" stroke-width="1" stroke-dasharray="3 3"></line>
-      <foreignObject x="430" y="118" width="240" height="62">
-        <div xmlns="http://www.w3.org/1999/xhtml" class="box-content">
-          <span class="box-tag box-tag--accent" data-i18n="s1.fig.b2.tag">02 · EXECUTION CONTROL UNIT</span>
-          <span class="box-title" data-i18n="s1.fig.b2.title">AIKNOCK</span>
-        </div>
-      </foreignObject>
-      <foreignObject x="430" y="200" width="240" height="148">
-        <div xmlns="http://www.w3.org/1999/xhtml" class="box-content">
-          <span class="box-desc" data-i18n="s1.fig.b2.desc">Decide ex-ante se l'AI può essere invocata, a quali condizioni e con quali evidenze.</span>
-          <span class="box-foot" data-i18n="s1.fig.b2.foot">non aggirabile · livello OS</span>
-        </div>
-      </foreignObject>
-
-      <rect x="780" y="130" width="280" height="200" fill="none" stroke="#111111" stroke-width="1"></rect>
-      <foreignObject x="800" y="148" width="240" height="166">
-        <div xmlns="http://www.w3.org/1999/xhtml" class="box-content">
-          <span class="box-tag" data-i18n="s1.fig.b3.tag">03 · LIVELLO</span>
-          <span class="box-title" data-i18n="s1.fig.b3.title">AI Execution Layer</span>
-          <span class="box-desc" data-i18n="s1.fig.b3.desc">Invocazione del modello, inferenza e risposta — soggette ad autorizzazione.</span>
-        </div>
-      </foreignObject>
-
-      <line x1="320" y1="230" x2="402" y2="230" stroke="#111111" stroke-width="1"></line>
-      <polygon points="410,230 400,225 400,235" fill="#111111"></polygon>
-      <text x="361" y="222" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#6a6a6a" letter-spacing="0.6" data-i18n="s1.fig.arr1">richiesta</text>
-
-      <line x1="690" y1="230" x2="772" y2="230" stroke="#8a1a1a" stroke-width="1.5"></line>
-      <polygon points="780,230 770,225 770,235" fill="#8a1a1a"></polygon>
-      <text x="731" y="222" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#8a1a1a" letter-spacing="0.6" data-i18n="s1.fig.arr2">autorizza</text>
-    </svg>
-    <figcaption data-i18n="s1.fig.cap">Figura 1 — Posizione di AIKNOCK nella catena di invocazione dell'AI. La decisione di autorizzazione è presa al tempo t₁, prima dell'esecuzione del modello. Il sistema valuta e vincola l'uso dell'AI prima dell'esecuzione.</figcaption>
-  </figure>
-
-  <div class="col">
     <p data-i18n="s1.p1">
-      La decisione è presa indipendentemente dal modello, dal vendor e
-      dal software chiamante. Il protocollo opera al livello del sistema
-      operativo, dove l'autorizzazione precede l'invocazione e non può
-      essere elusa dall'applicazione che richiede l'uso dell'AI.
+      Letti per principi, e non per articoli, questi requisiti si possono
+      ricondurre a quattro proprietà ricorrenti: <b>controllo preventivo</b>
+      dell'invocazione dell'AI, <b>tracciabilità</b> documentata e
+      verificabile delle decisioni, <b>auditabilità</b> tecnica e
+      <b>responsabilità</b> attribuibile a soggetti identificabili.
+    </p>
+    <p data-i18n="s1.p2">
+      Il piano giuridico definisce obblighi; il piano organizzativo
+      definisce processi; il piano della gestione del rischio definisce
+      metodi. Manca, in questa stratificazione, una definizione esplicita
+      dei meccanismi tecnici attraverso i quali tali requisiti possono
+      essere resi osservabili nei sistemi che effettivamente eseguono
+      l'AI.
     </p>
   </div>
 </section>
 
-<!-- §02 — Il problema -->
-<section class="sec" id="problema">
-  <p class="sec__num col"><span class="accent">§ 02</span> · <span data-i18n="s2.tag">Il problema</span></p>
-  <div class="col">
-    <h2 data-i18n="s2.h2">Il problema.</h2>
-    <p data-i18n="s2.p1">Oggi i sistemi che invocano l'AI non dispongono di uno strato tecnico di controllo dell'esecuzione. Tale controllo è tipicamente delegato a:</p>
-    <ul class="list-items">
-      <li data-i18n="s2.l1">regole applicative,</li>
-      <li data-i18n="s2.l2">documentazione,</li>
-      <li data-i18n="s2.l3">ispezioni post-hoc,</li>
-      <li data-i18n="s2.l4">log applicativi.</li>
-    </ul>
-    <p data-i18n="s2.p2">
-      Questo approccio non offre un punto di applicazione tecnica
-      indipendente dalle applicazioni. In contesti operativi critici, in
-      cui esistono anche requisiti esterni — fra cui <b>AI Act</b>,
-      <b>ISO/IEC 42001</b>, <b>ISO/IEC 27001</b> e <b>NIS2</b> — l'assenza
-      di un sistema di controllo dell'esecuzione resta un limite
-      architetturale.
-    </p>
-    <p data-i18n="s2.p3">Manca uno strato infrastrutturale dedicato dove far risiedere il controllo dell'esecuzione dell'AI.</p>
-  </div>
-</section>
-
-<!-- §03 — L'approccio -->
-<section class="sec" id="principi">
-  <p class="sec__num col"><span class="accent">§ 03</span> · <span data-i18n="s3.tag">Approccio</span></p>
-  <div class="col">
-    <h2 data-i18n="s3.h2">L'approccio AIKNOCK.</h2>
-    <p data-i18n="s3.intro">AIKNOCK colma questo vuoto introducendo:</p>
-    <ol class="principles">
-      <li><div>
-        <h3 data-i18n="s3.p1.h">Autorizzazione ex-ante dell'invocazione.</h3>
-        <p data-i18n="s3.p1.p">Ogni invocazione dell'AI è preceduta da una decisione esplicita che stabilisce se l'uso è ammesso, secondo i vincoli di esecuzione applicati dal sistema.</p>
-      </div></li>
-      <li><div>
-        <h3 data-i18n="s3.p2.h">Enforcement non aggirabile a livello OS.</h3>
-        <p data-i18n="s3.p2.p">Il punto di applicazione risiede al livello del sistema operativo, non nell'applicazione chiamante: la decisione non può essere ignorata, riscritta o aggirata dal codice che richiede l'AI.</p>
-      </div></li>
-      <li><div>
-        <h3 data-i18n="s3.p3.h">Audit by-construction delle decisioni.</h3>
-        <p data-i18n="s3.p3.p">Ogni autorizzazione, rifiuto e condizione applicata produce per costruzione un record verificabile, utilizzabile come evidenza tecnica per audit interni ed esterni.</p>
-      </div></li>
-      <li><div>
-        <h3 data-i18n="s3.p4.h">Separazione tra disponibilità e autorizzazione.</h3>
-        <p data-i18n="s3.p4.p">Il fatto che un modello sia tecnicamente disponibile non implica che il suo uso sia autorizzato. AIKNOCK distingue in modo esplicito questi due piani.</p>
-      </div></li>
-      <li><div>
-        <h3 data-i18n="s3.p5.h">Neutralità rispetto a modelli, vendor e applicazioni.</h3>
-        <p data-i18n="s3.p5.p">Il protocollo non dipende da un particolare modello, fornitore o applicazione. Definisce un'interfaccia di controllo dell'esecuzione a cui ogni implementazione si conforma.</p>
-      </div></li>
-    </ol>
-    <p class="pullquote" data-i18n="s3.note">
-      <strong>AIKNOCK non analizza prompt o output.</strong> Vincola
-      tecnicamente l'invocazione dell'AI, non il suo contenuto.
-    </p>
-  </div>
-</section>
-
-<!-- §04 — Rilevanza normativa -->
-<section class="sec" id="normativa">
-  <p class="sec__num col--wide"><span class="accent">§ 04</span> · <span data-i18n="s4.tag">Contesti esterni</span></p>
+<!-- §02 Quadri -->
+<section class="sec" id="quadri">
+  <p class="sec__num col--wide"><span class="accent">§ 02</span> · <span data-i18n="s2.tag">Quadri di riferimento</span></p>
   <div class="col--wide">
-    <h2 data-i18n="s4.h2">Contesti esterni di riferimento.</h2>
-    <p data-i18n="s4.intro" style="max-width: 62ch;">
-      Il sistema può essere adottato in contesti in cui esistono requisiti
-      normativi o standard esterni. AIKNOCK definisce un meccanismo
-      tecnico di controllo dell'esecuzione e <b>non implementa né
-      rappresenta</b> tali requisiti. La sua adozione non garantisce,
-      di per sé, la conformità giuridica.
+    <h2 data-i18n="s2.h2">Cosa chiedono norme e framework, per principi.</h2>
+    <p data-i18n="s2.intro">
+      La tabella che segue riassume, in forma concettuale e non
+      legalistica, i principi che ciascun quadro normativo o di
+      <i>framework</i> rende espliciti. Non costituisce un'analisi di
+      conformità né un'interpretazione vincolante dei testi.
     </p>
-    <table class="norm">
+
+    <table class="frameworks">
       <thead>
         <tr>
-          <th class="col-ref" data-i18n="s4.th1">Contesto esterno</th>
-          <th class="col-rel" data-i18n="s4.th2">Effetto tecnico di AIKNOCK</th>
+          <th class="col-ref" data-i18n="s2.th1">Quadro</th>
+          <th class="col-scope" data-i18n="s2.th2">Piano</th>
+          <th class="col-req" data-i18n="s2.th3">Principi rilevanti</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td class="col-ref" data-i18n="s4.r1.ref">EU AI Act<em>Reg. (UE) 2024/1689</em></td>
-          <td class="col-rel" data-i18n="s4.r1.rel">Controllo ex-ante dell'invocazione dei modelli, applicato prima dell'esecuzione, con punto di applicazione indipendente dalle applicazioni chiamanti.</td>
+          <td class="col-ref" data-i18n="s2.r1.ref">AI Act<em>Reg. (UE) 2024/1689</em></td>
+          <td class="col-scope" data-i18n="s2.r1.scope">Giuridico</td>
+          <td class="col-req" data-i18n="s2.r1.req">Controllo <i>ex-ante</i> dell'uso dei sistemi di AI; sorveglianza umana sulle decisioni a impatto rilevante; auditabilità dei sistemi lungo il ciclo di vita.</td>
         </tr>
         <tr>
-          <td class="col-ref" data-i18n="s4.r2.ref">ISO/IEC 42001<em>AI Management System</em></td>
-          <td class="col-rel" data-i18n="s4.r2.rel">Produzione tecnica di registrazioni verificabili delle decisioni di invocazione, come effetto del funzionamento del sistema.</td>
+          <td class="col-ref" data-i18n="s2.r2.ref">NIS2<em>Dir. (UE) 2022/2555</em></td>
+          <td class="col-scope" data-i18n="s2.r2.scope">Sicurezza sistemica</td>
+          <td class="col-req" data-i18n="s2.r2.req">Gestione del rischio delle <i>capability</i> critiche, continuità e sicurezza dei servizi essenziali, tracciamento e notifica degli incidenti.</td>
         </tr>
         <tr>
-          <td class="col-ref" data-i18n="s4.r3.ref">ISO/IEC 27001<em>Sicurezza delle informazioni</em></td>
-          <td class="col-rel" data-i18n="s4.r3.rel">Trattamento dell'AI come <i>capability</i> critica del sistema, soggetta a controllo tecnico degli accessi e dei privilegi.</td>
+          <td class="col-ref" data-i18n="s2.r3.ref">ISO/IEC 27001<em>Sistemi di gestione per la sicurezza delle informazioni</em></td>
+          <td class="col-scope" data-i18n="s2.r3.scope">Organizzativo</td>
+          <td class="col-req" data-i18n="s2.r3.req">Controllo degli accessi e delle risorse critiche, separazione dei privilegi, registrazione e revisione delle attività.</td>
         </tr>
         <tr>
-          <td class="col-ref" data-i18n="s4.r4.ref">NIS2<em>Dir. (UE) 2022/2555</em></td>
-          <td class="col-rel" data-i18n="s4.r4.rel">Registrazione tecnica delle decisioni di invocazione e degli eventi associati, ricostruibile come traccia indipendente dalle applicazioni.</td>
+          <td class="col-ref" data-i18n="s2.r4.ref">ISO/IEC 42001<em>Sistemi di gestione per l'intelligenza artificiale</em></td>
+          <td class="col-scope" data-i18n="s2.r4.scope">Organizzativo</td>
+          <td class="col-req" data-i18n="s2.r4.req">Sistema di gestione per i sistemi di AI: tracciabilità delle decisioni, ruoli e responsabilità, riesame periodico.</td>
+        </tr>
+        <tr>
+          <td class="col-ref" data-i18n="s2.r5.ref">NIST AI RMF 1.0<em>AI Risk Management Framework</em></td>
+          <td class="col-scope" data-i18n="s2.r5.scope">Gestione del rischio</td>
+          <td class="col-req" data-i18n="s2.r5.req">Funzioni <i>Govern</i>, <i>Map</i>, <i>Measure</i>, <i>Manage</i>: indirizzo, individuazione del contesto d'uso, misurazione e trattamento del rischio.</td>
         </tr>
       </tbody>
     </table>
+
+    <div class="shared">
+      <p class="shared__head" data-i18n="s2.shared.head">Requisiti ricorrenti</p>
+      <ol class="shared__list">
+        <li data-i18n="s2.shared.l1">Controllo preventivo dell'uso.</li>
+        <li data-i18n="s2.shared.l2">Tracciabilità esplicita.</li>
+        <li data-i18n="s2.shared.l3">Auditabilità verificabile.</li>
+        <li data-i18n="s2.shared.l4">Responsabilità attribuibile.</li>
+      </ol>
+    </div>
   </div>
 </section>
 
-<!-- §05 — Stato del progetto -->
-<section class="sec" id="stato">
-  <p class="sec__num col"><span class="accent">§ 05</span> · <span data-i18n="s5.tag">Stato del progetto</span></p>
+<!-- §03 Denominatore mancante -->
+<section class="sec" id="mancante">
+  <p class="sec__num col"><span class="accent">§ 03</span> · <span data-i18n="s3.tag">Denominatore mancante</span></p>
   <div class="col">
-    <h2 data-i18n="s5.h2">Stato del progetto.</h2>
-    <div class="status">
-      <div class="status__row">
-        <span class="status__label" data-i18n="s5.r1.l">Definizione</span>
-        <span class="status__value" data-i18n="s5.r1.v">Protocollo e pattern architetturale.</span>
-        <span class="status__meta" data-i18n="s5.r1.m"><span class="dot"></span>Attivo</span>
-      </div>
-      <div class="status__row">
-        <span class="status__label" data-i18n="s5.r2.l">Implementazione</span>
-        <span class="status__value" data-i18n="s5.r2.v">Reference implementation enterprise in sviluppo.</span>
-        <span class="status__meta idle" data-i18n="s5.r2.m"><span class="dot"></span>In corso</span>
-      </div>
+    <h2 data-i18n="s3.h2">Il denominatore comune mancante.</h2>
+    <p data-i18n="s3.p1">
+      I requisiti elencati nei quadri di riferimento sono espressi in
+      termini di <i>cosa</i> deve essere garantito. La loro traduzione
+      operativa è oggi delegata a strumenti eterogenei — regole testuali,
+      documentazione, controlli applicativi, registrazioni successive —
+      raramente ricondotti a uno stesso piano architetturale.
+    </p>
+    <p data-i18n="s3.p2">
+      In particolare, manca un <b>punto di controllo tecnico</b> che
+      presenti, congiuntamente, le seguenti quattro proprietà.
+    </p>
+
+    <ul class="missing">
+      <li>
+        <span class="missing__k" data-i18n="s3.m1.k">Non aggirabile</span>
+        <span class="missing__v" data-i18n="s3.m1.v">L'autorizzazione all'uso dell'AI non può essere ignorata, riscritta o omessa dal codice che la richiede.</span>
+      </li>
+      <li>
+        <span class="missing__k" data-i18n="s3.m2.k">Indipendente</span>
+        <span class="missing__v" data-i18n="s3.m2.v">Il punto di controllo è disaccoppiato dalle applicazioni: non dipende dalla loro cooperazione né dalla loro corretta configurazione.</span>
+      </li>
+      <li>
+        <span class="missing__k" data-i18n="s3.m3.k">Sotto-applicativo</span>
+        <span class="missing__v" data-i18n="s3.m3.v">Risiede al di sotto del livello applicativo, in una posizione che le applicazioni non possono modificare.</span>
+      </li>
+      <li>
+        <span class="missing__k" data-i18n="s3.m4.k">Evidenze tecniche</span>
+        <span class="missing__v" data-i18n="s3.m4.v">Produce, come effetto del proprio funzionamento, registrazioni verificabili delle decisioni assunte.</span>
+      </li>
+    </ul>
+
+    <p style="margin-top: 28px;" data-i18n="s3.p3">
+      L'assenza di un tale punto di controllo non è una lacuna delle
+      norme: è una lacuna dell'architettura dei sistemi. È, in altri
+      termini, un <b>problema architetturale</b>.
+    </p>
+  </div>
+</section>
+
+<!-- §04 Posizione -->
+<section class="sec" id="colloca">
+  <p class="sec__num col"><span class="accent">§ 04</span> · <span data-i18n="s4.tag">Posizione</span></p>
+  <div class="col">
+    <h2 data-i18n="s4.h2">Dove si colloca AIKNOCK.</h2>
+    <p class="statement" data-i18n="s4.stmt">
+      AIKNOCK esplora un possibile punto di controllo tecnico
+      <i>ex-ante</i>, a livello di sistema, coerente con i requisiti di
+      controllo dell'esecuzione, auditabilità e gestione del rischio
+      richiamati da norme e standard, senza sostituirli né
+      interpretarli.
+    </p>
+    <p data-i18n="s4.p1">
+      Le norme e gli standard definiscono <b>obblighi</b>. AIKNOCK opera
+      sul piano dei <b>meccanismi tecnici</b>. Il sistema opera in modo
+      indipendente da quadri normativi o di standard esterni e mantiene
+      un comportamento tecnico coerente al livello dell'esecuzione. I due
+      piani sono complementari: ciò che il diritto e gli standard
+      prescrivono come proprietà del sistema, un meccanismo come quello
+      descritto può contribuire a rendere osservabile e verificabile.
+    </p>
+  </div>
+</section>
+
+<!-- §05 Esclusioni -->
+<section class="sec" id="esclusioni">
+  <p class="sec__num col"><span class="accent">§ 05</span> · <span data-i18n="s5.tag">Esclusioni</span></p>
+  <div class="col">
+    <h2 data-i18n="s5.h2">Cosa AIKNOCK non fa rispetto alle norme.</h2>
+    <p data-i18n="s5.intro">
+      Per evitare confusione fra piani distinti, è opportuno enunciare
+      esplicitamente l'ambito che AIKNOCK non occupa.
+    </p>
+
+    <ul class="negative">
+      <li>
+        <span class="negative__tag" data-i18n="s5.tag.label">NON FA</span>
+        <span class="negative__text" data-i18n="s5.n1">non interpreta la legge,</span>
+      </li>
+      <li>
+        <span class="negative__tag" data-i18n="s5.tag.label2">NON FA</span>
+        <span class="negative__text" data-i18n="s5.n2">non garantisce conformità,</span>
+      </li>
+      <li>
+        <span class="negative__tag" data-i18n="s5.tag.label3">NON FA</span>
+        <span class="negative__text" data-i18n="s5.n3">non sostituisce processi organizzativi o legali,</span>
+      </li>
+      <li>
+        <span class="negative__tag" data-i18n="s5.tag.label4">NON FA</span>
+        <span class="negative__text" data-i18n="s5.n4">non elimina le responsabilità dei <i>deployer</i>,</span>
+      </li>
+      <li>
+        <span class="negative__tag" data-i18n="s5.tag.label5">NON FA</span>
+        <span class="negative__text" data-i18n="s5.n5">non governa dataset né processi di <i>training</i>.</span>
+      </li>
+    </ul>
+
+    <p style="margin-top: 28px;" data-i18n="s5.after">
+      L'osservanza delle norme resta una responsabilità degli operatori,
+      degli implementatori e delle autorità competenti. AIKNOCK non
+      sposta tale responsabilità: descrive un piano tecnico distinto.
+    </p>
+  </div>
+</section>
+
+<!-- §06 Conclusione -->
+<section class="sec" id="conclusione">
+  <p class="sec__num col"><span class="accent">§ 06</span> · <span data-i18n="s6.tag">Conclusione</span></p>
+  <div class="col">
+    <h2 data-i18n="s6.h2">Conclusione.</h2>
+    <div class="closing">
+      <p data-i18n="s6.p1">Le norme definiscono cosa deve essere garantito.</p>
+      <p data-i18n="s6.p2"><b>AIKNOCK si colloca sul piano di come una parte di tali garanzie può essere resa una proprietà tecnica del sistema.</b></p>
+      <p class="muted" data-i18n="s6.p3">La distanza fra i due piani è una caratteristica strutturale, non un'opposizione: i due livelli si presuppongono a vicenda.</p>
     </div>
   </div>
 </section>
 
 <!-- Colophon -->
 <footer class="colophon">
-  <p class="sec__num col" style="margin-bottom: 22px;"><span class="accent">§ 99</span> · <span data-i18n="col.tag">Colofone</span></p>
-  <div class="col">
-    <dl class="colophon__grid">
-      <div><dt data-i18n="col.dt1">Documento</dt><dd data-i18n="col.dd1">AIKNOCK / WD-0004</dd></div>
-      <div><dt data-i18n="col.dt2">Stadio</dt><dd data-i18n="col.dd2">Working Draft</dd></div>
-      <div><dt data-i18n="col.dt3">Curatela</dt><dd data-i18n="col.dd3">Gruppo editoriale AIKNOCK</dd></div>
-      <div><dt data-i18n="col.dt4">Licenza</dt><dd data-i18n="col.dd4">Creative Commons Attribution 4.0 Internazionale</dd></div>
-    </dl>
-    <div class="colophon__bottom">
-      <span data-i18n="col.bot1">© 2026 Gruppo editoriale AIKNOCK — Pubblicato come specifica aperta.</span>
-      <a href="note-legali.html" data-i18n="col.legal" style="border:0;color:var(--accent);font-family:var(--mono);font-size:11px;letter-spacing:0.04em;">Progetto indipendente · Note legali →</a>
-      <span data-i18n="col.bot2">Ultima revisione 11 maggio 2026 · WD-0004</span>
-    </div>
+  <div class="colophon__row">
+    <span data-i18n="col.bot1">© 2026 Gruppo editoriale AIKNOCK — Specifica aperta · CC BY 4.0</span>
+    <a href="note-legali.html" data-i18n="col.legal" style="border:0;color:var(--accent);font-family:var(--mono);font-size:11px;letter-spacing:0.04em;">Progetto indipendente · Note legali →</a>
+    <span data-i18n="col.bot2">AIKNOCK / WD-0004 · NORME · 12 maggio 2026</span>
   </div>
 </footer>
 
 <script>
-/* AIKNOCK — Inline language switch.
- * Italian is the canonical source in the HTML above.
- * EN / FR / ES dictionaries below; no external dependency. */
+/* Language switch — Italian canonical, EN/FR/ES inlined.
+   Stesso protocollo delle altre pagine: ?lang=xx + localStorage + navigator.language. */
 (function () {
   "use strict";
-  var LANGS = ["it", "en", "fr", "es"];
+  var LANGS = ["it","en","fr","es"];
 
   var dict = {
     en: {
-      "doc.title":"AIKNOCK — Operating-System-Level Execution Control for Artificial Intelligence",
       "banner.l1":"Open specification","banner.l2":"Public working draft","banner.l3":"Maintained by the AIKNOCK editorial group",
-      "mast.sub":"Open specification · v0.4","mast.ref":"Ref. AIKNOCK / WD-0004 · 11 May 2026",
-      "cover.eyebrow":"AIKNOCK · AI execution control",
-      "cover.h1":"Operating-system-level execution control for Artificial Intelligence<em>.</em>",
-      "cover.sub":"AIKNOCK is a system-level execution-control system, applied at the operating-system layer, that constrains the invocation and execution of Artificial Intelligence systems. It treats AI as a critical system <i>capability</i>, not as a library or application feature.",
-      "seo.tag":"Introduction",
-      "seo.h2":"What AIKNOCK is.",
-      "seo.lede":"AIKNOCK is an open technical specification describing an execution-control system for Artificial Intelligence, operating at the operating-system layer. It defines an <i>ex-ante</i>, non-bypassable decision point that every invocation of AI models traverses before execution.",
-      "seo.h3a":"Why a system-level control system.",
-      "seo.p1":"In current systems, the invocation of AI models occurs inside applications, without an interposed and independent technical control point. AIKNOCK moves control below the application layer, where the execution behaviour of the system can be constrained in a verifiable manner, independently of the calling code.",
-      "seo.h3b":"Distinctive features.",
-      "seo.p2":"The system evaluates and constrains AI usage before execution. The decisions taken produce, as an effect of the system's operation, verifiable records. Control is independent of the model, the vendor and the application requesting the use of AI.",
-      "seo.h3c":"Application contexts.",
-      "seo.p3":"AIKNOCK sits at the infrastructure layer. It is intended for critical operating contexts where external requirements exist — such as those set by the <b>AI Act</b>, the <b>NIS2</b> directive, the <b>ISO/IEC 42001</b> and <b>ISO/IEC 27001</b> standards and the <b>NIST AI Risk Management Framework</b> — without implementing or representing such requirements.",
-      "seo.h3d":"Specification documents.",
-      "seo.p4":"The specification is articulated in several complementary documents, which can be consulted separately: <a href=\"perche.html\">project rationale and adoption context</a>, <a href=\"one-diagram.html\">architectural position in a single diagram</a>, <a href=\"design-principles.html\">design principles and system boundaries</a>, <a href=\"norme.html\">technical relation to external regulatory frameworks</a>, <a href=\"note-legali.html\">legal notice, editorial independence and trademarks</a>.",
-      "s1.tag":"Objective","s1.h2":"A decision point before execution.",
-      "s1.lede":"The objective of AIKNOCK is to introduce a non-bypassable, ex-ante decision point that determines whether and when AI can be invoked, prior to execution.",
-      "s1.p1":"The decision is taken independently of the model, the vendor and the calling software. The protocol operates at the operating-system layer, where authorisation precedes invocation and cannot be evaded by the application requesting the use of AI.",
-      "s1.fig.desc":"Application Layer → AIKNOCK (Execution Control Unit) → AI Execution Layer. AIKNOCK decides ex-ante, before execution.",
-      "s1.fig.t0":"t₀ · intent","s1.fig.t1":"t₁ · decision","s1.fig.t2":"t₂ · execution",
-      "s1.fig.b1.tag":"01 · LAYER","s1.fig.b1.title":"Application Layer","s1.fig.b1.desc":"Software, services and workflows that request the use of AI.",
-      "s1.fig.b2.tag":"02 · EXECUTION CONTROL UNIT","s1.fig.b2.title":"AIKNOCK","s1.fig.b2.desc":"Decides ex-ante whether AI may be invoked, under which conditions and with which evidence.","s1.fig.b2.foot":"non-bypassable · OS-level",
-      "s1.fig.b3.tag":"03 · LAYER","s1.fig.b3.title":"AI Execution Layer","s1.fig.b3.desc":"Model invocation, inference and return — subject to authorisation.",
-      "s1.fig.arr1":"request","s1.fig.arr2":"authorise",
-      "s1.fig.cap":"Figure 1 — Position of AIKNOCK in the AI invocation chain. The authorisation decision is taken at t₁, before the execution of the model. The system evaluates and constrains AI usage before execution.",
-      "s2.tag":"The problem","s2.h2":"The problem.","s2.p1":"Systems that invoke AI today do not have a technical execution-control layer. Such control is typically delegated to:",
-      "s2.l1":"application rules,","s2.l2":"documentation,","s2.l3":"post-hoc inspections,","s2.l4":"application logs.",
-      "s2.p2":"This approach does not provide a technical enforcement point that is independent of the applications. In critical operating contexts where external requirements also exist — including <b>AI Act</b>, <b>ISO/IEC 42001</b>, <b>ISO/IEC 27001</b> and <b>NIS2</b> — the absence of an execution-control system remains an architectural limit.",
-      "s2.p3":"A dedicated infrastructural layer in which to host AI execution control is missing.",
-      "s3.tag":"Approach","s3.h2":"The AIKNOCK approach.","s3.intro":"AIKNOCK fills this gap by introducing:",
-      "s3.p1.h":"Ex-ante authorisation of invocation.","s3.p1.p":"Every invocation of AI is preceded by an explicit decision that determines whether the use is permitted, according to the execution constraints applied by the system.",
-      "s3.p2.h":"Non-bypassable enforcement at the OS layer.","s3.p2.p":"The enforcement point sits at the operating-system layer, not in the calling application: the decision cannot be ignored, rewritten or bypassed by the code requesting AI.",
-      "s3.p3.h":"Audit by construction of decisions.","s3.p3.p":"Every authorisation, refusal and applied condition produces, by construction, a verifiable record usable as technical evidence for internal and external audits.",
-      "s3.p4.h":"Separation of availability and authorisation.","s3.p4.p":"The fact that a model is technically available does not imply that its use is authorised. AIKNOCK explicitly distinguishes these two planes.",
-      "s3.p5.h":"Neutrality across models, vendors and applications.","s3.p5.p":"The protocol does not depend on a particular model, vendor or application. It defines an execution-control interface to which every implementation conforms.",
-      "s3.note":"<strong>AIKNOCK does not analyse prompts or outputs.</strong> It technically constrains the invocation of AI, not its content.",
-      "s4.tag":"External contexts","s4.h2":"External reference contexts.",
-      "s4.intro":"The system may be applied in contexts where normative or standard external requirements exist. AIKNOCK defines a technical execution-control system and <b>does not implement or represent</b> such requirements. Its adoption does not, in itself, guarantee legal compliance.",
-      "s4.th1":"External context","s4.th2":"Technical effect of AIKNOCK",
-      "s4.r1.ref":"EU AI Act<em>Reg. (EU) 2024/1689</em>","s4.r1.rel":"Ex-ante control of model invocation, applied before execution, with an enforcement point independent of the calling applications.",
-      "s4.r2.ref":"ISO/IEC 42001<em>AI Management System</em>","s4.r2.rel":"Technical production of verifiable records of invocation decisions, as an effect of the system's operation.",
-      "s4.r3.ref":"ISO/IEC 27001<em>Information security</em>","s4.r3.rel":"Treatment of AI as a critical <i>capability</i> of the system, subject to technical access and privilege control.",
-      "s4.r4.ref":"NIS2<em>Dir. (EU) 2022/2555</em>","s4.r4.rel":"Technical recording of invocation decisions and related events, reconstructable as a trace independent of the applications.",
-      "s5.tag":"Project status","s5.h2":"Project status.",
-      "s5.r1.l":"Definition","s5.r1.v":"Protocol and architectural pattern.","s5.r1.m":"<span class=\"dot\"></span>Active",
-      "s5.r2.l":"Implementation","s5.r2.v":"Enterprise reference implementation in development.","s5.r2.m":"<span class=\"dot\"></span>In progress",
-      "col.tag":"Colophon",
-      "col.dt1":"Document","col.dd1":"AIKNOCK / WD-0004","col.dt2":"Stage","col.dd2":"Working Draft",
-      "col.dt3":"Editorship","col.dd3":"AIKNOCK editorial group","col.dt4":"Licence","col.dd4":"Creative Commons Attribution 4.0 International",
-      "col.bot1":"© 2026 AIKNOCK editorial group — Published as an open specification.","col.legal":"Independent project · Legal notice →","col.bot2":"Last revised 11 May 2026 · WD-0004"
+      "mast.sub":"Open specification · v0.4",
+      "nav.spec":"Specification","nav.why":"Why AIKNOCK","nav.one":"One Diagram","nav.norms":"Norms",
+      "cover.eyebrow":"Norms and AI execution control",
+      "cover.h1":"Norms and AI execution control: an infrastructural perspective<em>.</em>",
+      "cover.sub":"A technical reading of the relations among <b>AI Act</b>, <b>NIS2</b>, <b>ISO/IEC 27001</b>, <b>ISO/IEC 42001</b> and <b>NIST AI RMF</b>, and of the role a system-level execution-control system may take with respect to the requirements they pose.",
+      "s1.tag":"Premise","s1.h2":"Different layers, same problem.",
+      "s1.lede":"The AI Act, NIS2 and the ISO and NIST standards operate on different layers: legal, organisational, risk-management. Although heterogeneous, they converge on a restricted set of key requirements.",
+      "s1.p1":"Read by principles rather than by articles, these requirements reduce to four recurring properties: <b>preventive control</b> of AI invocation, documented and verifiable <b>traceability</b> of decisions, technical <b>auditability</b> and <b>accountability</b> attributable to identifiable subjects.",
+      "s1.p2":"The legal layer defines obligations; the organisational layer defines processes; the risk-management layer defines methods. Missing from this stratification is an explicit definition of the technical mechanisms through which such requirements can be made observable in the systems that actually execute AI.",
+      "s2.tag":"Reference frameworks","s2.h2":"What norms and frameworks require, by principles.",
+      "s2.intro":"The table below summarises, in conceptual and non-legalistic form, the principles that each normative or <i>framework</i> reference makes explicit. It does not constitute a conformity analysis nor a binding interpretation of the texts.",
+      "s2.th1":"Framework","s2.th2":"Layer","s2.th3":"Relevant principles",
+      "s2.r1.ref":"AI Act<em>Reg. (EU) 2024/1689</em>","s2.r1.scope":"Legal",
+      "s2.r1.req":"<i>Ex-ante</i> control of the use of AI systems; human oversight on decisions of significant impact; auditability of systems across the life cycle.",
+      "s2.r2.ref":"NIS2<em>Dir. (EU) 2022/2555</em>","s2.r2.scope":"Systemic security",
+      "s2.r2.req":"Risk management of critical <i>capabilities</i>, continuity and security of essential services, tracking and notification of incidents.",
+      "s2.r3.ref":"ISO/IEC 27001<em>Information security management systems</em>","s2.r3.scope":"Organisational",
+      "s2.r3.req":"Control of access to critical resources, separation of privileges, recording and review of activities.",
+      "s2.r4.ref":"ISO/IEC 42001<em>Artificial intelligence management systems</em>","s2.r4.scope":"Organisational",
+      "s2.r4.req":"Management system for AI systems: traceability of decisions, roles and responsibilities, periodic review.",
+      "s2.r5.ref":"NIST AI RMF 1.0<em>AI Risk Management Framework</em>","s2.r5.scope":"Risk management",
+      "s2.r5.req":"Functions <i>Govern</i>, <i>Map</i>, <i>Measure</i>, <i>Manage</i>: direction, identification of the use context, measurement and treatment of risk.",
+      "s2.shared.head":"Recurring requirements",
+      "s2.shared.l1":"Preventive control of use.","s2.shared.l2":"Explicit traceability.",
+      "s2.shared.l3":"Verifiable auditability.","s2.shared.l4":"Attributable accountability.",
+      "s3.tag":"Missing denominator","s3.h2":"The missing common denominator.",
+      "s3.p1":"The requirements listed in the reference frameworks are expressed in terms of <i>what</i> must be guaranteed. Their operational translation is today entrusted to heterogeneous instruments — textual rules, documentation, application controls, after-the-fact records — rarely brought back to the same architectural layer.",
+      "s3.p2":"In particular, a <b>technical control point</b> is missing that jointly presents the following four properties.",
+      "s3.m1.k":"Non-bypassable","s3.m1.v":"Authorisation of AI use cannot be ignored, rewritten or omitted by the code that requests it.",
+      "s3.m2.k":"Independent","s3.m2.v":"The control point is decoupled from applications: it does not depend on their cooperation or on their correct configuration.",
+      "s3.m3.k":"Sub-applicational","s3.m3.v":"It resides below the application layer, in a position the applications cannot modify.",
+      "s3.m4.k":"Technical evidence","s3.m4.v":"It produces, as an effect of its own operation, verifiable records of the decisions taken.",
+      "s3.p3":"The absence of such a control point is not a gap in the norms: it is a gap in the architecture of the systems. It is, in other words, an <b>architectural problem</b>.",
+      "s4.tag":"Position","s4.h2":"Where AIKNOCK sits.",
+      "s4.stmt":"AIKNOCK explores a possible <i>ex-ante</i> technical control point, at the system layer, consistent with the execution-control, auditability and risk-management requirements referenced by norms and standards, without replacing or interpreting them.",
+      "s4.p1":"Norms and standards define <b>obligations</b>. AIKNOCK operates on the layer of <b>technical mechanisms</b>. The system operates independently of external regulatory or standard frameworks and maintains a consistent technical behaviour at execution level. The two layers are complementary: what the law and the standards prescribe as system properties, a mechanism such as the one described can contribute to making observable and verifiable.",
+      "s5.tag":"Exclusions","s5.h2":"What AIKNOCK does not do with respect to the norms.",
+      "s5.intro":"To avoid confusion between distinct layers, it is appropriate to state explicitly the scope that AIKNOCK does not occupy.",
+      "s5.tag.label":"DOES NOT","s5.tag.label2":"DOES NOT","s5.tag.label3":"DOES NOT","s5.tag.label4":"DOES NOT","s5.tag.label5":"DOES NOT",
+      "s5.n1":"it does not interpret the law,",
+      "s5.n2":"it does not guarantee compliance,",
+      "s5.n3":"it does not replace organisational or legal processes,",
+      "s5.n4":"it does not eliminate the responsibilities of <i>deployers</i>,",
+      "s5.n5":"it does not govern datasets or <i>training</i> processes.",
+      "s5.after":"Observance of the norms remains a responsibility of operators, implementers and competent authorities. AIKNOCK does not shift such responsibility: it describes a distinct technical layer.",
+      "s6.tag":"Conclusion","s6.h2":"Conclusion.",
+      "s6.p1":"The norms define what must be guaranteed.",
+      "s6.p2":"<b>AIKNOCK sits on the layer of how a part of such guarantees can be made a technical property of the system.</b>",
+      "s6.p3":"The distance between the two layers is a structural feature, not an opposition: the two levels presuppose each other.",
+      "col.bot1":"© 2026 AIKNOCK editorial group — Open specification · CC BY 4.0",
+      "col.legal":"Independent project · Legal notice →",
+      "col.bot2":"AIKNOCK / WD-0004 · NORMS · 12 May 2026"
     },
+
     fr: {
-      "doc.title":"AIKNOCK — Contrôle d'exécution de l'intelligence artificielle au niveau du système d'exploitation",
       "banner.l1":"Spécification ouverte","banner.l2":"Brouillon de travail public","banner.l3":"Maintenu par le groupe éditorial AIKNOCK",
-      "mast.sub":"Spécification ouverte · v0.4","mast.ref":"Réf. AIKNOCK / WD-0004 · 11 mai 2026",
-      "cover.eyebrow":"AIKNOCK · Contrôle d'exécution de l'IA",
-      "cover.h1":"Contrôle d'exécution de l'Intelligence Artificielle au niveau du système d'exploitation<em>.</em>",
-      "cover.sub":"AIKNOCK est un système de contrôle d'exécution au niveau système, appliqué à la couche du système d'exploitation, qui contraint l'invocation et l'exécution des systèmes d'Intelligence Artificielle. Il traite l'IA comme une <i>capability</i> critique de système, et non comme une bibliothèque ou une fonctionnalité applicative.",
-      "seo.tag":"Introduction",
-      "seo.h2":"Qu'est-ce qu'AIKNOCK.",
-      "seo.lede":"AIKNOCK est une spécification technique ouverte qui décrit un système de contrôle d'exécution de l'Intelligence Artificielle opérant au niveau du système d'exploitation. Elle définit un point de décision <i>ex-ante</i>, non contournable, que toute invocation de modèles d'IA traverse avant l'exécution.",
-      "seo.h3a":"Pourquoi un système de contrôle au niveau du système.",
-      "seo.p1":"Dans les systèmes actuels, l'invocation des modèles d'Intelligence Artificielle s'effectue à l'intérieur des applications, sans point de contrôle technique interposé et indépendant. AIKNOCK déplace le contrôle sous le niveau applicatif, là où le comportement d'exécution du système peut être contraint de manière vérifiable et indépendante du code appelant.",
-      "seo.h3b":"Caractéristiques distinctives.",
-      "seo.p2":"Le système évalue et contraint l'usage de l'IA avant l'exécution. Les décisions prises produisent, comme effet du fonctionnement du système, des enregistrements vérifiables. Le contrôle est indépendant du modèle, du fournisseur et de l'application qui demande l'usage de l'IA.",
-      "seo.h3c":"Domaines d'application.",
-      "seo.p3":"AIKNOCK se situe au niveau de l'infrastructure informatique. Il est destiné aux contextes opérationnels critiques où existent des exigences externes — telles que celles posées par l'<b>AI Act</b>, la directive <b>NIS2</b>, les standards <b>ISO/IEC 42001</b> et <b>ISO/IEC 27001</b> et le <b>NIST AI Risk Management Framework</b> — sans toutefois implémenter ni représenter ces exigences.",
-      "seo.h3d":"Documents de la spécification.",
-      "seo.p4":"La spécification est articulée en plusieurs documents complémentaires, qu'il est possible de consulter séparément : <a href=\"perche.html\">justification du projet et contexte d'adoption</a>, <a href=\"one-diagram.html\">position architecturale en un seul diagramme</a>, <a href=\"design-principles.html\">principes de design et limites du système</a>, <a href=\"norme.html\">relation technique avec les cadres normatifs externes</a>, <a href=\"note-legali.html\">mentions légales, indépendance éditoriale et marques</a>.",
-      "s1.tag":"Objectif","s1.h2":"Un point de décision avant l'exécution.",
-      "s1.lede":"L'objectif d'AIKNOCK est d'introduire un point de décision ex-ante, non contournable, qui détermine si et quand l'IA peut être invoquée, avant l'exécution.",
-      "s1.p1":"La décision est prise indépendamment du modèle, du fournisseur et du logiciel appelant. Le protocole opère au niveau du système d'exploitation, là où l'autorisation précède l'invocation et ne peut être éludée par l'application qui demande l'usage de l'IA.",
-      "s1.fig.desc":"Application Layer → AIKNOCK (Execution Control Unit) → AI Execution Layer. AIKNOCK décide ex-ante, avant l'exécution.",
-      "s1.fig.t0":"t₀ · intention","s1.fig.t1":"t₁ · décision","s1.fig.t2":"t₂ · exécution",
-      "s1.fig.b1.tag":"01 · COUCHE","s1.fig.b1.title":"Application Layer","s1.fig.b1.desc":"Logiciels, services et flux qui demandent l'usage de l'IA.",
-      "s1.fig.b2.tag":"02 · EXECUTION CONTROL UNIT","s1.fig.b2.title":"AIKNOCK","s1.fig.b2.desc":"Décide ex-ante si l'IA peut être invoquée, à quelles conditions et avec quelles preuves.","s1.fig.b2.foot":"non contournable · niveau OS",
-      "s1.fig.b3.tag":"03 · COUCHE","s1.fig.b3.title":"AI Execution Layer","s1.fig.b3.desc":"Invocation du modèle, inférence et retour — soumis à autorisation.",
-      "s1.fig.arr1":"requête","s1.fig.arr2":"autorise",
-      "s1.fig.cap":"Figure 1 — Position d'AIKNOCK dans la chaîne d'invocation de l'IA. La décision d'autorisation est prise à t₁, avant l'exécution du modèle. Le système évalue et contraint l'usage de l'IA avant l'exécution.",
-      "s2.tag":"Le problème","s2.h2":"Le problème.","s2.p1":"Les systèmes qui invoquent l'IA ne disposent pas aujourd'hui d'une couche technique de contrôle d'exécution. Ce contrôle est généralement délégué à :",
-      "s2.l1":"règles applicatives,","s2.l2":"documentation,","s2.l3":"inspections a posteriori,","s2.l4":"journaux applicatifs.",
-      "s2.p2":"Cette approche n'offre pas de point d'application technique indépendant des applications. Dans des contextes opérationnels critiques où existent également des exigences externes — dont l'<b>AI Act</b>, l'<b>ISO/IEC 42001</b>, l'<b>ISO/IEC 27001</b> et la <b>NIS2</b> — l'absence d'un système de contrôle d'exécution demeure une limite architecturale.",
-      "s2.p3":"Il manque une couche infrastructurelle dédiée pour accueillir le contrôle d'exécution de l'IA.",
-      "s3.tag":"Approche","s3.h2":"L'approche AIKNOCK.","s3.intro":"AIKNOCK comble ce vide en introduisant :",
-      "s3.p1.h":"Autorisation ex-ante de l'invocation.","s3.p1.p":"Chaque invocation de l'IA est précédée d'une décision explicite qui établit si l'usage est admis, conformément aux contraintes d'exécution appliquées par le système.",
-      "s3.p2.h":"Application non contournable au niveau OS.","s3.p2.p":"Le point d'application se situe au niveau du système d'exploitation, et non dans l'application appelante : la décision ne peut être ignorée, réécrite ou contournée par le code qui demande l'IA.",
-      "s3.p3.h":"Audit par construction des décisions.","s3.p3.p":"Toute autorisation, refus et condition appliquée produit, par construction, un enregistrement vérifiable, utilisable comme preuve technique pour les audits internes et externes.",
-      "s3.p4.h":"Séparation entre disponibilité et autorisation.","s3.p4.p":"Le fait qu'un modèle soit techniquement disponible n'implique pas que son usage soit autorisé. AIKNOCK distingue explicitement ces deux plans.",
-      "s3.p5.h":"Neutralité à l'égard des modèles, fournisseurs et applications.","s3.p5.p":"Le protocole ne dépend ni d'un modèle, ni d'un fournisseur, ni d'une application en particulier. Il définit une interface de contrôle d'exécution à laquelle toute implémentation se conforme.",
-      "s3.note":"<strong>AIKNOCK n'analyse ni les <i>prompts</i> ni les sorties.</strong> Il contraint techniquement l'invocation de l'IA, non son contenu.",
-      "s4.tag":"Contextes externes","s4.h2":"Contextes externes de référence.",
-      "s4.intro":"Le système peut être adopté dans des contextes où existent des exigences externes normatives ou standardisées. AIKNOCK définit un système technique de contrôle d'exécution et <b>n'implémente ni ne représente</b> ces exigences. Son adoption ne garantit pas, en elle-même, la conformité juridique.",
-      "s4.th1":"Contexte externe","s4.th2":"Effet technique d'AIKNOCK",
-      "s4.r1.ref":"EU AI Act<em>Règl. (UE) 2024/1689</em>","s4.r1.rel":"Contrôle ex-ante de l'invocation des modèles, appliqué avant l'exécution, avec un point d'application indépendant des applications appelantes.",
-      "s4.r2.ref":"ISO/IEC 42001<em>AI Management System</em>","s4.r2.rel":"Production technique d'enregistrements vérifiables des décisions d'invocation, comme effet du fonctionnement du système.",
-      "s4.r3.ref":"ISO/IEC 27001<em>Sécurité de l'information</em>","s4.r3.rel":"Traitement de l'IA comme <i>capability</i> critique du système, soumise à un contrôle technique des accès et des privilèges.",
-      "s4.r4.ref":"NIS2<em>Dir. (UE) 2022/2555</em>","s4.r4.rel":"Enregistrement technique des décisions d'invocation et des événements associés, reconstructible comme trace indépendante des applications.",
-      "s5.tag":"État du projet","s5.h2":"État du projet.",
-      "s5.r1.l":"Définition","s5.r1.v":"Protocole et patron d'architecture.","s5.r1.m":"<span class=\"dot\"></span>Actif",
-      "s5.r2.l":"Implémentation","s5.r2.v":"Implémentation de référence entreprise en développement.","s5.r2.m":"<span class=\"dot\"></span>En cours",
-      "col.tag":"Colophon",
-      "col.dt1":"Document","col.dd1":"AIKNOCK / WD-0004","col.dt2":"Étape","col.dd2":"Working Draft",
-      "col.dt3":"Direction éditoriale","col.dd3":"Groupe éditorial AIKNOCK","col.dt4":"Licence","col.dd4":"Creative Commons Attribution 4.0 International",
-      "col.bot1":"© 2026 Groupe éditorial AIKNOCK — Publié comme spécification ouverte.","col.legal":"Projet indépendant · Mentions légales →","col.bot2":"Dernière révision 11 mai 2026 · WD-0004"
+      "mast.sub":"Spécification ouverte · v0.4",
+      "nav.spec":"Spécification","nav.why":"Pourquoi AIKNOCK","nav.one":"One Diagram","nav.norms":"Normes",
+      "cover.eyebrow":"Normes et contrôle d'exécution de l'IA",
+      "cover.h1":"Normes et contrôle d'exécution de l'IA : une perspective infrastructurelle<em>.</em>",
+      "cover.sub":"Une lecture technique des relations entre l'<b>AI Act</b>, la <b>NIS2</b>, l'<b>ISO/IEC 27001</b>, l'<b>ISO/IEC 42001</b> et le <b>NIST AI RMF</b>, et du rôle qu'un système de contrôle d'exécution au niveau du système peut assumer à l'égard des exigences qu'ils posent.",
+      "s1.tag":"Prémisse","s1.h2":"Niveaux différents, même problème.",
+      "s1.lede":"L'AI Act, la NIS2 et les standards ISO et NIST opèrent sur des plans différents : juridique, organisationnel, de gestion du risque. Bien qu'hétérogènes, ils convergent vers un ensemble restreint d'exigences clés.",
+      "s1.p1":"Lus par principes et non par articles, ces exigences se ramènent à quatre propriétés récurrentes : <b>contrôle préventif</b> de l'invocation de l'IA, <b>traçabilité</b> documentée et vérifiable des décisions, <b>auditabilité</b> technique et <b>responsabilité</b> attribuable à des sujets identifiables.",
+      "s1.p2":"Le plan juridique définit des obligations ; le plan organisationnel définit des processus ; le plan de la gestion du risque définit des méthodes. Il manque, dans cette stratification, une définition explicite des mécanismes techniques par lesquels ces exigences peuvent être rendues observables dans les systèmes qui exécutent effectivement l'IA.",
+      "s2.tag":"Cadres de référence","s2.h2":"Ce que demandent normes et cadres, par principes.",
+      "s2.intro":"Le tableau qui suit résume, sous une forme conceptuelle et non légaliste, les principes que chaque cadre normatif ou <i>framework</i> rend explicites. Il ne constitue ni une analyse de conformité ni une interprétation contraignante des textes.",
+      "s2.th1":"Cadre","s2.th2":"Plan","s2.th3":"Principes pertinents",
+      "s2.r1.ref":"AI Act<em>Règl. (UE) 2024/1689</em>","s2.r1.scope":"Juridique",
+      "s2.r1.req":"Contrôle <i>ex-ante</i> de l'usage des systèmes d'IA ; surveillance humaine sur les décisions à impact significatif ; auditabilité des systèmes tout au long du cycle de vie.",
+      "s2.r2.ref":"NIS2<em>Dir. (UE) 2022/2555</em>","s2.r2.scope":"Sécurité systémique",
+      "s2.r2.req":"Gestion du risque des <i>capabilities</i> critiques, continuité et sécurité des services essentiels, suivi et notification des incidents.",
+      "s2.r3.ref":"ISO/IEC 27001<em>Systèmes de management de la sécurité de l'information</em>","s2.r3.scope":"Organisationnel",
+      "s2.r3.req":"Contrôle des accès et des ressources critiques, séparation des privilèges, enregistrement et revue des activités.",
+      "s2.r4.ref":"ISO/IEC 42001<em>Systèmes de management de l'intelligence artificielle</em>","s2.r4.scope":"Organisationnel",
+      "s2.r4.req":"Système de management des systèmes d'IA : traçabilité des décisions, rôles et responsabilités, revue périodique.",
+      "s2.r5.ref":"NIST AI RMF 1.0<em>AI Risk Management Framework</em>","s2.r5.scope":"Gestion du risque",
+      "s2.r5.req":"Fonctions <i>Govern</i>, <i>Map</i>, <i>Measure</i>, <i>Manage</i> : orientation, identification du contexte d'usage, mesure et traitement du risque.",
+      "s2.shared.head":"Exigences récurrentes",
+      "s2.shared.l1":"Contrôle préventif de l'usage.","s2.shared.l2":"Traçabilité explicite.",
+      "s2.shared.l3":"Auditabilité vérifiable.","s2.shared.l4":"Responsabilité attribuable.",
+      "s3.tag":"Dénominateur manquant","s3.h2":"Le dénominateur commun manquant.",
+      "s3.p1":"Les exigences énumérées dans les cadres de référence sont exprimées en termes de <i>ce qui</i> doit être garanti. Leur traduction opérationnelle est aujourd'hui confiée à des instruments hétérogènes — règles textuelles, documentation, contrôles applicatifs, enregistrements a posteriori — rarement ramenés au même plan architectural.",
+      "s3.p2":"Il manque en particulier un <b>point de contrôle technique</b> présentant conjointement les quatre propriétés suivantes.",
+      "s3.m1.k":"Non contournable","s3.m1.v":"L'autorisation d'usage de l'IA ne peut être ignorée, réécrite ou omise par le code qui la demande.",
+      "s3.m2.k":"Indépendant","s3.m2.v":"Le point de contrôle est découplé des applications : il ne dépend ni de leur coopération ni de leur configuration correcte.",
+      "s3.m3.k":"Sous-applicatif","s3.m3.v":"Il réside en dessous du niveau applicatif, dans une position que les applications ne peuvent modifier.",
+      "s3.m4.k":"Preuves techniques","s3.m4.v":"Il produit, comme effet de son propre fonctionnement, des enregistrements vérifiables des décisions prises.",
+      "s3.p3":"L'absence d'un tel point de contrôle n'est pas une lacune des normes : c'est une lacune de l'architecture des systèmes. C'est, en d'autres termes, un <b>problème architectural</b>.",
+      "s4.tag":"Position","s4.h2":"Où se situe AIKNOCK.",
+      "s4.stmt":"AIKNOCK explore un possible point de contrôle technique <i>ex-ante</i>, au niveau du système, cohérent avec les exigences de contrôle d'exécution, d'auditabilité et de maîtrise du risque posées par les normes et les cadres, sans les remplacer ni les interpréter.",
+      "s4.p1":"Les normes et les standards définissent des <b>obligations</b>. AIKNOCK opère sur le plan des <b>mécanismes techniques</b>. Le système opère de manière indépendante des cadres normatifs ou standardisés externes et maintient un comportement technique cohérent au niveau de l'exécution. Les deux plans sont complémentaires : ce que le droit et les standards prescrivent comme propriétés du système, un mécanisme tel que celui décrit peut contribuer à le rendre observable et vérifiable.",
+      "s5.tag":"Exclusions","s5.h2":"Ce qu'AIKNOCK ne fait pas à l'égard des normes.",
+      "s5.intro":"Pour éviter la confusion entre des plans distincts, il convient d'énoncer explicitement le périmètre qu'AIKNOCK n'occupe pas.",
+      "s5.tag.label":"NE FAIT PAS","s5.tag.label2":"NE FAIT PAS","s5.tag.label3":"NE FAIT PAS","s5.tag.label4":"NE FAIT PAS","s5.tag.label5":"NE FAIT PAS",
+      "s5.n1":"il n'interprète pas la loi,",
+      "s5.n2":"il ne garantit pas la conformité,",
+      "s5.n3":"il ne remplace pas les processus organisationnels ou juridiques,",
+      "s5.n4":"il n'élimine pas les responsabilités des <i>deployers</i>,",
+      "s5.n5":"il ne gouverne ni les jeux de données ni les processus d'<i>training</i>.",
+      "s5.after":"L'observance des normes demeure une responsabilité des opérateurs, des implémenteurs et des autorités compétentes. AIKNOCK ne déplace pas cette responsabilité : il décrit un plan technique distinct.",
+      "s6.tag":"Conclusion","s6.h2":"Conclusion.",
+      "s6.p1":"Les normes définissent ce qui doit être garanti.",
+      "s6.p2":"<b>AIKNOCK se place sur le plan de comment une partie de ces garanties peut être rendue propriété technique du système.</b>",
+      "s6.p3":"La distance entre les deux plans est une caractéristique structurelle, non une opposition : les deux niveaux se présupposent mutuellement.",
+      "col.bot1":"© 2026 Groupe éditorial AIKNOCK — Spécification ouverte · CC BY 4.0",
+      "col.legal":"Projet indépendant · Mentions légales →",
+      "col.bot2":"AIKNOCK / WD-0004 · NORMES · 12 mai 2026"
     },
+
     es: {
-      "doc.title":"AIKNOCK — Control de ejecución de la inteligencia artificial a nivel de sistema operativo",
       "banner.l1":"Especificación abierta","banner.l2":"Borrador público de trabajo","banner.l3":"Mantenido por el grupo editorial AIKNOCK",
-      "mast.sub":"Especificación abierta · v0.4","mast.ref":"Ref. AIKNOCK / WD-0004 · 11 de mayo de 2026",
-      "cover.eyebrow":"AIKNOCK · Control de ejecución de la IA",
-      "cover.h1":"Control de ejecución de la Inteligencia Artificial a nivel de sistema operativo<em>.</em>",
-      "cover.sub":"AIKNOCK es un sistema de control de ejecución a nivel de sistema, aplicado en la capa del sistema operativo, que restringe la invocación y la ejecución de los sistemas de Inteligencia Artificial. Trata la IA como una <i>capability</i> crítica del sistema, no como una biblioteca ni como una funcionalidad de aplicación.",
-      "seo.tag":"Introducción",
-      "seo.h2":"Qué es AIKNOCK.",
-      "seo.lede":"AIKNOCK es una especificación técnica abierta que describe un sistema de control de ejecución de la Inteligencia Artificial operando a nivel del sistema operativo. Define un punto de decisión <i>ex-ante</i>, no eludible, que toda invocación de modelos de IA atraviesa antes de la ejecución.",
-      "seo.h3a":"Por qué un sistema de control a nivel de sistema.",
-      "seo.p1":"En los sistemas actuales, la invocación de los modelos de Inteligencia Artificial se produce dentro de las aplicaciones, sin un punto de control técnico interpuesto e independiente. AIKNOCK traslada el control por debajo del nivel aplicativo, donde el comportamiento de ejecución del sistema puede ser restringido de manera verificable e independiente del código que invoca.",
-      "seo.h3b":"Características distintivas.",
-      "seo.p2":"El sistema evalúa y restringe el uso de la IA antes de la ejecución. Las decisiones adoptadas producen, como efecto del funcionamiento del sistema, registros verificables. El control es independiente del modelo, del proveedor y de la aplicación que requiere el uso de la IA.",
-      "seo.h3c":"Ámbitos de aplicación.",
-      "seo.p3":"AIKNOCK se sitúa en el plano de la infraestructura informática. Está concebido para contextos operativos críticos en los que existen requisitos externos — como los planteados por el <b>AI Act</b>, la directiva <b>NIS2</b>, los estándares <b>ISO/IEC 42001</b> e <b>ISO/IEC 27001</b> y el <b>NIST AI Risk Management Framework</b> — sin por ello implementar ni representar dichos requisitos.",
-      "seo.h3d":"Documentos de la especificación.",
-      "seo.p4":"La especificación se articula en varios documentos complementarios, consultables por separado: <a href=\"perche.html\">justificación del proyecto y contexto de adopción</a>, <a href=\"one-diagram.html\">posición arquitectónica en un solo diagrama</a>, <a href=\"design-principles.html\">principios de diseño y límites del sistema</a>, <a href=\"norme.html\">relación técnica con los marcos normativos externos</a>, <a href=\"note-legali.html\">aviso legal, independencia editorial y marcas</a>.",
-      "s1.tag":"Objetivo","s1.h2":"Un punto de decisión antes de la ejecución.",
-      "s1.lede":"El objetivo de AIKNOCK es introducir un punto de decisión ex-ante, no eludible, que determine si y cuándo la IA puede ser invocada, antes de la ejecución.",
-      "s1.p1":"La decisión se toma con independencia del modelo, del proveedor y del software que la solicita. El protocolo opera en la capa del sistema operativo, donde la autorización precede a la invocación y no puede ser eludida por la aplicación que requiere el uso de la IA.",
-      "s1.fig.desc":"Application Layer → AIKNOCK (Execution Control Unit) → AI Execution Layer. AIKNOCK decide ex-ante, antes de la ejecución.",
-      "s1.fig.t0":"t₀ · intención","s1.fig.t1":"t₁ · decisión","s1.fig.t2":"t₂ · ejecución",
-      "s1.fig.b1.tag":"01 · CAPA","s1.fig.b1.title":"Application Layer","s1.fig.b1.desc":"Software, servicios y flujos que solicitan el uso de la IA.",
-      "s1.fig.b2.tag":"02 · EXECUTION CONTROL UNIT","s1.fig.b2.title":"AIKNOCK","s1.fig.b2.desc":"Decide ex-ante si la IA puede ser invocada, en qué condiciones y con qué evidencias.","s1.fig.b2.foot":"no eludible · nivel SO",
-      "s1.fig.b3.tag":"03 · CAPA","s1.fig.b3.title":"AI Execution Layer","s1.fig.b3.desc":"Invocación del modelo, inferencia y retorno — sujetos a autorización.",
-      "s1.fig.arr1":"solicitud","s1.fig.arr2":"autoriza",
-      "s1.fig.cap":"Figura 1 — Posición de AIKNOCK en la cadena de invocación de la IA. La decisión de autorización se toma en t₁, antes de la ejecución del modelo. El sistema evalúa y restringe el uso de la IA antes de la ejecución.",
-      "s2.tag":"El problema","s2.h2":"El problema.","s2.p1":"Los sistemas que invocan la IA no disponen hoy de una capa técnica de control de ejecución. Dicho control suele delegarse a:",
-      "s2.l1":"reglas aplicativas,","s2.l2":"documentación,","s2.l3":"inspecciones ex post,","s2.l4":"registros de aplicación.",
-      "s2.p2":"Este enfoque no ofrece un punto de aplicación técnica independiente de las aplicaciones. En contextos operativos críticos en los que también existen requisitos externos — entre ellos <b>AI Act</b>, <b>ISO/IEC 42001</b>, <b>ISO/IEC 27001</b> y <b>NIS2</b> — la ausencia de un sistema de control de ejecución sigue siendo un límite arquitectónico.",
-      "s2.p3":"Falta una capa de infraestructura dedicada en la que alojar el control de ejecución de la IA.",
-      "s3.tag":"Enfoque","s3.h2":"El enfoque AIKNOCK.","s3.intro":"AIKNOCK cubre este vacío introduciendo:",
-      "s3.p1.h":"Autorización ex-ante de la invocación.","s3.p1.p":"Cada invocación de la IA va precedida por una decisión explícita que determina si el uso es admisible, conforme a las restricciones de ejecución aplicadas por el sistema.",
-      "s3.p2.h":"Aplicación no eludible a nivel de SO.","s3.p2.p":"El punto de aplicación reside en la capa del sistema operativo, no en la aplicación que invoca: la decisión no puede ser ignorada, reescrita ni eludida por el código que solicita la IA.",
-      "s3.p3.h":"Auditoría por construcción de las decisiones.","s3.p3.p":"Toda autorización, denegación y condición aplicada produce, por construcción, un registro verificable, utilizable como evidencia técnica para auditorías internas y externas.",
-      "s3.p4.h":"Separación entre disponibilidad y autorización.","s3.p4.p":"El hecho de que un modelo esté técnicamente disponible no implica que su uso esté autorizado. AIKNOCK distingue de manera explícita estos dos planos.",
-      "s3.p5.h":"Neutralidad frente a modelos, proveedores y aplicaciones.","s3.p5.p":"El protocolo no depende de un modelo, proveedor o aplicación concretos. Define una interfaz de control de ejecución a la que toda implementación se ajusta.",
-      "s3.note":"<strong>AIKNOCK no analiza <i>prompts</i> ni salidas.</strong> Restringe técnicamente la invocación de la IA, no su contenido.",
-      "s4.tag":"Contextos externos","s4.h2":"Contextos externos de referencia.",
-      "s4.intro":"El sistema puede adoptarse en contextos en los que existen requisitos normativos o de estándar externos. AIKNOCK define un sistema técnico de control de ejecución y <b>no implementa ni representa</b> dichos requisitos. Su adopción no garantiza, por sí misma, el cumplimiento jurídico.",
-      "s4.th1":"Contexto externo","s4.th2":"Efecto técnico de AIKNOCK",
-      "s4.r1.ref":"EU AI Act<em>Regl. (UE) 2024/1689</em>","s4.r1.rel":"Control ex-ante de la invocación de los modelos, aplicado antes de la ejecución, con un punto de aplicación independiente de las aplicaciones que invocan.",
-      "s4.r2.ref":"ISO/IEC 42001<em>AI Management System</em>","s4.r2.rel":"Producción técnica de registros verificables de las decisiones de invocación, como efecto del funcionamiento del sistema.",
-      "s4.r3.ref":"ISO/IEC 27001<em>Seguridad de la información</em>","s4.r3.rel":"Tratamiento de la IA como <i>capability</i> crítica del sistema, sujeta a un control técnico de accesos y privilegios.",
-      "s4.r4.ref":"NIS2<em>Dir. (UE) 2022/2555</em>","s4.r4.rel":"Registro técnico de las decisiones de invocación y de los eventos asociados, reconstruible como traza independiente de las aplicaciones.",
-      "s5.tag":"Estado del proyecto","s5.h2":"Estado del proyecto.",
-      "s5.r1.l":"Definición","s5.r1.v":"Protocolo y patrón arquitectónico.","s5.r1.m":"<span class=\"dot\"></span>Activo",
-      "s5.r2.l":"Implementación","s5.r2.v":"Implementación de referencia para empresas en desarrollo.","s5.r2.m":"<span class=\"dot\"></span>En curso",
-      "col.tag":"Colofón",
-      "col.dt1":"Documento","col.dd1":"AIKNOCK / WD-0004","col.dt2":"Etapa","col.dd2":"Working Draft",
-      "col.dt3":"Curaduría","col.dd3":"Grupo editorial AIKNOCK","col.dt4":"Licencia","col.dd4":"Creative Commons Attribution 4.0 Internacional",
-      "col.bot1":"© 2026 Grupo editorial AIKNOCK — Publicado como especificación abierta.","col.legal":"Proyecto independiente · Aviso legal →","col.bot2":"Última revisión 11 de mayo de 2026 · WD-0004"
+      "mast.sub":"Especificación abierta · v0.4",
+      "nav.spec":"Especificación","nav.why":"Por qué AIKNOCK","nav.one":"One Diagram","nav.norms":"Normas",
+      "cover.eyebrow":"Normas y control de ejecución de la IA",
+      "cover.h1":"Normas y control de ejecución de la IA: una perspectiva infraestructural<em>.</em>",
+      "cover.sub":"Una lectura técnica de las relaciones entre <b>AI Act</b>, <b>NIS2</b>, <b>ISO/IEC 27001</b>, <b>ISO/IEC 42001</b> y <b>NIST AI RMF</b>, y del papel que un sistema de control de ejecución a nivel de sistema puede asumir respecto a los requisitos que estos plantean.",
+      "s1.tag":"Premisa","s1.h2":"Planos distintos, mismo problema.",
+      "s1.lede":"El AI Act, la NIS2 y los estándares ISO y NIST operan en planos diferentes: jurídico, organizativo, de gestión del riesgo. Aun siendo heterogéneos, convergen en un conjunto restringido de requisitos clave.",
+      "s1.p1":"Leídos por principios y no por artículos, estos requisitos se reducen a cuatro propiedades recurrentes: <b>control preventivo</b> de la invocación de la IA, <b>trazabilidad</b> documentada y verificable de las decisiones, <b>auditabilidad</b> técnica y <b>responsabilidad</b> atribuible a sujetos identificables.",
+      "s1.p2":"El plano jurídico define obligaciones; el plano organizativo define procesos; el plano de la gestión del riesgo define métodos. Falta, en esta estratificación, una definición explícita de los mecanismos técnicos mediante los cuales tales requisitos pueden hacerse observables en los sistemas que ejecutan efectivamente la IA.",
+      "s2.tag":"Marcos de referencia","s2.h2":"Qué piden normas y marcos, por principios.",
+      "s2.intro":"La tabla que sigue resume, en forma conceptual y no legalista, los principios que cada marco normativo o <i>framework</i> de referencia hace explícitos. No constituye un análisis de conformidad ni una interpretación vinculante de los textos.",
+      "s2.th1":"Marco","s2.th2":"Plano","s2.th3":"Principios relevantes",
+      "s2.r1.ref":"AI Act<em>Regl. (UE) 2024/1689</em>","s2.r1.scope":"Jurídico",
+      "s2.r1.req":"Control <i>ex-ante</i> del uso de los sistemas de IA; supervisión humana sobre las decisiones de impacto relevante; auditabilidad de los sistemas a lo largo del ciclo de vida.",
+      "s2.r2.ref":"NIS2<em>Dir. (UE) 2022/2555</em>","s2.r2.scope":"Seguridad sistémica",
+      "s2.r2.req":"Gestión del riesgo de las <i>capabilities</i> críticas, continuidad y seguridad de los servicios esenciales, seguimiento y notificación de incidentes.",
+      "s2.r3.ref":"ISO/IEC 27001<em>Sistemas de gestión para la seguridad de la información</em>","s2.r3.scope":"Organizativo",
+      "s2.r3.req":"Control de accesos y de los recursos críticos, separación de privilegios, registro y revisión de las actividades.",
+      "s2.r4.ref":"ISO/IEC 42001<em>Sistemas de gestión para la inteligencia artificial</em>","s2.r4.scope":"Organizativo",
+      "s2.r4.req":"Sistema de gestión para los sistemas de IA: trazabilidad de las decisiones, roles y responsabilidades, revisión periódica.",
+      "s2.r5.ref":"NIST AI RMF 1.0<em>AI Risk Management Framework</em>","s2.r5.scope":"Gestión del riesgo",
+      "s2.r5.req":"Funciones <i>Govern</i>, <i>Map</i>, <i>Measure</i>, <i>Manage</i>: dirección, identificación del contexto de uso, medición y tratamiento del riesgo.",
+      "s2.shared.head":"Requisitos recurrentes",
+      "s2.shared.l1":"Control preventivo del uso.","s2.shared.l2":"Trazabilidad explícita.",
+      "s2.shared.l3":"Auditabilidad verificable.","s2.shared.l4":"Responsabilidad atribuible.",
+      "s3.tag":"Denominador faltante","s3.h2":"El denominador común que falta.",
+      "s3.p1":"Los requisitos enumerados en los marcos de referencia se expresan en términos de <i>qué</i> debe garantizarse. Su traducción operativa se delega hoy a instrumentos heterogéneos — reglas textuales, documentación, controles aplicativos, registros posteriores — pocas veces reconducidos a un mismo plano arquitectónico.",
+      "s3.p2":"En particular, falta un <b>punto de control técnico</b> que presente, conjuntamente, las cuatro propiedades siguientes.",
+      "s3.m1.k":"No eludible","s3.m1.v":"La autorización del uso de la IA no puede ser ignorada, reescrita ni omitida por el código que la solicita.",
+      "s3.m2.k":"Independiente","s3.m2.v":"El punto de control está desacoplado de las aplicaciones: no depende de su cooperación ni de su correcta configuración.",
+      "s3.m3.k":"Sub-aplicativo","s3.m3.v":"Reside por debajo del nivel aplicativo, en una posición que las aplicaciones no pueden modificar.",
+      "s3.m4.k":"Evidencias técnicas","s3.m4.v":"Produce, como efecto de su propio funcionamiento, registros verificables de las decisiones adoptadas.",
+      "s3.p3":"La ausencia de tal punto de control no es una laguna de las normas: es una laguna de la arquitectura de los sistemas. Es, en otros términos, un <b>problema arquitectónico</b>.",
+      "s4.tag":"Posición","s4.h2":"Dónde se sitúa AIKNOCK.",
+      "s4.stmt":"AIKNOCK explora un posible punto de control técnico <i>ex-ante</i>, a nivel de sistema, coherente con los requisitos de control de ejecución, auditabilidad y gestión del riesgo planteados por normas y marcos, sin sustituirlos ni interpretarlos.",
+      "s4.p1":"Las normas y los estándares definen <b>obligaciones</b>. AIKNOCK opera en el plano de los <b>mecanismos técnicos</b>. El sistema opera de manera independiente de los marcos normativos o de estándar externos y mantiene un comportamiento técnico coherente a nivel de la ejecución. Los dos planos son complementarios: lo que el derecho y los estándares prescriben como propiedades del sistema, un mecanismo como el descrito puede contribuir a hacerlo observable y verificable.",
+      "s5.tag":"Exclusiones","s5.h2":"Qué no hace AIKNOCK respecto a las normas.",
+      "s5.intro":"Para evitar la confusión entre planos distintos, conviene enunciar explícitamente el ámbito que AIKNOCK no ocupa.",
+      "s5.tag.label":"NO HACE","s5.tag.label2":"NO HACE","s5.tag.label3":"NO HACE","s5.tag.label4":"NO HACE","s5.tag.label5":"NO HACE",
+      "s5.n1":"no interpreta la ley,",
+      "s5.n2":"no garantiza el cumplimiento,",
+      "s5.n3":"no sustituye procesos organizativos o legales,",
+      "s5.n4":"no elimina las responsabilidades de los <i>deployers</i>,",
+      "s5.n5":"no gobierna conjuntos de datos ni procesos de <i>training</i>.",
+      "s5.after":"La observancia de las normas sigue siendo responsabilidad de los operadores, los implementadores y las autoridades competentes. AIKNOCK no traslada esa responsabilidad: describe un plano técnico distinto.",
+      "s6.tag":"Conclusión","s6.h2":"Conclusión.",
+      "s6.p1":"Las normas definen qué debe garantizarse.",
+      "s6.p2":"<b>AIKNOCK se sitúa en el plano de cómo una parte de tales garantías puede convertirse en propiedad técnica del sistema.</b>",
+      "s6.p3":"La distancia entre los dos planos es una característica estructural, no una oposición: los dos niveles se presuponen mutuamente.",
+      "col.bot1":"© 2026 Grupo editorial AIKNOCK — Especificación abierta · CC BY 4.0",
+      "col.legal":"Proyecto independiente · Aviso legal →",
+      "col.bot2":"AIKNOCK / WD-0004 · NORMAS · 12 de mayo de 2026"
     }
+  };
+
+  var titles = {
+    it: "AIKNOCK — Norme e controllo dell'esecuzione dell'AI: una prospettiva infrastrutturale",
+    en: "AIKNOCK — Norms and AI execution control: an infrastructural perspective",
+    fr: "AIKNOCK — Normes et contrôle d'exécution de l'IA : une perspective infrastructurelle",
+    es: "AIKNOCK — Normas y control de ejecución de la IA: una perspectiva infraestructural"
   };
 
   var original = {};
@@ -1145,8 +629,7 @@
       var v = src && src[k] != null ? src[k] : original[k];
       if (v != null && el.innerHTML !== v) el.innerHTML = v;
     }
-    if (src && src["doc.title"]) document.title = src["doc.title"];
-    else if (original["doc.title"]) document.title = original["doc.title"];
+    document.title = titles[lang] || titles.it;
     /* SEO: link rewriting disabled — internal links stay parameter-free */
     var opts = document.querySelectorAll(".lang__opt");
     for (var j = 0; j < opts.length; j++) {

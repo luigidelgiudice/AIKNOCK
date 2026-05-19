@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="description" content="AIKNOCK — One Diagram. Pagina tecnica: dove si colloca e quando decide AIKNOCK." />
+<meta name="description" content="AIKNOCK — Perché un protocollo per governare l'uso dell'AI. Specifica aperta, bozza di lavoro pubblica." />
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
 <meta name="color-scheme" content="light" />
-<title>AIKNOCK — One Diagram</title>
-<link rel="canonical" href="https://aiknock.org/one-diagram.html" />
+<title>AIKNOCK — Perché un protocollo per governare l'uso dell'AI</title>
+<link rel="canonical" href="https://aiknock.org/perche.html" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" />
 
 <style>
   :root {
@@ -21,23 +21,26 @@
     --muted: #6a6a6a;
     --muted-2: #9a9a9a;
     --rule: #d8d8d8;
+    --rule-2: #ececec;
     --paper: #ffffff;
     --accent: #8a1a1a;
     --serif: "Source Serif 4", Georgia, "Times New Roman", Times, serif;
     --sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
-    --col: 720px;
-    --col-wide: 980px;
+    --col: 680px;
+    --col-wide: 760px;
     --gutter: 32px;
   }
   *, *::before, *::after { box-sizing: border-box; }
   html, body { background: var(--paper); color: var(--body); }
+  html { -webkit-text-size-adjust: 100%; }
   body {
     margin: 0;
     font-family: var(--sans);
     font-size: 16px;
     line-height: 1.65;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
   }
   a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--rule); }
@@ -56,15 +59,34 @@
     color: var(--muted);
   }
   .banner__inner {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 12px var(--gutter); max-width: 1100px; margin: 0 auto; gap: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px var(--gutter);
+    max-width: 1100px;
+    margin: 0 auto;
+    gap: 24px;
   }
   .banner__left { display: flex; gap: 22px; flex-wrap: wrap; }
   .banner__left span::before {
-    content: ""; display: inline-block; width: 6px; height: 6px;
-    background: var(--accent); margin-right: 8px; transform: translateY(-1px);
+    content: "";
+    display: inline-block;
+    width: 6px; height: 6px;
+    background: var(--accent);
+    margin-right: 8px;
+    transform: translateY(-1px);
   }
-  .ref { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.04em; white-space: nowrap; }
+  .lang {
+    display: inline-flex; gap: 10px; align-items: baseline;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; flex-shrink: 0;
+  }
+  .lang__opt {
+    border: 0; color: var(--muted-2); padding: 2px 0; cursor: pointer;
+    transition: color 100ms linear;
+  }
+  .lang__opt:hover { color: var(--ink); border: 0; }
+  .lang__opt.is-active { color: var(--accent); border-bottom: 1px solid var(--accent); }
+  .lang__sep { color: var(--rule); user-select: none; }
 
   /* Masthead */
   header.mast { border-bottom: 1px solid var(--rule); }
@@ -90,53 +112,100 @@
   .mast__nav a:hover { color: var(--ink); }
   .mast__nav a[aria-current="page"] { color: var(--accent); border-bottom: 1px solid var(--accent); }
   .mast__sep { color: var(--rule); user-select: none; }
+  .mast__ref { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.04em; white-space: nowrap; }
 
   /* Cover */
-  section.cover {
-    padding: 112px 0 96px;
-    border-bottom: 1px solid var(--rule);
-  }
+  section.cover { padding: 128px 0 120px; border-bottom: 1px solid var(--rule); }
   .cover__eyebrow {
     font-family: var(--mono); font-size: 11.5px; color: var(--accent);
-    letter-spacing: 0.08em; text-transform: uppercase; margin: 0 0 24px;
+    letter-spacing: 0.08em; text-transform: uppercase; margin: 0 0 28px;
   }
   .cover__eyebrow::before {
     content: "§ 00 ·"; color: var(--muted); margin-right: 8px; letter-spacing: 0.04em;
   }
   .cover h1 {
-    font-family: var(--serif); font-weight: 500; font-size: 48px;
-    line-height: 1.1; letter-spacing: -0.015em; margin: 0 0 24px;
+    font-family: var(--serif); font-weight: 500; font-size: 52px;
+    line-height: 1.08; letter-spacing: -0.015em; margin: 0 0 28px;
     color: var(--ink); text-wrap: balance;
   }
   .cover h1 em { font-style: italic; color: var(--ink-2); font-weight: 400; }
   .cover__sub {
-    font-family: var(--serif); font-size: 20px; line-height: 1.55;
-    color: var(--ink-2); margin: 0; max-width: 60ch; text-wrap: pretty;
+    font-family: var(--serif); font-size: 21px; line-height: 1.55;
+    color: var(--ink-2); margin: 0; max-width: 58ch; text-wrap: pretty;
   }
-  .cover__rule { margin: 48px 0 0; height: 1px; background: var(--rule); width: 96px; }
+  .cover__rule { margin: 56px 0 0; height: 1px; background: var(--rule); width: 96px; }
 
   /* Sections */
-  section.sec { padding: 88px 0; border-bottom: 1px solid var(--rule); }
-  section.sec:last-of-type { border-bottom: 0; }
+  section.sec { padding: 104px 0; border-bottom: 1px solid var(--rule); }
   .sec__num {
     font-family: var(--mono); font-size: 11.5px; color: var(--muted);
-    letter-spacing: 0.06em; text-transform: uppercase; margin: 0 0 16px;
+    letter-spacing: 0.06em; text-transform: uppercase; margin: 0 0 18px;
   }
   .sec__num .accent { color: var(--accent); }
   .sec h2 {
-    font-family: var(--serif); font-weight: 500; font-size: 30px;
-    line-height: 1.2; letter-spacing: -0.012em; margin: 0 0 24px;
-    color: var(--ink); text-wrap: balance; max-width: 28ch;
+    font-family: var(--serif); font-weight: 500; font-size: 34px;
+    line-height: 1.18; letter-spacing: -0.012em; margin: 0 0 28px;
+    color: var(--ink); text-wrap: balance; max-width: 26ch;
   }
   .sec p {
-    margin: 0 0 18px; color: var(--body);
+    margin: 0 0 20px; color: var(--body);
     font-size: 16.5px; line-height: 1.7; max-width: 62ch; text-wrap: pretty;
+  }
+  .sec p.lede {
+    font-family: var(--serif); font-size: 20px; line-height: 1.55;
+    color: var(--ink-2); margin-bottom: 28px; max-width: 58ch;
   }
   .sec p:last-child { margin-bottom: 0; }
   .sec b, .sec strong { color: var(--ink); font-weight: 600; }
+  .sec i, .sec em { font-style: italic; }
 
-  /* Aphorism — principle block */
-  .principle {
+  /* Inline compact list (—) */
+  ul.list-items {
+    list-style: none; padding: 0; margin: 8px 0 24px;
+    border-top: 1px solid var(--rule);
+  }
+  ul.list-items > li {
+    padding: 14px 0; border-bottom: 1px solid var(--rule);
+    display: grid; grid-template-columns: 36px 1fr; gap: 18px; align-items: baseline;
+    font-size: 16px; color: var(--ink-2); line-height: 1.5;
+  }
+  ul.list-items > li::before {
+    content: "—"; font-family: var(--mono); color: var(--muted-2); font-size: 13px;
+  }
+
+  /* Numbered principles */
+  ol.principles {
+    list-style: none; margin: 8px 0 0; padding: 0; counter-reset: principle;
+  }
+  ol.principles > li {
+    counter-increment: principle; padding: 32px 0;
+    border-top: 1px solid var(--rule);
+    display: grid; grid-template-columns: 72px 1fr; gap: 24px; align-items: baseline;
+  }
+  ol.principles > li:last-child { border-bottom: 1px solid var(--rule); }
+  ol.principles > li::before {
+    content: "P." counter(principle, decimal-leading-zero);
+    font-family: var(--mono); font-size: 11.5px; color: var(--accent);
+    letter-spacing: 0.04em; padding-top: 4px;
+  }
+  ol.principles h3 {
+    font-family: var(--serif); font-weight: 500; font-size: 20px;
+    line-height: 1.3; margin: 0 0 8px; color: var(--ink); text-wrap: balance;
+  }
+  ol.principles p {
+    margin: 0; color: var(--body); font-size: 15.5px; line-height: 1.65; max-width: 58ch;
+  }
+
+  .pullquote {
+    margin: 40px 0 0; padding: 24px 0 0;
+    border-top: 1px solid var(--rule);
+    font-family: var(--serif); font-style: italic; font-size: 19px;
+    line-height: 1.55; color: var(--ink-2); max-width: 58ch;
+  }
+  .pullquote strong { font-style: normal; font-weight: 500; color: var(--ink); }
+
+  /* Aphorism — full-width centred line, used for "L'idea in una frase" */
+  .aphorism {
     margin: 12px 0 0;
     padding: 28px 0;
     border-top: 1px solid var(--ink);
@@ -148,270 +217,128 @@
     max-width: 58ch;
     text-wrap: balance;
   }
-  .principle em { font-style: italic; color: var(--ink-2); }
-  .principle::before {
+  .aphorism em { font-style: italic; color: var(--ink-2); }
+  .aphorism::before {
     content: "—"; display: block;
     font-family: var(--mono); color: var(--accent);
     font-size: 13px; margin-bottom: 14px; letter-spacing: 0.04em;
   }
 
-  /* Figure */
-  figure.fig {
-    margin: 24px auto 0;
-    max-width: var(--col-wide);
-    padding: 0 var(--gutter);
-  }
-  figure.fig svg {
-    display: block;
-    width: 100%;
-    height: auto;
-    max-width: 100%;
-  }
-  figure.fig figcaption {
-    margin-top: 20px;
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 0.04em;
-    text-align: left;
-    line-height: 1.6;
-  }
-  .box-content {
-    font-family: var(--sans);
-    color: var(--ink);
-    line-height: 1.35;
-    display: flex; flex-direction: column;
-    height: 100%;
-  }
-  .box-tag {
-    font-family: var(--mono);
-    font-size: 10px;
-    color: var(--muted);
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    display: block;
-    margin-bottom: 10px;
-  }
-  .box-tag--accent { color: var(--accent); }
-  .box-title {
-    font-family: var(--serif);
-    font-weight: 500;
-    font-size: 17px;
-    color: var(--ink);
-    letter-spacing: -0.005em;
-    display: block;
-    margin-bottom: 8px;
-  }
-  .box-desc {
-    font-size: 12.5px;
-    color: var(--ink-2);
-    line-height: 1.5;
-    display: block;
-  }
-  .box-foot {
-    font-family: var(--mono);
-    font-size: 10px;
-    color: var(--accent);
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    display: block;
-    margin-top: auto;
-    padding-top: 10px;
-  }
-  .box-foot::before {
-    content: "—";
-    margin-right: 6px;
-  }
-
-  /* Timeline */
-  .timeline {
-    margin: 16px 0 0;
-    padding: 36px 0 28px;
-    border-top: 1px solid var(--ink);
-    border-bottom: 1px solid var(--ink);
-  }
-  .timeline__row {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 0;
-    align-items: stretch;
-  }
-  .timeline__tick {
-    position: relative;
-    padding: 0 16px 0 0;
-  }
-  .timeline__tick + .timeline__tick {
-    border-left: 1px solid var(--rule);
-    padding-left: 22px;
-  }
-  .timeline__k {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 0.06em;
-    margin: 0 0 8px;
-  }
-  .timeline__k.accent { color: var(--accent); }
-  .timeline__v {
-    font-family: var(--serif);
-    font-size: 18px;
-    color: var(--ink);
-    line-height: 1.4;
-    margin: 0 0 6px;
-  }
-  .timeline__cond {
-    font-family: var(--mono);
-    font-size: 10.5px;
-    color: var(--muted-2);
-    letter-spacing: 0.04em;
-    margin: 0;
-  }
-  .timeline__axis {
-    margin-top: 24px;
-    height: 1px;
-    background: var(--rule);
-    position: relative;
-  }
-
-  /* Implies / Excludes — two column block */
-  .grid-two {
+  /* Two-sided comparison ("storia dell'informatica") */
+  .compare {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 0;
-    margin-top: 8px;
+    margin: 12px 0 0;
     border-top: 1px solid var(--ink);
     border-bottom: 1px solid var(--ink);
   }
-  .grid-two > div { padding: 28px 28px 28px 0; }
-  .grid-two > div + div {
-    border-left: 1px solid var(--rule);
-    padding-left: 32px;
+  .compare > div { padding: 26px 24px 26px 0; }
+  .compare > div + div { border-left: 1px solid var(--rule); padding-left: 28px; }
+  .compare__tag {
+    font-family: var(--mono); font-size: 10.5px; color: var(--muted);
+    letter-spacing: 0.06em; text-transform: uppercase; margin: 0 0 10px;
   }
-  .grid-two h3 {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    margin: 0 0 18px;
-    font-weight: 500;
-  }
-  .grid-two h3.accent { color: var(--accent); }
-  .grid-two h3.neg { color: var(--ink); }
-  .grid-two h3.neg::before {
-    content: "¬";
-    color: var(--accent);
-    font-family: var(--serif);
-    font-size: 14px;
-    margin-right: 8px;
-  }
-  ul.bullets {
-    margin: 0; padding: 0; list-style: none;
-  }
-  ul.bullets > li {
-    padding: 12px 0 12px 30px;
-    border-top: 1px solid var(--rule);
-    position: relative;
-    font-family: var(--serif);
-    font-size: 16.5px;
-    color: var(--ink);
-    line-height: 1.45;
-  }
-  ul.bullets > li:first-child { border-top: 0; padding-top: 4px; }
-  ul.bullets > li::before {
-    content: "—";
-    position: absolute;
-    left: 0;
-    top: 12px;
-    font-family: var(--mono);
-    color: var(--muted-2);
-    font-size: 12px;
-    line-height: 1.45;
-  }
-  ul.bullets > li:first-child::before { top: 4px; }
-  ul.bullets.neg > li::before {
-    content: "×";
-    color: var(--accent);
-    font-family: var(--mono);
-    font-size: 13px;
-  }
-  .grid-two__after {
-    margin-top: 22px;
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 0.04em;
+  .compare__tag.accent { color: var(--accent); }
+  .compare__text {
+    font-family: var(--serif); font-size: 17px; line-height: 1.5;
+    color: var(--ink); margin: 0;
   }
 
-  /* Synthesis */
-  .synthesis {
-    padding: 96px 0 88px;
+  /* Exclusion list ("Cosa AIKNOCK non è") */
+  .negative {
+    margin: 8px 0 0; padding: 0; list-style: none;
+    border-top: 1px solid var(--rule);
   }
-  .synthesis__inner {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 0 var(--gutter);
+  .negative > li {
+    padding: 16px 0; border-bottom: 1px solid var(--rule);
+    display: grid; grid-template-columns: 80px 1fr; gap: 20px; align-items: baseline;
   }
-  .synthesis__line {
-    font-family: var(--serif);
-    font-size: 30px;
-    line-height: 1.3;
-    color: var(--ink);
-    margin: 0;
-    text-wrap: balance;
-    max-width: 22ch;
+  .negative > li::before {
+    content: "NON È"; font-family: var(--mono); font-size: 10.5px;
+    color: var(--accent); letter-spacing: 0.06em;
   }
-  .synthesis__line .strike { color: var(--muted-2); text-decoration: line-through; text-decoration-thickness: 1px; }
-  .synthesis__line .accent { color: var(--accent); }
-  .synthesis__rule {
-    margin: 24px 0 28px;
-    width: 96px;
-    height: 1px;
-    background: var(--ink);
+  .negative > li span {
+    font-family: var(--serif); font-size: 17px; color: var(--ink); line-height: 1.4;
   }
-  .synthesis__meta {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    margin: 0;
+  .negative__after {
+    margin: 28px 0 0;
+    font-family: var(--serif); font-size: 18px;
+    color: var(--ink-2); line-height: 1.55; max-width: 58ch;
   }
+  .negative__after strong { color: var(--ink); font-weight: 500; }
+
+  /* Stages ("Come TCP/IP") — horizontal sequence */
+  .stages {
+    margin: 12px 0 0; padding: 0; list-style: none;
+    display: grid; grid-template-columns: 1fr 1fr 1fr;
+    border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink);
+  }
+  .stages > li {
+    padding: 24px 22px 24px 0; position: relative;
+  }
+  .stages > li + li { border-left: 1px solid var(--rule); padding-left: 26px; }
+  .stages__step {
+    font-family: var(--mono); font-size: 10.5px; color: var(--accent);
+    letter-spacing: 0.06em; margin: 0 0 8px;
+  }
+  .stages__text {
+    font-family: var(--serif); font-size: 17px; color: var(--ink); line-height: 1.4; margin: 0;
+  }
+
+  /* Closing card */
+  .closing {
+    margin: 8px 0 0;
+    padding: 36px 0 0;
+    border-top: 1px solid var(--ink);
+  }
+  .closing p {
+    font-family: var(--serif); font-size: 21px; line-height: 1.5;
+    color: var(--ink); max-width: 58ch; margin: 0 0 14px; text-wrap: pretty;
+  }
+  .closing p.last { color: var(--ink-2); font-style: italic; }
 
   /* Colophon */
-  footer.colophon {
-    padding: 56px 0 56px;
-    border-top: 1px solid var(--rule);
+  footer.colophon { padding: 64px 0 56px; }
+  .colophon__grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 32px 56px; padding-top: 4px;
   }
-  .colophon__row {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 var(--gutter);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 12px;
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--muted-2);
-    letter-spacing: 0.04em;
+  .colophon dt {
+    font-family: var(--mono); font-size: 10.5px; color: var(--muted);
+    letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 6px;
+  }
+  .colophon dd {
+    margin: 0 0 18px; font-family: var(--serif); font-size: 15.5px;
+    color: var(--ink-2); line-height: 1.55;
+  }
+  .colophon__bottom {
+    margin-top: 28px; padding-top: 22px;
+    border-top: 1px solid var(--rule);
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: var(--mono); font-size: 11px; color: var(--muted-2);
+    letter-spacing: 0.04em; flex-wrap: wrap; gap: 12px;
   }
 
   /* Responsive */
   @media (max-width: 720px) {
-    .cover { padding: 72px 0 56px; }
-    .cover h1 { font-size: 34px; }
-    .cover__sub { font-size: 17px; }
-    .sec { padding: 64px 0; }
-    .sec h2 { font-size: 24px; }
-    .principle { font-size: 19px; }
-    .timeline__row { grid-template-columns: 1fr; }
-    .timeline__tick + .timeline__tick { border-left: 0; border-top: 1px solid var(--rule); padding-left: 0; padding-top: 22px; margin-top: 22px; }
-    .grid-two { grid-template-columns: 1fr; }
-    .grid-two > div + div { border-left: 0; border-top: 1px solid var(--rule); padding-left: 0; padding-top: 28px; }
-    .synthesis__line { font-size: 24px; }
+    .cover { padding: 80px 0 72px; }
+    .cover h1 { font-size: 36px; }
+    .cover__sub { font-size: 18px; }
+    .sec { padding: 72px 0; }
+    .sec h2 { font-size: 26px; }
+    .compare, .stages { grid-template-columns: 1fr; }
+    .compare > div + div { border-left: 0; border-top: 1px solid var(--rule); padding-left: 0; padding-top: 22px; }
+    .stages > li + li { border-left: 0; border-top: 1px solid var(--rule); padding-left: 0; padding-top: 22px; }
+    .negative > li { grid-template-columns: 1fr; gap: 4px; }
+    .colophon__grid { grid-template-columns: 1fr; }
+    ol.principles > li { grid-template-columns: 1fr; gap: 8px; }
+    ol.principles > li::before { padding-top: 0; }
     .mast__inner { flex-wrap: wrap; gap: 12px; }
+    .mast__ref { width: 100%; }
+    .banner__inner { gap: 12px; }
+    .banner__left { font-size: 10.5px; gap: 14px; }
+    .aphorism { font-size: 19px; }
   }
 </style>
 </head>
@@ -421,11 +348,19 @@
 <div class="banner">
   <div class="banner__inner">
     <div class="banner__left">
-      <span>Specifica aperta</span>
-      <span>Bozza di lavoro pubblica</span>
-      <span>A cura del gruppo editoriale AIKNOCK</span>
+      <span data-i18n="banner.l1">Specifica aperta</span>
+      <span data-i18n="banner.l2">Bozza di lavoro pubblica</span>
+      <span data-i18n="banner.l3">A cura del gruppo editoriale AIKNOCK</span>
     </div>
-    <span class="ref">Rif. AIKNOCK / WD-0004 · ONE-DIAGRAM</span>
+    <nav class="lang" aria-label="Language">
+      <a class="lang__opt" data-lang="it" href="?lang=it" hreflang="it" aria-current="true">IT</a>
+      <span class="lang__sep" aria-hidden="true">·</span>
+      <a class="lang__opt" data-lang="en" href="?lang=en" hreflang="en">EN</a>
+      <span class="lang__sep" aria-hidden="true">·</span>
+      <a class="lang__opt" data-lang="fr" href="?lang=fr" hreflang="fr">FR</a>
+      <span class="lang__sep" aria-hidden="true">·</span>
+      <a class="lang__opt" data-lang="es" href="?lang=es" hreflang="es">ES</a>
+    </nav>
   </div>
 </div>
 
@@ -434,244 +369,468 @@
   <div class="mast__inner">
     <a class="brand" href="index.html">
       <span class="brand__mark">AIKNOCK</span>
-      <span class="brand__sub">Specifica aperta · v0.4</span>
+      <span class="brand__sub" data-i18n="mast.sub">Specifica aperta · v0.4</span>
     </a>
     <nav class="mast__nav" aria-label="Sezioni">
-      <a href="index.html">Specifica</a>
+      <a href="index.html" data-i18n="nav.spec">Specifica</a>
       <span class="mast__sep" aria-hidden="true">·</span>
-      <a href="perche.html">Perché AIKNOCK</a>
+      <a href="perche.html" aria-current="page" data-i18n="nav.why">Perché AIKNOCK</a>
       <span class="mast__sep" aria-hidden="true">·</span>
-      <a href="one-diagram.html" aria-current="page">One Diagram</a>
+      <a href="one-diagram.html" data-i18n="nav.one">One Diagram</a>
       <span class="mast__sep" aria-hidden="true">·</span>
-      <a href="norme.html">Norme</a>
+      <a href="norme.html" data-i18n="nav.norms">Norme</a>
       <span class="mast__sep" aria-hidden="true">·</span>
-      <a href="design-principles.html">Design Principles</a>
+      <a href="design-principles.html" data-i18n="nav.dp">Design Principles</a>
       <span class="mast__sep" aria-hidden="true">·</span>
-      <a href="note-legali.html">Note legali</a>
+      <a href="note-legali.html" data-i18n="nav.legal">Note legali</a>
     </nav>
+    <span class="mast__ref" data-i18n="mast.ref">Rif. AIKNOCK / WD-0004 · 11 maggio 2026</span>
   </div>
 </header>
 
 <!-- Cover -->
 <section class="cover">
   <div class="col">
-    <p class="cover__eyebrow">AIKNOCK · One Diagram</p>
-    <h1>AIKNOCK in un solo diagramma<em>.</em></h1>
-    <p class="cover__sub">
-      AIKNOCK può essere compreso sapendo <b>dove</b> si colloca e
-      <b>quando</b> decide. Questa pagina presenta entrambe le coordinate
-      in un'unica figura, senza ulteriore narrativa.
+    <p class="cover__eyebrow" data-i18n="cover.eyebrow">AIKNOCK · Razionale del protocollo</p>
+    <h1 data-i18n="cover.h1">Perché un sistema di controllo dell'esecuzione per l'AI<em>.</em></h1>
+    <p class="cover__sub" data-i18n="cover.sub">
+      AIKNOCK nasce con un obiettivo preciso: portare il controllo
+      dell'esecuzione dell'AI al livello dell'infrastruttura, dove le
+      decisioni diventano vincoli tecnici applicati dal sistema e non
+      semplici dichiarazioni di intento.
     </p>
     <div class="cover__rule" aria-hidden="true"></div>
   </div>
 </section>
 
-<!-- §01 — Il principio -->
-<section class="sec" id="principio">
-  <p class="sec__num col"><span class="accent">§ 01</span> · Il principio</p>
+<!-- §01 — L'idea in una frase -->
+<section class="sec" id="idea">
+  <p class="sec__num col"><span class="accent">§ 01</span> · <span data-i18n="s1.tag">L'idea in una frase</span></p>
   <div class="col">
-    <h2>Il principio.</h2>
-    <p class="principle">
-      L'uso dell'AI non deve dipendere dalle applicazioni.
-      <em>Deve dipendere dal sistema.</em>
+    <h2 data-i18n="s1.h2">L'idea in una frase.</h2>
+    <p class="aphorism" data-i18n="s1.aph">
+      Ogni invocazione dell'AI attraversa il sistema.
+      <em>Il suo comportamento di esecuzione è vincolato per costruzione, non per intenzione.</em>
     </p>
   </div>
 </section>
 
-<!-- §02 — Diagramma concettuale -->
-<section class="sec" id="diagramma">
-  <p class="sec__num col--wide"><span class="accent">§ 02</span> · Diagramma concettuale</p>
+<!-- §02 — Il problema che tutti vedono -->
+<section class="sec" id="problema">
+  <p class="sec__num col"><span class="accent">§ 02</span> · <span data-i18n="s2.tag">Il problema</span></p>
+  <div class="col">
+    <h2 data-i18n="s2.h2">Il problema che tutti vedono, ma pochi affrontano.</h2>
+    <p class="lede" data-i18n="s2.lede">
+      Le invocazioni dell'AI provengono oggi da applicazioni eterogenee,
+      scritte da team distinti, indirizzate a modelli e provider differenti.
+      Tali invocazioni transitano senza un punto di controllo tecnico
+      interposto a livello di sistema.
+    </p>
+    <p data-i18n="s2.p1">Il controllo dell'invocazione, però, resta quasi sempre:</p>
+    <ul class="list-items">
+      <li data-i18n="s2.l1">documentale,</li>
+      <li data-i18n="s2.l2">applicativa,</li>
+      <li data-i18n="s2.l3">successiva all'evento.</li>
+    </ul>
+    <p data-i18n="s2.p2">
+      Questo approccio presuppone la cooperazione delle applicazioni. Ma quando una
+      tecnologia diventa critica, pervasiva e decisionale, <b>la fiducia
+      nell'applicazione che invoca non è una strategia tecnica</b>. Il
+      problema affrontato è tecnico e riguarda il comportamento del sistema
+      di calcolo durante l'esecuzione di operazioni di intelligenza
+      artificiale.
+    </p>
+  </div>
+</section>
+
+<!-- §03 — Lezione storica TCP/IP -->
+<section class="sec" id="lezione">
+  <p class="sec__num col--wide"><span class="accent">§ 03</span> · <span data-i18n="s3.tag">Lezione storica</span></p>
   <div class="col--wide">
-    <h2>Diagramma concettuale.</h2>
-    <p>
-      Tre strati: <b>Application Layer</b>, <b>AIKNOCK</b> come
-      <i>Execution Control Unit</i> a livello di sistema operativo, e
-      <b>AI Execution Layer</b>. La richiesta proveniente dalle applicazioni
-      attraversa AIKNOCK, che decide ex-ante; solo se autorizzata, l'esecuzione
-      del modello ha luogo.
+    <h2 data-i18n="s3.h2">La lezione della storia dell'informatica.</h2>
+    <p data-i18n="s3.p1">
+      Internet non è diventata affidabile chiedendo alle applicazioni di comportarsi bene.
+      È diventata affidabile quando <b>TCP/IP</b> ha spostato il controllo sotto le
+      applicazioni, nel protocollo di rete.
     </p>
+
+    <div class="compare" aria-label="Confronto TCP/IP — AIKNOCK">
+      <div>
+        <p class="compare__tag" data-i18n="s3.c1.tag">Rete · TCP/IP</p>
+        <p class="compare__text" data-i18n="s3.c1.text">
+          Spostare il controllo sotto le applicazioni, nel protocollo di rete.
+        </p>
+      </div>
+      <div>
+        <p class="compare__tag accent" data-i18n="s3.c2.tag">AI · AIKNOCK</p>
+        <p class="compare__text" data-i18n="s3.c2.text">
+          Spostare il controllo sotto le applicazioni, nel protocollo di
+          controllo dell'esecuzione.
+        </p>
+      </div>
+    </div>
+
+    <p style="margin-top: 36px;" data-i18n="s3.p2">AIKNOCK applica lo stesso principio all'intelligenza artificiale:</p>
+    <ul class="list-items">
+      <li data-i18n="s3.l1">non governa i contenuti,</li>
+      <li data-i18n="s3.l2">non governa i modelli,</li>
+      <li data-i18n="s3.l3">governa la possibilità stessa di usare l'AI.</li>
+    </ul>
   </div>
-
-  <figure class="fig">
-    <svg viewBox="0 0 1100 460" role="img" aria-labelledby="figT figD" xmlns="http://www.w3.org/2000/svg">
-      <title id="figT">AIKNOCK — Posizione e flusso decisionale</title>
-      <desc id="figD">Application Layer richiede uso AI; AIKNOCK decide ex-ante a livello OS; AI Execution Layer esegue solo se autorizzato.</desc>
-
-      <!-- Layer labels (vertical) -->
-      <text x="22" y="160" font-family="JetBrains Mono, monospace" font-size="9.5" fill="#9a9a9a" letter-spacing="1" transform="rotate(-90 22,160)">USER-SPACE</text>
-      <text x="22" y="270" font-family="JetBrains Mono, monospace" font-size="9.5" fill="#8a1a1a" letter-spacing="1" transform="rotate(-90 22,270)">OS-LEVEL</text>
-      <text x="22" y="380" font-family="JetBrains Mono, monospace" font-size="9.5" fill="#9a9a9a" letter-spacing="1" transform="rotate(-90 22,380)">EXECUTION</text>
-
-      <!-- BLOCK 1 — Application Layer (left) -->
-      <rect x="60" y="100" width="260" height="200" fill="none" stroke="#111111" stroke-width="1"></rect>
-      <foreignObject x="80" y="120" width="220" height="160">
-        <div xmlns="http://www.w3.org/1999/xhtml" class="box-content">
-          <span class="box-tag">01 · LIVELLO</span>
-          <span class="box-title">Application Layer</span>
-          <span class="box-desc">Software, servizi e flussi che richiedono l'uso dell'AI.</span>
-        </div>
-      </foreignObject>
-
-      <!-- BLOCK 2 — AIKNOCK (center, taller, accent) -->
-      <rect x="420" y="60" width="260" height="280" fill="none" stroke="#8a1a1a" stroke-width="1.5"></rect>
-      <line x1="420" y1="148" x2="680" y2="148" stroke="#8a1a1a" stroke-width="1" stroke-dasharray="3 3"></line>
-      <foreignObject x="440" y="78" width="220" height="62">
-        <div xmlns="http://www.w3.org/1999/xhtml" class="box-content">
-          <span class="box-tag box-tag--accent">02 · EXECUTION CONTROL UNIT</span>
-          <span class="box-title">AIKNOCK</span>
-        </div>
-      </foreignObject>
-      <foreignObject x="440" y="160" width="220" height="170">
-        <div xmlns="http://www.w3.org/1999/xhtml" class="box-content">
-          <span class="box-desc">Punto decisionale ex-ante: valuta contesto e intento, autorizza o rifiuta l'invocazione dell'AI.</span>
-          <span class="box-foot">non aggirabile · livello OS</span>
-        </div>
-      </foreignObject>
-
-      <!-- BLOCK 3 — AI Execution Layer (right) -->
-      <rect x="780" y="100" width="260" height="200" fill="none" stroke="#111111" stroke-width="1"></rect>
-      <foreignObject x="800" y="120" width="220" height="160">
-        <div xmlns="http://www.w3.org/1999/xhtml" class="box-content">
-          <span class="box-tag">03 · LIVELLO</span>
-          <span class="box-title">AI Execution Layer</span>
-          <span class="box-desc">Invocazione del modello, inferenza e risposta — eseguite solo se autorizzate.</span>
-        </div>
-      </foreignObject>
-
-      <!-- Arrow 1 — request (App → AIKNOCK) -->
-      <line x1="320" y1="200" x2="412" y2="200" stroke="#111111" stroke-width="1"></line>
-      <polygon points="420,200 410,195 410,205" fill="#111111"></polygon>
-      <text x="366" y="192" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#6a6a6a" letter-spacing="0.6">richiesta uso AI</text>
-
-      <!-- Arrow 2 — authorisation (AIKNOCK → Execution) -->
-      <line x1="680" y1="200" x2="772" y2="200" stroke="#8a1a1a" stroke-width="1.5"></line>
-      <polygon points="780,200 770,195 770,205" fill="#8a1a1a"></polygon>
-      <text x="726" y="192" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#8a1a1a" letter-spacing="0.6">autorizzazione</text>
-
-      <!-- Caption row inside SVG: ex-ante decision -->
-      <line x1="60" y1="380" x2="1040" y2="380" stroke="#d8d8d8" stroke-width="1" stroke-dasharray="2 4"></line>
-      <text x="60" y="408" font-family="JetBrains Mono, monospace" font-size="10.5" fill="#6a6a6a" letter-spacing="0.6">FLUSSO</text>
-      <text x="60" y="428" font-family="Source Serif 4, serif" font-style="italic" font-size="14" fill="#2a2a2a">richiesta → decisione ex-ante → autorizzazione → esecuzione</text>
-      <text x="1040" y="408" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="10.5" fill="#8a1a1a" letter-spacing="0.6">FIG. 1</text>
-    </svg>
-    <figcaption>
-      Figura 1 — Posizione di AIKNOCK nella catena di invocazione dell'AI.
-      La <i>execution control unit</i> valuta e vincola l'uso dell'AI
-      prima dell'esecuzione del modello.
-    </figcaption>
-  </figure>
 </section>
 
-<!-- §03 — Il tempo conta più del livello -->
-<section class="sec" id="tempo">
-  <p class="sec__num col"><span class="accent">§ 03</span> · Il tempo</p>
+<!-- §04 — Cos'è AIKNOCK -->
+<section class="sec" id="cos-e">
+  <p class="sec__num col"><span class="accent">§ 04</span> · <span data-i18n="s4.tag">Cos'è</span></p>
   <div class="col">
-    <h2>Il tempo conta più del livello.</h2>
-    <p>
-      Il livello a cui si colloca AIKNOCK è significativo solo in funzione
-      del momento in cui agisce. La proprietà rilevante non è
-      <i>dove</i> avviene il controllo, ma <i>quando</i>: prima
-      dell'invocazione del modello, non dopo.
+    <h2 data-i18n="s4.h2">Cos'è AIKNOCK.</h2>
+    <p class="lede" data-i18n="s4.lede">
+      AIKNOCK è un sistema di controllo dell'esecuzione ex-ante,
+      pensato per essere integrato a livello di sistema operativo,
+      runtime di esecuzione e piattaforma di base.
     </p>
+    <p data-i18n="s4.p1">
+      Ogni invocazione dell'AI deve attraversare un <b>punto di controllo obbligatorio
+      e non aggirabile</b>, prima che il modello venga eseguito. Il sistema
+      modifica il comportamento di esecuzione intercettando e regolando
+      le richieste di invocazione dell'AI prima dell'esecuzione.
+    </p>
+  </div>
+</section>
 
-    <div class="timeline" aria-label="Asse temporale">
-      <div class="timeline__row">
-        <div class="timeline__tick">
-          <p class="timeline__k">t₀ · INTENTO</p>
-          <p class="timeline__v">L'applicazione formula la richiesta di usare l'AI.</p>
-          <p class="timeline__cond">livello: user-space</p>
-        </div>
-        <div class="timeline__tick">
-          <p class="timeline__k accent">t₁ · DECISIONE</p>
-          <p class="timeline__v">Il sistema valuta e autorizza, condiziona o rifiuta.</p>
-          <p class="timeline__cond">livello: OS · non aggirabile</p>
-        </div>
-        <div class="timeline__tick">
-          <p class="timeline__k">t₂ · ESECUZIONE</p>
-          <p class="timeline__v">Il modello viene invocato solo se autorizzato a t₁.</p>
-          <p class="timeline__cond">livello: execution layer</p>
-        </div>
-      </div>
+<!-- §05 — Principi chiave -->
+<section class="sec" id="principi">
+  <p class="sec__num col"><span class="accent">§ 05</span> · <span data-i18n="s5.tag">Principi chiave</span></p>
+  <div class="col">
+    <h2 data-i18n="s5.h2">I principi chiave.</h2>
+    <ol class="principles">
+      <li><div>
+        <h3 data-i18n="s5.p1.h">Interposizione obbligatoria.</h3>
+        <p data-i18n="s5.p1.p">L'AI non è una risorsa libera. È una <i>capability</i> mediata dal sistema.</p>
+      </div></li>
+      <li><div>
+        <h3 data-i18n="s5.p2.h">Decisione prima dell'azione.</h3>
+        <p data-i18n="s5.p2.p">Il contesto e l'intento vengono valutati prima che l'AI sia invocata, non dopo.</p>
+      </div></li>
+      <li><div>
+        <h3 data-i18n="s5.p3.h">Enforcement tecnico.</h3>
+        <p data-i18n="s5.p3.p">Il sistema può consentire, limitare, degradare o bloccare l'uso dell'AI a runtime, indipendentemente dall'applicazione.</p>
+      </div></li>
+      <li><div>
+        <h3 data-i18n="s5.p4.h">Audit by construction.</h3>
+        <p data-i18n="s5.p4.p">Le evidenze non sono <i>log</i> opzionali: sono un effetto inevitabile del funzionamento.</p>
+      </div></li>
+      <li><div>
+        <h3 data-i18n="s5.p5.h">Human-in-the-Loop come vincolo.</h3>
+        <p data-i18n="s5.p5.p">Quando serve, l'intervento umano non è una procedura, ma un requisito tecnico imposto dal sistema.</p>
+      </div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- §06 — Cosa AIKNOCK non è -->
+<section class="sec" id="non-e">
+  <p class="sec__num col"><span class="accent">§ 06</span> · <span data-i18n="s6.tag">Delimitazione</span></p>
+  <div class="col">
+    <h2 data-i18n="s6.h2">Cosa AIKNOCK non è.</h2>
+    <p data-i18n="s6.intro">Per chiarezza, AIKNOCK non è:</p>
+    <ul class="negative">
+      <li><span data-i18n="s6.n1">un modello AI,</span></li>
+      <li><span data-i18n="s6.n2">una piattaforma di compliance,</span></li>
+      <li><span data-i18n="s6.n3">un framework etico,</span></li>
+      <li><span data-i18n="s6.n4">un prodotto con dashboard o interfaccia utente.</span></li>
+    </ul>
+    <p class="negative__after" data-i18n="s6.after">
+      <strong>AIKNOCK è infrastruttura, non applicazione.</strong>
+    </p>
+  </div>
+</section>
+
+<!-- §07 — Standard de-facto -->
+<section class="sec" id="standard">
+  <p class="sec__num col--wide"><span class="accent">§ 07</span> · <span data-i18n="s7.tag">Standard de-facto</span></p>
+  <div class="col--wide">
+    <h2 data-i18n="s7.h2">Perché uno standard <i>de-facto</i>.</h2>
+    <p data-i18n="s7.p1">
+      AIKNOCK non nasce per essere "scelto". Nasce per diventare <b>inevitabile</b>
+      nei contesti in cui l'AI è critica.
+    </p>
+    <p data-i18n="s7.p2">
+      Come TCP/IP, come i meccanismi di <i>identity</i>, come il <i>secure boot</i>:
+    </p>
+    <ol class="stages" aria-label="Adozione di uno standard de-facto">
+      <li>
+        <p class="stages__step" data-i18n="s7.st1.k">Fase 01</p>
+        <p class="stages__text" data-i18n="s7.st1.v">prima funziona,</p>
+      </li>
+      <li>
+        <p class="stages__step" data-i18n="s7.st2.k">Fase 02</p>
+        <p class="stages__text" data-i18n="s7.st2.v">poi viene adottato,</p>
+      </li>
+      <li>
+        <p class="stages__step" data-i18n="s7.st3.k">Fase 03</p>
+        <p class="stages__text" data-i18n="s7.st3.v">infine diventa standard.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- §08 — Visione concreta -->
+<section class="sec" id="visione" style="border-bottom: 0;">
+  <p class="sec__num col"><span class="accent">§ 08</span> · <span data-i18n="s8.tag">Visione</span></p>
+  <div class="col">
+    <h2 data-i18n="s8.h2">Una visione concreta.</h2>
+    <div class="closing">
+      <p data-i18n="s8.p1">Il controllo dell'esecuzione dell'AI non può restare un atto di fiducia.</p>
+      <p data-i18n="s8.p2"><b>Deve diventare una proprietà tecnica dei sistemi informatici.</b></p>
+      <p class="last" data-i18n="s8.p3">AIKNOCK esiste per rendere questa visione realizzabile.</p>
     </div>
   </div>
 </section>
 
-<!-- §04 — Cosa implica -->
-<!-- §05 — Cosa esclude -->
-<section class="sec" id="implicazioni">
-  <p class="sec__num col--wide"><span class="accent">§ 04</span> · Implicazioni</p>
-  <div class="col--wide">
-    <h2>Cosa il diagramma implica — e cosa esclude.</h2>
-    <p>
-      La figura, letta secondo l'asse temporale di §03, determina
-      proprietà tecniche precise e ne esclude altre. Le due liste qui sotto
-      sono le sole conseguenze ammesse dal diagramma.
-    </p>
-
-    <div class="grid-two">
-      <div>
-        <h3 class="accent">Implica</h3>
-        <ul class="bullets">
-          <li>AI come <i>capability</i> mediata dal sistema.</li>
-          <li>Accesso autorizzato, non semplicemente disponibile.</li>
-          <li>Controllo tecnico, non documentale.</li>
-          <li>Audit <i>by construction</i> delle decisioni.</li>
-        </ul>
-        <p class="grid-two__after">conseguenza di t₁ &lt; t₂</p>
-      </div>
-      <div>
-        <h3 class="neg">Esclude</h3>
-        <ul class="bullets neg">
-          <li>Controlli solo applicativi.</li>
-          <li>Controlli post-hoc.</li>
-          <li>Analisi solo di output o di log.</li>
-          <li>Cooperazione volontaria delle applicazioni.</li>
-        </ul>
-        <p class="grid-two__after">non sono AIKNOCK</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- §05 — Sintesi finale -->
-<section class="synthesis" id="sintesi" aria-label="Sintesi">
-  <div class="synthesis__inner">
-    <p class="sec__num"><span class="accent">§ 05</span> · Sintesi</p>
-    <div class="synthesis__rule" aria-hidden="true"></div>
-    <p class="synthesis__line">
-      AIKNOCK non governa <span class="strike">l'AI</span>.<br />
-      Governa la <span class="accent">possibilità di usarla</span>.
-    </p>
-    <p class="synthesis__meta" style="margin-top: 28px;">FINE DOCUMENTO · ONE-DIAGRAM</p>
-  </div>
-</section>
-
-<!-- Colophon (minimal) -->
+<!-- Colophon -->
 <footer class="colophon">
-  <div class="colophon__row">
-    <span>© 2026 Gruppo editoriale AIKNOCK — Specifica aperta · CC BY 4.0</span>
-    <a href="note-legali.html" style="border:0;color:var(--accent);font-family:var(--mono);font-size:11px;letter-spacing:0.04em;">Progetto indipendente · Note legali →</a>
-    <span>AIKNOCK / WD-0004 · ONE-DIAGRAM · 12 maggio 2026</span>
+  <p class="sec__num col" style="margin-bottom: 22px; border-top: 1px solid var(--rule); padding-top: 56px;"><span class="accent">§ 99</span> · <span data-i18n="col.tag">Colofone</span></p>
+  <div class="col">
+    <dl class="colophon__grid">
+      <div><dt data-i18n="col.dt1">Documento</dt><dd data-i18n="col.dd1">AIKNOCK / WD-0004 — Razionale</dd></div>
+      <div><dt data-i18n="col.dt2">Stadio</dt><dd data-i18n="col.dd2">Working Draft</dd></div>
+      <div><dt data-i18n="col.dt3">Curatela</dt><dd data-i18n="col.dd3">Gruppo editoriale AIKNOCK</dd></div>
+      <div><dt data-i18n="col.dt4">Licenza</dt><dd data-i18n="col.dd4">Creative Commons Attribution 4.0 Internazionale</dd></div>
+    </dl>
+    <div class="colophon__bottom">
+      <span data-i18n="col.bot1">© 2026 Gruppo editoriale AIKNOCK — Pubblicato come specifica aperta.</span>
+      <a href="note-legali.html" data-i18n="col.legal" style="border:0;color:var(--accent);font-family:var(--mono);font-size:11px;letter-spacing:0.04em;">Progetto indipendente · Note legali →</a>
+      <span data-i18n="col.bot2">Ultima revisione 12 maggio 2026 · WD-0004</span>
+    </div>
   </div>
 </footer>
 
 <script>
-/* Propagate the user's language choice to internal links.
-   This page is monolingual but must not lose ?lang when navigating. */
+/* Minimal language switch — Italian canonical, EN/FR/ES inlined.
+   Same protocol as index.html: ?lang=xx + localStorage + navigator.language. */
 (function () {
+  "use strict";
   var LANGS = ["it","en","fr","es"];
-  var p = new URLSearchParams(location.search);
-  var fromUrl = null; /* SEO: do not read ?lang= */
-  var fromStore = null;
-  try { fromStore = localStorage.getItem("aigp_lang"); } catch (e) {}
-  var lang = fromStore || "it"; /* SEO: default to IT */
-  if (LANGS.indexOf(lang) === -1) lang = "it";
-  if (fromUrl && fromUrl !== fromStore) {
-    try { localStorage.setItem("aigp_lang", lang); } catch (e2) {}
+
+  var dict = {
+    en: {
+      "banner.l1":"Open specification","banner.l2":"Public working draft","banner.l3":"Maintained by the AIKNOCK editorial group",
+      "mast.sub":"Open specification · v0.4","mast.ref":"Ref. AIKNOCK / WD-0004 · 11 May 2026",
+      "nav.spec":"Specification","nav.why":"Why AIKNOCK",
+      "cover.eyebrow":"AIKNOCK · Rationale of the protocol",
+      "cover.h1":"Why an execution-control system for AI<em>.</em>",
+      "cover.sub":"AIKNOCK is created with a precise objective: to bring AI execution control down to the infrastructure layer, where decisions become technical constraints applied by the system and not mere statements of intent.",
+      "s1.tag":"The idea in one sentence","s1.h2":"The idea in one sentence.",
+      "s1.aph":"Every invocation of AI traverses the system. <em>Its execution behaviour is constrained by construction, not by intention.</em>",
+      "s2.tag":"The problem","s2.h2":"The problem everyone sees, but few address.",
+      "s2.lede":"AI invocations today originate from heterogeneous applications, written by distinct teams, directed at different models and providers. Such invocations transit without a technical control point interposed at system level.",
+      "s2.p1":"Invocation control, however, almost always remains:",
+      "s2.l1":"documental,","s2.l2":"application-bound,","s2.l3":"after the fact.",
+      "s2.p2":"This approach presupposes the cooperation of applications. But when a technology becomes critical, pervasive and decisional, <b>trust in the invoking application is not a technical strategy</b>. The problem addressed is technical and concerns the behaviour of the computing system during the execution of artificial intelligence operations.",
+      "s3.tag":"Historical lesson","s3.h2":"The lesson from the history of computing.",
+      "s3.p1":"The internet did not become reliable by asking applications to behave. It became reliable when <b>TCP/IP</b> moved control beneath the applications, into the network protocol.",
+      "s3.c1.tag":"Network · TCP/IP","s3.c1.text":"Moved control beneath the applications, into the network protocol.",
+      "s3.c2.tag":"AI · AIKNOCK","s3.c2.text":"Move control beneath the applications, into the execution-control protocol.",
+      "s3.p2":"AIKNOCK applies the same principle to artificial intelligence:",
+      "s3.l1":"it does not govern content,","s3.l2":"it does not govern models,","s3.l3":"it governs the very possibility of using AI.",
+      "s4.tag":"What it is","s4.h2":"What AIKNOCK is.",
+      "s4.lede":"AIKNOCK is an ex-ante execution-control system, designed to be integrated at the level of the operating system, the execution runtime and the base platform.",
+      "s4.p1":"Every invocation of AI must traverse a <b>mandatory, non-bypassable control point</b>, before the model is executed. The system evaluates and constrains AI usage before execution.",
+      "s5.tag":"Key principles","s5.h2":"The key principles.",
+      "s5.p1.h":"Mandatory interposition.","s5.p1.p":"AI is not a free resource. It is a <i>capability</i> mediated by the system.",
+      "s5.p2.h":"Decision before action.","s5.p2.p":"Context and intent are evaluated before AI is invoked, not afterwards.",
+      "s5.p3.h":"Technical enforcement.","s5.p3.p":"The system can allow, limit, degrade or block the use of AI at runtime, independently of the application.",
+      "s5.p4.h":"Audit by construction.","s5.p4.p":"Evidence is not an optional <i>log</i>: it is an inevitable effect of how the system operates.",
+      "s5.p5.h":"Human-in-the-Loop as a constraint.","s5.p5.p":"Where needed, human intervention is not a procedure but a technical requirement enforced by the system.",
+      "s6.tag":"Boundaries","s6.h2":"What AIKNOCK is not.",
+      "s6.intro":"For clarity, AIKNOCK is not:",
+      "s6.n1":"an AI model,","s6.n2":"a compliance platform,","s6.n3":"an ethical framework,","s6.n4":"a product with a dashboard or user interface.",
+      "s6.after":"<strong>AIKNOCK is infrastructure, not application.</strong>",
+      "s7.tag":"De-facto standard","s7.h2":"Why a <i>de-facto</i> standard.",
+      "s7.p1":"AIKNOCK is not created to be \"chosen\". It is created to become <b>inevitable</b> in contexts where AI is critical.",
+      "s7.p2":"Like TCP/IP, like <i>identity</i> mechanisms, like <i>secure boot</i>:",
+      "s7.st1.k":"Stage 01","s7.st1.v":"first it works,",
+      "s7.st2.k":"Stage 02","s7.st2.v":"then it is adopted,",
+      "s7.st3.k":"Stage 03","s7.st3.v":"finally it becomes a standard.",
+      "s8.tag":"Vision","s8.h2":"A concrete vision.",
+      "s8.p1":"AI execution control cannot remain an act of trust.",
+      "s8.p2":"<b>It must become a technical property of information systems.</b>",
+      "s8.p3":"AIKNOCK exists to make this vision realisable.",
+      "col.tag":"Colophon",
+      "col.dt1":"Document","col.dd1":"AIKNOCK / WD-0004 — Rationale",
+      "col.dt2":"Stage","col.dd2":"Working Draft",
+      "col.dt3":"Editorship","col.dd3":"AIKNOCK editorial group",
+      "col.dt4":"Licence","col.dd4":"Creative Commons Attribution 4.0 International",
+      "col.bot1":"© 2026 AIKNOCK editorial group — Published as an open specification.",
+      "col.legal":"Independent project · Legal notice →",
+      "col.bot2":"Last revised 12 May 2026 · WD-0004"
+    },
+    fr: {
+      "banner.l1":"Spécification ouverte","banner.l2":"Brouillon de travail public","banner.l3":"Maintenu par le groupe éditorial AIKNOCK",
+      "mast.sub":"Spécification ouverte · v0.4","mast.ref":"Réf. AIKNOCK / WD-0004 · 11 mai 2026",
+      "nav.spec":"Spécification","nav.why":"Pourquoi AIKNOCK",
+      "cover.eyebrow":"AIKNOCK · Justification du protocole",
+      "cover.h1":"Pourquoi un système de contrôle d'exécution pour l'IA<em>.</em>",
+      "cover.sub":"AIKNOCK naît avec un objectif précis : porter le contrôle d'exécution de l'IA au niveau de l'infrastructure, là où les décisions deviennent des contraintes techniques appliquées par le système et non de simples déclarations d'intention.",
+      "s1.tag":"L'idée en une phrase","s1.h2":"L'idée en une phrase.",
+      "s1.aph":"Toute invocation de l'IA traverse le système. <em>Son comportement d'exécution est contraint par construction, non par intention.</em>",
+      "s2.tag":"Le problème","s2.h2":"Le problème que tout le monde voit, mais que peu affrontent.",
+      "s2.lede":"Les invocations de l'IA proviennent aujourd'hui d'applications hétérogènes, écrites par des équipes distinctes, dirigées vers des modèles et des fournisseurs différents. Ces invocations transitent sans point de contrôle technique interposé au niveau du système.",
+      "s2.p1":"Le contrôle de l'invocation, pourtant, reste presque toujours :",
+      "s2.l1":"documentaire,","s2.l2":"applicative,","s2.l3":"postérieure à l'événement.",
+      "s2.p2":"Cette approche présuppose la coopération des applications. Mais lorsqu'une technologie devient critique, pervasive et décisionnelle, <b>la confiance dans l'application qui invoque n'est pas une stratégie technique</b>. Le problème traité est technique et concerne le comportement du système informatique pendant l'exécution d'opérations d'intelligence artificielle.",
+      "s3.tag":"Leçon historique","s3.h2":"La leçon de l'histoire de l'informatique.",
+      "s3.p1":"Internet n'est pas devenu fiable en demandant aux applications de bien se comporter. Il l'est devenu lorsque <b>TCP/IP</b> a déplacé le contrôle sous les applications, dans le protocole de réseau.",
+      "s3.c1.tag":"Réseau · TCP/IP","s3.c1.text":"Déplacer le contrôle sous les applications, dans le protocole de réseau.",
+      "s3.c2.tag":"IA · AIKNOCK","s3.c2.text":"Déplacer le contrôle sous les applications, dans le protocole de contrôle d'exécution.",
+      "s3.p2":"AIKNOCK applique le même principe à l'intelligence artificielle :",
+      "s3.l1":"il ne gouverne pas les contenus,","s3.l2":"il ne gouverne pas les modèles,","s3.l3":"il gouverne la possibilité même d'utiliser l'IA.",
+      "s4.tag":"Ce qu'il est","s4.h2":"Ce qu'est AIKNOCK.",
+      "s4.lede":"AIKNOCK est un système de contrôle d'exécution ex-ante, conçu pour être intégré au niveau du système d'exploitation, du runtime d'exécution et de la plateforme de base.",
+      "s4.p1":"Toute invocation de l'IA doit franchir un <b>point de contrôle obligatoire et non contournable</b>, avant que le modèle ne soit exécuté. Le système évalue et contraint l'usage de l'IA avant l'exécution.",
+      "s5.tag":"Principes clés","s5.h2":"Les principes clés.",
+      "s5.p1.h":"Interposition obligatoire.","s5.p1.p":"L'IA n'est pas une ressource libre. C'est une <i>capability</i> médiée par le système.",
+      "s5.p2.h":"Décision avant l'action.","s5.p2.p":"Le contexte et l'intention sont évalués avant que l'IA soit invoquée, et non après.",
+      "s5.p3.h":"Application technique.","s5.p3.p":"Le système peut permettre, limiter, dégrader ou bloquer l'usage de l'IA à l'exécution, indépendamment de l'application.",
+      "s5.p4.h":"Audit par construction.","s5.p4.p":"Les preuves ne sont pas des <i>logs</i> optionnels : elles sont un effet inévitable du fonctionnement.",
+      "s5.p5.h":"Human-in-the-Loop comme contrainte.","s5.p5.p":"Lorsque cela est nécessaire, l'intervention humaine n'est pas une procédure, mais une exigence technique imposée par le système.",
+      "s6.tag":"Délimitation","s6.h2":"Ce qu'AIKNOCK n'est pas.",
+      "s6.intro":"Pour la clarté, AIKNOCK n'est pas :",
+      "s6.n1":"un modèle d'IA,","s6.n2":"une plateforme de conformité,","s6.n3":"un cadre éthique,","s6.n4":"un produit avec tableau de bord ou interface utilisateur.",
+      "s6.after":"<strong>AIKNOCK est une infrastructure, non une application.</strong>",
+      "s7.tag":"Standard de facto","s7.h2":"Pourquoi un standard <i>de facto</i>.",
+      "s7.p1":"AIKNOCK ne naît pas pour être « choisi ». Il naît pour devenir <b>inévitable</b> dans les contextes où l'IA est critique.",
+      "s7.p2":"Comme TCP/IP, comme les mécanismes d'<i>identity</i>, comme le <i>secure boot</i> :",
+      "s7.st1.k":"Étape 01","s7.st1.v":"il fonctionne d'abord,",
+      "s7.st2.k":"Étape 02","s7.st2.v":"puis il est adopté,",
+      "s7.st3.k":"Étape 03","s7.st3.v":"enfin il devient un standard.",
+      "s8.tag":"Vision","s8.h2":"Une vision concrète.",
+      "s8.p1":"Le contrôle d'exécution de l'IA ne peut rester un acte de confiance.",
+      "s8.p2":"<b>Elle doit devenir une propriété technique des systèmes informatiques.</b>",
+      "s8.p3":"AIKNOCK existe pour rendre cette vision réalisable.",
+      "col.tag":"Colophon",
+      "col.dt1":"Document","col.dd1":"AIKNOCK / WD-0004 — Justification",
+      "col.dt2":"Étape","col.dd2":"Working Draft",
+      "col.dt3":"Direction éditoriale","col.dd3":"Groupe éditorial AIKNOCK",
+      "col.dt4":"Licence","col.dd4":"Creative Commons Attribution 4.0 International",
+      "col.bot1":"© 2026 Groupe éditorial AIKNOCK — Publié comme spécification ouverte.",
+      "col.legal":"Projet indépendant · Mentions légales →",
+      "col.bot2":"Dernière révision 12 mai 2026 · WD-0004"
+    },
+    es: {
+      "banner.l1":"Especificación abierta","banner.l2":"Borrador público de trabajo","banner.l3":"Mantenido por el grupo editorial AIKNOCK",
+      "mast.sub":"Especificación abierta · v0.4","mast.ref":"Ref. AIKNOCK / WD-0004 · 11 de mayo de 2026",
+      "nav.spec":"Especificación","nav.why":"Por qué AIKNOCK",
+      "cover.eyebrow":"AIKNOCK · Justificación del protocolo",
+      "cover.h1":"Por qué un sistema de control de ejecución para la IA<em>.</em>",
+      "cover.sub":"AIKNOCK nace con un objetivo preciso: llevar el control de ejecución de la IA al nivel de la infraestructura, donde las decisiones se convierten en restricciones técnicas aplicadas por el sistema y no en meras declaraciones de intenciones.",
+      "s1.tag":"La idea en una frase","s1.h2":"La idea en una frase.",
+      "s1.aph":"Toda invocación de la IA atraviesa el sistema. <em>Su comportamiento de ejecución está restringido por construcción, no por intención.</em>",
+      "s2.tag":"El problema","s2.h2":"El problema que todos ven, pero pocos abordan.",
+      "s2.lede":"Las invocaciones de la IA provienen hoy de aplicaciones heterogéneas, escritas por equipos distintos, dirigidas a modelos y proveedores diferentes. Tales invocaciones transitan sin un punto de control técnico interpuesto a nivel de sistema.",
+      "s2.p1":"El control de la invocación, sin embargo, sigue siendo casi siempre:",
+      "s2.l1":"documental,","s2.l2":"aplicativa,","s2.l3":"posterior al evento.",
+      "s2.p2":"Este enfoque presupone la cooperación de las aplicaciones. Pero cuando una tecnología se vuelve crítica, omnipresente y decisional, <b>la confianza en la aplicación que invoca no es una estrategia técnica</b>. El problema abordado es técnico y concierne al comportamiento del sistema informático durante la ejecución de operaciones de inteligencia artificial.",
+      "s3.tag":"Lección histórica","s3.h2":"La lección de la historia de la informática.",
+      "s3.p1":"Internet no se volvió fiable pidiendo a las aplicaciones que se comportaran bien. Se volvió fiable cuando <b>TCP/IP</b> trasladó el control debajo de las aplicaciones, al protocolo de red.",
+      "s3.c1.tag":"Red · TCP/IP","s3.c1.text":"Trasladar el control debajo de las aplicaciones, al protocolo de red.",
+      "s3.c2.tag":"IA · AIKNOCK","s3.c2.text":"Trasladar el control debajo de las aplicaciones, al protocolo de control de ejecución.",
+      "s3.p2":"AIKNOCK aplica el mismo principio a la inteligencia artificial:",
+      "s3.l1":"no gobierna los contenidos,","s3.l2":"no gobierna los modelos,","s3.l3":"gobierna la posibilidad misma de usar la IA.",
+      "s4.tag":"Qué es","s4.h2":"Qué es AIKNOCK.",
+      "s4.lede":"AIKNOCK es un sistema de control de ejecución ex-ante, concebido para integrarse a nivel de sistema operativo, runtime de ejecución y plataforma de base.",
+      "s4.p1":"Toda invocación de la IA debe atravesar un <b>punto de control obligatorio y no eludible</b>, antes de que el modelo sea ejecutado. El sistema evalúa y restringe el uso de la IA antes de la ejecución.",
+      "s5.tag":"Principios clave","s5.h2":"Los principios clave.",
+      "s5.p1.h":"Interposición obligatoria.","s5.p1.p":"La IA no es un recurso libre. Es una <i>capability</i> mediada por el sistema.",
+      "s5.p2.h":"Decisión antes de la acción.","s5.p2.p":"El contexto y la intención se evalúan antes de que la IA sea invocada, no después.",
+      "s5.p3.h":"Aplicación técnica.","s5.p3.p":"El sistema puede permitir, limitar, degradar o bloquear el uso de la IA en tiempo de ejecución, con independencia de la aplicación.",
+      "s5.p4.h":"Auditoría por construcción.","s5.p4.p":"Las evidencias no son <i>logs</i> opcionales: son un efecto inevitable del funcionamiento.",
+      "s5.p5.h":"Human-in-the-Loop como restricción.","s5.p5.p":"Cuando es necesario, la intervención humana no es un procedimiento, sino un requisito técnico impuesto por el sistema.",
+      "s6.tag":"Delimitación","s6.h2":"Qué no es AIKNOCK.",
+      "s6.intro":"Para mayor claridad, AIKNOCK no es:",
+      "s6.n1":"un modelo de IA,","s6.n2":"una plataforma de cumplimiento,","s6.n3":"un marco ético,","s6.n4":"un producto con cuadro de mando o interfaz de usuario.",
+      "s6.after":"<strong>AIKNOCK es infraestructura, no aplicación.</strong>",
+      "s7.tag":"Estándar de facto","s7.h2":"Por qué un estándar <i>de facto</i>.",
+      "s7.p1":"AIKNOCK no nace para ser \"elegido\". Nace para volverse <b>inevitable</b> en los contextos en los que la IA es crítica.",
+      "s7.p2":"Como TCP/IP, como los mecanismos de <i>identity</i>, como el <i>secure boot</i>:",
+      "s7.st1.k":"Fase 01","s7.st1.v":"primero funciona,",
+      "s7.st2.k":"Fase 02","s7.st2.v":"luego es adoptado,",
+      "s7.st3.k":"Fase 03","s7.st3.v":"finalmente se convierte en estándar.",
+      "s8.tag":"Visión","s8.h2":"Una visión concreta.",
+      "s8.p1":"El control de ejecución de la IA no puede seguir siendo un acto de confianza.",
+      "s8.p2":"<b>Debe convertirse en una propiedad técnica de los sistemas informáticos.</b>",
+      "s8.p3":"AIKNOCK existe para hacer esta visión realizable.",
+      "col.tag":"Colofón",
+      "col.dt1":"Documento","col.dd1":"AIKNOCK / WD-0004 — Justificación",
+      "col.dt2":"Etapa","col.dd2":"Working Draft",
+      "col.dt3":"Curaduría","col.dd3":"Grupo editorial AIKNOCK",
+      "col.dt4":"Licencia","col.dd4":"Creative Commons Attribution 4.0 Internacional",
+      "col.bot1":"© 2026 Grupo editorial AIKNOCK — Publicado como especificación abierta.",
+      "col.legal":"Proyecto independiente · Aviso legal →",
+      "col.bot2":"Última revisión 12 de mayo de 2026 · WD-0004"
+    }
+  };
+
+  var titles = {
+    it: "AIKNOCK — Perché un protocollo per governare l'uso dell'AI",
+    en: "AIKNOCK — Why a protocol to govern the use of AI",
+    fr: "AIKNOCK — Pourquoi un protocole pour gouverner l'usage de l'IA",
+    es: "AIKNOCK — Por qué un protocolo para gobernar el uso de la IA"
+  };
+
+  var original = {};
+  function snapshot() {
+    var nodes = document.querySelectorAll("[data-i18n]");
+    for (var i=0; i<nodes.length; i++) {
+      var k = nodes[i].getAttribute("data-i18n");
+      if (!(k in original)) original[k] = nodes[i].innerHTML;
+    }
   }
-  /* SEO: link rewriting disabled — internal links stay parameter-free */
+  function apply(lang) {
+    if (LANGS.indexOf(lang) === -1) lang = "it";
+    document.documentElement.lang = lang;
+    var src = lang === "it" ? null : dict[lang];
+    var nodes = document.querySelectorAll("[data-i18n]");
+    for (var i=0; i<nodes.length; i++) {
+      var el = nodes[i], k = el.getAttribute("data-i18n");
+      var v = src && src[k] != null ? src[k] : original[k];
+      if (v != null && el.innerHTML !== v) el.innerHTML = v;
+    }
+    document.title = titles[lang] || titles.it;
+    /* SEO: link rewriting disabled — internal links stay parameter-free */
+    var opts = document.querySelectorAll(".lang__opt");
+    for (var j=0; j<opts.length; j++) {
+      var active = opts[j].getAttribute("data-lang") === lang;
+      opts[j].classList.toggle("is-active", active);
+      if (active) opts[j].setAttribute("aria-current", "true");
+      else opts[j].removeAttribute("aria-current");
+    }
+  }
+  function init() {
+    snapshot();
+    var p = new URLSearchParams(window.location.search);
+    var fromUrl = null, fromStore = null; /* SEO: do not read ?lang= */
+    try { fromStore = localStorage.getItem("aigp_lang"); } catch (e) {}
+    var nav = (navigator.language || "it").slice(0,2).toLowerCase();
+    var pick = fromStore || "it"; /* SEO: default to IT, ignore navigator */
+    if (LANGS.indexOf(pick) === -1) pick = "it";
+    apply(pick);
+    var opts = document.querySelectorAll(".lang__opt");
+    for (var i=0; i<opts.length; i++) {
+      opts[i].addEventListener("click", function (e) {
+        e.preventDefault();
+        var l = this.getAttribute("data-lang");
+        try { localStorage.setItem("aigp_lang", l); } catch (e2) {}
+        /* SEO: do not write ?lang= into the URL */
+        apply(l);
+      });
+    }
+  }
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else { init(); }
 })();
 </script>
-
 </body>
 </html>
