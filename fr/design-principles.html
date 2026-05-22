@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="it"><head>
+<html lang="fr"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="AIKNOCK — Design Principles &amp; Boundaries. Invarianti architetturali e confini non negoziabili del protocollo.">
+<meta name="description" content="AIKNOCK — Design Principles &amp; Boundaries. Invariants architecturaux et limites non négociables du protocole.">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
 <meta name="color-scheme" content="light">
 <title>AIKNOCK — Design Principles &amp; Boundaries</title>
-<link rel="canonical" href="https://aiknock.org/design-principles.html">
+<link rel="canonical" href="https://aiknock.org/fr/design-principles.html">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -216,23 +216,23 @@
     .mast__inner { flex-wrap: wrap; gap: 12px; } .statement { font-size: 17px; }
   }
 </style>
-<link rel="alternate" hreflang="it" href="https://aiknock.org/design-principles.html"><link rel="alternate" hreflang="en" href="https://aiknock.org/en/design-principles.html"><link rel="alternate" hreflang="fr" href="https://aiknock.org/fr/design-principles.html"><link rel="alternate" hreflang="es" href="https://aiknock.org/es/design-principles.html"><link rel="alternate" hreflang="x-default" href="https://aiknock.org/design-principles.html"><meta property="og:locale" content="it_IT"><meta property="og:locale:alternate" content="en_US"><meta property="og:locale:alternate" content="fr_FR"><meta property="og:locale:alternate" content="es_ES"><meta property="og:url" content="https://aiknock.org/design-principles.html"><meta property="og:type" content="article"><meta property="og:site_name" content="AIKNOCK"></head>
+<link rel="alternate" hreflang="it" href="https://aiknock.org/design-principles.html"><link rel="alternate" hreflang="en" href="https://aiknock.org/en/design-principles.html"><link rel="alternate" hreflang="fr" href="https://aiknock.org/fr/design-principles.html"><link rel="alternate" hreflang="es" href="https://aiknock.org/es/design-principles.html"><link rel="alternate" hreflang="x-default" href="https://aiknock.org/design-principles.html"><meta property="og:locale" content="fr_FR"><meta property="og:url" content="https://aiknock.org/fr/design-principles.html"></head>
 <body>
 
 <!-- Banner -->
 <div class="banner">
   <div class="banner__inner">
     <div class="banner__left">
-      <span data-i18n="banner.l1">Specifica aperta</span>
-      <span data-i18n="banner.l2">Bozza di lavoro pubblica</span>
-      <span data-i18n="banner.l3">A cura del gruppo editoriale AIKNOCK</span>
+      <span data-i18n="banner.l1">Spécification ouverte</span>
+      <span data-i18n="banner.l2">Brouillon de travail public</span>
+      <span data-i18n="banner.l3">Maintenu par le groupe éditorial AIKNOCK</span>
     </div>
     <nav class="lang" aria-label="Language">
-      <a class="lang__opt is-active" data-lang="it" href="/design-principles.html" hreflang="it" aria-current="true">IT</a>
+      <a class="lang__opt" data-lang="it" href="/design-principles.html" hreflang="it">IT</a>
       <span class="lang__sep" aria-hidden="true">·</span>
       <a class="lang__opt" data-lang="en" href="/en/design-principles.html" hreflang="en">EN</a>
       <span class="lang__sep" aria-hidden="true">·</span>
-      <a class="lang__opt" data-lang="fr" href="/fr/design-principles.html" hreflang="fr">FR</a>
+      <a class="lang__opt is-active" data-lang="fr" href="/fr/design-principles.html" hreflang="fr" aria-current="true">FR</a>
       <span class="lang__sep" aria-hidden="true">·</span>
       <a class="lang__opt" data-lang="es" href="/es/design-principles.html" hreflang="es">ES</a>
     </nav>
@@ -244,16 +244,16 @@
   <div class="mast__inner">
     <a class="brand" href="index.html">
       <span class="brand__mark">AIKNOCK</span>
-      <span class="brand__sub" data-i18n="mast.sub">Specifica aperta · v0.4</span>
+      <span class="brand__sub" data-i18n="mast.sub">Spécification ouverte · v0.4</span>
     </a>
     <nav class="mast__nav" aria-label="Sezioni">
-      <a href="index.html" data-i18n="nav.spec">Specifica</a>
+      <a href="index.html" data-i18n="nav.spec">Spécification</a>
       <span class="mast__sep" aria-hidden="true">·</span>
-      <a href="perche.html" data-i18n="nav.why">Perché AIKNOCK</a>
+      <a href="perche.html" data-i18n="nav.why">Pourquoi AIKNOCK</a>
       <span class="mast__sep" aria-hidden="true">·</span>
       <a href="one-diagram.html" data-i18n="nav.one">One Diagram</a>
       <span class="mast__sep" aria-hidden="true">·</span>
-      <a href="norme.html" data-i18n="nav.norms">Norme</a>
+      <a href="norme.html" data-i18n="nav.norms">Normes</a>
       <span class="mast__sep" aria-hidden="true">·</span>
       <a href="design-principles.html" aria-current="page" data-i18n="nav.dp">Design Principles</a>
       <span class="mast__sep" aria-hidden="true">·</span>
@@ -267,31 +267,18 @@
   <div class="col--wide">
     <p class="cover__eyebrow" data-i18n="cover.eyebrow">Design Principles &amp; Boundaries</p>
     <h1 data-i18n="cover.h1">AIKNOCK — Design Principles &amp; Boundaries<em>.</em></h1>
-    <p class="cover__sub" data-i18n="cover.sub">
-      Scopo del documento è dichiarare i <b>principi architetturali</b> e i
-      <b>confini non negoziabili</b> del protocollo, come invarianti
-      infrastrutturali: proprietà che il sistema deve preservare attraverso
-      ogni implementazione e ogni revisione futura.
-    </p>
+    <p class="cover__sub" data-i18n="cover.sub">Ce document déclare les <b>principes architecturaux</b> et les <b>limites non négociables</b> du protocole, en tant qu'invariants infrastructurels : propriétés que le système doit préserver à travers chaque implémentation et chaque révision future.</p>
     <div class="cover__rule" aria-hidden="true"></div>
   </div>
 </section>
 
 <!-- §01 Introduzione -->
 <section class="sec" id="introduzione">
-  <p class="sec__num col"><span class="accent">§ 01</span> · <span data-i18n="s1.tag">Introduzione</span></p>
+  <p class="sec__num col"><span class="accent">§ 01</span> · <span data-i18n="s1.tag">Introduction</span></p>
   <div class="col">
-    <h2 data-i18n="s1.h2">Invarianti infrastrutturali.</h2>
-    <p class="lede" data-i18n="s1.lede">
-      I principi che seguono e i confini che li accompagnano costituiscono
-      le invarianti del protocollo. Sono enunciati esplicitamente perché
-      ogni implementazione e ogni revisione possa esservi confrontata.
-    </p>
-    <p data-i18n="s1.p1">
-      Le invarianti non sono raccomandazioni: sono proprietà strutturali.
-      Un'implementazione che le violi non realizza AIKNOCK, anche qualora
-      ne adotti il nome o la terminologia.
-    </p>
+    <h2 data-i18n="s1.h2">Invariants infrastructurels.</h2>
+    <p class="lede" data-i18n="s1.lede">Les principes qui suivent et les limites qui les accompagnent constituent les invariants du protocole. Ils sont énoncés explicitement pour que toute implémentation et toute révision puissent y être confrontées.</p>
+    <p data-i18n="s1.p1">Les invariants ne sont pas des recommandations : ce sont des propriétés structurelles. Une implémentation qui les viole ne réalise pas AIKNOCK, même si elle en adopte le nom ou la terminologie.</p>
   </div>
 </section>
 
@@ -300,47 +287,40 @@
   <p class="sec__num col--wide"><span class="accent">§ 02</span> · <span data-i18n="s2.tag">Design Principles</span></p>
   <div class="col--wide">
     <h2 data-i18n="s2.h2">Design Principles.</h2>
-    <p data-i18n="s2.intro">
-      I principi che seguono definiscono il comportamento tecnico del
-      sistema durante l'esecuzione di operazioni di intelligenza
-      artificiale. Gli otto principi definiscono le proprietà
-      architetturali che il protocollo deve preservare. Sono numerati per
-      riferimento e letti come un insieme: nessun principio è dispensabile
-      senza modificare la natura del protocollo.
-    </p>
+    <p data-i18n="s2.intro">Les principes qui suivent définissent le comportement technique du système pendant l'exécution d'opérations d'intelligence artificielle. Les huit principes définissent les propriétés architecturales que le protocole doit préserver. Ils sont numérotés pour référence et se lisent comme un ensemble : aucun principe n'est dispensable sans modifier la nature du protocole.</p>
 
     <ol class="principles">
       <li><div>
-        <h3 data-i18n="s2.p1.h">AI come capability critica di sistema.</h3>
-        <p data-i18n="s2.p1.p">L'AI è trattata come una <i>capability</i> critica del sistema, non come una libreria o una funzionalità applicativa. Il suo uso è soggetto alle proprietà che il sistema riserva alle risorse critiche.</p>
+        <h3 data-i18n="s2.p1.h">L'IA comme capacité critique de système.</h3>
+        <p data-i18n="s2.p1.p">L'IA est traitée comme une <i>capability</i> critique du système, et non comme une bibliothèque ou une fonctionnalité applicative. Son usage est soumis aux propriétés que le système réserve aux ressources critiques.</p>
       </div></li>
       <li><div>
-        <h3 data-i18n="s2.p2.h">Interposizione obbligatoria.</h3>
-        <p data-i18n="s2.p2.p">Ogni invocazione dell'AI attraversa il protocollo. L'interposizione non è opzionale e non dipende dalla cooperazione del codice chiamante.</p>
+        <h3 data-i18n="s2.p2.h">Interposition obligatoire.</h3>
+        <p data-i18n="s2.p2.p">Toute invocation de l'IA traverse le protocole. L'interposition n'est pas optionnelle et ne dépend pas de la coopération du code appelant.</p>
       </div></li>
       <li><div>
-        <h3 data-i18n="s2.p3.h">Decisione prima dell'azione.</h3>
-        <p data-i18n="s2.p3.p">La valutazione di contesto e intento è <i>ex-ante</i>: precede l'invocazione del modello. Non è un controllo successivo né una verifica a campione.</p>
+        <h3 data-i18n="s2.p3.h">Décision avant l'action.</h3>
+        <p data-i18n="s2.p3.p">L'évaluation du contexte et de l'intention est <i>ex-ante</i> : elle précède l'invocation du modèle. Ce n'est ni un contrôle ultérieur ni une vérification par échantillonnage.</p>
       </div></li>
       <li><div>
-        <h3 data-i18n="s2.p4.h">Enforcement tecnico, non dichiarativo.</h3>
-        <p data-i18n="s2.p4.p">La decisione è applicata da un meccanismo tecnico al livello del sistema. Le dichiarazioni di intento e le regole organizzative non sostituiscono l'<i>enforcement</i>.</p>
+        <h3 data-i18n="s2.p4.h">Application technique, non déclarative.</h3>
+        <p data-i18n="s2.p4.p">La décision est appliquée par un mécanisme technique au niveau du système. Les déclarations d'intention et les règles organisationnelles ne remplacent pas l'<i>enforcement</i>.</p>
       </div></li>
       <li><div>
-        <h3 data-i18n="s2.p5.h">Audit by construction.</h3>
-        <p data-i18n="s2.p5.p">Le evidenze sono un effetto del funzionamento del protocollo, non una funzionalità aggiuntiva. La verificabilità delle decisioni è strutturale.</p>
+        <h3 data-i18n="s2.p5.h">Audit par construction.</h3>
+        <p data-i18n="s2.p5.p">Les preuves sont un effet du fonctionnement du protocole, et non une fonctionnalité supplémentaire. La vérifiabilité des décisions est structurelle.</p>
       </div></li>
       <li><div>
-        <h3 data-i18n="s2.p6.h">Separazione tra disponibilità e autorizzazione.</h3>
-        <p data-i18n="s2.p6.p">La presenza tecnica di un modello non implica l'autorizzazione al suo uso. I due piani — disponibilità e autorizzazione — restano distinti per costruzione.</p>
+        <h3 data-i18n="s2.p6.h">Séparation entre disponibilité et autorisation.</h3>
+        <p data-i18n="s2.p6.p">La présence technique d'un modèle n'implique pas l'autorisation de son usage. Les deux plans — disponibilité et autorisation — restent distincts par construction.</p>
       </div></li>
       <li><div>
-        <h3 data-i18n="s2.p7.h">Human-in-the-Loop come vincolo tecnico.</h3>
-        <p data-i18n="s2.p7.p">Quando previsto, l'intervento umano non è una procedura operativa ma un requisito imposto dal sistema. Il protocollo non procede in sua assenza.</p>
+        <h3 data-i18n="s2.p7.h">Human-in-the-Loop comme contrainte technique.</h3>
+        <p data-i18n="s2.p7.p">Lorsque cela est requis, l'intervention humaine n'est pas une procédure opérationnelle mais une exigence imposée par le système. Le protocole ne progresse pas en son absence.</p>
       </div></li>
       <li><div>
-        <h3 data-i18n="s2.p8.h">Neutralità rispetto a modelli e vendor.</h3>
-        <p data-i18n="s2.p8.p">Il protocollo non dipende da un particolare modello, runtime o fornitore commerciale. Definisce un'interfaccia di controllo dell'esecuzione a cui ogni implementazione si conforma.</p>
+        <h3 data-i18n="s2.p8.h">Neutralité à l'égard des modèles et fournisseurs.</h3>
+        <p data-i18n="s2.p8.p">Le protocole ne dépend ni d'un modèle, ni d'un runtime, ni d'un fournisseur commercial en particulier. Il définit une interface de contrôle d'exécution à laquelle toute implémentation se conforme.</p>
       </div></li>
     </ol>
   </div>
@@ -350,77 +330,60 @@
 <section class="sec" id="boundaries">
   <p class="sec__num col--wide"><span class="accent">§ 03</span> · <span data-i18n="s3.tag">Boundaries</span></p>
   <div class="col--wide">
-    <h2 data-i18n="s3.h2">Boundaries — confini non negoziabili.</h2>
-    <p data-i18n="s3.intro">
-      Ai principi corrispondono confini espliciti. Tali confini delimitano
-      ciò che il protocollo, per costruzione, non occupa: sono altrettanto
-      vincolanti dei principi e contribuiscono a definirne l'identità.
-    </p>
+    <h2 data-i18n="s3.h2">Boundaries — limites non négociables.</h2>
+    <p data-i18n="s3.intro">Aux principes correspondent des limites explicites. Ces limites délimitent ce que le protocole, par construction, n'occupe pas : elles sont aussi contraignantes que les principes et contribuent à définir son identité.</p>
 
     <ul class="boundaries">
       <li>
-        <span class="boundary__tag" data-i18n="s3.b1.tag">NON GOVERNA</span>
+        <span class="boundary__tag" data-i18n="s3.b1.tag">NE GOUVERNE PAS</span>
         <div class="boundary__body">
-          <h3 data-i18n="s3.b1.h">Contenuti — prompt e output.</h3>
-          <p data-i18n="s3.b1.p">Il protocollo non ispeziona, non filtra e non valuta i contenuti scambiati con i modelli. Il suo dominio è il diritto di uso, non il merito del risultato.</p>
+          <h3 data-i18n="s3.b1.h">Contenus — prompts et sorties.</h3>
+          <p data-i18n="s3.b1.p">Le protocole n'inspecte pas, ne filtre pas et n'évalue pas les contenus échangés avec les modèles. Son domaine est le droit d'usage, et non le mérite du résultat.</p>
         </div>
       </li>
       <li>
-        <span class="boundary__tag" data-i18n="s3.b2.tag">NON SOSTITUISCE</span>
+        <span class="boundary__tag" data-i18n="s3.b2.tag">NE REMPLACE PAS</span>
         <div class="boundary__body">
-          <h3 data-i18n="s3.b2.h">La legge.</h3>
-          <p data-i18n="s3.b2.p">Le obbligazioni giuridiche restano tali. AIKNOCK non interpreta norme, non garantisce conformità, non si sovrappone alla giurisdizione competente.</p>
+          <h3 data-i18n="s3.b2.h">La loi.</h3>
+          <p data-i18n="s3.b2.p">Les obligations juridiques demeurent telles. AIKNOCK n'interprète pas les normes, ne garantit pas la conformité, ne se superpose pas à la juridiction compétente.</p>
         </div>
       </li>
       <li>
-        <span class="boundary__tag" data-i18n="s3.b3.tag">NON È</span>
+        <span class="boundary__tag" data-i18n="s3.b3.tag">N'EST PAS</span>
         <div class="boundary__body">
-          <h3 data-i18n="s3.b3.h">Un framework di compliance.</h3>
-          <p data-i18n="s3.b3.p">Il protocollo descrive proprietà tecniche del sistema. Non definisce processi di certificazione, non rilascia attestati, non sostituisce gli organismi preposti.</p>
+          <h3 data-i18n="s3.b3.h">Un cadre de conformité.</h3>
+          <p data-i18n="s3.b3.p">Le protocole décrit des propriétés techniques du système. Il ne définit pas de processus de certification, n'émet pas d'attestations, ne se substitue pas aux organismes compétents.</p>
         </div>
       </li>
       <li>
-        <span class="boundary__tag" data-i18n="s3.b4.tag">NON GOVERNA</span>
+        <span class="boundary__tag" data-i18n="s3.b4.tag">NE GOUVERNE PAS</span>
         <div class="boundary__body">
-          <h3 data-i18n="s3.b4.h">Il training dei modelli.</h3>
-          <p data-i18n="s3.b4.p">La costruzione, l'addestramento, la selezione e la valutazione dei modelli sono fuori ambito. Il protocollo agisce al momento dell'uso, non a monte.</p>
+          <h3 data-i18n="s3.b4.h">L'entraînement des modèles.</h3>
+          <p data-i18n="s3.b4.p">La construction, l'entraînement, la sélection et l'évaluation des modèles sont hors périmètre. Le protocole agit au moment de l'usage, et non en amont.</p>
         </div>
       </li>
       <li>
-        <span class="boundary__tag" data-i18n="s3.b5.tag">NON FORNISCE</span>
+        <span class="boundary__tag" data-i18n="s3.b5.tag">NE FOURNIT PAS</span>
         <div class="boundary__body">
-          <h3 data-i18n="s3.b5.h">Interfacce utente.</h3>
-          <p data-i18n="s3.b5.p">AIKNOCK non comprende cruscotti, console o esperienze d'uso. È un piano infrastrutturale: le interfacce restano responsabilità delle implementazioni.</p>
+          <h3 data-i18n="s3.b5.h">D'interfaces utilisateur.</h3>
+          <p data-i18n="s3.b5.p">AIKNOCK ne comprend ni tableaux de bord, ni consoles, ni expériences d'usage. C'est un plan infrastructurel : les interfaces demeurent de la responsabilité des implémentations.</p>
         </div>
       </li>
     </ul>
 
-    <p class="statement" data-i18n="s3.stmt">
-      I confini sopra elencati non sono lacune del protocollo: sono
-      <b>scelte architetturali intenzionali</b>. Restringere l'ambito è
-      condizione necessaria perché ciò che il protocollo dichiara di fare
-      possa essere garantito con precisione.
-    </p>
+    <p class="statement" data-i18n="s3.stmt">Les limites énoncées ci-dessus ne sont pas des lacunes du protocole : ce sont des <b>choix architecturaux délibérés</b>. Restreindre le périmètre est une condition nécessaire pour que ce que le protocole déclare faire puisse être garanti avec précision.</p>
   </div>
 </section>
 
 <!-- §04 Sintesi -->
 <section class="sec" id="sintesi">
-  <p class="sec__num col"><span class="accent">§ 04</span> · <span data-i18n="s4.tag">Sintesi</span></p>
+  <p class="sec__num col"><span class="accent">§ 04</span> · <span data-i18n="s4.tag">Synthèse</span></p>
   <div class="col">
-    <h2 data-i18n="s4.h2">Perché principi e confini garantiscono durabilità.</h2>
+    <h2 data-i18n="s4.h2">Pourquoi principes et limites assurent la durabilité.</h2>
     <div class="closing">
-      <p data-i18n="s4.p1">
-        I principi definiscono ciò che il protocollo è. I confini definiscono ciò che il protocollo non è.
-      </p>
-      <p data-i18n="s4.p2">
-        <b>Insieme costituiscono le invarianti: la condizione perché AIKNOCK resti riconoscibile attraverso ogni implementazione, ogni revisione e ogni adozione.</b>
-      </p>
-      <p class="muted" data-i18n="s4.p3">
-        Una specifica che cambia identità ad ogni revisione non è uno
-        standard. Le invarianti sono il modo in cui un protocollo aperto
-        si rende durabile.
-      </p>
+      <p data-i18n="s4.p1">Les principes définissent ce que le protocole est. Les limites définissent ce que le protocole n'est pas.</p>
+      <p data-i18n="s4.p2"><b>Ensemble, ils constituent les invariants : la condition pour qu'AIKNOCK reste reconnaissable à travers chaque implémentation, chaque révision et chaque adoption.</b></p>
+      <p class="muted" data-i18n="s4.p3">Une spécification qui change d'identité à chaque révision n'est pas un standard. Les invariants sont la manière dont un protocole ouvert se rend durable.</p>
     </div>
   </div>
 </section>
@@ -428,9 +391,9 @@
 <!-- Colophon -->
 <footer class="colophon">
   <div class="colophon__row">
-    <span data-i18n="col.bot1">© 2026 Gruppo editoriale AIKNOCK — Specifica aperta · CC BY 4.0</span>
-    <a href="note-legali.html" data-i18n="col.legal" style="border:0;color:var(--accent);font-family:var(--mono);font-size:11px;letter-spacing:0.04em;">Progetto indipendente · Note legali →</a>
-    <span data-i18n="col.bot2">AIKNOCK / WD-0004 · DESIGN-PRINCIPLES · 12 maggio 2026</span>
+    <span data-i18n="col.bot1">© 2026 Groupe éditorial AIKNOCK — Spécification ouverte · CC BY 4.0</span>
+    <a href="note-legali.html" data-i18n="col.legal" style="border:0;color:var(--accent);font-family:var(--mono);font-size:11px;letter-spacing:0.04em;">Projet indépendant · Mentions légales →</a>
+    <span data-i18n="col.bot2">AIKNOCK / WD-0004 · DESIGN-PRINCIPLES · 12 mai 2026</span>
   </div>
 </footer>
 

@@ -1,32 +1,262 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
+  <!-- ============================================================
+       Multilingual pages — root IT + /en/ + /fr/ + /es/
+       Every URL declares the full hreflang set via xhtml:link.
+       This is the layout Google requires for a multi-region site.
+       ============================================================ -->
+
+  <!-- ─── HOME / SPECIFICATION ─── -->
   <url>
     <loc>https://aiknock.org/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aiknock.org/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiknock.org/en/index.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aiknock.org/fr/index.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://aiknock.org/es/index.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiknock.org/" />
   </url>
-
   <url>
-    <loc>https://aiknock.org/design-principles.html</loc>
+    <loc>https://aiknock.org/en/index.html</loc>
+    <lastmod>2026-05-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aiknock.org/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiknock.org/en/index.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aiknock.org/fr/index.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://aiknock.org/es/index.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiknock.org/" />
   </url>
-
   <url>
-    <loc>https://aiknock.org/one-diagram.html</loc>
+    <loc>https://aiknock.org/fr/index.html</loc>
+    <lastmod>2026-05-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aiknock.org/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiknock.org/en/index.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aiknock.org/fr/index.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://aiknock.org/es/index.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiknock.org/" />
+  </url>
+  <url>
+    <loc>https://aiknock.org/es/index.html</loc>
+    <lastmod>2026-05-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aiknock.org/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiknock.org/en/index.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aiknock.org/fr/index.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://aiknock.org/es/index.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiknock.org/" />
   </url>
 
+  <!-- ─── PERCHÉ / WHY ─── -->
   <url>
     <loc>https://aiknock.org/perche.html</loc>
+    <lastmod>2026-05-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aiknock.org/perche.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiknock.org/en/perche.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aiknock.org/fr/perche.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://aiknock.org/es/perche.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiknock.org/perche.html" />
+  </url>
+  <url>
+    <loc>https://aiknock.org/en/perche.html</loc>
+    <lastmod>2026-05-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aiknock.org/perche.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiknock.org/en/perche.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aiknock.org/fr/perche.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://aiknock.org/es/perche.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiknock.org/perche.html" />
+  </url>
+  <url>
+    <loc>https://aiknock.org/fr/perche.html</loc>
+    <lastmod>2026-05-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aiknock.org/perche.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiknock.org/en/perche.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aiknock.org/fr/perche.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://aiknock.org/es/perche.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiknock.org/perche.html" />
+  </url>
+  <url>
+    <loc>https://aiknock.org/es/perche.html</loc>
+    <lastmod>2026-05-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aiknock.org/perche.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiknock.org/en/perche.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aiknock.org/fr/perche.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://aiknock.org/es/perche.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiknock.org/perche.html" />
   </url>
 
+  <!-- ─── NORME ─── -->
   <url>
     <loc>https://aiknock.org/norme.html</loc>
+    <lastmod>2026-05-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aiknock.org/norme.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiknock.org/en/norme.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aiknock.org/fr/norme.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://aiknock.org/es/norme.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiknock.org/norme.html" />
   </url>
-  
   <url>
-    <loc>https://aiknock.org/ai-governance.html</loc>
+    <loc>https://aiknock.org/en/norme.html</loc>
+    <lastmod>2026-05-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aiknock.org/norme.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiknock.org/en/norme.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aiknock.org/fr/norme.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://aiknock.org/es/norme.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiknock.org/norme.html" />
+  </url>
+  <url>
+    <loc>https://aiknock.org/fr/norme.html</loc>
+    <lastmod>2026-05-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aiknock.org/norme.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiknock.org/en/norme.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aiknock.org/fr/norme.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://aiknock.org/es/norme.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiknock.org/norme.html" />
+  </url>
+  <url>
+    <loc>https://aiknock.org/es/norme.html</loc>
+    <lastmod>2026-05-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aiknock.org/norme.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiknock.org/en/norme.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aiknock.org/fr/norme.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://aiknock.org/es/norme.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiknock.org/norme.html" />
   </url>
 
+  <!-- ─── DESIGN PRINCIPLES ─── -->
+  <url>
+    <loc>https://aiknock.org/design-principles.html</loc>
+    <lastmod>2026-05-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aiknock.org/design-principles.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiknock.org/en/design-principles.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aiknock.org/fr/design-principles.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://aiknock.org/es/design-principles.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiknock.org/design-principles.html" />
+  </url>
+  <url>
+    <loc>https://aiknock.org/en/design-principles.html</loc>
+    <lastmod>2026-05-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aiknock.org/design-principles.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiknock.org/en/design-principles.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aiknock.org/fr/design-principles.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://aiknock.org/es/design-principles.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiknock.org/design-principles.html" />
+  </url>
+  <url>
+    <loc>https://aiknock.org/fr/design-principles.html</loc>
+    <lastmod>2026-05-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aiknock.org/design-principles.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiknock.org/en/design-principles.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aiknock.org/fr/design-principles.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://aiknock.org/es/design-principles.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiknock.org/design-principles.html" />
+  </url>
+  <url>
+    <loc>https://aiknock.org/es/design-principles.html</loc>
+    <lastmod>2026-05-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aiknock.org/design-principles.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiknock.org/en/design-principles.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aiknock.org/fr/design-principles.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://aiknock.org/es/design-principles.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiknock.org/design-principles.html" />
+  </url>
+
+  <!-- ─── NOTE LEGALI ─── -->
   <url>
     <loc>https://aiknock.org/note-legali.html</loc>
+    <lastmod>2026-05-21</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aiknock.org/note-legali.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiknock.org/en/note-legali.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aiknock.org/fr/note-legali.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://aiknock.org/es/note-legali.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiknock.org/note-legali.html" />
+  </url>
+  <url>
+    <loc>https://aiknock.org/en/note-legali.html</loc>
+    <lastmod>2026-05-21</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aiknock.org/note-legali.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiknock.org/en/note-legali.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aiknock.org/fr/note-legali.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://aiknock.org/es/note-legali.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiknock.org/note-legali.html" />
+  </url>
+  <url>
+    <loc>https://aiknock.org/fr/note-legali.html</loc>
+    <lastmod>2026-05-21</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aiknock.org/note-legali.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiknock.org/en/note-legali.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aiknock.org/fr/note-legali.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://aiknock.org/es/note-legali.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiknock.org/note-legali.html" />
+  </url>
+  <url>
+    <loc>https://aiknock.org/es/note-legali.html</loc>
+    <lastmod>2026-05-21</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aiknock.org/note-legali.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiknock.org/en/note-legali.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aiknock.org/fr/note-legali.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://aiknock.org/es/note-legali.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiknock.org/note-legali.html" />
+  </url>
+
+  <!-- ============================================================
+       IT-only pages — declared as IT + x-default (no false alternates).
+       ============================================================ -->
+  <url>
+    <loc>https://aiknock.org/one-diagram.html</loc>
+    <lastmod>2026-05-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aiknock.org/one-diagram.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiknock.org/one-diagram.html" />
+  </url>
+  <url>
+    <loc>https://aiknock.org/ai-governance.html</loc>
+    <lastmod>2026-05-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aiknock.org/ai-governance.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiknock.org/ai-governance.html" />
   </url>
 
 </urlset>

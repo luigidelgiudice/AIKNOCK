@@ -1,15 +1,15 @@
 <!doctype html>
-<html lang="it"><head>
+<html lang="es"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="AIKNOCK — sistema di controllo dell'esecuzione dell'Intelligenza Artificiale a livello di Sistema Operativo. Specifica tecnica aperta per il controllo ex-ante, non aggirabile, dell'invocazione dei modelli di AI.">
+<meta name="description" content="AIKNOCK — sistema de control de ejecución de la Inteligencia Artificial a nivel de sistema operativo. Especificación técnica abierta para el control ex-ante, no eludible, de la invocación de modelos de IA.">
 <meta name="keywords" content="AIKNOCK, controllo esecuzione AI, sistema operativo AI, ex-ante, AI invocation control, execution control system, AI governance technical layer, specifica tecnica AI">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
 <meta name="author" content="Gruppo editoriale AIKNOCK">
 <meta name="color-scheme" content="light">
-<title data-i18n="doc.title">AIKNOCK — Controllo dell'esecuzione dell'Intelligenza Artificiale a livello di Sistema Operativo</title>
+<title data-i18n="doc.title">AIKNOCK — Control de ejecución de la inteligencia artificial a nivel de sistema operativo</title>
 
-<link rel="canonical" href="https://aiknock.org/">
+<link rel="canonical" href="https://aiknock.org/es/index.html">
 
 
 
@@ -21,11 +21,11 @@
 <meta property="og:site_name" content="AIKNOCK">
 <meta property="og:title" content="AIKNOCK — Controllo dell'esecuzione dell'Intelligenza Artificiale a livello di Sistema Operativo">
 <meta property="og:description" content="Specifica tecnica aperta per il controllo ex-ante, non aggirabile, dell'invocazione dei modelli di AI a livello di sistema operativo.">
-<meta property="og:locale" content="it_IT">
-
-
-
-<meta property="og:url" content="https://aiknock.org/">
+<meta property="og:locale" content="es_ES">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:locale:alternate" content="fr_FR">
+<meta property="og:locale:alternate" content="es_ES">
+<meta property="og:url" content="https://aiknock.org/es/index.html">
 
 <!-- Twitter / X -->
 <meta name="twitter:card" content="summary_large_image">
@@ -33,21 +33,25 @@
 <meta name="twitter:description" content="Specifica tecnica aperta: punto decisionale ex-ante, non aggirabile, per l'invocazione dei modelli di AI.">
 
 <!-- Structured data — Schema.org TechArticle -->
-<script type="application/ld+json">
-{
+<script type="application/ld+json">{
   "@context": "https://schema.org",
   "@type": "TechArticle",
-  "headline": "AIKNOCK — Controllo dell'esecuzione dell'Intelligenza Artificiale a livello di Sistema Operativo",
+  "headline": "AIKNOCK — Control de ejecución de la inteligencia artificial a nivel de sistema operativo",
   "description": "Specifica tecnica aperta che definisce un sistema di controllo dell'esecuzione dell'AI, applicato a livello di sistema operativo, con un punto decisionale ex-ante e non aggirabile.",
-  "inLanguage": "it",
-  "author": { "@type": "Organization", "name": "Gruppo editoriale AIKNOCK" },
-  "publisher": { "@type": "Organization", "name": "Gruppo editoriale AIKNOCK" },
+  "inLanguage": "es",
+  "author": {
+    "@type": "Organization",
+    "name": "Gruppo editoriale AIKNOCK"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Gruppo editoriale AIKNOCK"
+  },
   "dateModified": "2026-05-19",
   "license": "https://creativecommons.org/licenses/by/4.0/",
-  "mainEntityOfPage": "https://aiknock.org/",
+  "mainEntityOfPage": "https://aiknock.org/es/index.html",
   "keywords": "AIKNOCK, execution control, OS-level AI, ex-ante decision, AI invocation, technical specification"
-}
-</script>
+}</script>
 
 <!-- Web fonts (optional — robust system fallbacks declared below).
      If offline, the page renders with Georgia / system-ui / Menlo. -->
@@ -618,25 +622,25 @@
     a { color: var(--ink); border: 0; }
   }
 </style>
-<link rel="alternate" hreflang="it" href="https://aiknock.org/"><link rel="alternate" hreflang="en" href="https://aiknock.org/en/index.html"><link rel="alternate" hreflang="fr" href="https://aiknock.org/fr/index.html"><link rel="alternate" hreflang="es" href="https://aiknock.org/es/index.html"><link rel="alternate" hreflang="x-default" href="https://aiknock.org/"><meta property="og:locale:alternate" content="en_US"><meta property="og:locale:alternate" content="fr_FR"><meta property="og:locale:alternate" content="es_ES"></head>
+<link rel="alternate" hreflang="it" href="https://aiknock.org/"><link rel="alternate" hreflang="en" href="https://aiknock.org/en/index.html"><link rel="alternate" hreflang="fr" href="https://aiknock.org/fr/index.html"><link rel="alternate" hreflang="es" href="https://aiknock.org/es/index.html"><link rel="alternate" hreflang="x-default" href="https://aiknock.org/"></head>
 <body>
 
 <!-- Document banner — language switch top-right -->
 <div class="banner">
   <div class="banner__inner">
     <div class="banner__left">
-      <span data-i18n="banner.l1">Specifica aperta</span>
-      <span data-i18n="banner.l2">Bozza di lavoro pubblica</span>
-      <span data-i18n="banner.l3">A cura del gruppo editoriale AIKNOCK</span>
+      <span data-i18n="banner.l1">Especificación abierta</span>
+      <span data-i18n="banner.l2">Borrador público de trabajo</span>
+      <span data-i18n="banner.l3">Mantenido por el grupo editorial AIKNOCK</span>
     </div>
     <nav class="lang" aria-label="Language">
-      <a class="lang__opt is-active" data-lang="it" href="/" hreflang="it" aria-current="true">IT</a>
+      <a class="lang__opt" data-lang="it" href="/" hreflang="it">IT</a>
       <span class="lang__sep" aria-hidden="true">·</span>
       <a class="lang__opt" data-lang="en" href="/en/index.html" hreflang="en">EN</a>
       <span class="lang__sep" aria-hidden="true">·</span>
       <a class="lang__opt" data-lang="fr" href="/fr/index.html" hreflang="fr">FR</a>
       <span class="lang__sep" aria-hidden="true">·</span>
-      <a class="lang__opt" data-lang="es" href="/es/index.html" hreflang="es">ES</a>
+      <a class="lang__opt is-active" data-lang="es" href="/es/index.html" hreflang="es" aria-current="true">ES</a>
     </nav>
   </div>
 </div>
@@ -646,7 +650,7 @@
   <div class="mast__inner">
     <a class="brand" href="index.html">
       <span class="brand__mark">AIKNOCK</span>
-      <span class="brand__sub" data-i18n="mast.sub">Specifica aperta · v0.4</span>
+      <span class="brand__sub" data-i18n="mast.sub">Especificación abierta · v0.4</span>
     </a>
     <nav class="mast__nav" aria-label="Sezioni">
       <a href="index.html" aria-current="page" data-i18n="nav.spec">Specifica</a>
@@ -663,112 +667,68 @@
       <span class="mast__sep" aria-hidden="true">·</span>
       <a href="note-legali.html" data-i18n="nav.legal">Note legali</a>
     </nav>
-    <span class="mast__ref" data-i18n="mast.ref">Rif. AIKNOCK / WD-0004 · 11 maggio 2026</span>
+    <span class="mast__ref" data-i18n="mast.ref">Ref. AIKNOCK / WD-0004 · 11 de mayo de 2026</span>
   </div>
 </header>
 
 <!-- Cover -->
 <section class="cover">
   <div class="col">
-    <p class="cover__eyebrow" data-i18n="cover.eyebrow">AIKNOCK · Controllo dell'esecuzione dell'AI</p>
-    <h1 data-i18n="cover.h1">Controllo dell'esecuzione dell'Intelligenza Artificiale a livello di Sistema Operativo<em>.</em></h1>
-    <p class="cover__sub" data-i18n="cover.sub">
-      AIKNOCK è un sistema di controllo dell'esecuzione, applicato
-      a livello di sistema operativo, che vincola l'invocazione e
-      l'esecuzione dei sistemi di Intelligenza Artificiale. Tratta l'AI
-      come una <i>capability</i> critica di sistema, non come una libreria
-      o funzionalità applicativa.
-    </p>
+    <p class="cover__eyebrow" data-i18n="cover.eyebrow">AIKNOCK · Control de ejecución de la IA</p>
+    <h1 data-i18n="cover.h1">Control de ejecución de la Inteligencia Artificial a nivel de sistema operativo<em>.</em></h1>
+    <p class="cover__sub" data-i18n="cover.sub">AIKNOCK es un sistema de control de ejecución a nivel de sistema, aplicado en la capa del sistema operativo, que restringe la invocación y la ejecución de los sistemas de Inteligencia Artificial. Trata la IA como una <i>capability</i> crítica del sistema, no como una biblioteca ni como una funcionalidad de aplicación.</p>
     <div class="cover__rule" aria-hidden="true"></div>
   </div>
 </section>
 
 <!-- §00.5 — SEO content panel (machine-readable, editorial tone) -->
 <section class="sec" id="introduzione" aria-labelledby="seo-h2">
-  <p class="sec__num col"><span class="accent">§ 00</span> · <span data-i18n="seo.tag">Introduzione</span></p>
+  <p class="sec__num col"><span class="accent">§ 00</span> · <span data-i18n="seo.tag">Introducción</span></p>
   <div class="col">
-    <h2 id="seo-h2" data-i18n="seo.h2">Cos'è AIKNOCK.</h2>
-    <p class="lede" data-i18n="seo.lede">
-      AIKNOCK è una specifica tecnica aperta che descrive un sistema di
-      controllo dell'esecuzione dell'Intelligenza Artificiale operante al
-      livello del sistema operativo. Definisce un punto decisionale
-      <i>ex-ante</i>, non aggirabile, attraversato da ogni invocazione di
-      modelli di AI prima della loro esecuzione.
-    </p>
+    <h2 id="seo-h2" data-i18n="seo.h2">Qué es AIKNOCK.</h2>
+    <p class="lede" data-i18n="seo.lede">AIKNOCK es una especificación técnica abierta que describe un sistema de control de ejecución de la Inteligencia Artificial operando a nivel del sistema operativo. Define un punto de decisión <i>ex-ante</i>, no eludible, que toda invocación de modelos de IA atraviesa antes de la ejecución.</p>
 
-    <h3 data-i18n="seo.h3a">Perché un sistema di controllo a livello di sistema.</h3>
-    <p data-i18n="seo.p1">
-      Nei sistemi attuali, l'invocazione dei modelli di Intelligenza
-      Artificiale avviene all'interno delle applicazioni, senza un
-      punto di controllo tecnico interposto e indipendente. AIKNOCK
-      sposta il controllo al di sotto del livello applicativo, dove il
-      comportamento di esecuzione del sistema può essere vincolato in
-      modo verificabile e indipendente dal codice chiamante.
-    </p>
+    <h3 data-i18n="seo.h3a">Por qué un sistema de control a nivel de sistema.</h3>
+    <p data-i18n="seo.p1">En los sistemas actuales, la invocación de los modelos de Inteligencia Artificial se produce dentro de las aplicaciones, sin un punto de control técnico interpuesto e independiente. AIKNOCK traslada el control por debajo del nivel aplicativo, donde el comportamiento de ejecución del sistema puede ser restringido de manera verificable e independiente del código que invoca.</p>
 
-    <h3 data-i18n="seo.h3b">Caratteristiche distintive.</h3>
-    <p data-i18n="seo.p2">
-      Il sistema valuta e vincola l'uso dell'AI prima dell'esecuzione.
-      Le decisioni assunte producono, come effetto del funzionamento del
-      sistema, registrazioni verificabili. Il controllo è indipendente
-      dal modello, dal fornitore e dall'applicazione che richiede l'uso
-      dell'AI.
-    </p>
+    <h3 data-i18n="seo.h3b">Características distintivas.</h3>
+    <p data-i18n="seo.p2">El sistema evalúa y restringe el uso de la IA antes de la ejecución. Las decisiones adoptadas producen, como efecto del funcionamiento del sistema, registros verificables. El control es independiente del modelo, del proveedor y de la aplicación que requiere el uso de la IA.</p>
 
-    <h3 data-i18n="seo.h3c">Ambiti di applicazione.</h3>
-    <p data-i18n="seo.p3">
-      AIKNOCK si colloca al livello dell'infrastruttura informatica. È
-      pensato per contesti operativi critici in cui esistono requisiti
-      esterni — quali quelli posti dall'<b>AI Act</b>, dalla direttiva
-      <b>NIS2</b>, dagli standard <b>ISO/IEC 42001</b> e <b>ISO/IEC 27001</b>
-      e dal <b>NIST AI Risk Management Framework</b> — senza tuttavia
-      implementare né rappresentare tali requisiti.
-    </p>
+    <h3 data-i18n="seo.h3c">Ámbitos de aplicación.</h3>
+    <p data-i18n="seo.p3">AIKNOCK se sitúa en el plano de la infraestructura informática. Está concebido para contextos operativos críticos en los que existen requisitos externos — como los planteados por el <b>AI Act</b>, la directiva <b>NIS2</b>, los estándares <b>ISO/IEC 42001</b> e <b>ISO/IEC 27001</b> y el <b>NIST AI Risk Management Framework</b> — sin por ello implementar ni representar dichos requisitos.</p>
 
-    <h3 data-i18n="seo.h3d">Documenti della specifica.</h3>
-    <p data-i18n="seo.p4">
-      La specifica è articolata in più documenti complementari, che
-      è possibile consultare separatamente:
-      <a href="perche.html" data-i18n="seo.lnk1">razionale del progetto e contesto di adozione</a>,
-      <a href="one-diagram.html" data-i18n="seo.lnk2">posizione architetturale in un solo diagramma</a>,
-      <a href="design-principles.html" data-i18n="seo.lnk3">principi di design e confini del sistema</a>,
-      <a href="norme.html" data-i18n="seo.lnk4">relazione tecnica con i quadri normativi esterni</a>,
-      <a href="note-legali.html" data-i18n="seo.lnk5">note legali, indipendenza editoriale e marchi</a>.
-    </p>
+    <h3 data-i18n="seo.h3d">Documentos de la especificación.</h3>
+    <p data-i18n="seo.p4">La especificación se articula en varios documentos complementarios, consultables por separado: <a href="perche.html">justificación del proyecto y contexto de adopción</a>, <a href="one-diagram.html">posición arquitectónica en un solo diagrama</a>, <a href="design-principles.html">principios de diseño y límites del sistema</a>, <a href="norme.html">relación técnica con los marcos normativos externos</a>, <a href="note-legali.html">aviso legal, independencia editorial y marcas</a>.</p>
   </div>
 </section>
 
 <!-- §01 — Obiettivo + diagramma -->
 <section class="sec" id="cos-e">
-  <p class="sec__num col"><span class="accent">§ 01</span> · <span data-i18n="s1.tag">Obiettivo</span></p>
+  <p class="sec__num col"><span class="accent">§ 01</span> · <span data-i18n="s1.tag">Objetivo</span></p>
   <div class="col">
-    <h2 data-i18n="s1.h2">Un punto decisionale prima dell'esecuzione.</h2>
-    <p class="lede" data-i18n="s1.lede">
-      L'obiettivo di AIKNOCK è introdurre un punto decisionale ex-ante,
-      non aggirabile, che stabilisca se e quando l'AI può essere invocata,
-      prima dell'esecuzione.
-    </p>
+    <h2 data-i18n="s1.h2">Un punto de decisión antes de la ejecución.</h2>
+    <p class="lede" data-i18n="s1.lede">El objetivo de AIKNOCK es introducir un punto de decisión ex-ante, no eludible, que determine si y cuándo la IA puede ser invocada, antes de la ejecución.</p>
   </div>
 
   <figure class="fig col--fig">
     <svg viewBox="0 0 1100 400" role="img" aria-labelledby="figT figD" xmlns="http://www.w3.org/2000/svg">
       <title id="figT">AIKNOCK — Posizione del punto decisionale</title>
-      <desc id="figD" data-i18n="s1.fig.desc">Application Layer → AIKNOCK (Execution Control Unit) → AI Execution Layer. AIKNOCK decide ex-ante, prima dell'esecuzione.</desc>
+      <desc id="figD" data-i18n="s1.fig.desc">Application Layer → AIKNOCK (Execution Control Unit) → AI Execution Layer. AIKNOCK decide ex-ante, antes de la ejecución.</desc>
 
       <line x1="60" y1="50" x2="1040" y2="50" stroke="#d8d8d8" stroke-width="1"></line>
       <line x1="180" y1="44" x2="180" y2="56" stroke="#9a9a9a" stroke-width="1"></line>
       <line x1="550" y1="42" x2="550" y2="58" stroke="#8a1a1a" stroke-width="1.5"></line>
       <line x1="920" y1="44" x2="920" y2="56" stroke="#9a9a9a" stroke-width="1"></line>
-      <text x="180" y="32" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10.5" fill="#6a6a6a" letter-spacing="1" data-i18n="s1.fig.t0">t₀ · intento</text>
-      <text x="550" y="32" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10.5" fill="#8a1a1a" letter-spacing="1" data-i18n="s1.fig.t1">t₁ · decisione</text>
-      <text x="920" y="32" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10.5" fill="#6a6a6a" letter-spacing="1" data-i18n="s1.fig.t2">t₂ · esecuzione</text>
+      <text x="180" y="32" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10.5" fill="#6a6a6a" letter-spacing="1" data-i18n="s1.fig.t0">t₀ · intención</text>
+      <text x="550" y="32" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10.5" fill="#8a1a1a" letter-spacing="1" data-i18n="s1.fig.t1">t₁ · decisión</text>
+      <text x="920" y="32" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10.5" fill="#6a6a6a" letter-spacing="1" data-i18n="s1.fig.t2">t₂ · ejecución</text>
 
       <rect x="40" y="130" width="280" height="200" fill="none" stroke="#111111" stroke-width="1"></rect>
       <foreignObject x="60" y="148" width="240" height="166">
         <div xmlns="http://www.w3.org/1999/xhtml" class="box-content">
-          <span class="box-tag" data-i18n="s1.fig.b1.tag">01 · LIVELLO</span>
+          <span class="box-tag" data-i18n="s1.fig.b1.tag">01 · CAPA</span>
           <span class="box-title" data-i18n="s1.fig.b1.title">Application Layer</span>
-          <span class="box-desc" data-i18n="s1.fig.b1.desc">Software, servizi e flussi che richiedono l'uso dell'AI.</span>
+          <span class="box-desc" data-i18n="s1.fig.b1.desc">Software, servicios y flujos que solicitan el uso de la IA.</span>
         </div>
       </foreignObject>
 
@@ -782,135 +742,114 @@
       </foreignObject>
       <foreignObject x="430" y="200" width="240" height="148">
         <div xmlns="http://www.w3.org/1999/xhtml" class="box-content">
-          <span class="box-desc" data-i18n="s1.fig.b2.desc">Decide ex-ante se l'AI può essere invocata, a quali condizioni e con quali evidenze.</span>
-          <span class="box-foot" data-i18n="s1.fig.b2.foot">non aggirabile · livello OS</span>
+          <span class="box-desc" data-i18n="s1.fig.b2.desc">Decide ex-ante si la IA puede ser invocada, en qué condiciones y con qué evidencias.</span>
+          <span class="box-foot" data-i18n="s1.fig.b2.foot">no eludible · nivel SO</span>
         </div>
       </foreignObject>
 
       <rect x="780" y="130" width="280" height="200" fill="none" stroke="#111111" stroke-width="1"></rect>
       <foreignObject x="800" y="148" width="240" height="166">
         <div xmlns="http://www.w3.org/1999/xhtml" class="box-content">
-          <span class="box-tag" data-i18n="s1.fig.b3.tag">03 · LIVELLO</span>
+          <span class="box-tag" data-i18n="s1.fig.b3.tag">03 · CAPA</span>
           <span class="box-title" data-i18n="s1.fig.b3.title">AI Execution Layer</span>
-          <span class="box-desc" data-i18n="s1.fig.b3.desc">Invocazione del modello, inferenza e risposta — soggette ad autorizzazione.</span>
+          <span class="box-desc" data-i18n="s1.fig.b3.desc">Invocación del modelo, inferencia y retorno — sujetos a autorización.</span>
         </div>
       </foreignObject>
 
       <line x1="320" y1="230" x2="402" y2="230" stroke="#111111" stroke-width="1"></line>
       <polygon points="410,230 400,225 400,235" fill="#111111"></polygon>
-      <text x="361" y="222" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#6a6a6a" letter-spacing="0.6" data-i18n="s1.fig.arr1">richiesta</text>
+      <text x="361" y="222" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#6a6a6a" letter-spacing="0.6" data-i18n="s1.fig.arr1">solicitud</text>
 
       <line x1="690" y1="230" x2="772" y2="230" stroke="#8a1a1a" stroke-width="1.5"></line>
       <polygon points="780,230 770,225 770,235" fill="#8a1a1a"></polygon>
-      <text x="731" y="222" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#8a1a1a" letter-spacing="0.6" data-i18n="s1.fig.arr2">autorizza</text>
+      <text x="731" y="222" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#8a1a1a" letter-spacing="0.6" data-i18n="s1.fig.arr2">autoriza</text>
     </svg>
-    <figcaption data-i18n="s1.fig.cap">Figura 1 — Posizione di AIKNOCK nella catena di invocazione dell'AI. La decisione di autorizzazione è presa al tempo t₁, prima dell'esecuzione del modello. Il sistema valuta e vincola l'uso dell'AI prima dell'esecuzione.</figcaption>
+    <figcaption data-i18n="s1.fig.cap">Figura 1 — Posición de AIKNOCK en la cadena de invocación de la IA. La decisión de autorización se toma en t₁, antes de la ejecución del modelo. El sistema evalúa y restringe el uso de la IA antes de la ejecución.</figcaption>
   </figure>
 
   <div class="col">
-    <p data-i18n="s1.p1">
-      La decisione è presa indipendentemente dal modello, dal vendor e
-      dal software chiamante. Il protocollo opera al livello del sistema
-      operativo, dove l'autorizzazione precede l'invocazione e non può
-      essere elusa dall'applicazione che richiede l'uso dell'AI.
-    </p>
+    <p data-i18n="s1.p1">La decisión se toma con independencia del modelo, del proveedor y del software que la solicita. El protocolo opera en la capa del sistema operativo, donde la autorización precede a la invocación y no puede ser eludida por la aplicación que requiere el uso de la IA.</p>
   </div>
 </section>
 
 <!-- §02 — Il problema -->
 <section class="sec" id="problema">
-  <p class="sec__num col"><span class="accent">§ 02</span> · <span data-i18n="s2.tag">Il problema</span></p>
+  <p class="sec__num col"><span class="accent">§ 02</span> · <span data-i18n="s2.tag">El problema</span></p>
   <div class="col">
-    <h2 data-i18n="s2.h2">Il problema.</h2>
-    <p data-i18n="s2.p1">Oggi i sistemi che invocano l'AI non dispongono di uno strato tecnico di controllo dell'esecuzione. Tale controllo è tipicamente delegato a:</p>
+    <h2 data-i18n="s2.h2">El problema.</h2>
+    <p data-i18n="s2.p1">Los sistemas que invocan la IA no disponen hoy de una capa técnica de control de ejecución. Dicho control suele delegarse a:</p>
     <ul class="list-items">
-      <li data-i18n="s2.l1">regole applicative,</li>
-      <li data-i18n="s2.l2">documentazione,</li>
-      <li data-i18n="s2.l3">ispezioni post-hoc,</li>
-      <li data-i18n="s2.l4">log applicativi.</li>
+      <li data-i18n="s2.l1">reglas aplicativas,</li>
+      <li data-i18n="s2.l2">documentación,</li>
+      <li data-i18n="s2.l3">inspecciones ex post,</li>
+      <li data-i18n="s2.l4">registros de aplicación.</li>
     </ul>
-    <p data-i18n="s2.p2">
-      Questo approccio non offre un punto di applicazione tecnica
-      indipendente dalle applicazioni. In contesti operativi critici, in
-      cui esistono anche requisiti esterni — fra cui <b>AI Act</b>,
-      <b>ISO/IEC 42001</b>, <b>ISO/IEC 27001</b> e <b>NIS2</b> — l'assenza
-      di un sistema di controllo dell'esecuzione resta un limite
-      architetturale.
-    </p>
-    <p data-i18n="s2.p3">Manca uno strato infrastrutturale dedicato dove far risiedere il controllo dell'esecuzione dell'AI.</p>
+    <p data-i18n="s2.p2">Este enfoque no ofrece un punto de aplicación técnica independiente de las aplicaciones. En contextos operativos críticos en los que también existen requisitos externos — entre ellos <b>AI Act</b>, <b>ISO/IEC 42001</b>, <b>ISO/IEC 27001</b> y <b>NIS2</b> — la ausencia de un sistema de control de ejecución sigue siendo un límite arquitectónico.</p>
+    <p data-i18n="s2.p3">Falta una capa de infraestructura dedicada en la que alojar el control de ejecución de la IA.</p>
   </div>
 </section>
 
 <!-- §03 — L'approccio -->
 <section class="sec" id="principi">
-  <p class="sec__num col"><span class="accent">§ 03</span> · <span data-i18n="s3.tag">Approccio</span></p>
+  <p class="sec__num col"><span class="accent">§ 03</span> · <span data-i18n="s3.tag">Enfoque</span></p>
   <div class="col">
-    <h2 data-i18n="s3.h2">L'approccio AIKNOCK.</h2>
-    <p data-i18n="s3.intro">AIKNOCK colma questo vuoto introducendo:</p>
+    <h2 data-i18n="s3.h2">El enfoque AIKNOCK.</h2>
+    <p data-i18n="s3.intro">AIKNOCK cubre este vacío introduciendo:</p>
     <ol class="principles">
       <li><div>
-        <h3 data-i18n="s3.p1.h">Autorizzazione ex-ante dell'invocazione.</h3>
-        <p data-i18n="s3.p1.p">Ogni invocazione dell'AI è preceduta da una decisione esplicita che stabilisce se l'uso è ammesso, secondo i vincoli di esecuzione applicati dal sistema.</p>
+        <h3 data-i18n="s3.p1.h">Autorización ex-ante de la invocación.</h3>
+        <p data-i18n="s3.p1.p">Cada invocación de la IA va precedida por una decisión explícita que determina si el uso es admisible, conforme a las restricciones de ejecución aplicadas por el sistema.</p>
       </div></li>
       <li><div>
-        <h3 data-i18n="s3.p2.h">Enforcement non aggirabile a livello OS.</h3>
-        <p data-i18n="s3.p2.p">Il punto di applicazione risiede al livello del sistema operativo, non nell'applicazione chiamante: la decisione non può essere ignorata, riscritta o aggirata dal codice che richiede l'AI.</p>
+        <h3 data-i18n="s3.p2.h">Aplicación no eludible a nivel de SO.</h3>
+        <p data-i18n="s3.p2.p">El punto de aplicación reside en la capa del sistema operativo, no en la aplicación que invoca: la decisión no puede ser ignorada, reescrita ni eludida por el código que solicita la IA.</p>
       </div></li>
       <li><div>
-        <h3 data-i18n="s3.p3.h">Audit by-construction delle decisioni.</h3>
-        <p data-i18n="s3.p3.p">Ogni autorizzazione, rifiuto e condizione applicata produce per costruzione un record verificabile, utilizzabile come evidenza tecnica per audit interni ed esterni.</p>
+        <h3 data-i18n="s3.p3.h">Auditoría por construcción de las decisiones.</h3>
+        <p data-i18n="s3.p3.p">Toda autorización, denegación y condición aplicada produce, por construcción, un registro verificable, utilizable como evidencia técnica para auditorías internas y externas.</p>
       </div></li>
       <li><div>
-        <h3 data-i18n="s3.p4.h">Separazione tra disponibilità e autorizzazione.</h3>
-        <p data-i18n="s3.p4.p">Il fatto che un modello sia tecnicamente disponibile non implica che il suo uso sia autorizzato. AIKNOCK distingue in modo esplicito questi due piani.</p>
+        <h3 data-i18n="s3.p4.h">Separación entre disponibilidad y autorización.</h3>
+        <p data-i18n="s3.p4.p">El hecho de que un modelo esté técnicamente disponible no implica que su uso esté autorizado. AIKNOCK distingue de manera explícita estos dos planos.</p>
       </div></li>
       <li><div>
-        <h3 data-i18n="s3.p5.h">Neutralità rispetto a modelli, vendor e applicazioni.</h3>
-        <p data-i18n="s3.p5.p">Il protocollo non dipende da un particolare modello, fornitore o applicazione. Definisce un'interfaccia di controllo dell'esecuzione a cui ogni implementazione si conforma.</p>
+        <h3 data-i18n="s3.p5.h">Neutralidad frente a modelos, proveedores y aplicaciones.</h3>
+        <p data-i18n="s3.p5.p">El protocolo no depende de un modelo, proveedor o aplicación concretos. Define una interfaz de control de ejecución a la que toda implementación se ajusta.</p>
       </div></li>
     </ol>
-    <p class="pullquote" data-i18n="s3.note">
-      <strong>AIKNOCK non analizza prompt o output.</strong> Vincola
-      tecnicamente l'invocazione dell'AI, non il suo contenuto.
-    </p>
+    <p class="pullquote" data-i18n="s3.note"><strong>AIKNOCK no analiza <i>prompts</i> ni salidas.</strong> Restringe técnicamente la invocación de la IA, no su contenido.</p>
   </div>
 </section>
 
 <!-- §04 — Rilevanza normativa -->
 <section class="sec" id="normativa">
-  <p class="sec__num col--wide"><span class="accent">§ 04</span> · <span data-i18n="s4.tag">Contesti esterni</span></p>
+  <p class="sec__num col--wide"><span class="accent">§ 04</span> · <span data-i18n="s4.tag">Contextos externos</span></p>
   <div class="col--wide">
-    <h2 data-i18n="s4.h2">Contesti esterni di riferimento.</h2>
-    <p data-i18n="s4.intro" style="max-width: 62ch;">
-      Il sistema può essere adottato in contesti in cui esistono requisiti
-      normativi o standard esterni. AIKNOCK definisce un meccanismo
-      tecnico di controllo dell'esecuzione e <b>non implementa né
-      rappresenta</b> tali requisiti. La sua adozione non garantisce,
-      di per sé, la conformità giuridica.
-    </p>
+    <h2 data-i18n="s4.h2">Contextos externos de referencia.</h2>
+    <p data-i18n="s4.intro" style="max-width: 62ch;">El sistema puede adoptarse en contextos en los que existen requisitos normativos o de estándar externos. AIKNOCK define un sistema técnico de control de ejecución y <b>no implementa ni representa</b> dichos requisitos. Su adopción no garantiza, por sí misma, el cumplimiento jurídico.</p>
     <table class="norm">
       <thead>
         <tr>
-          <th class="col-ref" data-i18n="s4.th1">Contesto esterno</th>
-          <th class="col-rel" data-i18n="s4.th2">Effetto tecnico di AIKNOCK</th>
+          <th class="col-ref" data-i18n="s4.th1">Contexto externo</th>
+          <th class="col-rel" data-i18n="s4.th2">Efecto técnico de AIKNOCK</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td class="col-ref" data-i18n="s4.r1.ref">EU AI Act<em>Reg. (UE) 2024/1689</em></td>
-          <td class="col-rel" data-i18n="s4.r1.rel">Controllo ex-ante dell'invocazione dei modelli, applicato prima dell'esecuzione, con punto di applicazione indipendente dalle applicazioni chiamanti.</td>
+          <td class="col-ref" data-i18n="s4.r1.ref">EU AI Act<em>Regl. (UE) 2024/1689</em></td>
+          <td class="col-rel" data-i18n="s4.r1.rel">Control ex-ante de la invocación de los modelos, aplicado antes de la ejecución, con un punto de aplicación independiente de las aplicaciones que invocan.</td>
         </tr>
         <tr>
           <td class="col-ref" data-i18n="s4.r2.ref">ISO/IEC 42001<em>AI Management System</em></td>
-          <td class="col-rel" data-i18n="s4.r2.rel">Produzione tecnica di registrazioni verificabili delle decisioni di invocazione, come effetto del funzionamento del sistema.</td>
+          <td class="col-rel" data-i18n="s4.r2.rel">Producción técnica de registros verificables de las decisiones de invocación, como efecto del funcionamiento del sistema.</td>
         </tr>
         <tr>
-          <td class="col-ref" data-i18n="s4.r3.ref">ISO/IEC 27001<em>Sicurezza delle informazioni</em></td>
-          <td class="col-rel" data-i18n="s4.r3.rel">Trattamento dell'AI come <i>capability</i> critica del sistema, soggetta a controllo tecnico degli accessi e dei privilegi.</td>
+          <td class="col-ref" data-i18n="s4.r3.ref">ISO/IEC 27001<em>Seguridad de la información</em></td>
+          <td class="col-rel" data-i18n="s4.r3.rel">Tratamiento de la IA como <i>capability</i> crítica del sistema, sujeta a un control técnico de accesos y privilegios.</td>
         </tr>
         <tr>
           <td class="col-ref" data-i18n="s4.r4.ref">NIS2<em>Dir. (UE) 2022/2555</em></td>
-          <td class="col-rel" data-i18n="s4.r4.rel">Registrazione tecnica delle decisioni di invocazione e degli eventi associati, ricostruibile come traccia indipendente dalle applicazioni.</td>
+          <td class="col-rel" data-i18n="s4.r4.rel">Registro técnico de las decisiones de invocación y de los eventos asociados, reconstruible como traza independiente de las aplicaciones.</td>
         </tr>
       </tbody>
     </table>
@@ -919,19 +858,19 @@
 
 <!-- §05 — Stato del progetto -->
 <section class="sec" id="stato">
-  <p class="sec__num col"><span class="accent">§ 05</span> · <span data-i18n="s5.tag">Stato del progetto</span></p>
+  <p class="sec__num col"><span class="accent">§ 05</span> · <span data-i18n="s5.tag">Estado del proyecto</span></p>
   <div class="col">
-    <h2 data-i18n="s5.h2">Stato del progetto.</h2>
+    <h2 data-i18n="s5.h2">Estado del proyecto.</h2>
     <div class="status">
       <div class="status__row">
-        <span class="status__label" data-i18n="s5.r1.l">Definizione</span>
-        <span class="status__value" data-i18n="s5.r1.v">Protocollo e pattern architetturale.</span>
-        <span class="status__meta" data-i18n="s5.r1.m"><span class="dot"></span>Attivo</span>
+        <span class="status__label" data-i18n="s5.r1.l">Definición</span>
+        <span class="status__value" data-i18n="s5.r1.v">Protocolo y patrón arquitectónico.</span>
+        <span class="status__meta" data-i18n="s5.r1.m"><span class="dot"></span>Activo</span>
       </div>
       <div class="status__row">
-        <span class="status__label" data-i18n="s5.r2.l">Implementazione</span>
-        <span class="status__value" data-i18n="s5.r2.v">Reference implementation enterprise in sviluppo.</span>
-        <span class="status__meta idle" data-i18n="s5.r2.m"><span class="dot"></span>In corso</span>
+        <span class="status__label" data-i18n="s5.r2.l">Implementación</span>
+        <span class="status__value" data-i18n="s5.r2.v">Implementación de referencia para empresas en desarrollo.</span>
+        <span class="status__meta idle" data-i18n="s5.r2.m"><span class="dot"></span>En curso</span>
       </div>
     </div>
   </div>
@@ -939,18 +878,18 @@
 
 <!-- Colophon -->
 <footer class="colophon">
-  <p class="sec__num col" style="margin-bottom: 22px;"><span class="accent">§ 99</span> · <span data-i18n="col.tag">Colofone</span></p>
+  <p class="sec__num col" style="margin-bottom: 22px;"><span class="accent">§ 99</span> · <span data-i18n="col.tag">Colofón</span></p>
   <div class="col">
     <dl class="colophon__grid">
       <div><dt data-i18n="col.dt1">Documento</dt><dd data-i18n="col.dd1">AIKNOCK / WD-0004</dd></div>
-      <div><dt data-i18n="col.dt2">Stadio</dt><dd data-i18n="col.dd2">Working Draft</dd></div>
-      <div><dt data-i18n="col.dt3">Curatela</dt><dd data-i18n="col.dd3">Gruppo editoriale AIKNOCK</dd></div>
-      <div><dt data-i18n="col.dt4">Licenza</dt><dd data-i18n="col.dd4">Creative Commons Attribution 4.0 Internazionale</dd></div>
+      <div><dt data-i18n="col.dt2">Etapa</dt><dd data-i18n="col.dd2">Working Draft</dd></div>
+      <div><dt data-i18n="col.dt3">Curaduría</dt><dd data-i18n="col.dd3">Grupo editorial AIKNOCK</dd></div>
+      <div><dt data-i18n="col.dt4">Licencia</dt><dd data-i18n="col.dd4">Creative Commons Attribution 4.0 Internacional</dd></div>
     </dl>
     <div class="colophon__bottom">
-      <span data-i18n="col.bot1">© 2026 Gruppo editoriale AIKNOCK — Pubblicato come specifica aperta.</span>
-      <a href="note-legali.html" data-i18n="col.legal" style="border:0;color:var(--accent);font-family:var(--mono);font-size:11px;letter-spacing:0.04em;">Progetto indipendente · Note legali →</a>
-      <span data-i18n="col.bot2">Ultima revisione 11 maggio 2026 · WD-0004</span>
+      <span data-i18n="col.bot1">© 2026 Grupo editorial AIKNOCK — Publicado como especificación abierta.</span>
+      <a href="note-legali.html" data-i18n="col.legal" style="border:0;color:var(--accent);font-family:var(--mono);font-size:11px;letter-spacing:0.04em;">Proyecto independiente · Aviso legal →</a>
+      <span data-i18n="col.bot2">Última revisión 11 de mayo de 2026 · WD-0004</span>
     </div>
   </div>
 </footer>

@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="it"><head>
+<html lang="en"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="AIKNOCK — Norme e controllo dell'esecuzione dell'AI: una prospettiva infrastrutturale. Specifica aperta, bozza di lavoro pubblica.">
+<meta name="description" content="AIKNOCK — Norms and execution control of AI: an infrastructural perspective. Technical relation to the EU AI Act, ISO/IEC 42001, ISO/IEC 27001 and NIS2.">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
 <meta name="color-scheme" content="light">
-<title>AIKNOCK — Norme e controllo dell'esecuzione dell'AI: una prospettiva infrastrutturale</title>
-<link rel="canonical" href="https://aiknock.org/norme.html">
+<title>AIKNOCK — Norms and AI execution control: an infrastructural perspective</title>
+<link rel="canonical" href="https://aiknock.org/en/norme.html">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -143,21 +143,21 @@
     .mast__inner { flex-wrap: wrap; gap: 12px; } .statement { font-size: 17px; }
   }
 </style>
-<link rel="alternate" hreflang="it" href="https://aiknock.org/norme.html"><link rel="alternate" hreflang="en" href="https://aiknock.org/en/norme.html"><link rel="alternate" hreflang="fr" href="https://aiknock.org/fr/norme.html"><link rel="alternate" hreflang="es" href="https://aiknock.org/es/norme.html"><link rel="alternate" hreflang="x-default" href="https://aiknock.org/norme.html"><meta property="og:locale" content="it_IT"><meta property="og:locale:alternate" content="en_US"><meta property="og:locale:alternate" content="fr_FR"><meta property="og:locale:alternate" content="es_ES"><meta property="og:url" content="https://aiknock.org/norme.html"><meta property="og:type" content="article"><meta property="og:site_name" content="AIKNOCK"></head>
+<link rel="alternate" hreflang="it" href="https://aiknock.org/norme.html"><link rel="alternate" hreflang="en" href="https://aiknock.org/en/norme.html"><link rel="alternate" hreflang="fr" href="https://aiknock.org/fr/norme.html"><link rel="alternate" hreflang="es" href="https://aiknock.org/es/norme.html"><link rel="alternate" hreflang="x-default" href="https://aiknock.org/norme.html"><meta property="og:locale" content="en_US"><meta property="og:url" content="https://aiknock.org/en/norme.html"></head>
 <body>
 
 <!-- Banner -->
 <div class="banner">
   <div class="banner__inner">
     <div class="banner__left">
-      <span data-i18n="banner.l1">Specifica aperta</span>
-      <span data-i18n="banner.l2">Bozza di lavoro pubblica</span>
-      <span data-i18n="banner.l3">A cura del gruppo editoriale AIKNOCK</span>
+      <span data-i18n="banner.l1">Open specification</span>
+      <span data-i18n="banner.l2">Public working draft</span>
+      <span data-i18n="banner.l3">Maintained by the AIKNOCK editorial group</span>
     </div>
     <nav class="lang" aria-label="Language">
-      <a class="lang__opt is-active" data-lang="it" href="/norme.html" hreflang="it" aria-current="true">IT</a>
+      <a class="lang__opt" data-lang="it" href="/norme.html" hreflang="it">IT</a>
       <span class="lang__sep" aria-hidden="true">·</span>
-      <a class="lang__opt" data-lang="en" href="/en/norme.html" hreflang="en">EN</a>
+      <a class="lang__opt is-active" data-lang="en" href="/en/norme.html" hreflang="en" aria-current="true">EN</a>
       <span class="lang__sep" aria-hidden="true">·</span>
       <a class="lang__opt" data-lang="fr" href="/fr/norme.html" hreflang="fr">FR</a>
       <span class="lang__sep" aria-hidden="true">·</span>
@@ -171,16 +171,16 @@
   <div class="mast__inner">
     <a class="brand" href="index.html">
       <span class="brand__mark">AIKNOCK</span>
-      <span class="brand__sub" data-i18n="mast.sub">Specifica aperta · v0.4</span>
+      <span class="brand__sub" data-i18n="mast.sub">Open specification · v0.4</span>
     </a>
     <nav class="mast__nav" aria-label="Sezioni">
-      <a href="index.html" data-i18n="nav.spec">Specifica</a>
+      <a href="index.html" data-i18n="nav.spec">Specification</a>
       <span class="mast__sep" aria-hidden="true">·</span>
-      <a href="perche.html" data-i18n="nav.why">Perché AIKNOCK</a>
+      <a href="perche.html" data-i18n="nav.why">Why AIKNOCK</a>
       <span class="mast__sep" aria-hidden="true">·</span>
       <a href="one-diagram.html" data-i18n="nav.one">One Diagram</a>
       <span class="mast__sep" aria-hidden="true">·</span>
-      <a href="norme.html" aria-current="page" data-i18n="nav.norms">Norme</a>
+      <a href="norme.html" aria-current="page" data-i18n="nav.norms">Norms</a>
       <span class="mast__sep" aria-hidden="true">·</span>
       <a href="design-principles.html" data-i18n="nav.dp">Design Principles</a>
       <span class="mast__sep" aria-hidden="true">·</span>
@@ -192,104 +192,75 @@
 <!-- Cover -->
 <section class="cover">
   <div class="col--wide">
-    <p class="cover__eyebrow" data-i18n="cover.eyebrow">Norme e controllo dell'esecuzione dell'AI</p>
-    <h1 data-i18n="cover.h1">Norme e controllo dell'esecuzione dell'AI: una prospettiva infrastrutturale<em>.</em></h1>
-    <p class="cover__sub" data-i18n="cover.sub">
-      Una lettura tecnica delle relazioni fra <b>AI Act</b>, <b>NIS2</b>,
-      <b>ISO/IEC 27001</b>, <b>ISO/IEC 42001</b> e <b>NIST AI RMF</b>,
-      e del ruolo che un sistema di controllo dell'esecuzione a
-      livello di sistema può assumere rispetto ai requisiti che essi
-      pongono.
-    </p>
+    <p class="cover__eyebrow" data-i18n="cover.eyebrow">Norms and AI execution control</p>
+    <h1 data-i18n="cover.h1">Norms and AI execution control: an infrastructural perspective<em>.</em></h1>
+    <p class="cover__sub" data-i18n="cover.sub">A technical reading of the relations among <b>AI Act</b>, <b>NIS2</b>, <b>ISO/IEC 27001</b>, <b>ISO/IEC 42001</b> and <b>NIST AI RMF</b>, and of the role a system-level execution-control system may take with respect to the requirements they pose.</p>
     <div class="cover__rule" aria-hidden="true"></div>
   </div>
 </section>
 
 <!-- §01 Premessa -->
 <section class="sec" id="premessa">
-  <p class="sec__num col"><span class="accent">§ 01</span> · <span data-i18n="s1.tag">Premessa</span></p>
+  <p class="sec__num col"><span class="accent">§ 01</span> · <span data-i18n="s1.tag">Premise</span></p>
   <div class="col">
-    <h2 data-i18n="s1.h2">Livelli diversi, stesso problema.</h2>
-    <p class="lede" data-i18n="s1.lede">
-      AI Act, NIS2 e gli standard ISO e NIST operano su piani differenti:
-      giuridico, organizzativo, di gestione del rischio. Pur essendo
-      strumenti eterogenei, convergono su un insieme ristretto di
-      requisiti chiave.
-    </p>
-    <p data-i18n="s1.p1">
-      Letti per principi, e non per articoli, questi requisiti si possono
-      ricondurre a quattro proprietà ricorrenti: <b>controllo preventivo</b>
-      dell'invocazione dell'AI, <b>tracciabilità</b> documentata e
-      verificabile delle decisioni, <b>auditabilità</b> tecnica e
-      <b>responsabilità</b> attribuibile a soggetti identificabili.
-    </p>
-    <p data-i18n="s1.p2">
-      Il piano giuridico definisce obblighi; il piano organizzativo
-      definisce processi; il piano della gestione del rischio definisce
-      metodi. Manca, in questa stratificazione, una definizione esplicita
-      dei meccanismi tecnici attraverso i quali tali requisiti possono
-      essere resi osservabili nei sistemi che effettivamente eseguono
-      l'AI.
-    </p>
+    <h2 data-i18n="s1.h2">Different layers, same problem.</h2>
+    <p class="lede" data-i18n="s1.lede">The AI Act, NIS2 and the ISO and NIST standards operate on different layers: legal, organisational, risk-management. Although heterogeneous, they converge on a restricted set of key requirements.</p>
+    <p data-i18n="s1.p1">Read by principles rather than by articles, these requirements reduce to four recurring properties: <b>preventive control</b> of AI invocation, documented and verifiable <b>traceability</b> of decisions, technical <b>auditability</b> and <b>accountability</b> attributable to identifiable subjects.</p>
+    <p data-i18n="s1.p2">The legal layer defines obligations; the organisational layer defines processes; the risk-management layer defines methods. Missing from this stratification is an explicit definition of the technical mechanisms through which such requirements can be made observable in the systems that actually execute AI.</p>
   </div>
 </section>
 
 <!-- §02 Quadri -->
 <section class="sec" id="quadri">
-  <p class="sec__num col--wide"><span class="accent">§ 02</span> · <span data-i18n="s2.tag">Quadri di riferimento</span></p>
+  <p class="sec__num col--wide"><span class="accent">§ 02</span> · <span data-i18n="s2.tag">Reference frameworks</span></p>
   <div class="col--wide">
-    <h2 data-i18n="s2.h2">Cosa chiedono norme e framework, per principi.</h2>
-    <p data-i18n="s2.intro">
-      La tabella che segue riassume, in forma concettuale e non
-      legalistica, i principi che ciascun quadro normativo o di
-      <i>framework</i> rende espliciti. Non costituisce un'analisi di
-      conformità né un'interpretazione vincolante dei testi.
-    </p>
+    <h2 data-i18n="s2.h2">What norms and frameworks require, by principles.</h2>
+    <p data-i18n="s2.intro">The table below summarises, in conceptual and non-legalistic form, the principles that each normative or <i>framework</i> reference makes explicit. It does not constitute a conformity analysis nor a binding interpretation of the texts.</p>
 
     <table class="frameworks">
       <thead>
         <tr>
-          <th class="col-ref" data-i18n="s2.th1">Quadro</th>
-          <th class="col-scope" data-i18n="s2.th2">Piano</th>
-          <th class="col-req" data-i18n="s2.th3">Principi rilevanti</th>
+          <th class="col-ref" data-i18n="s2.th1">Framework</th>
+          <th class="col-scope" data-i18n="s2.th2">Layer</th>
+          <th class="col-req" data-i18n="s2.th3">Relevant principles</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td class="col-ref" data-i18n="s2.r1.ref">AI Act<em>Reg. (UE) 2024/1689</em></td>
-          <td class="col-scope" data-i18n="s2.r1.scope">Giuridico</td>
-          <td class="col-req" data-i18n="s2.r1.req">Controllo <i>ex-ante</i> dell'uso dei sistemi di AI; sorveglianza umana sulle decisioni a impatto rilevante; auditabilità dei sistemi lungo il ciclo di vita.</td>
+          <td class="col-ref" data-i18n="s2.r1.ref">AI Act<em>Reg. (EU) 2024/1689</em></td>
+          <td class="col-scope" data-i18n="s2.r1.scope">Legal</td>
+          <td class="col-req" data-i18n="s2.r1.req"><i>Ex-ante</i> control of the use of AI systems; human oversight on decisions of significant impact; auditability of systems across the life cycle.</td>
         </tr>
         <tr>
-          <td class="col-ref" data-i18n="s2.r2.ref">NIS2<em>Dir. (UE) 2022/2555</em></td>
-          <td class="col-scope" data-i18n="s2.r2.scope">Sicurezza sistemica</td>
-          <td class="col-req" data-i18n="s2.r2.req">Gestione del rischio delle <i>capability</i> critiche, continuità e sicurezza dei servizi essenziali, tracciamento e notifica degli incidenti.</td>
+          <td class="col-ref" data-i18n="s2.r2.ref">NIS2<em>Dir. (EU) 2022/2555</em></td>
+          <td class="col-scope" data-i18n="s2.r2.scope">Systemic security</td>
+          <td class="col-req" data-i18n="s2.r2.req">Risk management of critical <i>capabilities</i>, continuity and security of essential services, tracking and notification of incidents.</td>
         </tr>
         <tr>
-          <td class="col-ref" data-i18n="s2.r3.ref">ISO/IEC 27001<em>Sistemi di gestione per la sicurezza delle informazioni</em></td>
-          <td class="col-scope" data-i18n="s2.r3.scope">Organizzativo</td>
-          <td class="col-req" data-i18n="s2.r3.req">Controllo degli accessi e delle risorse critiche, separazione dei privilegi, registrazione e revisione delle attività.</td>
+          <td class="col-ref" data-i18n="s2.r3.ref">ISO/IEC 27001<em>Information security management systems</em></td>
+          <td class="col-scope" data-i18n="s2.r3.scope">Organisational</td>
+          <td class="col-req" data-i18n="s2.r3.req">Control of access to critical resources, separation of privileges, recording and review of activities.</td>
         </tr>
         <tr>
-          <td class="col-ref" data-i18n="s2.r4.ref">ISO/IEC 42001<em>Sistemi di gestione per l'intelligenza artificiale</em></td>
-          <td class="col-scope" data-i18n="s2.r4.scope">Organizzativo</td>
-          <td class="col-req" data-i18n="s2.r4.req">Sistema di gestione per i sistemi di AI: tracciabilità delle decisioni, ruoli e responsabilità, riesame periodico.</td>
+          <td class="col-ref" data-i18n="s2.r4.ref">ISO/IEC 42001<em>Artificial intelligence management systems</em></td>
+          <td class="col-scope" data-i18n="s2.r4.scope">Organisational</td>
+          <td class="col-req" data-i18n="s2.r4.req">Management system for AI systems: traceability of decisions, roles and responsibilities, periodic review.</td>
         </tr>
         <tr>
           <td class="col-ref" data-i18n="s2.r5.ref">NIST AI RMF 1.0<em>AI Risk Management Framework</em></td>
-          <td class="col-scope" data-i18n="s2.r5.scope">Gestione del rischio</td>
-          <td class="col-req" data-i18n="s2.r5.req">Funzioni <i>Govern</i>, <i>Map</i>, <i>Measure</i>, <i>Manage</i>: indirizzo, individuazione del contesto d'uso, misurazione e trattamento del rischio.</td>
+          <td class="col-scope" data-i18n="s2.r5.scope">Risk management</td>
+          <td class="col-req" data-i18n="s2.r5.req">Functions <i>Govern</i>, <i>Map</i>, <i>Measure</i>, <i>Manage</i>: direction, identification of the use context, measurement and treatment of risk.</td>
         </tr>
       </tbody>
     </table>
 
     <div class="shared">
-      <p class="shared__head" data-i18n="s2.shared.head">Requisiti ricorrenti</p>
+      <p class="shared__head" data-i18n="s2.shared.head">Recurring requirements</p>
       <ol class="shared__list">
-        <li data-i18n="s2.shared.l1">Controllo preventivo dell'uso.</li>
-        <li data-i18n="s2.shared.l2">Tracciabilità esplicita.</li>
-        <li data-i18n="s2.shared.l3">Auditabilità verificabile.</li>
-        <li data-i18n="s2.shared.l4">Responsabilità attribuibile.</li>
+        <li data-i18n="s2.shared.l1">Preventive control of use.</li>
+        <li data-i18n="s2.shared.l2">Explicit traceability.</li>
+        <li data-i18n="s2.shared.l3">Verifiable auditability.</li>
+        <li data-i18n="s2.shared.l4">Attributable accountability.</li>
       </ol>
     </div>
   </div>
@@ -297,122 +268,88 @@
 
 <!-- §03 Denominatore mancante -->
 <section class="sec" id="mancante">
-  <p class="sec__num col"><span class="accent">§ 03</span> · <span data-i18n="s3.tag">Denominatore mancante</span></p>
+  <p class="sec__num col"><span class="accent">§ 03</span> · <span data-i18n="s3.tag">Missing denominator</span></p>
   <div class="col">
-    <h2 data-i18n="s3.h2">Il denominatore comune mancante.</h2>
-    <p data-i18n="s3.p1">
-      I requisiti elencati nei quadri di riferimento sono espressi in
-      termini di <i>cosa</i> deve essere garantito. La loro traduzione
-      operativa è oggi delegata a strumenti eterogenei — regole testuali,
-      documentazione, controlli applicativi, registrazioni successive —
-      raramente ricondotti a uno stesso piano architetturale.
-    </p>
-    <p data-i18n="s3.p2">
-      In particolare, manca un <b>punto di controllo tecnico</b> che
-      presenti, congiuntamente, le seguenti quattro proprietà.
-    </p>
+    <h2 data-i18n="s3.h2">The missing common denominator.</h2>
+    <p data-i18n="s3.p1">The requirements listed in the reference frameworks are expressed in terms of <i>what</i> must be guaranteed. Their operational translation is today entrusted to heterogeneous instruments — textual rules, documentation, application controls, after-the-fact records — rarely brought back to the same architectural layer.</p>
+    <p data-i18n="s3.p2">In particular, a <b>technical control point</b> is missing that jointly presents the following four properties.</p>
 
     <ul class="missing">
       <li>
-        <span class="missing__k" data-i18n="s3.m1.k">Non aggirabile</span>
-        <span class="missing__v" data-i18n="s3.m1.v">L'autorizzazione all'uso dell'AI non può essere ignorata, riscritta o omessa dal codice che la richiede.</span>
+        <span class="missing__k" data-i18n="s3.m1.k">Non-bypassable</span>
+        <span class="missing__v" data-i18n="s3.m1.v">Authorisation of AI use cannot be ignored, rewritten or omitted by the code that requests it.</span>
       </li>
       <li>
-        <span class="missing__k" data-i18n="s3.m2.k">Indipendente</span>
-        <span class="missing__v" data-i18n="s3.m2.v">Il punto di controllo è disaccoppiato dalle applicazioni: non dipende dalla loro cooperazione né dalla loro corretta configurazione.</span>
+        <span class="missing__k" data-i18n="s3.m2.k">Independent</span>
+        <span class="missing__v" data-i18n="s3.m2.v">The control point is decoupled from applications: it does not depend on their cooperation or on their correct configuration.</span>
       </li>
       <li>
-        <span class="missing__k" data-i18n="s3.m3.k">Sotto-applicativo</span>
-        <span class="missing__v" data-i18n="s3.m3.v">Risiede al di sotto del livello applicativo, in una posizione che le applicazioni non possono modificare.</span>
+        <span class="missing__k" data-i18n="s3.m3.k">Sub-applicational</span>
+        <span class="missing__v" data-i18n="s3.m3.v">It resides below the application layer, in a position the applications cannot modify.</span>
       </li>
       <li>
-        <span class="missing__k" data-i18n="s3.m4.k">Evidenze tecniche</span>
-        <span class="missing__v" data-i18n="s3.m4.v">Produce, come effetto del proprio funzionamento, registrazioni verificabili delle decisioni assunte.</span>
+        <span class="missing__k" data-i18n="s3.m4.k">Technical evidence</span>
+        <span class="missing__v" data-i18n="s3.m4.v">It produces, as an effect of its own operation, verifiable records of the decisions taken.</span>
       </li>
     </ul>
 
-    <p style="margin-top: 28px;" data-i18n="s3.p3">
-      L'assenza di un tale punto di controllo non è una lacuna delle
-      norme: è una lacuna dell'architettura dei sistemi. È, in altri
-      termini, un <b>problema architetturale</b>.
-    </p>
+    <p style="margin-top: 28px;" data-i18n="s3.p3">The absence of such a control point is not a gap in the norms: it is a gap in the architecture of the systems. It is, in other words, an <b>architectural problem</b>.</p>
   </div>
 </section>
 
 <!-- §04 Posizione -->
 <section class="sec" id="colloca">
-  <p class="sec__num col"><span class="accent">§ 04</span> · <span data-i18n="s4.tag">Posizione</span></p>
+  <p class="sec__num col"><span class="accent">§ 04</span> · <span data-i18n="s4.tag">Position</span></p>
   <div class="col">
-    <h2 data-i18n="s4.h2">Dove si colloca AIKNOCK.</h2>
-    <p class="statement" data-i18n="s4.stmt">
-      AIKNOCK esplora un possibile punto di controllo tecnico
-      <i>ex-ante</i>, a livello di sistema, coerente con i requisiti di
-      controllo dell'esecuzione, auditabilità e gestione del rischio
-      richiamati da norme e standard, senza sostituirli né
-      interpretarli.
-    </p>
-    <p data-i18n="s4.p1">
-      Le norme e gli standard definiscono <b>obblighi</b>. AIKNOCK opera
-      sul piano dei <b>meccanismi tecnici</b>. Il sistema opera in modo
-      indipendente da quadri normativi o di standard esterni e mantiene
-      un comportamento tecnico coerente al livello dell'esecuzione. I due
-      piani sono complementari: ciò che il diritto e gli standard
-      prescrivono come proprietà del sistema, un meccanismo come quello
-      descritto può contribuire a rendere osservabile e verificabile.
-    </p>
+    <h2 data-i18n="s4.h2">Where AIKNOCK sits.</h2>
+    <p class="statement" data-i18n="s4.stmt">AIKNOCK explores a possible <i>ex-ante</i> technical control point, at the system layer, consistent with the execution-control, auditability and risk-management requirements referenced by norms and standards, without replacing or interpreting them.</p>
+    <p data-i18n="s4.p1">Norms and standards define <b>obligations</b>. AIKNOCK operates on the layer of <b>technical mechanisms</b>. The system operates independently of external regulatory or standard frameworks and maintains a consistent technical behaviour at execution level. The two layers are complementary: what the law and the standards prescribe as system properties, a mechanism such as the one described can contribute to making observable and verifiable.</p>
   </div>
 </section>
 
 <!-- §05 Esclusioni -->
 <section class="sec" id="esclusioni">
-  <p class="sec__num col"><span class="accent">§ 05</span> · <span data-i18n="s5.tag">Esclusioni</span></p>
+  <p class="sec__num col"><span class="accent">§ 05</span> · <span data-i18n="s5.tag">Exclusions</span></p>
   <div class="col">
-    <h2 data-i18n="s5.h2">Cosa AIKNOCK non fa rispetto alle norme.</h2>
-    <p data-i18n="s5.intro">
-      Per evitare confusione fra piani distinti, è opportuno enunciare
-      esplicitamente l'ambito che AIKNOCK non occupa.
-    </p>
+    <h2 data-i18n="s5.h2">What AIKNOCK does not do with respect to the norms.</h2>
+    <p data-i18n="s5.intro">To avoid confusion between distinct layers, it is appropriate to state explicitly the scope that AIKNOCK does not occupy.</p>
 
     <ul class="negative">
       <li>
-        <span class="negative__tag" data-i18n="s5.tag.label">NON FA</span>
-        <span class="negative__text" data-i18n="s5.n1">non interpreta la legge,</span>
+        <span class="negative__tag" data-i18n="s5.tag.label">DOES NOT</span>
+        <span class="negative__text" data-i18n="s5.n1">it does not interpret the law,</span>
       </li>
       <li>
-        <span class="negative__tag" data-i18n="s5.tag.label2">NON FA</span>
-        <span class="negative__text" data-i18n="s5.n2">non garantisce conformità,</span>
+        <span class="negative__tag" data-i18n="s5.tag.label2">DOES NOT</span>
+        <span class="negative__text" data-i18n="s5.n2">it does not guarantee compliance,</span>
       </li>
       <li>
-        <span class="negative__tag" data-i18n="s5.tag.label3">NON FA</span>
-        <span class="negative__text" data-i18n="s5.n3">non sostituisce processi organizzativi o legali,</span>
+        <span class="negative__tag" data-i18n="s5.tag.label3">DOES NOT</span>
+        <span class="negative__text" data-i18n="s5.n3">it does not replace organisational or legal processes,</span>
       </li>
       <li>
-        <span class="negative__tag" data-i18n="s5.tag.label4">NON FA</span>
-        <span class="negative__text" data-i18n="s5.n4">non elimina le responsabilità dei <i>deployer</i>,</span>
+        <span class="negative__tag" data-i18n="s5.tag.label4">DOES NOT</span>
+        <span class="negative__text" data-i18n="s5.n4">it does not eliminate the responsibilities of <i>deployers</i>,</span>
       </li>
       <li>
-        <span class="negative__tag" data-i18n="s5.tag.label5">NON FA</span>
-        <span class="negative__text" data-i18n="s5.n5">non governa dataset né processi di <i>training</i>.</span>
+        <span class="negative__tag" data-i18n="s5.tag.label5">DOES NOT</span>
+        <span class="negative__text" data-i18n="s5.n5">it does not govern datasets or <i>training</i> processes.</span>
       </li>
     </ul>
 
-    <p style="margin-top: 28px;" data-i18n="s5.after">
-      L'osservanza delle norme resta una responsabilità degli operatori,
-      degli implementatori e delle autorità competenti. AIKNOCK non
-      sposta tale responsabilità: descrive un piano tecnico distinto.
-    </p>
+    <p style="margin-top: 28px;" data-i18n="s5.after">Observance of the norms remains a responsibility of operators, implementers and competent authorities. AIKNOCK does not shift such responsibility: it describes a distinct technical layer.</p>
   </div>
 </section>
 
 <!-- §06 Conclusione -->
 <section class="sec" id="conclusione">
-  <p class="sec__num col"><span class="accent">§ 06</span> · <span data-i18n="s6.tag">Conclusione</span></p>
+  <p class="sec__num col"><span class="accent">§ 06</span> · <span data-i18n="s6.tag">Conclusion</span></p>
   <div class="col">
-    <h2 data-i18n="s6.h2">Conclusione.</h2>
+    <h2 data-i18n="s6.h2">Conclusion.</h2>
     <div class="closing">
-      <p data-i18n="s6.p1">Le norme definiscono cosa deve essere garantito.</p>
-      <p data-i18n="s6.p2"><b>AIKNOCK si colloca sul piano di come una parte di tali garanzie può essere resa una proprietà tecnica del sistema.</b></p>
-      <p class="muted" data-i18n="s6.p3">La distanza fra i due piani è una caratteristica strutturale, non un'opposizione: i due livelli si presuppongono a vicenda.</p>
+      <p data-i18n="s6.p1">The norms define what must be guaranteed.</p>
+      <p data-i18n="s6.p2"><b>AIKNOCK sits on the layer of how a part of such guarantees can be made a technical property of the system.</b></p>
+      <p class="muted" data-i18n="s6.p3">The distance between the two layers is a structural feature, not an opposition: the two levels presuppose each other.</p>
     </div>
   </div>
 </section>
@@ -420,9 +357,9 @@
 <!-- Colophon -->
 <footer class="colophon">
   <div class="colophon__row">
-    <span data-i18n="col.bot1">© 2026 Gruppo editoriale AIKNOCK — Specifica aperta · CC BY 4.0</span>
-    <a href="note-legali.html" data-i18n="col.legal" style="border:0;color:var(--accent);font-family:var(--mono);font-size:11px;letter-spacing:0.04em;">Progetto indipendente · Note legali →</a>
-    <span data-i18n="col.bot2">AIKNOCK / WD-0004 · NORME · 12 maggio 2026</span>
+    <span data-i18n="col.bot1">© 2026 AIKNOCK editorial group — Open specification · CC BY 4.0</span>
+    <a href="note-legali.html" data-i18n="col.legal" style="border:0;color:var(--accent);font-family:var(--mono);font-size:11px;letter-spacing:0.04em;">Independent project · Legal notice →</a>
+    <span data-i18n="col.bot2">AIKNOCK / WD-0004 · NORMS · 12 May 2026</span>
   </div>
 </footer>
 

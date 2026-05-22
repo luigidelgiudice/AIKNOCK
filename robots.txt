@@ -1,4 +1,12 @@
+# AIKNOCK — robots.txt
+# https://aiknock.org
+
 User-agent: *
 Allow: /
+
+# Block any non-canonical query strings (?lang=… is a legacy fallback;
+# the real translated pages live under /en/, /fr/, /es/ and are linked
+# explicitly via hreflang).
+Disallow: /*?lang=
 
 Sitemap: https://aiknock.org/sitemap.xml

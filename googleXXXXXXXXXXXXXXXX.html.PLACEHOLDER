@@ -1,0 +1,9 @@
+# Google Search Console — verification file placeholder.
+#
+# Once Google issues your verification token (e.g. "google1234abcd.html"),
+# replace the filename of this file with the exact one Google provides AND
+# replace the body with the line Google asks for, typically:
+#   google-site-verification: google1234abcd.html
+#
+# Until you do that, keep this file in place so you remember the step.
+google-site-verification: REPLACE_ME_WITH_GOOGLE_TOKEN

@@ -1,41 +1,310 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <title>AIKNOCK - Sitemap</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 40px;
-        }
-        h1 {
-            color: #222;
-        }
-        ul {
-            line-height: 1.8;
-        }
-        a {
-            text-decoration: none;
-            color: #0073e6;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="AIKNOCK — Sitemap. Mappa di tutte le pagine del sito nelle quattro lingue disponibili (italiano, inglese, francese, spagnolo)." />
+<meta name="robots" content="index, follow" />
+<title>AIKNOCK — Sitemap</title>
+<link rel="canonical" href="https://aiknock.org/sitemap.html" />
+<link rel="alternate" hreflang="it" href="https://aiknock.org/sitemap.html" />
+<link rel="alternate" hreflang="x-default" href="https://aiknock.org/sitemap.html" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+
+<style>
+  :root {
+    --ink: #111111; --ink-2: #2a2a2a; --body: #333333;
+    --muted: #6a6a6a; --muted-2: #9a9a9a;
+    --rule: #d8d8d8; --paper: #ffffff;
+    --accent: #8a1a1a;
+    --serif: "Source Serif 4", Georgia, "Times New Roman", Times, serif;
+    --sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    --col-wide: 980px; --gutter: 32px;
+  }
+  *,*::before,*::after { box-sizing: border-box; }
+  html,body { background: var(--paper); color: var(--body); }
+  body {
+    margin: 0; font-family: var(--sans); font-size: 16px; line-height: 1.65;
+    -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+  }
+  a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--rule); }
+  a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+  .col--wide { max-width: var(--col-wide); margin: 0 auto; padding: 0 var(--gutter); }
+
+  .banner {
+    border-bottom: 1px solid var(--rule); font-family: var(--mono);
+    font-size: 11px; letter-spacing: 0.04em; color: var(--muted);
+  }
+  .banner__inner {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 12px var(--gutter); max-width: 1100px; margin: 0 auto; gap: 24px;
+  }
+  .banner__left span::before {
+    content: ""; display: inline-block; width: 6px; height: 6px;
+    background: var(--accent); margin-right: 8px; transform: translateY(-1px);
+  }
+
+  header.mast { border-bottom: 1px solid var(--rule); }
+  .mast__inner {
+    display: flex; align-items: baseline; justify-content: space-between;
+    padding: 22px var(--gutter); max-width: 1100px; margin: 0 auto; gap: 24px;
+  }
+  .brand { display: flex; align-items: baseline; gap: 14px; border: 0; }
+  .brand__mark {
+    font-family: var(--serif); font-weight: 600; font-size: 20px;
+    letter-spacing: -0.01em; color: var(--ink);
+  }
+  .brand__mark::before {
+    content: ""; display: inline-block; width: 9px; height: 9px;
+    background: var(--accent); margin-right: 10px; transform: translateY(-2px);
+  }
+  .brand__sub {
+    font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.04em;
+  }
+  .mast__nav {
+    display: inline-flex; align-items: baseline; gap: 10px;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em;
+    text-transform: uppercase; flex-wrap: wrap;
+  }
+  .mast__nav a { color: var(--muted); border: 0; padding: 2px 0; }
+  .mast__nav a:hover { color: var(--ink); }
+  .mast__sep { color: var(--rule); user-select: none; }
+
+  section.cover {
+    padding: 96px 0 80px; border-bottom: 1px solid var(--rule);
+  }
+  .cover__eyebrow {
+    font-family: var(--mono); font-size: 11.5px; color: var(--accent);
+    letter-spacing: 0.08em; text-transform: uppercase; margin: 0 0 24px;
+  }
+  .cover__eyebrow::before {
+    content: "§ 00 ·"; color: var(--muted); margin-right: 8px; letter-spacing: 0.04em;
+  }
+  .cover h1 {
+    font-family: var(--serif); font-weight: 500; font-size: 42px;
+    line-height: 1.12; letter-spacing: -0.015em; margin: 0 0 22px; color: var(--ink);
+    max-width: 22ch;
+  }
+  .cover__sub {
+    font-family: var(--serif); font-size: 19px; line-height: 1.55;
+    color: var(--ink-2); margin: 0; max-width: 56ch;
+  }
+
+  section.sec { padding: 72px 0; border-bottom: 1px solid var(--rule); }
+  section.sec:last-of-type { border-bottom: 0; }
+  .sec__num {
+    font-family: var(--mono); font-size: 11.5px; color: var(--muted);
+    letter-spacing: 0.06em; text-transform: uppercase; margin: 0 0 16px;
+  }
+  .sec__num .accent { color: var(--accent); }
+
+  table.smap {
+    width: 100%; border-collapse: collapse; font-size: 15px; margin-top: 12px;
+  }
+  table.smap thead th {
+    font-family: var(--mono); font-size: 10.5px; text-transform: uppercase;
+    letter-spacing: 0.06em; color: var(--muted); font-weight: 500;
+    border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink);
+    padding: 12px 16px 12px 0; text-align: left;
+  }
+  table.smap tbody td {
+    padding: 18px 16px 18px 0; border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+  }
+  table.smap .col-page {
+    font-family: var(--serif); font-size: 17px; color: var(--ink); width: 32%;
+  }
+  table.smap .col-page small {
+    display: block; font-family: var(--mono); font-size: 10.5px;
+    color: var(--muted); letter-spacing: 0.04em; margin-top: 6px;
+  }
+  table.smap .col-lang {
+    font-family: var(--mono); font-size: 12px;
+    display: flex; flex-wrap: wrap; gap: 6px 14px;
+  }
+  table.smap .col-lang a {
+    color: var(--accent); border-bottom: 1px solid transparent;
+  }
+  table.smap .col-lang a:hover { border-bottom-color: var(--accent); }
+  table.smap .col-lang a.it { color: var(--ink); }
+  table.smap .col-desc {
+    color: var(--body); font-size: 14.5px; line-height: 1.55; width: 32%;
+  }
+
+  footer.colophon { padding: 56px 0; border-top: 1px solid var(--rule); }
+  .colophon__row {
+    max-width: 1100px; margin: 0 auto; padding: 0 var(--gutter);
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 12px;
+    font-family: var(--mono); font-size: 11px; color: var(--muted-2);
+    letter-spacing: 0.04em;
+  }
+
+  @media (max-width: 720px) {
+    .cover { padding: 60px 0 48px; }
+    .cover h1 { font-size: 28px; }
+    table.smap, table.smap tbody, table.smap thead, table.smap tr, table.smap td, table.smap th { display: block; width: 100%; }
+    table.smap thead { display: none; }
+    table.smap tbody tr { border-bottom: 1px solid var(--rule); padding: 16px 0; }
+    table.smap tbody td { padding: 4px 0; border: 0; }
+  }
+</style>
 </head>
 <body>
 
-<h1>AIKNOCK Sitemap</h1>
-<p>Mappa delle pagine disponibili del progetto AIKNOCK.</p>
+<div class="banner">
+  <div class="banner__inner">
+    <div class="banner__left">
+      <span>Sitemap del sito</span>
+      <span>4 lingue · 7 pagine</span>
+    </div>
+  </div>
+</div>
 
-<ul>
-    <li><a href="/">Home</a></li>
-    <li><a href="/design-principles.html">Principi di progettazione</a></li>
-    <li><a href="/one-diagram.html">Diagramma architetturale</a></li>
-    <li><a href="/perche.html">Perché AIKNOCK</a></li>
-    <li><a href="/norme.html">Norme</a></li>
-    <li><a href="/note-legali.html">Note legali</a></li>
-</ul>
+<header class="mast">
+  <div class="mast__inner">
+    <a class="brand" href="/">
+      <span class="brand__mark">AIKNOCK</span>
+      <span class="brand__sub">Specifica aperta · v0.4</span>
+    </a>
+    <nav class="mast__nav" aria-label="Sezioni">
+      <a href="/">Specifica</a>
+      <span class="mast__sep" aria-hidden="true">·</span>
+      <a href="/perche.html">Perché AIKNOCK</a>
+      <span class="mast__sep" aria-hidden="true">·</span>
+      <a href="/one-diagram.html">One Diagram</a>
+      <span class="mast__sep" aria-hidden="true">·</span>
+      <a href="/norme.html">Norme</a>
+      <span class="mast__sep" aria-hidden="true">·</span>
+      <a href="/design-principles.html">Design Principles</a>
+      <span class="mast__sep" aria-hidden="true">·</span>
+      <a href="/ai-governance.html">AI Governance</a>
+      <span class="mast__sep" aria-hidden="true">·</span>
+      <a href="/note-legali.html">Note legali</a>
+    </nav>
+  </div>
+</header>
+
+<section class="cover">
+  <div class="col--wide">
+    <p class="cover__eyebrow">Sitemap</p>
+    <h1>Mappa del sito.</h1>
+    <p class="cover__sub">
+      Tutte le pagine pubblicate del progetto AIKNOCK, con le versioni
+      linguistiche disponibili per ciascuna. Per gli aggregatori, è
+      disponibile la sitemap XML in <a href="/sitemap.xml">/sitemap.xml</a>.
+    </p>
+  </div>
+</section>
+
+<section class="sec">
+  <p class="sec__num col--wide"><span class="accent">§ 01</span> · Pagine</p>
+  <div class="col--wide">
+    <table class="smap">
+      <thead>
+        <tr>
+          <th class="col-page">Pagina</th>
+          <th class="col-lang">Lingue</th>
+          <th class="col-desc">Descrizione</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="col-page">Specifica · Home<small>/ index.html</small></td>
+          <td class="col-lang">
+            <a class="it" href="/">IT</a>
+            <a href="/en/index.html">EN</a>
+            <a href="/fr/index.html">FR</a>
+            <a href="/es/index.html">ES</a>
+          </td>
+          <td class="col-desc">Specifica tecnica aperta. Punto decisionale ex-ante a livello di sistema operativo per l'invocazione dell'AI.</td>
+        </tr>
+        <tr>
+          <td class="col-page">Perché AIKNOCK<small>/ perche.html</small></td>
+          <td class="col-lang">
+            <a class="it" href="/perche.html">IT</a>
+            <a href="/en/perche.html">EN</a>
+            <a href="/fr/perche.html">FR</a>
+            <a href="/es/perche.html">ES</a>
+          </td>
+          <td class="col-desc">Razionale del progetto e contesto di adozione del protocollo.</td>
+        </tr>
+        <tr>
+          <td class="col-page">One Diagram<small>/ one-diagram.html</small></td>
+          <td class="col-lang">
+            <a class="it" href="/one-diagram.html">IT</a>
+            <span style="color:var(--muted-2);">EN · FR · ES</span>
+          </td>
+          <td class="col-desc">Posizione architetturale del protocollo in un solo diagramma. Pagina attualmente solo in italiano.</td>
+        </tr>
+        <tr>
+          <td class="col-page">Norme<small>/ norme.html</small></td>
+          <td class="col-lang">
+            <a class="it" href="/norme.html">IT</a>
+            <a href="/en/norme.html">EN</a>
+            <a href="/fr/norme.html">FR</a>
+            <a href="/es/norme.html">ES</a>
+          </td>
+          <td class="col-desc">Relazione tecnica con i quadri normativi esterni (AI Act, ISO/IEC 42001, ISO/IEC 27001, NIS2).</td>
+        </tr>
+        <tr>
+          <td class="col-page">Design Principles<small>/ design-principles.html</small></td>
+          <td class="col-lang">
+            <a class="it" href="/design-principles.html">IT</a>
+            <a href="/en/design-principles.html">EN</a>
+            <a href="/fr/design-principles.html">FR</a>
+            <a href="/es/design-principles.html">ES</a>
+          </td>
+          <td class="col-desc">Invarianti architetturali e confini non negoziabili del protocollo.</td>
+        </tr>
+        <tr>
+          <td class="col-page">AI Governance<small>/ ai-governance.html</small></td>
+          <td class="col-lang">
+            <a class="it" href="/ai-governance.html">IT</a>
+            <span style="color:var(--muted-2);">EN · FR · ES</span>
+          </td>
+          <td class="col-desc">Lettura architetturale del problema della governance e del ruolo dell'execution control. Pagina attualmente solo in italiano.</td>
+        </tr>
+        <tr>
+          <td class="col-page">Note legali<small>/ note-legali.html</small></td>
+          <td class="col-lang">
+            <a class="it" href="/note-legali.html">IT</a>
+            <a href="/en/note-legali.html">EN</a>
+            <a href="/fr/note-legali.html">FR</a>
+            <a href="/es/note-legali.html">ES</a>
+          </td>
+          <td class="col-desc">Indipendenza editoriale, marchi, riferimenti normativi e limiti di responsabilità.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="sec">
+  <p class="sec__num col--wide"><span class="accent">§ 02</span> · Per aggregatori e motori di ricerca</p>
+  <div class="col--wide">
+    <p style="margin: 0 0 8px 0; font-size: 15px; color: var(--body);">
+      La sitemap XML autoritativa, con i collegamenti <code>xhtml:link rel="alternate"</code> tra le versioni linguistiche, è pubblicata su:
+    </p>
+    <p style="font-family: var(--mono); font-size: 13px; margin: 0 0 14px;">
+      <a href="/sitemap.xml">https://aiknock.org/sitemap.xml</a>
+    </p>
+    <p style="margin: 0; font-size: 14.5px; color: var(--muted);">
+      File di policy: <a href="/robots.txt">/robots.txt</a>.
+    </p>
+  </div>
+</section>
+
+<footer class="colophon">
+  <div class="colophon__row">
+    <span>© 2026 Gruppo editoriale AIKNOCK — Specifica aperta · CC BY 4.0</span>
+    <span>AIKNOCK / WD-0004 · SITEMAP · 21 maggio 2026</span>
+  </div>
+</footer>
 
 </body>
 </html>
