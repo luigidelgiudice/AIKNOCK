@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1584 396" width="1584" height="396">
+  <rect width="1584" height="396" fill="#ffffff"></rect>
+
+  
+  <line x1="64" y1="44" x2="1520" y2="44" stroke="#d8d8d8" stroke-width="1.5"></line>
+  <g font-family="JetBrains Mono, ui-monospace, monospace" font-size="12" font-weight="500" fill="#4a4a4a" letter-spacing="1.4">
+    <rect x="64" y="25" width="7" height="7" fill="#8a1a1a"></rect>
+    <text x="82" y="36">SPECIFICA APERTA</text>
+    <rect x="248" y="25" width="7" height="7" fill="#8a1a1a"></rect>
+    <text x="266" y="36">BOZZA DI LAVORO PUBBLICA</text>
+    <text x="1520" y="36" text-anchor="end" font-weight="600" fill="#8a1a1a">RIF. AIKNOCK / WD-0004</text>
+  </g>
+
+  
+  <g transform="translate(440,200)">
+    <text x="0" y="0" font-family="Source Serif 4, Georgia, Times, serif" font-size="92" font-weight="700" fill="#111111" letter-spacing="-1.6">AIKNOCK</text>
+    <text x="0" y="40" font-family="JetBrains Mono, ui-monospace, monospace" font-size="15" font-weight="500" fill="#5a5a5a" letter-spacing="3.6">OS-LEVEL  EXECUTION  CONTROL  PROTOCOL</text>
+    <text x="0" y="80" font-family="Source Serif 4, Georgia, Times, serif" font-style="italic" font-weight="500" font-size="22" fill="#2a2a2a">Un punto decisionale ex-ante, prima dell&#39;esecuzione dell&#39;AI.</text>
+  </g>
+
+  
+  <g transform="translate(1180,140)">
+    <line x1="0" y1="0" x2="0" y2="140" stroke="#d8d8d8" stroke-width="1.5"></line>
+    <g font-family="JetBrains Mono, ui-monospace, monospace" font-size="11.5" font-weight="500" letter-spacing="1.4" fill="#5a5a5a">
+      <text x="26" y="6">§ 00 · POSIZIONE</text>
+      <text x="26" y="32" font-family="Source Serif 4, Georgia, Times, serif" font-size="16" font-weight="600" fill="#111">App Layer</text>
+      <text x="26" y="54" font-family="Source Serif 4, Georgia, Times, serif" font-size="16" font-weight="600" fill="#8a1a1a">↓ AIKNOCK (control unit)</text>
+      <text x="26" y="76" font-family="Source Serif 4, Georgia, Times, serif" font-size="16" font-weight="600" fill="#111">AI Execution Layer</text>
+      <text x="26" y="108" fill="#8a1a1a" font-weight="600">— NON AGGIRABILE</text>
+      <text x="26" y="124">— LIVELLO OS</text>
+      <text x="26" y="140">— BY CONSTRUCTION</text>
+    </g>
+  </g>
+
+  
+  <line x1="64" y1="356" x2="1520" y2="356" stroke="#d8d8d8" stroke-width="1.5"></line>
+  <g font-family="JetBrains Mono, ui-monospace, monospace" font-size="12" font-weight="500" fill="#7a7a7a" letter-spacing="1.4">
+    <text x="440" y="380">AIKNOCK.ORG</text>
+    <text x="1520" y="380" text-anchor="end">© 2026 · CC BY 4.0</text>
+  </g>
+</svg>

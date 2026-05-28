@@ -1,23 +1,24 @@
 <!doctype html>
-<html lang="it"><head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="AI Governance e controllo tecnico dell'esecuzione dei sistemi di Intelligenza Artificiale. Lettura architetturale del problema della governance e del ruolo del livello di execution control nei sistemi operativi. Specifica AIKNOCK.">
-<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
-<meta name="author" content="Gruppo editoriale AIKNOCK">
-<meta name="color-scheme" content="light">
+<html lang="it">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="AI Governance e controllo tecnico dell'esecuzione dei sistemi di Intelligenza Artificiale. Lettura architetturale del problema della governance e del ruolo del livello di execution control nei sistemi operativi. Specifica AIKNOCK." />
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+<meta name="author" content="Gruppo editoriale AIKNOCK" />
+<meta name="color-scheme" content="light" />
 <title>AI Governance — Execution Control &amp; AI Security Architecture | AIKNOCK</title>
 
-<link rel="canonical" href="https://aiknock.org/ai-governance.html">
+<link rel="canonical" href="https://aiknock.org/ai-governance.html" />
+<link rel="alternate" hreflang="it" href="https://aiknock.org/ai-governance.html" />
+<link rel="alternate" hreflang="x-default" href="https://aiknock.org/ai-governance.html" />
 
-
-
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="AIKNOCK">
-<meta property="og:title" content="AI Governance — Execution Control &amp; AI Security Architecture | AIKNOCK">
-<meta property="og:description" content="Lettura architetturale del problema dell'AI governance e del ruolo del livello di execution control nei sistemi operativi.">
-<meta property="og:url" content="https://aiknock.org/ai-governance.html">
-<meta property="og:locale" content="it_IT">
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="AIKNOCK" />
+<meta property="og:title" content="AI Governance — Execution Control &amp; AI Security Architecture | AIKNOCK" />
+<meta property="og:description" content="Lettura architetturale del problema dell'AI governance e del ruolo del livello di execution control nei sistemi operativi." />
+<meta property="og:url" content="https://aiknock.org/ai-governance.html" />
+<meta property="og:locale" content="it_IT" />
 
 <script type="application/ld+json">
 {
@@ -34,9 +35,9 @@
 }
 </script>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap">
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" />
 
 <style>
   :root {
@@ -158,7 +159,7 @@
     .mast__inner { flex-wrap: wrap; gap: 12px; }
   }
 </style>
-<link rel="alternate" hreflang="it" href="https://aiknock.org/ai-governance.html"><link rel="alternate" hreflang="x-default" href="https://aiknock.org/ai-governance.html"></head>
+</head>
 <body>
 
 <div class="banner">
@@ -168,7 +169,7 @@
       <span>Bozza di lavoro pubblica</span>
       <span>A cura del gruppo editoriale AIKNOCK</span>
     </div>
-    <span class="ref">Rif. AIKNOCK / WD-0004 · AI GOVERNANCE</span>
+    <span class="ref">Rif. AIKNOCK / WD-0004 &middot; AI GOVERNANCE</span>
   </div>
 </div>
 
@@ -176,19 +177,21 @@
   <div class="mast__inner">
     <a class="brand" href="index.html">
       <span class="brand__mark">AIKNOCK</span>
-      <span class="brand__sub">Specifica aperta · v0.4</span>
+      <span class="brand__sub">Specifica aperta &middot; v0.4</span>
     </a>
     <nav class="mast__nav" aria-label="Sezioni">
       <a href="index.html">Specifica</a>
-      <span class="mast__sep" aria-hidden="true">·</span>
-      <a href="perche.html">Perché AIKNOCK</a>
-      <span class="mast__sep" aria-hidden="true">·</span>
+      <span class="mast__sep" aria-hidden="true">&middot;</span>
+      <a href="perche.html">Perch&eacute; AIKNOCK</a>
+      <span class="mast__sep" aria-hidden="true">&middot;</span>
       <a href="one-diagram.html">One Diagram</a>
-      <span class="mast__sep" aria-hidden="true">·</span>
+      <span class="mast__sep" aria-hidden="true">&middot;</span>
       <a href="norme.html">Norme</a>
-      <span class="mast__sep" aria-hidden="true">·</span>
+      <span class="mast__sep" aria-hidden="true">&middot;</span>
       <a href="design-principles.html">Design Principles</a>
-      <span class="mast__sep" aria-hidden="true">·</span>
+      <span class="mast__sep" aria-hidden="true">&middot;</span>
+      <a href="codice.html">Codice</a>
+      <span class="mast__sep" aria-hidden="true">&middot;</span>
       <a href="ai-governance.html" aria-current="page">AI Governance</a>
     </nav>
   </div>
@@ -196,7 +199,7 @@
 
 <section class="cover">
   <div class="col--wide">
-    <p class="cover__eyebrow">AI Governance · Lettura tecnica</p>
+    <p class="cover__eyebrow">AI Governance &middot; Lettura tecnica</p>
     <h1>AI Governance e controllo tecnico dell'esecuzione<em>.</em></h1>
     <p class="cover__sub">
       Una lettura architetturale del problema dell'<b>AI governance</b> e del
@@ -209,22 +212,22 @@
 </section>
 
 <section class="sec" id="definizione">
-  <p class="sec__num col"><span class="accent">§ 01</span> · Definizione e contesto</p>
+  <p class="sec__num col"><span class="accent">&sect; 01</span> &middot; Definizione e contesto</p>
   <div class="col">
     <h2>Definizione e contesto.</h2>
     <p class="lede">
-      Per <b>AI governance</b> si intende l'insieme delle proprietà
+      Per <b>AI governance</b> si intende l'insieme delle propriet&agrave;
       tecniche, organizzative e giuridiche attraverso cui un sistema
       informativo che incorpora componenti di Intelligenza Artificiale
       viene reso descrivibile, verificabile e attribuibile a soggetti
       identificabili.
     </p>
     <p>
-      Il termine è oggi associato sia a obblighi normativi —
+      Il termine &egrave; oggi associato sia a obblighi normativi &mdash;
       fra cui il Regolamento UE 2024/1689 sull'Intelligenza Artificiale,
       la direttiva NIS2 sulla sicurezza delle reti, gli standard
       ISO/IEC 42001 e ISO/IEC 27001 e il NIST AI Risk Management Framework
-      — sia a pratiche operative interne alle organizzazioni che
+      &mdash; sia a pratiche operative interne alle organizzazioni che
       adottano l'AI in contesti decisionali e di servizio. Sul piano
       architetturale, tuttavia, l'AI governance pone un problema
       specifico: come rendere il comportamento di esecuzione del sistema
@@ -235,7 +238,7 @@
 </section>
 
 <section class="sec sub" id="en-overview">
-  <p class="sec__num col"><span class="accent">§ 01.1</span> · AI governance and execution control</p>
+  <p class="sec__num col"><span class="accent">&sect; 01.1</span> &middot; AI governance and execution control</p>
   <div class="col">
     <h2>AI governance and execution control.</h2>
     <p lang="en">
@@ -261,11 +264,11 @@
 </section>
 
 <section class="sec" id="problema">
-  <p class="sec__num col"><span class="accent">§ 02</span> · Il problema</p>
+  <p class="sec__num col"><span class="accent">&sect; 02</span> &middot; Il problema</p>
   <div class="col">
     <h2>Il problema della governance dichiarativa.</h2>
     <p>
-      Nei sistemi attuali, la governance dell'AI è in larga misura
+      Nei sistemi attuali, la governance dell'AI &egrave; in larga misura
       <b>dichiarativa</b>: si esprime attraverso policy, documenti di
       riferimento, registri tenuti dalle applicazioni e revisioni
       successive. L'esecuzione dell'AI rimane invece interamente nelle
@@ -275,29 +278,29 @@
     <p>
       Questa configurazione presuppone la <i>cooperazione</i> delle
       applicazioni con la governance dichiarata. Quando l'AI diventa una
-      <i>capability</i> critica del sistema informativo — pervasiva,
-      decisionale, distribuita su più team e fornitori — la
+      <i>capability</i> critica del sistema informativo &mdash; pervasiva,
+      decisionale, distribuita su pi&ugrave; team e fornitori &mdash; la
       fiducia nell'applicazione che invoca cessa di essere una strategia
       tecnica sufficiente. La governance si frammenta nei livelli
-      applicativi e la sua verificabilità dipende dalla
-      qualità eterogenea dei singoli sviluppi.
+      applicativi e la sua verificabilit&agrave; dipende dalla
+      qualit&agrave; eterogenea dei singoli sviluppi.
     </p>
   </div>
 </section>
 
 <section class="sec" id="limiti">
-  <p class="sec__num col"><span class="accent">§ 03</span> · Limiti degli approcci attuali</p>
+  <p class="sec__num col"><span class="accent">&sect; 03</span> &middot; Limiti degli approcci attuali</p>
   <div class="col">
     <h2>Limiti degli approcci attuali.</h2>
     <p>
-      Gli strumenti più diffusi per la governance dei sistemi di AI
+      Gli strumenti pi&ugrave; diffusi per la governance dei sistemi di AI
       condividono caratteristiche ricorrenti, ognuna delle quali pone
       limiti strutturali al controllo tecnico dell'esecuzione:
     </p>
     <ul class="terms" aria-label="Limiti degli approcci attuali">
       <li>
         <span class="terms__k">Policy organizzative</span>
-        <span class="terms__v">Testi vincolanti per le persone, non per il codice; non producono di per sé alcun effetto di esecuzione.</span>
+        <span class="terms__v">Testi vincolanti per le persone, non per il codice; non producono di per s&eacute; alcun effetto di esecuzione.</span>
       </li>
       <li>
         <span class="terms__k">Monitoring applicativo</span>
@@ -309,12 +312,12 @@
       </li>
       <li>
         <span class="terms__k">Compliance dichiarativa</span>
-        <span class="terms__v">Auto-attestazioni di conformità, prive di un meccanismo tecnico che le renda osservabili dall'esterno.</span>
+        <span class="terms__v">Auto-attestazioni di conformit&agrave;, prive di un meccanismo tecnico che le renda osservabili dall'esterno.</span>
       </li>
     </ul>
     <p style="margin-top: 28px;">
       Tali strumenti non sono inutili: descrivono <i>cosa</i> deve essere
-      garantito. Il loro limite è che non costituiscono, da soli,
+      garantito. Il loro limite &egrave; che non costituiscono, da soli,
       un punto di applicazione tecnica del controllo. Ne consegue che, nei
       contesti regolati e critici, manca un livello architetturale dedicato
       a tradurre i requisiti di <b>AI compliance</b> in vincoli osservabili
@@ -324,94 +327,94 @@
 </section>
 
 <section class="sec" id="approccio">
-  <p class="sec__num col--wide"><span class="accent">§ 04</span> · Approccio architetturale</p>
+  <p class="sec__num col--wide"><span class="accent">&sect; 04</span> &middot; Approccio architetturale</p>
   <div class="col--wide">
     <h2>Un livello tecnico per il controllo dell'esecuzione.</h2>
     <p style="max-width: 62ch;">
       L'approccio architetturale all'AI governance consiste nello spostare
       il controllo dell'invocazione al di sotto del livello applicativo,
       in un livello tecnico interposto che opera al livello del sistema
-      operativo o, più in generale, della piattaforma di
+      operativo o, pi&ugrave; in generale, della piattaforma di
       esecuzione. In questa prospettiva la governance smette di essere una
-      proprietà dichiarata sopra le applicazioni e diventa una
-      proprietà del sistema.
+      propriet&agrave; dichiarata sopra le applicazioni e diventa una
+      propriet&agrave; del sistema.
     </p>
 
     <p class="statement">
-      Il controllo dell'esecuzione dell'AI non è una questione di
-      cooperazione applicativa: è una proprietà del sistema
-      sottostante. Solo a quel livello può essere vincolato in
+      Il controllo dell'esecuzione dell'AI non &egrave; una questione di
+      cooperazione applicativa: &egrave; una propriet&agrave; del sistema
+      sottostante. Solo a quel livello pu&ograve; essere vincolato in
       modo verificabile e indipendente dal codice chiamante.
     </p>
 
     <p style="max-width: 62ch; margin-top: 28px;">
-      Su questo piano si situano i lavori più recenti in materia di
+      Su questo piano si situano i lavori pi&ugrave; recenti in materia di
       <b>AI security architecture</b> e di <b>operating system AI control</b>,
       che riconducono il problema dell'AI governance a una questione di
       interposizione tecnica, di registrazione strutturale degli eventi e
-      di separazione fra disponibilità di un modello e
+      di separazione fra disponibilit&agrave; di un modello e
       autorizzazione al suo uso. Le condizioni di esercizio della
-      governance diventano così condizioni di funzionamento del
+      governance diventano cos&igrave; condizioni di funzionamento del
       sistema informatico stesso.
     </p>
   </div>
 </section>
 
 <section class="sec" id="aiknock">
-  <p class="sec__num col"><span class="accent">§ 05</span> · Relazione con AIKNOCK</p>
+  <p class="sec__num col"><span class="accent">&sect; 05</span> &middot; Relazione con AIKNOCK</p>
   <div class="col">
     <h2>Relazione con AIKNOCK.</h2>
     <p>
-      <b>AIKNOCK</b> è una specifica tecnica aperta che descrive un
+      <b>AIKNOCK</b> &egrave; una specifica tecnica aperta che descrive un
       sistema di <i>execution control</i> dell'AI operante a livello di
       sistema operativo. Si colloca sul piano dei meccanismi tecnici,
       definendo un punto decisionale <i>ex-ante</i>, non aggirabile,
       attraversato da ogni invocazione di modelli prima dell'esecuzione.
     </p>
     <p>
-      La relazione con il discorso più ampio sull'AI governance
-      è di <b>complementarità</b>: i quadri normativi e gli
+      La relazione con il discorso pi&ugrave; ampio sull'AI governance
+      &egrave; di <b>complementarit&agrave;</b>: i quadri normativi e gli
       standard internazionali definiscono <i>cosa</i> deve essere
       garantito; una specifica come AIKNOCK descrive un <i>come</i>
-      tecnico per rendere una parte di tali proprietà osservabili e
+      tecnico per rendere una parte di tali propriet&agrave; osservabili e
       verificabili al livello dell'esecuzione. La specifica non interpreta
-      la legge, non garantisce conformità e non si sostituisce ai
+      la legge, non garantisce conformit&agrave; e non si sostituisce ai
       processi organizzativi: opera su un piano distinto, quello del
       comportamento del sistema durante l'esecuzione di operazioni di
       Intelligenza Artificiale.
     </p>
 
     <div class="related" aria-label="Documenti correlati">
-      Documenti correlati ·
-      <a href="index.html">specifica</a> ·
-      <a href="perche.html">razionale del progetto</a> ·
-      <a href="one-diagram.html">posizione architetturale in un diagramma</a> ·
-      <a href="design-principles.html">principi di design e confini del sistema</a> ·
+      Documenti correlati &middot;
+      <a href="index.html">specifica</a> &middot;
+      <a href="perche.html">razionale del progetto</a> &middot;
+      <a href="one-diagram.html">posizione architetturale in un diagramma</a> &middot;
+      <a href="design-principles.html">principi di design e confini del sistema</a> &middot;
       <a href="norme.html">relazione tecnica con i quadri normativi</a>
     </div>
   </div>
 </section>
 
 <section class="sec" id="conclusione" style="border-bottom: 0;">
-  <p class="sec__num col"><span class="accent">§ 06</span> · Conclusione</p>
+  <p class="sec__num col"><span class="accent">&sect; 06</span> &middot; Conclusione</p>
   <div class="col">
     <h2>Conclusione.</h2>
     <div class="closing">
       <p>
         L'AI governance, vista da una prospettiva infrastrutturale,
-        è un problema di <b>livello architetturale</b>: dove
+        &egrave; un problema di <b>livello architetturale</b>: dove
         collocare il controllo del comportamento di esecuzione dei sistemi
         che incorporano l'Intelligenza Artificiale.
       </p>
       <p>
         <b>Spostare il controllo al di sotto del livello applicativo
-        è la condizione tecnica perché la governance diventi
-        una proprietà del sistema, non una sua dichiarazione.</b>
+        &egrave; la condizione tecnica perch&eacute; la governance diventi
+        una propriet&agrave; del sistema, non una sua dichiarazione.</b>
       </p>
       <p class="muted">
         AIKNOCK descrive un punto di applicazione tecnica di tale
         controllo, coerente con i requisiti posti dai principali quadri di
-        riferimento, senza implementarli né rappresentarli.
+        riferimento, senza implementarli n&eacute; rappresentarli.
       </p>
     </div>
   </div>
@@ -419,12 +422,11 @@
 
 <footer class="colophon">
   <div class="colophon__row">
-    <span>© 2026 Gruppo editoriale AIKNOCK — Specifica aperta · CC BY 4.0</span>
-    <a href="note-legali.html" style="border:0;color:var(--accent);font-family:var(--mono);font-size:11px;letter-spacing:0.04em;">Progetto indipendente · Note legali →</a>
-    <span>AIKNOCK / WD-0004 · AI GOVERNANCE · 19 maggio 2026</span>
+    <span>&copy; 2026 Gruppo editoriale AIKNOCK &mdash; Specifica aperta &middot; CC BY 4.0</span>
+    <a href="note-legali.html" style="border:0;color:var(--accent);font-family:var(--mono);font-size:11px;letter-spacing:0.04em;">Progetto indipendente &middot; Note legali &rarr;</a>
+    <span>AIKNOCK / WD-0004 &middot; AI GOVERNANCE &middot; 19 maggio 2026</span>
   </div>
 </footer>
 
-
-
-</body></html>
+</body>
+</html>

@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AIKNOCK — Brand assets</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+<style>
+  :root {
+    --ink: #111111; --ink-2: #2a2a2a; --muted: #6a6a6a; --muted-2: #9a9a9a;
+    --rule: #d8d8d8; --paper: #ffffff; --accent: #8a1a1a;
+    --serif: "Source Serif 4", Georgia, serif;
+    --sans: "Inter", system-ui, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, monospace;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #f4f3f0; font-family: var(--sans); color: var(--ink-2); padding: 56px 32px 96px; }
+  .head { max-width: 1180px; margin: 0 auto 48px; border-bottom: 1px solid var(--rule); padding-bottom: 18px; }
+  .head h1 { font-family: var(--serif); font-weight: 500; font-size: 28px; letter-spacing: -0.01em; margin: 0 0 8px; color: var(--ink); }
+  .head p { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; margin: 0; }
+  .grid { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  .grid--full { grid-template-columns: 1fr; }
+  .card { background: var(--paper); border: 1px solid var(--rule); }
+  .card__head { display: flex; justify-content: space-between; align-items: baseline; padding: 14px 18px; border-bottom: 1px solid var(--rule); font-family: var(--mono); font-size: 10.5px; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; }
+  .card__head .ref { color: var(--accent); }
+  .card__body { padding: 56px 32px; display: flex; align-items: center; justify-content: center; min-height: 240px; }
+  .card__body.dark { background: #111; color: #fff; }
+  .card__body.cover { padding: 0; min-height: 0; aspect-ratio: 1584 / 396; }
+  .card__body.cover svg { width: 100%; height: 100%; display: block; }
+  .card__foot { padding: 12px 18px; border-top: 1px solid var(--rule); font-family: var(--mono); font-size: 10.5px; color: var(--muted-2); letter-spacing: 0.04em; display: flex; justify-content: space-between; }
+  .download { color: var(--accent); border-bottom: 1px solid var(--rule); text-decoration: none; padding-bottom: 1px; }
+  .download:hover { border-bottom-color: var(--accent); }
+
+  /* ─────────── Logo geometry ─────────── */
+  .logo {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 12px;
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 44px;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    line-height: 1;
+  }
+  .logo--lg { font-size: 64px; gap: 16px; }
+  .logo--xl { font-size: 96px; gap: 22px; }
+  .logo--inv { color: #fff; }
+  .logo__glyph {
+    display: inline-block;
+    width: 0.7em; height: 0.7em;
+    position: relative;
+    flex-shrink: 0;
+    transform: translateY(0.05em);
+  }
+  /* Two stacked squares — the "knock" mark.
+     Front square: accent fill; back square: outline only, offset top-right. */
+  .logo__glyph::before,
+  .logo__glyph::after {
+    content: "";
+    position: absolute;
+    width: 0.62em; height: 0.62em;
+    box-sizing: border-box;
+  }
+  .logo__glyph::before {
+    background: var(--accent);
+    left: 0; bottom: 0;
+  }
+  .logo__glyph::after {
+    border: 0.06em solid currentColor;
+    right: 0; top: 0;
+  }
+  .logo--inv .logo__glyph::before { background: #ffffff; }
+  .logo--mono .logo__glyph::before { background: currentColor; }
+  .logo--mono .logo__glyph::after { border-color: currentColor; opacity: 0.45; }
+
+  .logo__lock {
+    font-family: var(--mono);
+    font-size: 0.22em;
+    color: var(--muted);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-left: 0.45em;
+    transform: translateY(-0.6em);
+  }
+  .logo--inv .logo__lock { color: var(--muted-2); }
+
+  /* ─────────── Spec card ─────────── */
+  .spec { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+  .spec > div { padding: 18px 18px 22px; border-right: 1px solid var(--rule); }
+  .spec > div:last-child { border-right: 0; }
+  .spec dt { font-family: var(--mono); font-size: 10px; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; margin: 0 0 8px; }
+  .spec dd { font-family: var(--serif); font-size: 15px; color: var(--ink); margin: 0; line-height: 1.4; }
+  .spec dd .swatch { display: inline-block; width: 12px; height: 12px; vertical-align: -1px; margin-right: 8px; border: 1px solid var(--rule); }
+
+  /* ─────────── LinkedIn banner ─────────── */
+  .li-stage { background: var(--paper); }
+  @media (max-width: 760px) {
+    .grid { grid-template-columns: 1fr; }
+    .card__body { padding: 36px 18px; }
+    .logo { font-size: 32px; }
+    .logo--lg { font-size: 44px; }
+    .logo--xl { font-size: 56px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="head">
+  <h1>AIKNOCK — Brand assets</h1>
+  <p>Logotipo · marchio · banner LinkedIn · v0.1 · 19 maggio 2026</p>
+</div>
+
+<div class="grid">
+
+  <!-- 01 — Lockup primario -->
+  <div class="card">
+    <div class="card__head">
+      <span>01 · Lockup primario</span>
+      <span class="ref">Light</span>
+    </div>
+    <div class="card__body">
+      <span class="logo logo--xl" aria-label="AIKNOCK">
+        <span class="logo__glyph" aria-hidden="true"></span>
+        AIKNOCK
+      </span>
+    </div>
+    <div class="card__foot">
+      <span>Source Serif 4 / 600</span>
+      <span>Clear space: 1× altezza glifo</span>
+    </div>
+  </div>
+
+  <!-- 02 — Versione su fondo scuro -->
+  <div class="card">
+    <div class="card__head">
+      <span>02 · Lockup primario</span>
+      <span class="ref">Dark</span>
+    </div>
+    <div class="card__body dark">
+      <span class="logo logo--xl logo--inv" aria-label="AIKNOCK">
+        <span class="logo__glyph" aria-hidden="true"></span>
+        AIKNOCK
+      </span>
+    </div>
+    <div class="card__foot">
+      <span>Source Serif 4 / 600</span>
+      <span>BG #111111</span>
+    </div>
+  </div>
+
+  <!-- 03 — Lockup con tagline / sigla protocollo -->
+  <div class="card">
+    <div class="card__head">
+      <span>03 · Lockup con sigla protocollo</span>
+      <span class="ref">Stack</span>
+    </div>
+    <div class="card__body" style="flex-direction:column; gap:14px;">
+      <span class="logo logo--lg" aria-label="AIKNOCK">
+        <span class="logo__glyph" aria-hidden="true"></span>
+        AIKNOCK
+      </span>
+      <span style="font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.18em; text-transform: uppercase;">
+        OS-level execution control protocol &middot; WD-0004
+      </span>
+    </div>
+    <div class="card__foot">
+      <span>Lockup verticale</span>
+      <span>Per copertine / cover slide</span>
+    </div>
+  </div>
+
+  <!-- 04 — Marchio compatto / favicon source -->
+  <div class="card">
+    <div class="card__head">
+      <span>04 · Marchio compatto</span>
+      <span class="ref">Mark</span>
+    </div>
+    <div class="card__body">
+      <svg viewBox="0 0 200 200" width="200" height="200" role="img" aria-label="AIKNOCK mark">
+        <rect x="0" y="0" width="200" height="200" fill="#ffffff"></rect>
+        <!-- back square outline -->
+        <rect x="80" y="20" width="100" height="100" fill="none" stroke="#111111" stroke-width="6"></rect>
+        <!-- front square accent -->
+        <rect x="20" y="80" width="100" height="100" fill="#8a1a1a"></rect>
+        <!-- knock notch — small accent square inside front square -->
+        <rect x="40" y="100" width="20" height="20" fill="#ffffff"></rect>
+      </svg>
+    </div>
+    <div class="card__foot">
+      <span>Glifo: 2 quadrati sfalsati</span>
+      <span>Favicon source · 200×200</span>
+    </div>
+  </div>
+
+  <!-- 05 — Monochrome (per stamp, embossing, fax) -->
+  <div class="card">
+    <div class="card__head">
+      <span>05 · Versione monocromatica</span>
+      <span class="ref">Ink only</span>
+    </div>
+    <div class="card__body">
+      <span class="logo logo--xl logo--mono" aria-label="AIKNOCK">
+        <span class="logo__glyph" aria-hidden="true"></span>
+        AIKNOCK
+      </span>
+    </div>
+    <div class="card__foot">
+      <span>1 colore</span>
+      <span>Per stampa, embossing, PDF B/N</span>
+    </div>
+  </div>
+
+  <!-- 06 — Spec strip -->
+  <div class="card">
+    <div class="card__head">
+      <span>06 · Specifiche del marchio</span>
+      <span class="ref">Spec</span>
+    </div>
+    <div class="card__body" style="padding: 24px 0;">
+      <dl class="spec" style="width:100%;">
+        <div><dt>Colore accento</dt><dd><span class="swatch" style="background:#8a1a1a;"></span>#8A1A1A</dd></div>
+        <div><dt>Inchiostro</dt><dd><span class="swatch" style="background:#111;"></span>#111111</dd></div>
+        <div><dt>Paper</dt><dd><span class="swatch" style="background:#fff;"></span>#FFFFFF</dd></div>
+        <div><dt>Type</dt><dd>Source Serif 4 / 600</dd></div>
+      </dl>
+    </div>
+    <div class="card__foot">
+      <span>Sistema cromatico</span>
+      <span>Coerente con specifica AIKNOCK</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- LinkedIn banner — 1584×396 -->
+<div class="grid grid--full" style="margin-top: 32px;">
+  <div class="card">
+    <div class="card__head">
+      <span>07 · LinkedIn banner</span>
+      <span class="ref">1584 × 396</span>
+    </div>
+    <div class="card__body cover">
+      <svg viewBox="0 0 1584 396" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="AIKNOCK — OS-level execution control protocol">
+        <!-- Background -->
+        <rect width="1584" height="396" fill="#ffffff" style="width: 1128px; height: 19px"></rect>
+
+        <!-- Editorial document banner top -->
+        <line x1="64" y1="44" x2="1520" y2="44" stroke="#d8d8d8" stroke-width="1"></line>
+        <g font-family="JetBrains Mono, monospace" font-size="11" fill="#6a6a6a" letter-spacing="1.2">
+          <rect x="64" y="26" width="6" height="6" fill="#8a1a1a"></rect>
+          <text x="80" y="36">SPECIFICA APERTA</text>
+          <rect x="240" y="26" width="6" height="6" fill="#8a1a1a"></rect>
+          <text x="256" y="36">BOZZA DI LAVORO PUBBLICA</text>
+          <text x="1520" y="36" text-anchor="end" fill="#8a1a1a">RIF. AIKNOCK / WD-0004</text>
+        </g>
+
+        <!-- Wordmark + tagline (spostato a destra per non finire sotto la foto profilo LinkedIn) -->
+        <g transform="translate(440,200)">
+          <text x="0" y="0" font-family="Source Serif 4, Georgia, serif" font-size="84" font-weight="500" fill="#111111" letter-spacing="-1.2">AIKNOCK</text>
+          <text x="0" y="38" font-family="JetBrains Mono, monospace" font-size="14" fill="#6a6a6a" letter-spacing="3.2">OS-LEVEL  EXECUTION  CONTROL  PROTOCOL</text>
+          <text x="0" y="76" font-family="Source Serif 4, Georgia, serif" font-style="italic" font-size="20" fill="#2a2a2a">Un punto decisionale ex-ante, prima dell'esecuzione dell'AI.</text>
+        </g>
+
+        <!-- Right meta column — like a document colophon -->
+        <g transform="translate(1180,140)">
+          <line x1="0" y1="0" x2="0" y2="140" stroke="#d8d8d8" stroke-width="1"></line>
+          <g font-family="JetBrains Mono, monospace" font-size="10.5" letter-spacing="1.2" fill="#6a6a6a">
+            <text x="24" y="6">§ 00 · POSIZIONE</text>
+            <text x="24" y="30" font-family="Source Serif 4, Georgia, serif" font-size="15" fill="#111">App Layer</text>
+            <text x="24" y="52" font-family="Source Serif 4, Georgia, serif" font-size="15" fill="#8a1a1a">↓ AIKNOCK (control unit)</text>
+            <text x="24" y="74" font-family="Source Serif 4, Georgia, serif" font-size="15" fill="#111">AI Execution Layer</text>
+            <text x="24" y="106" fill="#8a1a1a">— NON AGGIRABILE</text>
+            <text x="24" y="122">— LIVELLO OS</text>
+            <text x="24" y="138">— BY CONSTRUCTION</text>
+          </g>
+        </g>
+
+        <!-- Bottom rule -->
+        <line x1="64" y1="356" x2="1520" y2="356" stroke="#d8d8d8" stroke-width="1"></line>
+        <g font-family="JetBrains Mono, monospace" font-size="11" fill="#9a9a9a" letter-spacing="1.2">
+          <text x="64" y="378">AIKNOCK.ORG</text>
+          <text x="1520" y="378" text-anchor="end">© 2026 · CC BY 4.0</text>
+        </g>
+      </svg>
+    </div>
+    <div class="card__foot">
+      <span>1584 × 396 px · LinkedIn cover</span>
+      <span>SVG · esportabile in PNG</span>
+    </div>
+  </div>
+</div>
+
+<!-- LinkedIn square / profilo aziendale — 400×400 -->
+<div class="grid" style="margin-top: 32px;">
+  <div class="card">
+    <div class="card__head">
+      <span>08 · Profilo LinkedIn (square)</span>
+      <span class="ref">400 × 400</span>
+    </div>
+    <div class="card__body" style="background:#ffffff;">
+      <svg viewBox="0 0 400 400" width="320" height="320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="AIKNOCK profile mark">
+        <rect width="400" height="400" fill="#ffffff"></rect>
+        <!-- Outer thin rule like a document -->
+        <rect x="20" y="20" width="360" height="360" fill="none" stroke="#d8d8d8" stroke-width="1"></rect>
+        <!-- Mark -->
+        <g transform="translate(110,90)">
+          <rect x="60" y="0" width="120" height="120" fill="none" stroke="#111111" stroke-width="6"></rect>
+          <rect x="0" y="60" width="120" height="120" fill="#8a1a1a"></rect>
+          <rect x="24" y="84" width="22" height="22" fill="#ffffff"></rect>
+        </g>
+        <!-- Wordmark below -->
+        <text x="200" y="332" text-anchor="middle" font-family="Source Serif 4, Georgia, serif" font-size="36" font-weight="600" fill="#111111" letter-spacing="-0.6">AIKNOCK</text>
+        <text x="200" y="356" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="#6a6a6a" letter-spacing="2.4">OS-LEVEL EXECUTION CONTROL</text>
+      </svg>
+    </div>
+    <div class="card__foot">
+      <span>400 × 400 px · Square avatar</span>
+      <span>Da usare come logo profilo</span>
+    </div>
+  </div>
+
+  <!-- Dark variant for LinkedIn (if profile is on dark theme) -->
+  <div class="card">
+    <div class="card__head">
+      <span>09 · Profilo LinkedIn (dark)</span>
+      <span class="ref">400 × 400</span>
+    </div>
+    <div class="card__body" style="background:#111111;">
+      <svg viewBox="0 0 400 400" width="320" height="320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="AIKNOCK profile mark dark">
+        <rect width="400" height="400" fill="#111111"></rect>
+        <rect x="20" y="20" width="360" height="360" fill="none" stroke="#2a2a2a" stroke-width="1"></rect>
+        <g transform="translate(110,90)">
+          <rect x="60" y="0" width="120" height="120" fill="none" stroke="#ffffff" stroke-width="6"></rect>
+          <rect x="0" y="60" width="120" height="120" fill="#8a1a1a"></rect>
+          <rect x="24" y="84" width="22" height="22" fill="#111111"></rect>
+        </g>
+        <text x="200" y="332" text-anchor="middle" font-family="Source Serif 4, Georgia, serif" font-size="36" font-weight="600" fill="#ffffff" letter-spacing="-0.6">AIKNOCK</text>
+        <text x="200" y="356" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="#9a9a9a" letter-spacing="2.4">OS-LEVEL EXECUTION CONTROL</text>
+      </svg>
+    </div>
+    <div class="card__foot">
+      <span>400 × 400 px · Dark</span>
+      <span>Stessa griglia, accento invariato</span>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

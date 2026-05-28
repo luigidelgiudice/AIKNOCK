@@ -1,0 +1,74 @@
+AIKNOCK — Aggiornamento sito web
+Pacchetto del 28 maggio 2026
+
+──────────────────────────────────────────────────────────────────
+
+FILE NUOVI
+
+  codice.html
+    Pagina dedicata al repository GitHub pubblico.
+    Sezioni: § 01 Repository · § 02 Contenuto · § 03 Anteprima
+    architettura (diagramma ASCII) · § 04 Consultazione (git clone) ·
+    § 05 Licenze (MIT + CC BY 4.0 + nota brevettuale UIBM) ·
+    § 06 Contributi · § 07 Citazione.
+    Multilingua IT/EN/FR/ES, stesso switch del resto del sito.
+
+FILE MODIFICATI
+
+  index.html
+    + Voce "Codice" nel menu di navigazione.
+    + Riga "Repository" nella sezione § 05 Stato del progetto,
+      con link diretto a codice.html.
+    + Quinta voce "Repository" nel colofone (§ 99).
+    + Traduzioni EN/FR/ES per tutte le nuove etichette.
+
+  perche.html
+  norme.html
+  design-principles.html
+  note-legali.html
+  one-diagram.html
+  ai-governance.html
+    + Voce "Codice" nel menu di navigazione (link a codice.html).
+    + Traduzioni EN/FR/ES dell'etichetta di menu (sui file con i18n).
+
+FILE INVARIATI
+
+  brand-assets.html
+  brand/                  cartella loghi e identità (logo SVG/PNG)
+
+FILE TECNICI AGGIORNATI
+
+  sitemap.xml
+    + 4 nuove URL per codice.html (IT + EN + FR + ES) con hreflang
+      completi e priority 0.8/0.7.
+    + lastmod portato a 2026-05-28 su tutte le voci, perché tutte le
+      pagine hanno avuto l'aggiornamento del menu (voce "Codice").
+
+  robots.txt
+    NON modificato — non richiede aggiornamento se contiene già la
+    direttiva "Sitemap: https://aiknock.org/sitemap.xml" e nessun
+    Disallow su /codice.html.
+
+──────────────────────────────────────────────────────────────────
+
+DEPLOY
+
+  Caricare l'intera cartella sul server, mantenendo i nomi file
+  invariati. Il link al repository pubblico è ora raggiungibile da:
+
+    1. menu principale di tutte le pagine principali
+    2. sezione § 05 "Stato del progetto" della home
+    3. colofone della home
+    4. pagina dedicata codice.html
+
+──────────────────────────────────────────────────────────────────
+
+REPOSITORY
+
+  github.com/luigidelgiudice/AiKnock-Protocol-OS-level
+
+LICENZE APPLICATE NEL REPO
+
+  Codice         MIT                          file LICENSE
+  Specifica      CC BY 4.0                    file LICENSE-SPEC
+  Architettura   Brevetto in deposito UIBM    aprile 2026

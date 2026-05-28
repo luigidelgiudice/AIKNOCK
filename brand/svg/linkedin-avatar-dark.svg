@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <rect width="400" height="400" fill="#111111"></rect>
+  <rect x="20" y="20" width="360" height="360" fill="none" stroke="#2a2a2a" stroke-width="1"></rect>
+  <g transform="translate(110,90)">
+    <rect x="60" y="0" width="120" height="120" fill="none" stroke="#ffffff" stroke-width="6"></rect>
+    <rect x="0" y="60" width="120" height="120" fill="#8a1a1a"></rect>
+    <rect x="24" y="84" width="22" height="22" fill="#111111"></rect>
+  </g>
+  <text x="200" y="332" text-anchor="middle" font-family="Source Serif 4, Georgia, serif" font-size="36" font-weight="600" fill="#ffffff" letter-spacing="-0.6">AIKNOCK</text>
+  <text x="200" y="356" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="#9a9a9a" letter-spacing="2.4">OS-LEVEL EXECUTION CONTROL</text>
+</svg>

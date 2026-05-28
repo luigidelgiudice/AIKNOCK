@@ -1,36 +1,37 @@
 <!doctype html>
-<html lang="it"><head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="AIKNOCK — sistema di controllo dell'esecuzione dell'Intelligenza Artificiale a livello di Sistema Operativo. Specifica tecnica aperta per il controllo ex-ante, non aggirabile, dell'invocazione dei modelli di AI.">
-<meta name="keywords" content="AIKNOCK, controllo esecuzione AI, sistema operativo AI, ex-ante, AI invocation control, execution control system, AI governance technical layer, specifica tecnica AI">
-<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
-<meta name="author" content="Gruppo editoriale AIKNOCK">
-<meta name="color-scheme" content="light">
+<html lang="it">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="AIKNOCK — sistema di controllo dell'esecuzione dell'Intelligenza Artificiale a livello di Sistema Operativo. Specifica tecnica aperta per il controllo ex-ante, non aggirabile, dell'invocazione dei modelli di AI." />
+<meta name="keywords" content="AIKNOCK, controllo esecuzione AI, sistema operativo AI, ex-ante, AI invocation control, execution control system, AI governance technical layer, specifica tecnica AI" />
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+<meta name="author" content="Gruppo editoriale AIKNOCK" />
+<meta name="color-scheme" content="light" />
 <title data-i18n="doc.title">AIKNOCK — Controllo dell'esecuzione dell'Intelligenza Artificiale a livello di Sistema Operativo</title>
 
-<link rel="canonical" href="https://aiknock.org/">
-
-
-
-
-
+<link rel="canonical" href="https://aiknock.org/" />
+<link rel="alternate" hreflang="it" href="https://aiknock.org/" />
+<link rel="alternate" hreflang="en" href="https://aiknock.org/en/" />
+<link rel="alternate" hreflang="fr" href="https://aiknock.org/fr/" />
+<link rel="alternate" hreflang="es" href="https://aiknock.org/es/" />
+<link rel="alternate" hreflang="x-default" href="https://aiknock.org/" />
 
 <!-- Open Graph -->
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="AIKNOCK">
-<meta property="og:title" content="AIKNOCK — Controllo dell'esecuzione dell'Intelligenza Artificiale a livello di Sistema Operativo">
-<meta property="og:description" content="Specifica tecnica aperta per il controllo ex-ante, non aggirabile, dell'invocazione dei modelli di AI a livello di sistema operativo.">
-<meta property="og:locale" content="it_IT">
-
-
-
-<meta property="og:url" content="https://aiknock.org/">
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="AIKNOCK" />
+<meta property="og:title" content="AIKNOCK — Controllo dell'esecuzione dell'Intelligenza Artificiale a livello di Sistema Operativo" />
+<meta property="og:description" content="Specifica tecnica aperta per il controllo ex-ante, non aggirabile, dell'invocazione dei modelli di AI a livello di sistema operativo." />
+<meta property="og:locale" content="it_IT" />
+<meta property="og:locale:alternate" content="en_US" />
+<meta property="og:locale:alternate" content="fr_FR" />
+<meta property="og:locale:alternate" content="es_ES" />
+<meta property="og:url" content="https://aiknock.org/" />
 
 <!-- Twitter / X -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="AIKNOCK — Controllo dell'esecuzione dell'AI a livello di Sistema Operativo">
-<meta name="twitter:description" content="Specifica tecnica aperta: punto decisionale ex-ante, non aggirabile, per l'invocazione dei modelli di AI.">
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="AIKNOCK — Controllo dell'esecuzione dell'AI a livello di Sistema Operativo" />
+<meta name="twitter:description" content="Specifica tecnica aperta: punto decisionale ex-ante, non aggirabile, per l'invocazione dei modelli di AI." />
 
 <!-- Structured data — Schema.org TechArticle -->
 <script type="application/ld+json">
@@ -51,9 +52,9 @@
 
 <!-- Web fonts (optional — robust system fallbacks declared below).
      If offline, the page renders with Georgia / system-ui / Menlo. -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap">
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" />
 
 <style>
   /* ===========================================================
@@ -482,8 +483,6 @@
     margin-right: 8px;
     transform: translateY(-1px);
   }
-  .status__meta.done .dot { background: #1a5a3a; }
-  .status__meta.planned .dot { background: var(--muted-2); }
   .status__meta.idle .dot { background: var(--muted-2); }
 
   /* ───────────────── Colophon ───────────────── */
@@ -620,7 +619,7 @@
     a { color: var(--ink); border: 0; }
   }
 </style>
-<link rel="alternate" hreflang="it" href="https://aiknock.org/"><link rel="alternate" hreflang="en" href="https://aiknock.org/en/index.html"><link rel="alternate" hreflang="fr" href="https://aiknock.org/fr/index.html"><link rel="alternate" hreflang="es" href="https://aiknock.org/es/index.html"><link rel="alternate" hreflang="x-default" href="https://aiknock.org/"><meta property="og:locale:alternate" content="en_US"><meta property="og:locale:alternate" content="fr_FR"><meta property="og:locale:alternate" content="es_ES"></head>
+</head>
 <body>
 
 <!-- Document banner — language switch top-right -->
@@ -632,13 +631,13 @@
       <span data-i18n="banner.l3">A cura del gruppo editoriale AIKNOCK</span>
     </div>
     <nav class="lang" aria-label="Language">
-      <a class="lang__opt is-active" data-lang="it" href="/" hreflang="it" aria-current="true">IT</a>
+      <a class="lang__opt" data-lang="it" href="?lang=it" hreflang="it" aria-current="true">IT</a>
       <span class="lang__sep" aria-hidden="true">·</span>
-      <a class="lang__opt" data-lang="en" href="/en/index.html" hreflang="en">EN</a>
+      <a class="lang__opt" data-lang="en" href="?lang=en" hreflang="en">EN</a>
       <span class="lang__sep" aria-hidden="true">·</span>
-      <a class="lang__opt" data-lang="fr" href="/fr/index.html" hreflang="fr">FR</a>
+      <a class="lang__opt" data-lang="fr" href="?lang=fr" hreflang="fr">FR</a>
       <span class="lang__sep" aria-hidden="true">·</span>
-      <a class="lang__opt" data-lang="es" href="/es/index.html" hreflang="es">ES</a>
+      <a class="lang__opt" data-lang="es" href="?lang=es" hreflang="es">ES</a>
     </nav>
   </div>
 </div>
@@ -660,8 +659,8 @@
       <a href="norme.html" data-i18n="nav.norms">Norme</a>
       <span class="mast__sep" aria-hidden="true">·</span>
       <a href="design-principles.html" data-i18n="nav.dp">Design Principles</a>
-      <span class="mast__sep">·</span>
-      <a href="ai-governance.html" data-i18n="nav.ai">AI Governance</a>
+      <span class="mast__sep" aria-hidden="true">·</span>
+      <a href="codice.html" data-i18n="nav.code">Codice</a>
       <span class="mast__sep" aria-hidden="true">·</span>
       <a href="note-legali.html" data-i18n="nav.legal">Note legali</a>
     </nav>
@@ -926,19 +925,19 @@
     <h2 data-i18n="s5.h2">Stato del progetto.</h2>
     <div class="status">
       <div class="status__row">
-        <span class="status__label" data-i18n="s5.r1.l">Phase 1 · Specifica</span>
-        <span class="status__value" data-i18n="s5.r1.v">Protocollo, invarianti, implementazione di riferimento Python.</span>
-        <span class="status__meta done" data-i18n="s5.r1.m"><span class="dot"></span>Completa</span>
+        <span class="status__label" data-i18n="s5.r1.l">Definizione</span>
+        <span class="status__value" data-i18n="s5.r1.v">Protocollo e pattern architetturale.</span>
+        <span class="status__meta" data-i18n="s5.r1.m"><span class="dot"></span>Attivo</span>
       </div>
       <div class="status__row">
-        <span class="status__label" data-i18n="s5.r2.l">Phase 2 · Windows</span>
-        <span class="status__value" data-i18n="s5.r2.v">Servizio Windows, CNG, intercettore IFEO, Verifier.</span>
-        <span class="status__meta done" data-i18n="s5.r2.m"><span class="dot"></span>Completa</span>
+        <span class="status__label" data-i18n="s5.r2.l">Implementazione</span>
+        <span class="status__value" data-i18n="s5.r2.v">Reference implementation enterprise in sviluppo.</span>
+        <span class="status__meta idle" data-i18n="s5.r2.m"><span class="dot"></span>In corso</span>
       </div>
       <div class="status__row">
-        <span class="status__label" data-i18n="s5.r3.l">Phase 3 · WFP + Linux</span>
-        <span class="status__value" data-i18n="s5.r3.v">Callout kernel WFP, vincoli stream, port Linux (eBPF).</span>
-        <span class="status__meta planned" data-i18n="s5.r3.m"><span class="dot"></span>Pianificata</span>
+        <span class="status__label" data-i18n="s5.r3.l">Repository</span>
+        <span class="status__value"><a href="codice.html" data-i18n="s5.r3.v" style="border-bottom:1px solid var(--rule);">github.com/luigidelgiudice/AiKnock-Protocol-OS-level</a></span>
+        <span class="status__meta" data-i18n="s5.r3.m"><span class="dot"></span>Pubblico</span>
       </div>
     </div>
   </div>
@@ -953,12 +952,12 @@
       <div><dt data-i18n="col.dt2">Stadio</dt><dd data-i18n="col.dd2">Working Draft</dd></div>
       <div><dt data-i18n="col.dt3">Curatela</dt><dd data-i18n="col.dd3">Gruppo editoriale AIKNOCK</dd></div>
       <div><dt data-i18n="col.dt4">Licenza</dt><dd data-i18n="col.dd4">Creative Commons Attribution 4.0 Internazionale</dd></div>
+      <div><dt data-i18n="col.dt5">Repository</dt><dd data-i18n="col.dd5"><a href="codice.html" style="color:var(--accent);border-bottom:1px solid var(--rule);">github.com/luigidelgiudice/AiKnock-Protocol-OS-level →</a></dd></div>
     </dl>
     <div class="colophon__bottom">
       <span data-i18n="col.bot1">© 2026 Gruppo editoriale AIKNOCK — Pubblicato come specifica aperta.</span>
       <a href="note-legali.html" data-i18n="col.legal" style="border:0;color:var(--accent);font-family:var(--mono);font-size:11px;letter-spacing:0.04em;">Progetto indipendente · Note legali →</a>
-      <a href="https://github.com/luigidelgiudice/AiKnock-Protocol-OS-level" data-i18n="col.github" target="_blank" rel="noopener" style="border:0;color:var(--muted);font-family:var(--mono);font-size:11px;letter-spacing:0.04em;">GitHub →</a>
-      <span data-i18n="col.bot2">Ultima revisione 27 maggio 2026 · WD-0005</span>
+      <span data-i18n="col.bot2">Ultima revisione 11 maggio 2026 · WD-0004</span>
     </div>
   </div>
 </footer>
@@ -1019,13 +1018,15 @@
       "s4.r3.ref":"ISO/IEC 27001<em>Information security</em>","s4.r3.rel":"Treatment of AI as a critical <i>capability</i> of the system, subject to technical access and privilege control.",
       "s4.r4.ref":"NIS2<em>Dir. (EU) 2022/2555</em>","s4.r4.rel":"Technical recording of invocation decisions and related events, reconstructable as a trace independent of the applications.",
       "s5.tag":"Project status","s5.h2":"Project status.",
-      "s5.r1.l":"Phase 1 · Specification","s5.r1.v":"Protocol, invariants, Python reference implementation.","s5.r1.m":"<span class=\"dot\"></span>Complete",
-      "s5.r2.l":"Phase 2 · Windows","s5.r2.v":"Windows service, CNG, IFEO interceptor, Verifier.","s5.r2.m":"<span class=\"dot\"></span>Complete",
-      "s5.r3.l":"Phase 3 · WFP + Linux","s5.r3.v":"WFP kernel callout, stream constraints, Linux port (eBPF).","s5.r3.m":"<span class=\"dot\"></span>Planned",
+      "s5.r1.l":"Definition","s5.r1.v":"Protocol and architectural pattern.","s5.r1.m":"<span class=\"dot\"></span>Active",
+      "nav.code":"Code",
+      "s5.r2.l":"Implementation","s5.r2.v":"Enterprise reference implementation in development.","s5.r2.m":"<span class=\"dot\"></span>In progress",
+      "s5.r3.l":"Repository","s5.r3.v":"github.com/luigidelgiudice/AiKnock-Protocol-OS-level","s5.r3.m":"<span class=\"dot\"></span>Public",
       "col.tag":"Colophon",
       "col.dt1":"Document","col.dd1":"AIKNOCK / WD-0004","col.dt2":"Stage","col.dd2":"Working Draft",
       "col.dt3":"Editorship","col.dd3":"AIKNOCK editorial group","col.dt4":"Licence","col.dd4":"Creative Commons Attribution 4.0 International",
-      "col.bot1":"© 2026 AIKNOCK editorial group — Published as an open specification.","col.legal":"Independent project · Legal notice →","col.github":"GitHub →","col.bot2":"Last revised 27 May 2026 · WD-0005"
+      "col.dt5":"Repository","col.dd5":"<a href=\"codice.html\" style=\"color:var(--accent);border-bottom:1px solid var(--rule);\">github.com/luigidelgiudice/AiKnock-Protocol-OS-level →</a>",
+      "col.bot1":"© 2026 AIKNOCK editorial group — Published as an open specification.","col.legal":"Independent project · Legal notice →","col.bot2":"Last revised 11 May 2026 · WD-0004"
     },
     fr: {
       "doc.title":"AIKNOCK — Contrôle d'exécution de l'intelligence artificielle au niveau du système d'exploitation",
@@ -1074,13 +1075,15 @@
       "s4.r3.ref":"ISO/IEC 27001<em>Sécurité de l'information</em>","s4.r3.rel":"Traitement de l'IA comme <i>capability</i> critique du système, soumise à un contrôle technique des accès et des privilèges.",
       "s4.r4.ref":"NIS2<em>Dir. (UE) 2022/2555</em>","s4.r4.rel":"Enregistrement technique des décisions d'invocation et des événements associés, reconstructible comme trace indépendante des applications.",
       "s5.tag":"État du projet","s5.h2":"État du projet.",
-      "s5.r1.l":"Phase 1 · Spécification","s5.r1.v":"Protocole, invariants, implémentation de référence Python.","s5.r1.m":"<span class=\"dot\"></span>Terminée",
-      "s5.r2.l":"Phase 2 · Windows","s5.r2.v":"Service Windows, CNG, intercepteur IFEO, Vérificateur.","s5.r2.m":"<span class=\"dot\"></span>Terminée",
-      "s5.r3.l":"Phase 3 · WFP + Linux","s5.r3.v":"Callout kernel WFP, contraintes de flux, port Linux (eBPF).","s5.r3.m":"<span class=\"dot\"></span>Planifiée",
+      "s5.r1.l":"Définition","s5.r1.v":"Protocole et patron d'architecture.","s5.r1.m":"<span class=\"dot\"></span>Actif",
+      "nav.code":"Code",
+      "s5.r2.l":"Implémentation","s5.r2.v":"Implémentation de référence entreprise en développement.","s5.r2.m":"<span class=\"dot\"></span>En cours",
+      "s5.r3.l":"Dépôt","s5.r3.v":"github.com/luigidelgiudice/AiKnock-Protocol-OS-level","s5.r3.m":"<span class=\"dot\"></span>Public",
       "col.tag":"Colophon",
       "col.dt1":"Document","col.dd1":"AIKNOCK / WD-0004","col.dt2":"Étape","col.dd2":"Working Draft",
       "col.dt3":"Direction éditoriale","col.dd3":"Groupe éditorial AIKNOCK","col.dt4":"Licence","col.dd4":"Creative Commons Attribution 4.0 International",
-      "col.bot1":"© 2026 Groupe éditorial AIKNOCK — Publié comme spécification ouverte.","col.legal":"Projet indépendant · Mentions légales →","col.github":"GitHub →","col.bot2":"Dernière révision 27 mai 2026 · WD-0005"
+      "col.dt5":"Dépôt","col.dd5":"<a href=\"codice.html\" style=\"color:var(--accent);border-bottom:1px solid var(--rule);\">github.com/luigidelgiudice/AiKnock-Protocol-OS-level →</a>",
+      "col.bot1":"© 2026 Groupe éditorial AIKNOCK — Publié comme spécification ouverte.","col.legal":"Projet indépendant · Mentions légales →","col.bot2":"Dernière révision 11 mai 2026 · WD-0004"
     },
     es: {
       "doc.title":"AIKNOCK — Control de ejecución de la inteligencia artificial a nivel de sistema operativo",
@@ -1129,13 +1132,15 @@
       "s4.r3.ref":"ISO/IEC 27001<em>Seguridad de la información</em>","s4.r3.rel":"Tratamiento de la IA como <i>capability</i> crítica del sistema, sujeta a un control técnico de accesos y privilegios.",
       "s4.r4.ref":"NIS2<em>Dir. (UE) 2022/2555</em>","s4.r4.rel":"Registro técnico de las decisiones de invocación y de los eventos asociados, reconstruible como traza independiente de las aplicaciones.",
       "s5.tag":"Estado del proyecto","s5.h2":"Estado del proyecto.",
-      "s5.r1.l":"Fase 1 · Especificación","s5.r1.v":"Protocolo, invariantes, implementación de referencia Python.","s5.r1.m":"<span class=\"dot\"></span>Completada",
-      "s5.r2.l":"Fase 2 · Windows","s5.r2.v":"Servicio Windows, CNG, interceptor IFEO, Verificador.","s5.r2.m":"<span class=\"dot\"></span>Completada",
-      "s5.r3.l":"Fase 3 · WFP + Linux","s5.r3.v":"Callout kernel WFP, restricciones de flujo, port Linux (eBPF).","s5.r3.m":"<span class=\"dot\"></span>Planificada",
+      "s5.r1.l":"Definición","s5.r1.v":"Protocolo y patrón arquitectónico.","s5.r1.m":"<span class=\"dot\"></span>Activo",
+      "nav.code":"Código",
+      "s5.r2.l":"Implementación","s5.r2.v":"Implementación de referencia para empresas en desarrollo.","s5.r2.m":"<span class=\"dot\"></span>En curso",
+      "s5.r3.l":"Repositorio","s5.r3.v":"github.com/luigidelgiudice/AiKnock-Protocol-OS-level","s5.r3.m":"<span class=\"dot\"></span>Público",
       "col.tag":"Colofón",
       "col.dt1":"Documento","col.dd1":"AIKNOCK / WD-0004","col.dt2":"Etapa","col.dd2":"Working Draft",
       "col.dt3":"Curaduría","col.dd3":"Grupo editorial AIKNOCK","col.dt4":"Licencia","col.dd4":"Creative Commons Attribution 4.0 Internacional",
-      "col.bot1":"© 2026 Grupo editorial AIKNOCK — Publicado como especificación abierta.","col.legal":"Proyecto independiente · Aviso legal →","col.github":"GitHub →","col.bot2":"Última revisión 27 de mayo de 2026 · WD-0005"
+      "col.dt5":"Repositorio","col.dd5":"<a href=\"codice.html\" style=\"color:var(--accent);border-bottom:1px solid var(--rule);\">github.com/luigidelgiudice/AiKnock-Protocol-OS-level →</a>",
+      "col.bot1":"© 2026 Grupo editorial AIKNOCK — Publicado como especificación abierta.","col.legal":"Proyecto independiente · Aviso legal →","col.bot2":"Última revisión 11 de mayo de 2026 · WD-0004"
     }
   };
 
@@ -1192,6 +1197,5 @@
   else init();
 })();
 </script>
-
-
-</body></html>
+</body>
+</html>
