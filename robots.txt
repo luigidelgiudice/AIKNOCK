@@ -4,9 +4,10 @@
 User-agent: *
 Allow: /
 
-# Block any non-canonical query strings (?lang=… is a legacy fallback;
-# the real translated pages live under /en/, /fr/, /es/ and are linked
-# explicitly via hreflang).
-Disallow: /*?lang=
+# Le pagine tradotte canoniche vivono sotto /en/, /fr/, /es/ e sono
+# collegate esplicitamente via hreflang + canonical. Eventuali URL
+# legacy con ?lang=… vengono consolidate da Google tramite il tag
+# canonical: NON le blocchiamo qui, altrimenti il crawler non potrebbe
+# leggere il canonical e le segnalerebbe come "bloccate da robots.txt".
 
 Sitemap: https://aiknock.org/sitemap.xml
