@@ -192,53 +192,6 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://aiknock.org/es/design-principles.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://aiknock.org/design-principles.html" />
   </url>
-
-  <!-- ─── CODICE / CODE — NEW ─── -->
-  <url>
-    <loc>https://aiknock.org/codice.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="it" href="https://aiknock.org/codice.html" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://aiknock.org/en/codice.html" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://aiknock.org/fr/codice.html" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://aiknock.org/es/codice.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiknock.org/codice.html" />
-  </url>
-  <url>
-    <loc>https://aiknock.org/en/codice.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="it" href="https://aiknock.org/codice.html" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://aiknock.org/en/codice.html" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://aiknock.org/fr/codice.html" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://aiknock.org/es/codice.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiknock.org/codice.html" />
-  </url>
-  <url>
-    <loc>https://aiknock.org/fr/codice.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="it" href="https://aiknock.org/codice.html" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://aiknock.org/en/codice.html" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://aiknock.org/fr/codice.html" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://aiknock.org/es/codice.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiknock.org/codice.html" />
-  </url>
-  <url>
-    <loc>https://aiknock.org/es/codice.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="it" href="https://aiknock.org/codice.html" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://aiknock.org/en/codice.html" />
-    <xhtml:link rel="alternate" hreflang="fr" href="https://aiknock.org/fr/codice.html" />
-    <xhtml:link rel="alternate" hreflang="es" href="https://aiknock.org/es/codice.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiknock.org/codice.html" />
-  </url>
-
   <!-- ─── NOTE LEGALI ─── -->
   <url>
     <loc>https://aiknock.org/note-legali.html</loc>
