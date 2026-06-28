@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="description" content="AIKNOCK — architettura proprietaria di controllo dell'esecuzione dell'Intelligenza Artificiale a livello di Sistema Operativo. Controllo ex-ante, non aggirabile, fail-closed dell'invocazione dei modelli di AI, con audit crittografico." />
+<meta name="description" content="AIKNOCK — architettura proprietaria di controllo dell'esecuzione dell'Intelligenza Artificiale a livello di Sistema Operativo. Controllo ex-ante, non aggirabile dal codice applicativo, fail-closed dell'invocazione dei modelli di AI, con audit crittografico." />
 <meta name="keywords" content="AIKNOCK, controllo esecuzione AI, AI execution control, sistema operativo AI, ex-ante, fail-closed, audit crittografico, architettura proprietaria AI, enforcement AI, AI governance" />
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
 <meta name="author" content="AIKNOCK" />
@@ -21,7 +21,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:site_name" content="AIKNOCK" />
 <meta property="og:title" content="AIKNOCK — Controllo dell'esecuzione dell'Intelligenza Artificiale a livello di Sistema Operativo" />
-<meta property="og:description" content="Architettura proprietaria di controllo dell'esecuzione: un punto decisionale ex-ante, non aggirabile, fail-closed, prima dell'invocazione dei modelli di AI." />
+<meta property="og:description" content="Architettura proprietaria di controllo dell'esecuzione: un punto decisionale ex-ante, non aggirabile dal codice applicativo, fail-closed, prima dell'invocazione dei modelli di AI." />
 <meta property="og:locale" content="it_IT" />
 <meta property="og:locale:alternate" content="en_US" />
 <meta property="og:locale:alternate" content="fr_FR" />
@@ -31,7 +31,7 @@
 <!-- Twitter / X -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="AIKNOCK — Controllo dell'esecuzione dell'AI a livello di Sistema Operativo" />
-<meta name="twitter:description" content="Architettura proprietaria: punto decisionale ex-ante, non aggirabile, fail-closed, per l'invocazione dei modelli di AI." />
+<meta name="twitter:description" content="Architettura proprietaria: punto decisionale ex-ante, non aggirabile dal codice applicativo, fail-closed, per l'invocazione dei modelli di AI." />
 
 <!-- Structured data — Schema.org TechArticle -->
 <script type="application/ld+json">
@@ -39,7 +39,7 @@
   "@context": "https://schema.org",
   "@type": "TechArticle",
   "headline": "AIKNOCK — Controllo dell'esecuzione dell'Intelligenza Artificiale a livello di Sistema Operativo",
-  "description": "Architettura proprietaria che definisce un sistema di controllo dell'esecuzione dell'AI, applicato a livello di sistema operativo, con un punto decisionale ex-ante, non aggirabile e fail-closed.",
+  "description": "Architettura proprietaria che definisce un sistema di controllo dell'esecuzione dell'AI, applicato a livello di sistema operativo, con un punto decisionale ex-ante, non aggirabile dal codice applicativo e fail-closed.",
   "inLanguage": "it",
   "author": { "@type": "Organization", "name": "AIKNOCK" },
   "publisher": { "@type": "Organization", "name": "AIKNOCK" },
@@ -807,7 +807,7 @@
         <p data-i18n="s3.p1.p">Ogni invocazione dell'AI è preceduta da una decisione esplicita che stabilisce se l'uso è ammesso, secondo i vincoli di esecuzione applicati dal sistema.</p>
       </div></li>
       <li><div>
-        <h3 data-i18n="s3.p2.h">Enforcement non aggirabile a livello OS.</h3>
+        <h3 data-i18n="s3.p2.h">Enforcement non aggirabile dal codice applicativo a livello OS.</h3>
         <p data-i18n="s3.p2.p">Il punto di applicazione risiede al livello del sistema operativo, non nell'applicazione chiamante. La decisione non può essere ignorata, riscritta o aggirata dal codice che richiede l'AI.</p>
       </div></li>
       <li><div>
@@ -1084,7 +1084,7 @@
       "cover.h1":"Operating-system-level execution control for Artificial Intelligence<em>.</em>",
       "cover.sub":"AIKNOCK is an operating-system-level control layer that constrains the invocation and execution of Artificial Intelligence systems. It enforces governance <i>before</i> execution, not after. It treats AI as a critical system <i>capability</i>, not as a library or application feature.",
       "s1.tag":"Overview","s1.h2":"What AIKNOCK is.",
-      "s1.lede":"AIKNOCK is a proprietary execution-control architecture for Artificial Intelligence systems, operating at the operating-system layer. It defines an <i>ex-ante</i>, non-bypassable decision point that every AI invocation traverses before execution.",
+      "s1.lede":"AIKNOCK is a proprietary execution-control architecture for Artificial Intelligence systems, operating at the operating-system layer. It defines an <i>ex-ante</i>, non-bypassable by application code decision point that every AI invocation traverses before execution.",
       "s1.h3a":"A missing layer: execution control.",
       "s1.p1":"AI governance today concentrates on monitoring and filtering — it acts during or after execution. A distinct layer is missing: execution control, which decides before. AIKNOCK defines that layer: it determines whether execution is permitted, and prevents it when it is not.",
       "s1.h3b":"Below the application layer.",
@@ -1109,10 +1109,10 @@
       "s4.fig.desc":"Application Layer → AIKNOCK (Execution Control Unit) → AI Execution Layer. AIKNOCK decides ex-ante, before execution.",
       "s4.fig.t0":"t₀ · intent","s4.fig.t1":"t₁ · decision","s4.fig.t2":"t₂ · execution",
       "s4.fig.b1.tag":"01 · LAYER","s4.fig.b1.title":"Application Layer","s4.fig.b1.desc":"Software, services and workflows that request the use of AI.",
-      "s4.fig.b2.tag":"02 · EXECUTION CONTROL UNIT","s4.fig.b2.title":"AIKNOCK","s4.fig.b2.desc":"Decides ex-ante whether AI may be invoked, under which conditions and with which evidence.","s4.fig.b2.foot":"non-bypassable · OS-level",
+      "s4.fig.b2.tag":"02 · EXECUTION CONTROL UNIT","s4.fig.b2.title":"AIKNOCK","s4.fig.b2.desc":"Decides ex-ante whether AI may be invoked, under which conditions and with which evidence.","s4.fig.b2.foot":"non-bypassable by app code · OS-level",
       "s4.fig.b3.tag":"03 · LAYER","s4.fig.b3.title":"AI Execution Layer","s4.fig.b3.desc":"Model invocation, inference and return — subject to authorisation.",
       "s4.fig.arr1":"request","s4.fig.arr2":"authorise",
-      "s4.fig.cap":"Figure 1 — Position of AIKNOCK in the AI invocation chain. The authorisation decision is taken at t₁, before model execution. Control sits below the application and cannot be bypassed.",
+      "s4.fig.cap":"Figure 1 — Position of AIKNOCK in the AI invocation chain. The authorisation decision is taken at t₁, before model execution. Control sits below the application and cannot be bypassed by application code.",
       "s4.p1":"The decision is taken independently of the model, the vendor and the calling software. Operating at the operating-system layer, authorisation precedes invocation and cannot be evaded by the application.",
       "s5.tag":"Core properties","s5.h2":"Core properties.",
       "s5.lede":"AIKNOCK is defined by a small set of non-negotiable properties — three that govern enforcement, three that govern neutrality.",
@@ -1153,7 +1153,7 @@
       "cover.h1":"Contrôle d'exécution de l'Intelligence Artificielle au niveau du système d'exploitation<em>.</em>",
       "cover.sub":"AIKNOCK est une couche de contrôle au niveau du système d'exploitation qui contraint l'invocation et l'exécution des systèmes d'Intelligence Artificielle. Il applique la gouvernance <i>avant</i> l'exécution, et non après. Il traite l'IA comme une <i>capability</i> critique de système, et non comme une bibliothèque ou une fonctionnalité applicative.",
       "s1.tag":"Aperçu","s1.h2":"Qu'est-ce qu'AIKNOCK.",
-      "s1.lede":"AIKNOCK est une architecture propriétaire de contrôle d'exécution pour les systèmes d'Intelligence Artificielle, opérant au niveau du système d'exploitation. Elle définit un point de décision <i>ex-ante</i>, non contournable, que toute invocation d'IA traverse avant l'exécution.",
+      "s1.lede":"AIKNOCK est une architecture propriétaire de contrôle d'exécution pour les systèmes d'Intelligence Artificielle, opérant au niveau du système d'exploitation. Elle définit un point de décision <i>ex-ante</i>, non contournable par le code applicatif, que toute invocation d'IA traverse avant l'exécution.",
       "s1.h3a":"Une couche manquante : le contrôle d'exécution.",
       "s1.p1":"La gouvernance de l'IA se concentre aujourd'hui sur le monitoring et le filtrage : elle agit pendant ou après l'exécution. Une couche distincte manque — le contrôle d'exécution — qui décide avant. AIKNOCK définit cette couche : il détermine si l'exécution est permise et l'empêche lorsqu'elle ne l'est pas.",
       "s1.h3b":"Sous la couche applicative.",
@@ -1178,7 +1178,7 @@
       "s4.fig.desc":"Application Layer → AIKNOCK (Execution Control Unit) → AI Execution Layer. AIKNOCK décide ex-ante, avant l'exécution.",
       "s4.fig.t0":"t₀ · intention","s4.fig.t1":"t₁ · décision","s4.fig.t2":"t₂ · exécution",
       "s4.fig.b1.tag":"01 · COUCHE","s4.fig.b1.title":"Application Layer","s4.fig.b1.desc":"Logiciels, services et flux qui demandent l'usage de l'IA.",
-      "s4.fig.b2.tag":"02 · EXECUTION CONTROL UNIT","s4.fig.b2.title":"AIKNOCK","s4.fig.b2.desc":"Décide ex-ante si l'IA peut être invoquée, à quelles conditions et avec quelles preuves.","s4.fig.b2.foot":"non contournable · niveau OS",
+      "s4.fig.b2.tag":"02 · EXECUTION CONTROL UNIT","s4.fig.b2.title":"AIKNOCK","s4.fig.b2.desc":"Décide ex-ante si l'IA peut être invoquée, à quelles conditions et avec quelles preuves.","s4.fig.b2.foot":"non contournable par le code applicatif · niveau OS",
       "s4.fig.b3.tag":"03 · COUCHE","s4.fig.b3.title":"AI Execution Layer","s4.fig.b3.desc":"Invocation du modèle, inférence et retour — soumis à autorisation.",
       "s4.fig.arr1":"requête","s4.fig.arr2":"autorise",
       "s4.fig.cap":"Figure 1 — Position d'AIKNOCK dans la chaîne d'invocation de l'IA. La décision d'autorisation est prise à t₁, avant l'exécution du modèle. Le contrôle se situe sous l'application et ne peut être contourné.",
@@ -1222,7 +1222,7 @@
       "cover.h1":"Control de ejecución de la Inteligencia Artificial a nivel de sistema operativo<em>.</em>",
       "cover.sub":"AIKNOCK es una capa de control a nivel de sistema operativo que restringe la invocación y la ejecución de los sistemas de Inteligencia Artificial. Aplica la gobernanza <i>antes</i> de la ejecución, no después. Trata la IA como una <i>capability</i> crítica del sistema, no como una biblioteca ni como una funcionalidad de aplicación.",
       "s1.tag":"Visión general","s1.h2":"Qué es AIKNOCK.",
-      "s1.lede":"AIKNOCK es una arquitectura propietaria de control de ejecución para los sistemas de Inteligencia Artificial, que opera a nivel del sistema operativo. Define un punto de decisión <i>ex-ante</i>, no eludible, que toda invocación de IA atraviesa antes de la ejecución.",
+      "s1.lede":"AIKNOCK es una arquitectura propietaria de control de ejecución para los sistemas de Inteligencia Artificial, que opera a nivel del sistema operativo. Define un punto de decisión <i>ex-ante</i>, no eludible por el código de la aplicación, que toda invocación de IA atraviesa antes de la ejecución.",
       "s1.h3a":"Una capa que falta: el control de ejecución.",
       "s1.p1":"La gobernanza de la IA se concentra hoy en el monitoreo y el filtrado: actúa durante o después de la ejecución. Falta una capa distinta — el control de ejecución — que decida antes. AIKNOCK define esa capa: determina si la ejecución está permitida y la impide cuando no lo está.",
       "s1.h3b":"Por debajo de la capa de aplicación.",
@@ -1247,7 +1247,7 @@
       "s4.fig.desc":"Application Layer → AIKNOCK (Execution Control Unit) → AI Execution Layer. AIKNOCK decide ex-ante, antes de la ejecución.",
       "s4.fig.t0":"t₀ · intención","s4.fig.t1":"t₁ · decisión","s4.fig.t2":"t₂ · ejecución",
       "s4.fig.b1.tag":"01 · CAPA","s4.fig.b1.title":"Application Layer","s4.fig.b1.desc":"Software, servicios y flujos que solicitan el uso de la IA.",
-      "s4.fig.b2.tag":"02 · EXECUTION CONTROL UNIT","s4.fig.b2.title":"AIKNOCK","s4.fig.b2.desc":"Decide ex-ante si la IA puede ser invocada, en qué condiciones y con qué evidencias.","s4.fig.b2.foot":"no eludible · nivel SO",
+      "s4.fig.b2.tag":"02 · EXECUTION CONTROL UNIT","s4.fig.b2.title":"AIKNOCK","s4.fig.b2.desc":"Decide ex-ante si la IA puede ser invocada, en qué condiciones y con qué evidencias.","s4.fig.b2.foot":"no eludible por el código · nivel SO",
       "s4.fig.b3.tag":"03 · CAPA","s4.fig.b3.title":"AI Execution Layer","s4.fig.b3.desc":"Invocación del modelo, inferencia y retorno — sujetos a autorización.",
       "s4.fig.arr1":"solicitud","s4.fig.arr2":"autoriza",
       "s4.fig.cap":"Figura 1 — Posición de AIKNOCK en la cadena de invocación de la IA. La decisión de autorización se toma en t₁, antes de la ejecución del modelo. El control reside por debajo de la aplicación y no puede eludirse.",

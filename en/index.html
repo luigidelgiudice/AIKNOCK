@@ -2,7 +2,7 @@
 <html lang="en"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="AIKNOCK — operating-system-level execution-control system for Artificial Intelligence. Open technical specification for ex-ante, non-bypassable control of AI model invocation.">
+<meta name="description" content="AIKNOCK — operating-system-level execution-control system for Artificial Intelligence. Open technical specification for ex-ante, non-bypassable by application code control of AI model invocation.">
 <meta name="keywords" content="AIKNOCK, controllo esecuzione AI, sistema operativo AI, ex-ante, AI invocation control, execution control system, AI governance technical layer, specifica tecnica AI">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
 <meta name="author" content="Gruppo editoriale AIKNOCK">
@@ -20,7 +20,7 @@
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="AIKNOCK">
 <meta property="og:title" content="AIKNOCK — Controllo dell'esecuzione dell'Intelligenza Artificiale a livello di Sistema Operativo">
-<meta property="og:description" content="Specifica tecnica aperta per il controllo ex-ante, non aggirabile, dell'invocazione dei modelli di AI a livello di sistema operativo.">
+<meta property="og:description" content="Specifica tecnica aperta per il controllo ex-ante, non aggirabile dal codice applicativo, dell'invocazione dei modelli di AI a livello di sistema operativo.">
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="en_US">
 <meta property="og:locale:alternate" content="fr_FR">
@@ -30,14 +30,14 @@
 <!-- Twitter / X -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="AIKNOCK — Controllo dell'esecuzione dell'AI a livello di Sistema Operativo">
-<meta name="twitter:description" content="Specifica tecnica aperta: punto decisionale ex-ante, non aggirabile, per l'invocazione dei modelli di AI.">
+<meta name="twitter:description" content="Specifica tecnica aperta: punto decisionale ex-ante, non aggirabile dal codice applicativo, per l'invocazione dei modelli di AI.">
 
 <!-- Structured data — Schema.org TechArticle -->
 <script type="application/ld+json">{
   "@context": "https://schema.org",
   "@type": "TechArticle",
   "headline": "AIKNOCK — Operating-System-Level Execution Control for Artificial Intelligence",
-  "description": "Specifica tecnica aperta che definisce un sistema di controllo dell'esecuzione dell'AI, applicato a livello di sistema operativo, con un punto decisionale ex-ante e non aggirabile.",
+  "description": "Specifica tecnica aperta che definisce un sistema di controllo dell'esecuzione dell'AI, applicato a livello di sistema operativo, con un punto decisionale ex-ante e non aggirabile dal codice applicativo.",
   "inLanguage": "en",
   "author": {
     "@type": "Organization",
@@ -688,7 +688,7 @@
   <p class="sec__num col"><span class="accent">§ 00</span> · <span data-i18n="seo.tag">Introduction</span></p>
   <div class="col">
     <h2 id="seo-h2" data-i18n="seo.h2">What AIKNOCK is.</h2>
-    <p class="lede" data-i18n="seo.lede">AIKNOCK is an open technical specification describing an execution-control system for Artificial Intelligence, operating at the operating-system layer. It defines an <i>ex-ante</i>, non-bypassable decision point that every invocation of AI models traverses before execution.</p>
+    <p class="lede" data-i18n="seo.lede">AIKNOCK is an open technical specification describing an execution-control system for Artificial Intelligence, operating at the operating-system layer. It defines an <i>ex-ante</i>, non-bypassable by application code decision point that every invocation of AI models traverses before execution.</p>
 
     <h3 data-i18n="seo.h3a">Why a system-level control system.</h3>
     <p data-i18n="seo.p1">In current systems, the invocation of AI models occurs inside applications, without an interposed and independent technical control point. AIKNOCK moves control below the application layer, where the execution behaviour of the system can be constrained in a verifiable manner, independently of the calling code.</p>
@@ -920,7 +920,7 @@
       "cover.sub":"AIKNOCK is a system-level execution-control system, applied at the operating-system layer, that constrains the invocation and execution of Artificial Intelligence systems. It treats AI as a critical system <i>capability</i>, not as a library or application feature.",
       "seo.tag":"Introduction",
       "seo.h2":"What AIKNOCK is.",
-      "seo.lede":"AIKNOCK is an open technical specification describing an execution-control system for Artificial Intelligence, operating at the operating-system layer. It defines an <i>ex-ante</i>, non-bypassable decision point that every invocation of AI models traverses before execution.",
+      "seo.lede":"AIKNOCK is an open technical specification describing an execution-control system for Artificial Intelligence, operating at the operating-system layer. It defines an <i>ex-ante</i>, non-bypassable by application code decision point that every invocation of AI models traverses before execution.",
       "seo.h3a":"Why a system-level control system.",
       "seo.p1":"In current systems, the invocation of AI models occurs inside applications, without an interposed and independent technical control point. AIKNOCK moves control below the application layer, where the execution behaviour of the system can be constrained in a verifiable manner, independently of the calling code.",
       "seo.h3b":"Distinctive features.",
@@ -930,12 +930,12 @@
       "seo.h3d":"Specification documents.",
       "seo.p4":"The specification is articulated in several complementary documents, which can be consulted separately: <a href=\"perche.html\">project rationale and adoption context</a>, <a href=\"one-diagram.html\">architectural position in a single diagram</a>, <a href=\"design-principles.html\">design principles and system boundaries</a>, <a href=\"norme.html\">technical relation to external regulatory frameworks</a>, <a href=\"note-legali.html\">legal notice, editorial independence and trademarks</a>.",
       "s1.tag":"Objective","s1.h2":"A decision point before execution.",
-      "s1.lede":"The objective of AIKNOCK is to introduce a non-bypassable, ex-ante decision point that determines whether and when AI can be invoked, prior to execution.",
+      "s1.lede":"The objective of AIKNOCK is to introduce a non-bypassable by application code, ex-ante decision point that determines whether and when AI can be invoked, prior to execution.",
       "s1.p1":"The decision is taken independently of the model, the vendor and the calling software. The protocol operates at the operating-system layer, where authorisation precedes invocation and cannot be evaded by the application requesting the use of AI.",
       "s1.fig.desc":"Application Layer → AIKNOCK (Execution Control Unit) → AI Execution Layer. AIKNOCK decides ex-ante, before execution.",
       "s1.fig.t0":"t₀ · intent","s1.fig.t1":"t₁ · decision","s1.fig.t2":"t₂ · execution",
       "s1.fig.b1.tag":"01 · LAYER","s1.fig.b1.title":"Application Layer","s1.fig.b1.desc":"Software, services and workflows that request the use of AI.",
-      "s1.fig.b2.tag":"02 · EXECUTION CONTROL UNIT","s1.fig.b2.title":"AIKNOCK","s1.fig.b2.desc":"Decides ex-ante whether AI may be invoked, under which conditions and with which evidence.","s1.fig.b2.foot":"non-bypassable · OS-level",
+      "s1.fig.b2.tag":"02 · EXECUTION CONTROL UNIT","s1.fig.b2.title":"AIKNOCK","s1.fig.b2.desc":"Decides ex-ante whether AI may be invoked, under which conditions and with which evidence.","s1.fig.b2.foot":"non-bypassable by app code · OS-level",
       "s1.fig.b3.tag":"03 · LAYER","s1.fig.b3.title":"AI Execution Layer","s1.fig.b3.desc":"Model invocation, inference and return — subject to authorisation.",
       "s1.fig.arr1":"request","s1.fig.arr2":"authorise",
       "s1.fig.cap":"Figure 1 — Position of AIKNOCK in the AI invocation chain. The authorisation decision is taken at t₁, before the execution of the model. The system evaluates and constrains AI usage before execution.",
@@ -974,7 +974,7 @@
       "cover.sub":"AIKNOCK est un système de contrôle d'exécution au niveau système, appliqué à la couche du système d'exploitation, qui contraint l'invocation et l'exécution des systèmes d'Intelligence Artificielle. Il traite l'IA comme une <i>capability</i> critique de système, et non comme une bibliothèque ou une fonctionnalité applicative.",
       "seo.tag":"Introduction",
       "seo.h2":"Qu'est-ce qu'AIKNOCK.",
-      "seo.lede":"AIKNOCK est une spécification technique ouverte qui décrit un système de contrôle d'exécution de l'Intelligence Artificielle opérant au niveau du système d'exploitation. Elle définit un point de décision <i>ex-ante</i>, non contournable, que toute invocation de modèles d'IA traverse avant l'exécution.",
+      "seo.lede":"AIKNOCK est une spécification technique ouverte qui décrit un système de contrôle d'exécution de l'Intelligence Artificielle opérant au niveau du système d'exploitation. Elle définit un point de décision <i>ex-ante</i>, non contournable par le code applicatif, que toute invocation de modèles d'IA traverse avant l'exécution.",
       "seo.h3a":"Pourquoi un système de contrôle au niveau du système.",
       "seo.p1":"Dans les systèmes actuels, l'invocation des modèles d'Intelligence Artificielle s'effectue à l'intérieur des applications, sans point de contrôle technique interposé et indépendant. AIKNOCK déplace le contrôle sous le niveau applicatif, là où le comportement d'exécution du système peut être contraint de manière vérifiable et indépendante du code appelant.",
       "seo.h3b":"Caractéristiques distinctives.",
@@ -984,12 +984,12 @@
       "seo.h3d":"Documents de la spécification.",
       "seo.p4":"La spécification est articulée en plusieurs documents complémentaires, qu'il est possible de consulter séparément : <a href=\"perche.html\">justification du projet et contexte d'adoption</a>, <a href=\"one-diagram.html\">position architecturale en un seul diagramme</a>, <a href=\"design-principles.html\">principes de design et limites du système</a>, <a href=\"norme.html\">relation technique avec les cadres normatifs externes</a>, <a href=\"note-legali.html\">mentions légales, indépendance éditoriale et marques</a>.",
       "s1.tag":"Objectif","s1.h2":"Un point de décision avant l'exécution.",
-      "s1.lede":"L'objectif d'AIKNOCK est d'introduire un point de décision ex-ante, non contournable, qui détermine si et quand l'IA peut être invoquée, avant l'exécution.",
+      "s1.lede":"L'objectif d'AIKNOCK est d'introduire un point de décision ex-ante, non contournable par le code applicatif, qui détermine si et quand l'IA peut être invoquée, avant l'exécution.",
       "s1.p1":"La décision est prise indépendamment du modèle, du fournisseur et du logiciel appelant. Le protocole opère au niveau du système d'exploitation, là où l'autorisation précède l'invocation et ne peut être éludée par l'application qui demande l'usage de l'IA.",
       "s1.fig.desc":"Application Layer → AIKNOCK (Execution Control Unit) → AI Execution Layer. AIKNOCK décide ex-ante, avant l'exécution.",
       "s1.fig.t0":"t₀ · intention","s1.fig.t1":"t₁ · décision","s1.fig.t2":"t₂ · exécution",
       "s1.fig.b1.tag":"01 · COUCHE","s1.fig.b1.title":"Application Layer","s1.fig.b1.desc":"Logiciels, services et flux qui demandent l'usage de l'IA.",
-      "s1.fig.b2.tag":"02 · EXECUTION CONTROL UNIT","s1.fig.b2.title":"AIKNOCK","s1.fig.b2.desc":"Décide ex-ante si l'IA peut être invoquée, à quelles conditions et avec quelles preuves.","s1.fig.b2.foot":"non contournable · niveau OS",
+      "s1.fig.b2.tag":"02 · EXECUTION CONTROL UNIT","s1.fig.b2.title":"AIKNOCK","s1.fig.b2.desc":"Décide ex-ante si l'IA peut être invoquée, à quelles conditions et avec quelles preuves.","s1.fig.b2.foot":"non contournable par le code applicatif · niveau OS",
       "s1.fig.b3.tag":"03 · COUCHE","s1.fig.b3.title":"AI Execution Layer","s1.fig.b3.desc":"Invocation du modèle, inférence et retour — soumis à autorisation.",
       "s1.fig.arr1":"requête","s1.fig.arr2":"autorise",
       "s1.fig.cap":"Figure 1 — Position d'AIKNOCK dans la chaîne d'invocation de l'IA. La décision d'autorisation est prise à t₁, avant l'exécution du modèle. Le système évalue et contraint l'usage de l'IA avant l'exécution.",
@@ -1028,7 +1028,7 @@
       "cover.sub":"AIKNOCK es un sistema de control de ejecución a nivel de sistema, aplicado en la capa del sistema operativo, que restringe la invocación y la ejecución de los sistemas de Inteligencia Artificial. Trata la IA como una <i>capability</i> crítica del sistema, no como una biblioteca ni como una funcionalidad de aplicación.",
       "seo.tag":"Introducción",
       "seo.h2":"Qué es AIKNOCK.",
-      "seo.lede":"AIKNOCK es una especificación técnica abierta que describe un sistema de control de ejecución de la Inteligencia Artificial operando a nivel del sistema operativo. Define un punto de decisión <i>ex-ante</i>, no eludible, que toda invocación de modelos de IA atraviesa antes de la ejecución.",
+      "seo.lede":"AIKNOCK es una especificación técnica abierta que describe un sistema de control de ejecución de la Inteligencia Artificial operando a nivel del sistema operativo. Define un punto de decisión <i>ex-ante</i>, no eludible por el código de la aplicación, que toda invocación de modelos de IA atraviesa antes de la ejecución.",
       "seo.h3a":"Por qué un sistema de control a nivel de sistema.",
       "seo.p1":"En los sistemas actuales, la invocación de los modelos de Inteligencia Artificial se produce dentro de las aplicaciones, sin un punto de control técnico interpuesto e independiente. AIKNOCK traslada el control por debajo del nivel aplicativo, donde el comportamiento de ejecución del sistema puede ser restringido de manera verificable e independiente del código que invoca.",
       "seo.h3b":"Características distintivas.",
@@ -1038,12 +1038,12 @@
       "seo.h3d":"Documentos de la especificación.",
       "seo.p4":"La especificación se articula en varios documentos complementarios, consultables por separado: <a href=\"perche.html\">justificación del proyecto y contexto de adopción</a>, <a href=\"one-diagram.html\">posición arquitectónica en un solo diagrama</a>, <a href=\"design-principles.html\">principios de diseño y límites del sistema</a>, <a href=\"norme.html\">relación técnica con los marcos normativos externos</a>, <a href=\"note-legali.html\">aviso legal, independencia editorial y marcas</a>.",
       "s1.tag":"Objetivo","s1.h2":"Un punto de decisión antes de la ejecución.",
-      "s1.lede":"El objetivo de AIKNOCK es introducir un punto de decisión ex-ante, no eludible, que determine si y cuándo la IA puede ser invocada, antes de la ejecución.",
+      "s1.lede":"El objetivo de AIKNOCK es introducir un punto de decisión ex-ante, no eludible por el código de la aplicación, que determine si y cuándo la IA puede ser invocada, antes de la ejecución.",
       "s1.p1":"La decisión se toma con independencia del modelo, del proveedor y del software que la solicita. El protocolo opera en la capa del sistema operativo, donde la autorización precede a la invocación y no puede ser eludida por la aplicación que requiere el uso de la IA.",
       "s1.fig.desc":"Application Layer → AIKNOCK (Execution Control Unit) → AI Execution Layer. AIKNOCK decide ex-ante, antes de la ejecución.",
       "s1.fig.t0":"t₀ · intención","s1.fig.t1":"t₁ · decisión","s1.fig.t2":"t₂ · ejecución",
       "s1.fig.b1.tag":"01 · CAPA","s1.fig.b1.title":"Application Layer","s1.fig.b1.desc":"Software, servicios y flujos que solicitan el uso de la IA.",
-      "s1.fig.b2.tag":"02 · EXECUTION CONTROL UNIT","s1.fig.b2.title":"AIKNOCK","s1.fig.b2.desc":"Decide ex-ante si la IA puede ser invocada, en qué condiciones y con qué evidencias.","s1.fig.b2.foot":"no eludible · nivel SO",
+      "s1.fig.b2.tag":"02 · EXECUTION CONTROL UNIT","s1.fig.b2.title":"AIKNOCK","s1.fig.b2.desc":"Decide ex-ante si la IA puede ser invocada, en qué condiciones y con qué evidencias.","s1.fig.b2.foot":"no eludible por el código · nivel SO",
       "s1.fig.b3.tag":"03 · CAPA","s1.fig.b3.title":"AI Execution Layer","s1.fig.b3.desc":"Invocación del modelo, inferencia y retorno — sujetos a autorización.",
       "s1.fig.arr1":"solicitud","s1.fig.arr2":"autoriza",
       "s1.fig.cap":"Figura 1 — Posición de AIKNOCK en la cadena de invocación de la IA. La decisión de autorización se toma en t₁, antes de la ejecución del modelo. El sistema evalúa y restringe el uso de la IA antes de la ejecución.",
